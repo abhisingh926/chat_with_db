@@ -1,0 +1,272 @@
+clients:
+  description: The 'clients' table stores information about individuals or organizations
+    that engage with the business. It includes fields for personal and contact details,
+    such as client ID, name, email, phone number, address, and any relevant notes
+    regarding their preferences or services used
+  fields:
+    client_id:
+      type: int
+      description: The 'client_id' field is an integer that uniquely identifies each
+        client in the 'clients' table. It serves as the primary key, ensuring that
+        each entry is distinct and can be referenced without ambiguity.
+    name:
+      type: varchar(255)
+      description: "**Field: name**  \n**Type:** varchar(255)  \n**Description:**\
+        \ This field stores the full name of the client, with a maximum length of\
+        \ 255 characters. It is used to identify and reference clients within the\
+        \ database."
+    email:
+      type: varchar(255)
+      description: The 'email' field in the 'clients' table is a variable character
+        string with a maximum length of 255 characters. It stores the email addresses
+        of clients for communication and identification purposes.
+    phone:
+      type: varchar(20)
+      description: The 'phone' field in the 'clients' table stores the client's phone
+        number as a variable character string, with a maximum length of 20 characters.
+        This field is used to facilitate communication with clients and may include
+        various formats (e.g., country
+    address:
+      type: text
+      description: The 'address' field in the 'clients' table stores the residential
+        or business address of the client. It is of type 'text' to accommodate varying
+        lengths and formats of address information.
+    city:
+      type: varchar(100)
+      description: The 'city' field in the 'clients' table is a varchar(100) data
+        type that stores the name of the city associated with each client. It can
+        contain up to 100 characters, allowing for a wide range of city names.
+    state:
+      type: varchar(100)
+      description: The 'state' field in the 'clients' table is a variable character
+        string with a maximum length of 100 characters. It stores the state or region
+        in which the client is located, allowing for the identification of geographical
+        areas for each client.
+    pincode:
+      type: varchar(20)
+      description: The 'pincode' field in the 'clients' table is a varchar(20) data
+        type that stores the postal code or zip code associated with the client's
+        address. It allows for alphanumeric values to accommodate various regional
+        postal code formats.
+    created_at:
+      type: datetime
+      description: The 'created_at' field in the 'clients' table stores the date and
+        time when a client record was created. It is of type 'datetime' and is used
+        for tracking the creation timestamp of each client entry.
+inventory:
+  description: The `inventory` table stores information about products available for
+    sale or distribution. It includes details such as product identifiers, descriptions,
+    quantities on hand, pricing, and supplier information. This table is crucial for
+    managing stock levels, tracking product availability, and facilitating
+  fields:
+    inventory_id:
+      type: int
+      description: The field 'inventory_id' is an integer that serves as a unique
+        identifier for each record in the 'inventory' table, ensuring that each inventory
+        item can be distinctly referenced and managed within the database.
+    product_id:
+      type: int
+      description: The 'product_id' field is an integer that uniquely identifies each
+        product in the inventory table. It serves as a primary key to reference products
+        within the inventory system.
+    warehouse_id:
+      type: int
+      description: The field 'warehouse_id' in the 'inventory' table is an integer
+        that uniquely identifies the warehouse where the inventory items are stored.
+        It serves as a foreign key linking to the corresponding warehouse in the 'warehouses'
+        table, enabling efficient tracking and
+    quantity:
+      type: int
+      description: "**Field: quantity**  \n**Type:** int  \n**Description:** Represents\
+        \ the number of items available in inventory for a specific product. This\
+        \ integer value indicates stock levels and helps manage inventory efficiently."
+    updated_at:
+      type: datetime
+      description: The 'updated_at' field in the 'inventory' table stores the date
+        and time when the inventory record was last modified. This timestamp is automatically
+        updated whenever changes are made to the record, allowing for tracking of
+        updates over time.
+product_transactions:
+  description: The `product_transactions` table records all transactions related to
+    products, capturing essential details about each sale or purchase. It includes
+    information such as transaction ID, product ID, customer ID, transaction date,
+    quantity, price, and payment method. This table facilitates
+  fields:
+    transaction_id:
+      type: int
+      description: The field 'transaction_id' is an integer that uniquely identifies
+        each transaction in the 'product_transactions' table. It serves as the primary
+        key for the table, ensuring that each transaction record can be distinctly
+        referenced.
+    product_id:
+      type: int
+      description: The 'product_id' field is an integer that uniquely identifies a
+        product within the 'product_transactions' table. It serves as a foreign key
+        referencing the corresponding product in the related 'products' table, facilitating
+        the association of transactions with specific products.
+    warehouse_id:
+      type: int
+      description: "**Field:** `warehouse_id`  \n**Type:** `int`  \n**Description:**\
+        \ A unique identifier for the warehouse where the product transaction took\
+        \ place. It links each transaction to a specific warehouse in the inventory\
+        \ system."
+    client_id:
+      type: int
+      description: The field `client_id` in the `product_transactions` table is an
+        integer that serves as a unique identifier for the client associated with
+        a specific product transaction. It establishes a relationship between the
+        transaction and the corresponding client in the database.
+    salesperson_id:
+      type: int
+      description: The field 'salesperson_id' is an integer that uniquely identifies
+        the salesperson associated with each product transaction in the 'product_transactions'
+        table. It serves as a foreign key linking to the salesperson's record in the
+        relevant salespersons table.
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'product_transactions' table represents
+        the integer value indicating the number of units of the product involved in
+        a specific transaction.
+    unit_price:
+      type: decimal(10,2)
+      description: The 'unit_price' field in the 'product_transactions' table represents
+        the price of a single unit of a product, recorded as a decimal value with
+        two decimal places. This field allows for precise financial calculations and
+        reporting related to product sales.
+    total_amount:
+      type: decimal(10,2)
+      description: Field 'total_amount' in the 'product_transactions' table represents
+        the total monetary value of the transaction. It is stored as a decimal with
+        a precision of 10 digits, including 2 digits after the decimal point, allowing
+        for accurate representation of currency
+    transaction_date:
+      type: datetime
+      description: The 'transaction_date' field in the 'product_transactions' table
+        stores the date and time when a product transaction occurred. It is of type
+        'datetime', allowing for precise recording of transactions down to the second.
+products:
+  description: The 'products' table stores information about the items available for
+    sale in a store or inventory system. Each record contains details such as product
+    ID, name, description, price, stock quantity, category, and any applicable attributes,
+    enabling efficient management and retrieval
+  fields:
+    product_id:
+      type: int
+      description: The 'product_id' field is an integer that uniquely identifies each
+        product in the 'products' table. It serves as the primary key, ensuring that
+        each entry corresponds to a distinct product record.
+    name:
+      type: varchar(255)
+      description: The 'name' field in the 'products' table is a variable character
+        string with a maximum length of 255 characters. It stores the name or title
+        of the product, used for identification and display purposes.
+    description:
+      type: text
+      description: The 'description' field in the 'products' table contains a detailed
+        text description of each product, outlining its features, specifications,
+        and benefits to provide customers with comprehensive information.
+    unit_price:
+      type: decimal(10,2)
+      description: The 'unit_price' field in the 'products' table stores the price
+        of each product, represented as a decimal value with up to 10 total digits
+        and 2 decimal places. This allows for precise pricing, accommodating values
+        up to 99,
+    created_at:
+      type: datetime
+      description: The 'created_at' field in the 'products' table records the timestamp
+        of when a product entry was created. It is of type 'datetime' and helps track
+        the inception date and time of each product in the database.
+    updated_at:
+      type: datetime
+      description: field 'updated_at' of type 'datetime' in table 'products' (auto-generated
+        description)
+users:
+  description: The 'users' table stores information about individuals who have registered
+    or interacted with the system. It includes fields for unique identifiers, contact
+    details, account status, and any relevant profile information necessary for user
+    management and authentication.
+  fields:
+    user_id:
+      type: int
+      description: The 'user_id' field in the 'users' table is an integer that uniquely
+        identifies each user in the database. It serves as the primary key, ensuring
+        that every record in the table corresponds to a distinct user.
+    name:
+      type: varchar(255)
+      description: The 'name' field in the 'users' table is a variable character string
+        with a maximum length of 255 characters. It is used to store the full name
+        of each user.
+    email:
+      type: varchar(255)
+      description: "**Field:** email  \n**Type:** varchar(255)  \n**Description:**\
+        \ Stores the email address of the user. This field is used for user identification,\
+        \ communication, and account recovery purposes. It must be unique for each\
+        \ user."
+    phone:
+      type: varchar(20)
+      description: "**Field:** phone  \n**Type:** varchar(20)  \n**Description:**\
+        \ Stores the user's phone number, allowing for a maximum of 20 characters,\
+        \ which can include digits, dashes, and spaces. This field facilitates contact\
+        \ and communication with users"
+    role_name:
+      type: varchar(50)
+      description: The 'role_name' field in the 'users' table is a variable character
+        string field with a maximum length of 50 characters. It stores the name of
+        the user's role within the system, such as "admin," "editor," or "viewer
+    created_at:
+      type: datetime
+      description: The 'created_at' field in the 'users' table records the date and
+        time when a user account was created. It is stored in the datetime format,
+        allowing for precise timestamps of user registrations.
+    updated_at:
+      type: datetime
+      description: The 'updated_at' field in the 'users' table records the timestamp
+        of when a user's information was last updated. It is of type 'datetime' and
+        helps track changes to user records over time.
+warehouses:
+  description: The 'warehouses' table stores information about storage facilities
+    used to hold inventory. Each record includes details such as warehouse ID, name,
+    location, capacity, and contact information, enabling efficient management and
+    tracking of inventory across multiple locations.
+  fields:
+    warehouse_id:
+      type: int
+      description: "**Field: `warehouse_id`**  \n**Type:** `int`  \n**Description:**\
+        \ This field uniquely identifies each warehouse record in the `warehouses`\
+        \ table. It serves as the primary key for the table, ensuring that each warehouse\
+        \ can be"
+    name:
+      type: varchar(255)
+      description: The 'name' field in the 'warehouses' table is a variable character
+        string with a maximum length of 255 characters. It stores the name of the
+        warehouse, allowing for easy identification and reference of different warehouse
+        locations.
+    address:
+      type: text
+      description: "**Field: `address`**  \n**Type:** `text`  \n**Table:** `warehouses`\
+        \  \n**Description:** This field stores the physical address of the warehouse,\
+        \ including details such as street name, building number, city, state,"
+    city:
+      type: varchar(100)
+      description: The 'city' field in the 'warehouses' table is a variable character
+        string with a maximum length of 100 characters. It stores the name of the
+        city where the warehouse is located, enabling easy identification of the warehouse's
+        geographical location.
+    state:
+      type: varchar(100)
+      description: The 'state' field in the 'warehouses' table is a variable character
+        string with a maximum length of 100 characters. It stores the name of the
+        state where the warehouse is located, allowing for identification of the geographical
+        area associated with each warehouse
+    pincode:
+      type: varchar(20)
+      description: "**Field: pincode**  \n**Type: varchar(20)**  \n**Description:**\
+        \ A string field that stores the postal code (PIN code) for the warehouse\
+        \ location. It can contain alphanumeric characters and has a maximum length\
+        \ of 20 characters"
+    created_at:
+      type: datetime
+      description: The 'created_at' field in the 'warehouses' table stores the timestamp
+        indicating when the warehouse record was created. It is of type 'datetime'
+        and typically includes both date and time information. This field is useful
+        for tracking the creation history of
