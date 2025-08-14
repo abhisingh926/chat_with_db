@@ -1,0 +1,2366 @@
+accounts_candidate:
+  description: The `accounts_candidate` table stores information related to candidates
+    who have applied for positions within an organization. It typically includes fields
+    such as candidate ID, personal details (e.g., name, contact information), application
+    status, resume submission details, and timestamps for
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_candidate' table is an integer
+        that serves as the unique identifier for each candidate record. It is typically
+        used as the primary key to ensure distinct entries and facilitate efficient
+        data retrieval and management.
+    first_name:
+      type: varchar(30)
+      description: The 'first_name' field in the 'accounts_candidate' table is a varchar
+        type with a maximum length of 30 characters. It stores the first name of the
+        candidate, allowing for alphabetic characters and spaces.
+    last_name:
+      type: varchar(30)
+      description: The 'last_name' field in the 'accounts_candidate' table is a variable
+        character string with a maximum length of 30 characters. It stores the surname
+        of the candidate associated with the account.
+    email:
+      type: varchar(254)
+      description: The 'email' field in the 'accounts_candidate' table is a variable
+        character string that can store up to 254 characters. It is used to capture
+        the email address of a candidate for communication and account-related purposes.
+    contact_number:
+      type: varchar(15)
+      description: The field 'contact_number' in the 'accounts_candidate' table stores
+        the candidate's phone number as a string, allowing up to 15 characters. This
+        field is used to facilitate communication with the candidate.
+    resume:
+      type: varchar(100)
+      description: The 'resume' field in the 'accounts_candidate' table is a variable
+        character string with a maximum length of 100 characters. It is intended to
+        store a brief summary or description of the candidate's professional qualifications
+        and experiences.
+    status:
+      type: varchar(30)
+      description: The 'status' field in the 'accounts_candidate' table is a varchar(30)
+        data type that stores the current status of a candidate's application. This
+        field may contain values such as "applied," "interviewing," "accepted,"
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'accounts_candidate' table is a longtext
+        type that stores additional comments or notes related to a candidate's account.
+        This field is designed to hold extensive textual information, allowing for
+        detailed observations, feedback, or remarks that
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_candidate' table records
+        the exact date and time when a candidate account was created, including microsecond
+        precision. This field is used for tracking the creation timestamp of each
+        record.
+    jobpost_id:
+      type: int
+      description: The field `jobpost_id` in the `accounts_candidate` table is an
+        integer that serves as a foreign key, linking a candidate to a specific job
+        posting. It uniquely identifies the job post associated with the candidate's
+        application.
+    source_id:
+      type: int
+      description: The `source_id` field is an integer that identifies the source
+        from which a candidate's information was obtained. This field is used to track
+        the origin of candidate data for reporting and analysis purposes in the `accounts_candidate`
+        table.
+    status_history:
+      type: json
+      description: The `status_history` field in the `accounts_candidate` table is
+        of type `json` and stores a record of the various status changes for a candidate's
+        application process. This field captures timestamps and descriptions of each
+        status update, allowing for a comprehensive
+    application_form_filed:
+      type: tinyint(1)
+      description: The field `application_form_filed` in the `accounts_candidate`
+        table is a tiny integer (1) that indicates whether the candidate has submitted
+        their application form. A value of 1 signifies that the application form has
+        been filed, while a value
+    department_id:
+      type: int
+      description: The 'department_id' field in the 'accounts_candidate' table is
+        an integer that identifies the specific department associated with a candidate's
+        application. This field is used to link candidates to their respective departments
+        within an organization.
+    designation_id:
+      type: int
+      description: The field 'designation_id' is of type 'int' in the 'accounts_candidate'
+        table and serves as a foreign key that links to the unique identifier of the
+        designation or job title associated with a candidate. This field helps categorize
+        candidates based on their
+    level:
+      type: varchar(30)
+      description: The 'level' field in the 'accounts_candidate' table is a VARCHAR
+        data type with a maximum length of 30 characters. It is used to specify the
+        candidate's proficiency level or rank within a particular context, such as
+        skill level, experience tier
+    organisation_id:
+      type: int
+      description: The 'organisation_id' field in the 'accounts_candidate' table is
+        an integer that serves as a foreign key reference to the unique identifier
+        of an organization. This field links a candidate's account to a specific organization,
+        facilitating the association between candidates and their
+    candidate_job_application_history:
+      type: json
+      description: The `candidate_job_application_history` field in the `accounts_candidate`
+        table is a JSON data type that stores a history of job applications submitted
+        by the candidate. This may include details such as application dates, job
+        positions applied for, statuses of the applications
+    employee_form:
+      type: varchar(100)
+      description: The 'employee_form' field in the 'accounts_candidate' table stores
+        a varchar string of up to 100 characters. This field is used to capture information
+        related to the employment application form completed by a candidate.
+    is_online:
+      type: tinyint(1)
+      description: The 'is_online' field in the 'accounts_candidate' table is a boolean
+        indicator represented as a tiny integer (1 for true, 0 for false). It specifies
+        the online status of a candidate account, indicating whether the candidate
+        is currently online or
+    is_interview_done:
+      type: tinyint(1)
+      description: The field 'is_interview_done' is a boolean indicator represented
+        as a tiny integer (1 byte). It specifies whether an interview has been completed
+        for a candidate in the 'accounts_candidate' table. A value of '1' indicates
+        that the interview
+    userapplicationform_id:
+      type: int
+      description: '`userapplicationform_id`: An integer field that serves as a unique
+        identifier for the application form submitted by the candidate in the accounts
+        candidate table. This field links the candidate''s record to their specific
+        application form.'
+    interview_date:
+      type: date
+      description: The 'interview_date' field in the 'accounts_candidate' table stores
+        the scheduled date for a candidate's interview. This field is of type 'date'
+        and is used to track when the interview will take place.
+    interview_time:
+      type: time(6)
+      description: The field 'interview_time' in the 'accounts_candidate' table stores
+        the specific time of an interview for a candidate. It is of type 'time(6)',
+        allowing for precision up to microseconds.
+    interviewer_id:
+      type: int
+      description: The `interviewer_id` field in the `accounts_candidate` table is
+        an integer that uniquely identifies the interviewer assigned to a specific
+        candidate's application. This ID corresponds to an entry in the interviewers'
+        table, linking the candidate with their designated interviewer
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'accounts_candidate' table stores
+        the timestamp of the most recent update to the candidate's record, recorded
+        with microsecond precision.
+    offer_letter_generated:
+      type: tinyint(1)
+      description: The field `offer_letter_generated` is a tiny integer (1 byte) in
+        the `accounts_candidate` table, which indicates whether an offer letter has
+        been generated for a candidate. A value of 1 represents that the offer letter
+        has been generated,
+
+
+accounts_candidateinterviewfeedback:
+  description: The `accounts_candidateinterviewfeedback` table stores feedback from
+    interviewers regarding job candidates. It captures information about individual
+    interviews, including candidate identifiers, interviewer details, ratings, comments,
+    and interview dates. This table is essential for evaluating candidates' performance
+    and
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_candidateinterviewfeedback' table
+        is an integer that serves as a unique identifier for each record in the table.
+        It ensures the distinct identification of candidate interview feedback entries.
+    interview_date:
+      type: date
+      description: The 'interview_date' field in the 'accounts_candidateinterviewfeedback'
+        table represents the date on which the candidate's interview was conducted.
+        This field is of type 'date' and is used to track and record the specific
+        day of the interview
+    interview_time:
+      type: time(6)
+      description: The field 'interview_time' in the table 'accounts_candidateinterviewfeedback'
+        captures the specific time of the interview conducted with the candidate.
+        It is stored in the format of time with microsecond precision (time(6)).
+    interview_rounds:
+      type: varchar(30)
+      description: "**Field:** interview_rounds  \n**Type:** varchar(30)  \n**Description:**\
+        \ This field stores the number of interview rounds associated with a candidate's\
+        \ interview feedback, represented as a string of up to 30 characters."
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'accounts_candidateinterviewfeedback'
+        table is of type 'longtext' and is used to store detailed comments or observations
+        made by interviewers regarding a candidate's performance during an interview.
+        This field allows for extensive notes
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_candidateinterviewfeedback'
+        table stores the date and time when the feedback was created. It is of type
+        'datetime(6)', providing precision up to microseconds. This field is typically
+        used to track
+    interviewer_id:
+      type: int
+      description: The 'interviewer_id' field is an integer that uniquely identifies
+        the interviewer associated with a specific candidate's interview feedback
+        in the 'accounts_candidateinterviewfeedback' table.
+    jobapplication_id:
+      type: int
+      description: The field 'jobapplication_id' is an integer type that uniquely
+        identifies a specific job application within the 'accounts_candidateinterviewfeedback'
+        table. It establishes a link between the interview feedback records and their
+        corresponding job applications.
+    uuid:
+      type: varchar(100)
+      description: The 'uuid' field in the 'accounts_candidateinterviewfeedback' table
+        is a VARCHAR(100) type that uniquely identifies each record. It is used to
+        associate feedback entries with specific candidates and interviews, ensuring
+        data integrity and preventing duplication.
+    created_by_id:
+      type: int
+      description: "**Field: created_by_id**  \n**Type:** int  \n**Description:**\
+        \ This field stores the unique identifier (ID) of the user who created the\
+        \ candidate interview feedback record. It links the feedback entry to the\
+        \ respective user in the system, enabling"
+    candidate_id:
+      type: int
+      description: The field 'candidate_id' is of type 'int' and represents the unique
+        identifier for each candidate in the 'accounts_candidateinterviewfeedback'
+        table. This identifier is used to link the feedback entries to specific candidates
+        for tracking their interview performance and assessment
+    interview_link:
+      type: varchar(200)
+      description: "**Field:** interview_link  \n**Type:** varchar(200)  \n**Description:**\
+        \ A URL link to the interview session or resources related to a candidate's\
+        \ interview feedback. This field stores the web address for easy access to\
+        \ the interview details."
+    interview_type:
+      type: varchar(30)
+      description: The 'interview_type' field in the 'accounts_candidateinterviewfeedback'
+        table is a VARCHAR(30) data type that stores the type or format of the interview
+        conducted with the candidate. This may include values such as "phone", "in
+    level:
+      type: varchar(20)
+      description: The 'level' field in the 'accounts_candidateinterviewfeedback'
+        table is a VARCHAR data type with a maximum length of 20 characters. This
+        field is used to indicate the proficiency or experience level of the candidate
+        as assessed during the interview, such
+    status:
+      type: varchar(20)
+      description: The 'status' field in the 'accounts_candidateinterviewfeedback'
+        table is a variable character string with a maximum length of 20 characters.
+        It is used to indicate the current status of the interview feedback for a
+        candidate, such as "pending",
+    score:
+      type: int
+      description: The 'score' field in the 'accounts_candidateinterviewfeedback'
+        table represents the numerical evaluation given to a candidate's interview
+        performance, stored as an integer. This value is typically used to assess
+        the candidate's suitability for the position based on predefined criteria
+
+        
+accounts_cronjoblog:
+  description: The `accounts_cronjoblog` table stores log entries related to scheduled
+    tasks (cron jobs) for the accounts module. Each entry includes details about the
+    execution status, execution time, and any errors encountered during the execution
+    of these tasks. This table
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each record in the 'accounts_cronjoblog' table. It ensures that each log
+        entry can be distinctly accessed and referenced.
+    job_name:
+      type: varchar(255)
+      description: The 'job_name' field in the 'accounts_cronjoblog' table is of type
+        'varchar(255)' and stores the name of the cron job associated with the log
+        entry. It is used to identify the specific job that generated the log
+    triggered_at:
+      type: datetime(6)
+      description: The 'triggered_at' field in the 'accounts_cronjoblog' table stores
+        the precise date and time (with up to 6 digits of fractional seconds) when
+        a cron job was triggered. This field helps track the execution timing of automated
+    status:
+      type: varchar(50)
+      description: The 'status' field in the 'accounts_cronjoblog' table is a VARCHAR
+        data type with a maximum length of 50 characters. It stores the current status
+        of the cron job execution, providing insights into whether the job completed
+        successfully, encountered
+    error_message:
+      type: longtext
+      description: The 'error_message' field in the 'accounts_cronjoblog' table is
+        of type 'longtext' and is used to store detailed error messages generated
+        during the execution of cron jobs related to account processing. This field
+        can hold extensive text data
+accounts_department:
+  description: The `accounts_department` table stores information related to various
+    departments within the accounts division of an organization. It includes details
+    such as department names, identifiers, associated personnel, and any specific
+    functions or roles related to financial management and accounting practices. This
+    table facilitates
+  fields:
+    id:
+      type: int
+      description: "**Field: id**  \n**Type:** int  \n**Description:** A unique identifier\
+        \ for each record in the accounts_department table, used to distinguish between\
+        \ different departments. This field typically serves as the primary key."
+    department:
+      type: varchar(70)
+      description: The 'department' field in the 'accounts_department' table is a
+        VARCHAR data type with a maximum length of 70 characters. It stores the names
+        of departments within the organization, allowing for categorization and management
+        of account-related data.
+    color_code:
+      type: varchar(20)
+      description: The 'color_code' field in the 'accounts_department' table is a
+        VARCHAR(20) type that stores a code representing a specific color associated
+        with an account's department. This field can be used for visual identification,
+        categorization, or branding purposes
+accounts_designation:
+  description: The 'accounts_designation' table stores information related to the
+    designations or roles associated with user accounts within the system. It typically
+    includes fields such as designation ID, designation name, description, and any
+    associated permissions or hierarchy levels relevant to the account roles
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_designation' table is an integer
+        type that serves as the unique identifier for each designation record. It
+        ensures that each entry can be distinctly referenced and managed within the
+        database.
+    designation:
+      type: varchar(70)
+      description: The 'designation' field in the 'accounts_designation' table is
+        a VARCHAR data type with a maximum length of 70 characters. It stores the
+        job title or role assigned to an account, providing a clear label for organizational
+        positions within an account structure
+    department_id:
+      type: int
+      description: The 'department_id' field is an integer that serves as a foreign
+        key, linking each designation in the 'accounts_designation' table to its corresponding
+        department in the departments table. It identifies the specific department
+        associated with a given designation.
+accounts_employee:
+  description: '**Table: accounts_employee**
+
+
+    This table stores information related to employees within the organization who
+    have associated accounts. It tracks details such as employee identifiers, account
+    types, access levels, and relevant dates (e.g., hire date, account creation date).
+    This'
+  fields:
+    id:
+      type: int
+      description: Field 'id' in table 'accounts_employee' is an integer that uniquely
+        identifies each employee record within the accounts database. This serves
+        as the primary key for the table, ensuring that each entry can be distinctly
+        accessed and referenced.
+    email:
+      type: varchar(254)
+      description: The 'email' field in the 'accounts_employee' table is a variable
+        character string that can hold up to 254 characters. It is used to store the
+        email address of an employee, which is typically required for communication
+        and account-related purposes.
+    contact_number:
+      type: varchar(15)
+      description: The 'contact_number' field in the 'accounts_employee' table stores
+        the employee's phone number as a string, allowing for a maximum of 15 characters.
+        This field is used for contact purposes and can include various phone number
+        formats.
+    employee_code:
+      type: varchar(30)
+      description: The 'employee_code' field in the 'accounts_employee' table is a
+        variable character string with a maximum length of 30 characters. It uniquely
+        identifies each employee within the system, serving as a reference for employee-specific
+        data and operations.
+    date_of_joining:
+      type: date
+      description: "**Field**: `date_of_joining`  \n**Type**: `date`  \n**Description**:\
+        \ This field records the date when the employee officially joined the organization,\
+        \ indicating their start date in the company."
+    date_of_leaving:
+      type: date
+      description: The 'date_of_leaving' field in the 'accounts_employee' table represents
+        the date when an employee officially ceases their employment with the organization.
+    salary_bank:
+      type: varchar(150)
+      description: "**Field: salary_bank**  \n**Type:** varchar(150)  \n**Description:**\
+        \ This field stores the name of the bank where the employee's salary is deposited.\
+        \ It accommodates up to 150 characters to include the full name of the bank."
+    salary_bank_branch:
+      type: varchar(300)
+      description: The 'salary_bank_branch' field in the 'accounts_employee' table
+        stores the name or identifier of the bank branch where an employee's salary
+        is deposited. It is a variable character string with a maximum length of 300
+        characters, allowing for detailed information
+    salary_account_no:
+      type: varchar(20)
+      description: The 'salary_account_no' field in the 'accounts_employee' table
+        is a VARCHAR(20) data type that stores the account number used for processing
+        employee salaries. This field is designed to hold a maximum of 20 characters,
+        accommodating various account number
+    salary_ifsc_code:
+      type: varchar(20)
+      description: The field 'salary_ifsc_code' in the 'accounts_employee' table is
+        a VARCHAR(20) type that stores the Indian Financial System Code (IFSC) associated
+        with the employee's salary bank account. This code is used to facilitate electronic
+        fund
+    pan_no:
+      type: varchar(50)
+      description: The field 'pan_no' in the 'accounts_employee' table is a VARCHAR(50)
+        data type that stores the Permanent Account Number (PAN) for employees. This
+        unique identifier is used for taxation purposes in India and can hold alphanumeric
+        characters up
+    aadhar_no:
+      type: varchar(50)
+      description: The field 'aadhar_no' in the 'accounts_employee' table is of type
+        'varchar(50)' and stores the unique 12-digit Aadhar number assigned to each
+        employee. This number serves as a primary identifier for Indian residents
+        and is used
+    ppf_account_no:
+      type: varchar(20)
+      description: The field 'ppf_account_no' in the 'accounts_employee' table stores
+        the Public Provident Fund (PPF) account number associated with the employee.
+        This is a variable character string with a maximum length of 20 characters.
+    uan_no:
+      type: varchar(20)
+      description: The field 'uan_no' in the 'accounts_employee' table is a VARCHAR(20)
+        type that stores the Universal Account Number (UAN) assigned to each employee.
+        This unique identifier is used for tracking and managing employee provident
+        fund accounts.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_employee' table records
+        the date and time when an employee account was created. It is of type 'datetime(6)',
+        allowing precise storage of date and time values with up to six decimal places
+        for fractional
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'accounts_employee' table stores
+        the date and time of the last modification made to the employee record, with
+        a precision of up to six decimal places for fractional seconds.
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'accounts_employee' table is an
+        integer that stores the unique identifier of the user or system that created
+        the employee record. This field is used to track the origin of the record
+        for auditing and management purposes.
+    designation_id:
+      type: int
+      description: The `designation_id` field in the `accounts_employee` table is
+        an integer that uniquely identifies the job title or position of an employee
+        within the organization. This field serves as a foreign key, linking to a
+        corresponding record in a designations table,
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'accounts_employee' table is
+        an integer that stores the unique identifier of the user who last modified
+        the record. This field helps track changes made to the employee account by
+        associating it with the responsible user's ID
+    userapplicationform_id:
+      type: int
+      description: The field 'userapplicationform_id' is an integer that serves as
+        a unique identifier for the user application form associated with an employee
+        in the 'accounts_employee' table. It establishes a link between the employee
+        record and the corresponding application form submitted by the
+    work_location_id:
+      type: int
+      description: The field 'work_location_id' in the 'accounts_employee' table is
+        an integer that represents the unique identifier for the work location associated
+        with an employee. This field is used to link each employee to their specific
+        workplace within the organization.
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'accounts_employee' table is a boolean
+        indicator, represented as a tinyint(1). It specifies whether an employee account
+        is currently active (1) or inactive (0).
+    salary_bank_holder_name:
+      type: varchar(150)
+      description: "**Field Name:** salary_bank_holder_name  \n**Type:** varchar(150)\
+        \  \n**Description:** This field stores the name of the bank account holder\
+        \ for employee salary payments, with a maximum length of 150 characters."
+    organisation_id:
+      type: int
+      description: The field 'organisation_id' is an integer that uniquely identifies
+        the organization to which an employee belongs in the 'accounts_employee' table.
+        It establishes a relationship between the employee and their associated organization.
+    reporting_manager_id:
+      type: int
+      description: "**Field:** `reporting_manager_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier of the employee's reporting manager\
+        \ within the organization, linking to the corresponding record in the employee\
+        \ table."
+    is_appointment_letter_generated:
+      type: tinyint(1)
+      description: The field `is_appointment_letter_generated` is a tiny integer (1)
+        in the `accounts_employee` table that indicates whether an appointment letter
+        has been generated for the employee. A value of 1 signifies that the letter
+        has been generated, while
+    is_noc_letter_generated:
+      type: tinyint(1)
+      description: The field `is_noc_letter_generated` in the `accounts_employee`
+        table is of type `tinyint(1)` and indicates whether a No Objection Certificate
+        (NOC) letter has been generated for the employee. A value of `1
+    is_offer_letter_generated:
+      type: tinyint(1)
+      description: The 'is_offer_letter_generated' field in the 'accounts_employee'
+        table is a boolean indicator (tinyint, 1) that specifies whether an offer
+        letter has been generated for the employee. A value of 1 indicates that the
+        offer letter has
+    esic_number:
+      type: varchar(20)
+      description: The 'esic_number' field in the 'accounts_employee' table is a VARCHAR(20)
+        that stores the unique Employee State Insurance Corporation (ESIC) identification
+        number assigned to each employee. This number is used for tracking and managing
+        employee contributions to
+    reason_of_leaving_id:
+      type: int
+      description: The field `reason_of_leaving_id` is an integer that references
+        the specific reason for an employee's departure from the organization in the
+        `accounts_employee` table. It associates each employee record with a predefined
+        list of leaving reasons.
+    date_of_resign:
+      type: date
+      description: The 'date_of_resign' field in the 'accounts_employee' table stores
+        the date when an employee officially resigned from their position.
+    reason_of_leaving_remark:
+      type: longtext
+      description: The field 'reason_of_leaving_remark' in the 'accounts_employee'
+        table is a longtext data type that stores detailed remarks or explanations
+        regarding an employee's reason for leaving the organization. This field allows
+        for extensive input, accommodating nuanced descriptions that
+    balance_leave:
+      type: double
+      description: '`balance_leave`: A double precision field representing the total
+        amount of leave balance available for an employee, measured in hours or days.'
+    designation_history:
+      type: json
+      description: The field `designation_history` in the `accounts_employee` table
+        stores a JSON object that tracks the historical records of designations held
+        by an employee. This may include details such as previous roles, dates of
+        designation changes, and any relevant notes regarding the
+    casual_leave:
+      type: double
+      description: The `casual_leave` field in the `accounts_employee` table represents
+        the number of casual leave days (in decimal form) available to each employee.
+        It is stored as a double to allow for fractional values, accommodating partial
+        leave days if necessary.
+    compensatory_leave:
+      type: double
+      description: Field 'compensatory_leave' in the 'accounts_employee' table represents
+        the amount of compensatory leave (in hours or days) allocated to an employee,
+        measured as a decimal value.
+    earned_leave:
+      type: double
+      description: The field 'earned_leave' in the 'accounts_employee' table represents
+        the total amount of earned leave time (in hours or days) that an employee
+        has accumulated. This value is stored as a double to allow for fractional
+        leave hours, facilitating precise leave
+    sick_leave:
+      type: double
+      description: The 'sick_leave' field in the 'accounts_employee' table represents
+        the total amount of sick leave (in hours) accrued by an employee. This value
+        is stored as a double to accommodate decimal calculations for precise tracking
+        of leave balances.
+    restricted_holiday:
+      type: double
+      description: The 'restricted_holiday' field in the 'accounts_employee' table
+        is a double data type that represents the number of restricted holiday days
+        an employee is entitled to. This value may be used for calculating leave eligibility
+        and ensuring compliance with company policy.
+    weekend_work_leave:
+      type: double
+      description: The 'weekend_work_leave' field in the 'accounts_employee' table
+        represents the amount of leave (in hours) accrued by an employee for working
+        during weekends. This field is of type 'double', allowing for precise decimal
+        values to account for partial
+    probation_period_completed:
+      type: tinyint(1)
+      description: The 'probation_period_completed' field in the 'accounts_employee'
+        table is a tiny integer (1 byte) that indicates whether an employee has successfully
+        completed their probationary period. A value of '1' signifies that the probation
+        period is completed,
+    work_from_home:
+      type: double
+      description: The 'work_from_home' field in the 'accounts_employee' table represents
+        the number of hours an employee is authorized to work from home. It is stored
+        as a double data type to allow for fractional values, accommodating varying
+        work schedules and arrangements.
+    first_probation:
+      type: tinyint(1)
+      description: The field 'first_probation' in the 'accounts_employee' table is
+        a boolean indicator (tinyint(1)) that signifies whether the employee is currently
+        on their first probation period. A value of 1 represents that the employee
+        is in their first
+    last_probation_date:
+      type: date
+      description: The 'last_probation_date' field in the 'accounts_employee' table
+        stores the date on which the employee's most recent probation period ended.
+        This date is used to track employment milestones and assess eligibility for
+        permanent status.
+    probation_count:
+      type: int
+      description: "**Field Name:** probation_count  \n**Table:** accounts_employee\
+        \  \n**Type:** int  \n**Description:** Indicates the number of probation periods\
+        \ an employee has undergone within the organization. This field is used to\
+        \ track and manage employee progress through their initial employment evaluation"
+    carry_forward_leave:
+      type: double
+      description: The 'carry_forward_leave' field in the 'accounts_employee' table
+        represents the amount of leave (in days) that an employee is allowed to carry
+        forward to the next leave year. This value is stored as a double to accommodate
+        fractional leave days.
+    job_description:
+      type: longtext
+      description: The 'job_description' field in the 'accounts_employee' table is
+        of type 'longtext' and is used to store a detailed description of the employee's
+        job responsibilities, roles, and requirements. This field accommodates extensive
+        text, allowing for comprehensive information
+    is_organization_change_or_rejoined:
+      type: tinyint(1)
+      description: The field `is_organization_change_or_rejoined` in the `accounts_employee`
+        table is a boolean indicator, represented as a tiny integer (1 or 0). It signifies
+        whether the employee has either changed organizations within the company or
+        has rejoined
+accounts_employeedoc:
+  description: The `accounts_employeedoc` table stores documents related to employee
+    accounts within the organization. It includes fields for document identification,
+    employee association, document type, status, upload date, and any relevant metadata,
+    facilitating the management and retrieval of employee-related
+  fields:
+    id:
+      type: int
+      description: "**Field Name:** id  \n**Type:** int  \n**Description:** A unique\
+        \ identifier for each record in the accounts_employeedoc table, used to differentiate\
+        \ and reference individual employee document entries."
+    file_name:
+      type: varchar(50)
+      description: The 'file_name' field in the 'accounts_employeedoc' table stores
+        the name of the document file associated with an employee account. It is a
+        variable character field with a maximum length of 50 characters.
+    other_file_name:
+      type: varchar(80)
+      description: The field 'other_file_name' in the 'accounts_employeedoc' table
+        is a variable character string with a maximum length of 80 characters. It
+        is used to store the name of an additional file related to employee documents,
+        providing a way
+    file:
+      type: varchar(100)
+      description: The 'file' field in the 'accounts_employeedoc' table is a VARCHAR
+        type with a maximum length of 100 characters. It stores the name or path of
+        the document file associated with an employee's account.
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'accounts_employeedoc' table is a
+        tinyint(1) datatype that indicates whether the employee document is currently
+        active (1) or inactive (0).
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_employeedoc' table records
+        the timestamp of when the document was created. It is stored in 'datetime(6)'
+        format, allowing for precise representation of the date and time, including
+        fractional seconds
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `accounts_employeedoc` table is
+        an integer that stores the unique identifier of the user who created the employee
+        document record. This field helps in tracking the origin of the record for
+        accountability and auditing purposes
+    userapplicationform_id:
+      type: int
+      description: The field `userapplicationform_id` is an integer that serves as
+        a unique identifier for the user application form associated with a record
+        in the `accounts_employeedoc` table.
+accounts_employeenocletter:
+  description: The `accounts_employeenocletter` table stores information related to
+    the No Objection Certificate (NOC) letters issued to employees. It includes details
+    such as the employee's identification, date of issuance, purpose of the NOC, and
+    relevant
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_employeenocletter' table is an
+        integer that serves as the primary key, uniquely identifying each record in
+        the table.
+    date:
+      type: date
+      description: The 'date' field in the 'accounts_employeenocletter' table stores
+        the date on which the No Objection Certificate (NOC) was issued to the employee.
+        It is of type 'date', allowing for the representation of specific calendar
+    date_of_leaving:
+      type: date
+      description: "**Field:** `date_of_leaving`  \n**Type:** `date`  \n**Description:**\
+        \ Represents the date on which an employee officially leaves the organization,\
+        \ used for record-keeping and generating employment-related letters."
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_employeenocletter' table
+        is a datetime field that records the precise date and time when a record was
+        created. It includes fractional seconds up to 6 digits, allowing for high-resolution
+        timestamps.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'accounts_employeenocletter' table
+        records the date and time when the entry was last modified. It is stored with
+        a precision of up to six decimal places, allowing for detailed tracking of
+        changes down to
+    created_by_id:
+      type: int
+      description: The field `created_by_id` is an integer that stores the unique
+        identifier of the user who created the record in the `accounts_employeenocletter`
+        table. This field helps track ownership and provides an audit trail for record
+        creation.
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'accounts_employeenocletter'
+        table is an integer that stores the identifier of the user who last modified
+        the record. This field helps track changes made to the employee No Objection
+        Certificate records, ensuring
+    employee_id:
+      type: int
+      description: The field 'employee_id' in the table 'accounts_employeenocletter'
+        is an integer that uniquely identifies each employee associated with the No
+        Objection Certificate (NOC) letter. This field serves as a foreign key to
+        link employee records in
+accounts_employeeofferletter:
+  description: The `accounts_employeeofferletter` table stores information related
+    to employee offer letters issued by the organization. It contains fields for tracking
+    the details of each offer letter, including the employee's personal information,
+    position details, offer date, salary details, and terms
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_employeeofferletter' table is an
+        integer that serves as the unique identifier for each employee offer letter
+        record. It is typically used as the primary key for referencing and managing
+        records in the table.
+    date:
+      type: date
+      description: The 'date' field in the 'accounts_employeeofferletter' table stores
+        the date when the employee offer letter was issued. This field is of type
+        'date' and is used to track the specific date associated with each offer letter
+        in the employee records
+    ref_no:
+      type: varchar(20)
+      description: The 'ref_no' field in the 'accounts_employeeofferletter' table
+        is a variable character string with a maximum length of 20 characters. It
+        is used to store a unique reference number associated with each employee offer
+        letter, facilitating easy identification and retrieval
+    exp_joining_date:
+      type: date
+      description: The field 'exp_joining_date' in the 'accounts_employeeofferletter'
+        table represents the expected date of joining for the employee as outlined
+        in their offer letter. It is stored in the date format and provides information
+        on when the employee is anticipated to
+    salary:
+      type: decimal(8,2)
+      description: The 'salary' field in the 'accounts_employeeofferletter' table
+        represents the employee's annual salary amount. It is stored as a decimal
+        value with a total of 8 digits, including 2 digits after the decimal point,
+        allowing for precise financial
+    probation_period:
+      type: int
+      description: The field 'probation_period' in the 'accounts_employeeofferletter'
+        table represents the duration of the employee's probation period in days,
+        indicated as an integer value.
+    benefits:
+      type: longtext
+      description: The 'benefits' field in the 'accounts_employeeofferletter' table
+        is a longtext type that stores detailed information about the benefits offered
+        to an employee in their offer letter. This may include descriptions of health
+        insurance, retirement plans, paid time off
+    other_conditions:
+      type: longtext
+      description: The 'other_conditions' field in the 'accounts_employeeofferletter'
+        table is designed to store additional clauses or stipulations relevant to
+        the employment offer. This field accepts long text entries, allowing for detailed
+        descriptions of conditions that may not be covered by standard
+    is_active:
+      type: tinyint(1)
+      description: The field 'is_active' in the 'accounts_employeeofferletter' table
+        is a tiny integer (1) that indicates the active status of the employee offer
+        letter. A value of 1 signifies that the offer letter is currently active,
+        while a value
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_employeeofferletter' table
+        stores the date and time when the employee offer letter record was created.
+        It is represented in the datetime format with up to 6 decimal places for fractional
+        seconds, allowing for precise
+    modified_at:
+      type: datetime(6)
+      description: The `modified_at` field in the `accounts_employeeofferletter` table
+        records the date and time when the employee offer letter was last modified.
+        It is stored as a datetime value with precision up to microseconds (datetime(6)).
+    created_by_id:
+      type: int
+      description: The `created_by_id` field is an integer that stores the unique
+        identifier of the user who created the employee offer letter record in the
+        `accounts_employeeofferletter` table. It links to the user or system account
+        responsible for the record's creation,
+    modified_by_id:
+      type: int
+      description: The field `modified_by_id` in the `accounts_employeeofferletter`
+        table is an integer that stores the unique identifier of the user who last
+        modified the employee offer letter record. This field is used for tracking
+        changes and ensuring accountability in record management.
+    position_id:
+      type: int
+      description: The field 'position_id' is an integer that represents the unique
+        identifier for the job position associated with an employee's offer letter
+        in the 'accounts_employeeofferletter' table.
+    user_application_form_id:
+      type: int
+      description: The field `user_application_form_id` is an integer that serves
+        as a unique identifier for the associated user application form within the
+        `accounts_employeeofferletter` table, linking employee offer letters to specific
+        user applications.
+accounts_employeeregion:
+  description: The `accounts_employeeregion` table stores information about the geographical
+    regions associated with employee accounts. It includes details such as region
+    identifiers, associated employee accounts, and any relevant attributes that define
+    the area in which employees are located or operate. This
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_employeeregion' table is an integer
+        that serves as the unique identifier for each record in the table. It is used
+        to distinguish between different employee regions and is typically set as
+        the primary key.
+    employee_id:
+      type: int
+      description: The `employee_id` field in the `accounts_employeeregion` table
+        is an integer that uniquely identifies each employee associated with a specific
+        region in the organization.
+    region_id:
+      type: int
+      description: The field `region_id` is an integer that uniquely identifies a
+        specific region associated with an employee in the `accounts_employeeregion`
+        table. This identifier is used to establish relationships between employees
+        and their respective geographical regions.
+accounts_employmenthistory:
+  description: The `accounts_employmenthistory` table stores information regarding
+    the employment history of users or accounts. Each record typically includes details
+    such as the job title, company name, start and end dates of employment, job responsibilities,
+    and any related skills or achievements.
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_employmenthistory' table is an
+        integer that serves as a unique identifier for each record in the employment
+        history. It is typically used as the primary key to distinguish individual
+        entries and facilitate data management and retrieval.
+    employment_status:
+      type: varchar(20)
+      description: The 'employment_status' field in the 'accounts_employmenthistory'
+        table stores the current employment status of an individual, represented as
+        a string with a maximum length of 20 characters. Possible values may include
+        options such as 'employed', 'un
+    start_date:
+      type: date
+      description: The 'start_date' field in the 'accounts_employmenthistory' table
+        captures the date when the employment period began for a specific job or position
+        held by an individual. This field is of type 'date' and is essential for tracking
+        the duration of
+    end_date:
+      type: date
+      description: The 'end_date' field in the 'accounts_employmenthistory' table
+        stores the date when an individual's employment with a specific employer ended.
+        It is used to track the duration of employment for record-keeping and reporting
+        purposes.
+    remarks:
+      type: longtext
+      description: The 'remarks' field in the 'accounts_employmenthistory' table is
+        a 'longtext' data type that stores additional notes or comments related to
+        an individual's employment history. This field allows for extensive text input,
+        accommodating detailed observations or explanations pertinent to
+    last_employment_history:
+      type: json
+      description: "**Field:** `last_employment_history`  \n**Type:** JSON  \n**Description:**\
+        \ This field stores a detailed record of the most recent employment history\
+        \ for an account. It includes structured data such as job title, company name,\
+        \ start and end dates"
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_employmenthistory' table
+        stores the timestamp of when the employment history record was created. It
+        is of type 'datetime(6)', which provides precision up to six fractional seconds.
+    created_by_id:
+      type: int
+      description: The field **'created_by_id'** in the **'accounts_employmenthistory'**
+        table is an integer that stores the unique identifier of the user who created
+        the employment history record. This field helps track the origin of the data
+        entry for auditing
+    department_id:
+      type: int
+      description: The `department_id` field in the `accounts_employmenthistory` table
+        is an integer that uniquely identifies the department associated with a specific
+        employment record. This field is used to link employment history entries to
+        their respective departments within an organization.
+    designation_id:
+      type: int
+      description: The `designation_id` field in the `accounts_employmenthistory`
+        table is an integer that uniquely identifies the designation or job title
+        associated with a specific employment record. It references a designation
+        record in another table, linking employment history to specific job roles.
+    employee_id:
+      type: int
+      description: The field 'employee_id' is an integer that uniquely identifies
+        an employee in the 'accounts_employmenthistory' table. This primary key links
+        employment history records to specific employees, facilitating data retrieval
+        and management within the employment history context.
+    organisation_id:
+      type: int
+      description: The 'organisation_id' field in the 'accounts_employmenthistory'
+        table is an integer that uniquely identifies the organization associated with
+        a specific employment record. This field establishes a link between the employment
+        history and the corresponding organization within the database.
+    reporting_manager_id:
+      type: int
+      description: The field 'reporting_manager_id' in the 'accounts_employmenthistory'
+        table is an integer that references the unique identifier of the employee's
+        reporting manager. This field is used to establish the reporting relationship
+        within the employment history records.
+accounts_jobapplication:
+  description: The `accounts_jobapplication` table stores information related to job
+    applications submitted by candidates. It includes fields for personal details,
+    job positions applied for, application statuses, submission dates, and any relevant
+    notes or attachments. This table facilitates tracking and managing the recruitment
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the primary key for
+        the 'accounts_jobapplication' table. It uniquely identifies each job application
+        record within the table.
+    resume:
+      type: varchar(100)
+      description: The 'resume' field in the 'accounts_jobapplication' table is a
+        VARCHAR type with a maximum length of 100 characters. It is used to store
+        a brief description or link related to the applicant's resume submitted during
+        the job application process.
+    status:
+      type: varchar(30)
+      description: The 'status' field in the 'accounts_jobapplication' table is a
+        variable character string with a maximum length of 30 characters. It indicates
+        the current status of a job application, such as 'pending', 'interview', 'hired',
+    status_history:
+      type: json
+      description: The 'status_history' field in the 'accounts_jobapplication' table
+        is of type JSON and stores a chronological record of the various statuses
+        associated with a job application. Each entry in the JSON object may include
+        status details, timestamps, and any relevant notes
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'accounts_jobapplication' table is a
+        long text field that stores additional notes or comments related to a job
+        application. It can contain detailed information, feedback, or any other relevant
+        observations made by the hiring team.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_jobapplication' table records
+        the date and time when the job application was created. It is of type 'datetime(6)',
+        which allows for precise timestamping with microsecond accuracy.
+    candidate_id:
+      type: int
+      description: The 'candidate_id' field is an integer that uniquely identifies
+        a candidate associated with a job application in the 'accounts_jobapplication'
+        table. It serves as a foreign key linking to the candidate's profile in the
+        candidate database.
+    jobpost_id:
+      type: int
+      description: The field 'jobpost_id' is an integer that uniquely identifies the
+        job posting associated with a specific job application in the 'accounts_jobapplication'
+        table. This field serves as a foreign key linking the application to its corresponding
+        job listing.
+    source_id:
+      type: int
+      description: The field 'source_id' (type 'int') in the 'accounts_jobapplication'
+        table identifies the source through which the job application was received.
+        This could refer to a specific job board, referral program, or company website.
+        It facilitates tracking and
+accounts_jobpost:
+  description: The 'accounts_jobpost' table stores records of job postings associated
+    with user accounts. Each entry typically includes details such as the job title,
+    description, posting date, associated account ID, and status of the job posting.
+    This table enables tracking and management
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer that serves as the primary identifier
+        for each record in the 'accounts_jobpost' table. It uniquely distinguishes
+        each job post entry and is typically used for referencing and retrieving specific
+        records.
+    title:
+      type: varchar(255)
+      description: The 'title' field in the 'accounts_jobpost' table is a variable
+        character string with a maximum length of 255 characters. It is used to store
+        the job title associated with a job posting.
+    description:
+      type: longtext
+      description: The 'description' field in the 'accounts_jobpost' table is a longtext
+        data type that stores detailed information about a job posting. It can include
+        the job's responsibilities, requirements, company culture, and any other relevant
+        details that provide potential applicants
+    responsibilities:
+      type: json
+      description: The 'responsibilities' field in the 'accounts_jobpost' table is
+        of type 'json' and is used to store a structured list of job responsibilities
+        associated with a specific job posting. This field allows for flexible and
+        detailed descriptions of the tasks and
+    qualifications:
+      type: json
+      description: The 'qualifications' field in the 'accounts_jobpost' table is of
+        type JSON and stores structured information about the required qualifications
+        for a job posting. This may include education levels, certifications, skills,
+        and other relevant criteria needed from potential candidates.
+    skills:
+      type: json
+      description: The 'skills' field in the 'accounts_jobpost' table is of type JSON
+        and stores a structured array of skills relevant to the job posting. This
+        field allows for flexibility in defining various skills that candidates should
+        possess, facilitating better matching between job requirements
+    work_type:
+      type: varchar(30)
+      description: The 'work_type' field in the 'accounts_jobpost' table is a varchar
+        type with a maximum length of 30 characters. It specifies the nature of the
+        job, such as full-time, part-time, freelance, or contract.
+    salary:
+      type: varchar(50)
+      description: The 'salary' field in the 'accounts_jobpost' table stores the salary
+        information associated with a job posting. It is of type 'varchar(50)', allowing
+        for the entry of salary values as text, which may include numerical figures,
+        currency symbols
+    num_openings:
+      type: int unsigned
+      description: The field 'num_openings' in the 'accounts_jobpost' table represents
+        the total number of job openings available for a specific job posting. It
+        is stored as an unsigned integer, ensuring that it can only hold non-negative
+        values.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_jobpost' table stores the
+        date and time when a job post was created, with precision to the microsecond
+        (datetime(6)). This timestamp helps track the creation date of each job listing.
+    job_type:
+      type: varchar(30)
+      description: The 'job_type' field in the 'accounts_jobpost' table is a varchar
+        type with a maximum length of 30 characters. It is used to specify the nature
+        of the job being posted, such as "full-time," "part-time,"
+    experience:
+      type: varchar(50)
+      description: The 'experience' field in the 'accounts_jobpost' table is a variable
+        character string field with a maximum length of 50 characters. It is used
+        to specify the level of experience required for a job posting, such as "1-2
+        years
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'accounts_jobpost' table is a tiny
+        integer (1) that indicates the active status of a job post. A value of '1'
+        signifies that the job post is currently active, while a value of
+    designation_id:
+      type: int
+      description: The field 'designation_id' is an integer that serves as a foreign
+        key in the 'accounts_jobpost' table, linking to the unique identifier of the
+        designation associated with a specific job posting.
+    organisation_id:
+      type: int
+      description: The `organisation_id` field is an integer that serves as a foreign
+        key in the `accounts_jobpost` table, linking each job post to its corresponding
+        organization. This field identifies the organization associated with the job
+        post, enabling relationships between job postings and
+    created_by_id:
+      type: int
+      description: Field `created_by_id` (type `int`) in the `accounts_jobpost` table
+        represents the unique identifier of the user or account that created the job
+        post. This field establishes a relationship between the job post and its creator,
+        facilitating user tracking
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'accounts_jobpost' table stores
+        the timestamp of the most recent update made to a job post. It is of type
+        'datetime(6)', allowing for precision up to microseconds. This field helps
+        track changes
+    modified_by_id:
+      type: int
+      description: "**Field: modified_by_id**  \n**Type: int**  \n**Description:**\
+        \ This field stores the unique identifier of the user who last modified the\
+        \ job post entry in the 'accounts_jobpost' table. It serves to track changes\
+        \ and maintain audit"
+    requirements:
+      type: json
+      description: The 'requirements' field in the 'accounts_jobpost' table is of
+        type JSON and is used to store a structured list of qualifications, skills,
+        and other criteria that candidates must meet for the associated job post.
+        This allows for flexible and detailed representation
+    work_location_id:
+      type: int
+      description: "**Field: work_location_id**  \n**Type: int**  \n**Description:**\
+        \ This field stores a unique integer identifier for the work location associated\
+        \ with a job post in the accounts_jobpost table. It links to a corresponding\
+        \ entry in a locations table"
+    uuid:
+      type: varchar(100)
+      description: The 'uuid' field in the 'accounts_jobpost' table is a varchar(100)
+        that uniquely identifies each job post. This universally unique identifier
+        (UUID) ensures that every record can be distinguished from others, facilitating
+        reliable data management and retrieval across
+accounts_jobsourcemaster:
+  description: The `accounts_jobsourcemaster` table stores information about various
+    job sources used in the recruitment process. It includes details such as source
+    names, descriptions, and identifiers that help categorize and manage different
+    platforms or channels from which job candidates are sourced. This table
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_jobsourcemaster' table is an integer
+        type that serves as the primary identifier for each record. It uniquely distinguishes
+        each job source entry within the table, ensuring data integrity and facilitating
+        efficient data retrieval.
+    source:
+      type: varchar(30)
+      description: The 'source' field in the 'accounts_jobsourcemaster' table is a
+        string field with a maximum length of 30 characters. It is used to identify
+        the origin or source of job postings within the accounts system, such as referral
+        sources, job
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'accounts_jobsourcemaster' table is
+        a tinyint (1) type that indicates whether a job source is currently active.
+        A value of 1 signifies that the job source is active, while a value of
+accounts_masteremployeedoc:
+  description: The 'accounts_masteremployeedoc' table stores official documents and
+    records associated with employees within the organization. It includes details
+    such as employee IDs, document types, upload dates, and associated metadata to
+    ensure proper management and retrieval of employee documentation.
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_masteremployeedoc' table is an
+        integer that serves as the primary identifier for each record in the table.
+        It uniquely distinguishes each employee document entry, ensuring that each
+        record can be referenced and accessed without
+    name:
+      type: varchar(100)
+      description: "**Field Name:** `name`  \n**Type:** `varchar(100)`  \n**Description:**\
+        \ This field stores the full name of the employee associated with the document\
+        \ in the accounts master employee document table. It can contain up to 100\
+        \ characters and"
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'accounts_masteremployeedoc' table
+        is a tiny integer (1) that indicates the active status of an employee document.
+        A value of 1 typically signifies that the document is active, while a value
+accounts_nodeuser:
+  description: The `accounts_nodeuser` table stores information related to user accounts
+    within a specific application or system, specifically for users who do not have
+    node permissions. This table may include fields such as user ID, account status,
+    timestamps for account creation and updates,
+  fields:
+    id:
+      type: int
+      description: The field 'id' in the table 'accounts_nodeuser' is an integer that
+        uniquely identifies each record in the table. This primary key is used to
+        reference specific user nodes within the accounts system.
+    email:
+      type: varchar(254)
+      description: The 'email' field in the 'accounts_nodeuser' table is a VARCHAR
+        data type with a maximum length of 254 characters. It stores the email address
+        of the user, which is used for communication and account-related purposes.
+    first_name:
+      type: varchar(30)
+      description: The 'first_name' field in the 'accounts_nodeuser' table is a VARCHAR
+        data type with a maximum length of 30 characters. It stores the user's first
+        name.
+    last_name:
+      type: varchar(30)
+      description: The 'last_name' field in the 'accounts_nodeuser' table is a varchar(30)
+        type that stores the surname of the user, with a maximum length of 30 characters.
+    date_joined:
+      type: datetime(6)
+      description: The field 'date_joined' in the 'accounts_nodeuser' table records
+        the exact date and time when a user joined the system, captured with a precision
+        of microseconds (datetime(6)).
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'accounts_nodeuser' table is a tiny
+        integer (1) that indicates the active status of a user account. A value of
+        1 represents an active account, while a value of 0 signifies that the
+    organisation:
+      type: varchar(30)
+      description: The 'organisation' field in the 'accounts_nodeuser' table is a
+        variable character string with a maximum length of 30 characters. It stores
+        the name of the organization associated with the user account.
+    phone:
+      type: varchar(16)
+      description: "**Field: phone**  \n**Type: varchar(16)**  \n**Description:**\
+        \ This field stores the phone number of the user associated with the account.\
+        \ It allows for up to 16 characters, accommodating various formats such as\
+        \ international numbers, including country"
+    is_sales_person:
+      type: tinyint(1)
+      description: The 'is_sales_person' field in the 'accounts_nodeuser' table is
+        a tiny integer (1) that indicates whether a user is designated as a sales
+        person. A value of 1 signifies that the user is a sales person, while a
+    designation:
+      type: varchar(100)
+      description: The 'designation' field in the 'accounts_nodeuser' table is a varchar
+        field that can hold up to 100 characters. It is used to store the job title
+        or position of the user within an organization.
+    role_id:
+      type: int
+      description: The 'role_id' field in the 'accounts_nodeuser' table is an integer
+        that uniquely identifies the role assigned to a user within the account management
+        system. This field is used to determine the user's permissions and access
+        levels within the application.
+    password:
+      type: varchar(300)
+      description: "**Field: password**  \n**Type:** varchar(300)  \n**Description:**\
+        \ Stores the hashed password for user authentication in the accounts_nodeuser\
+        \ table. The field can hold up to 300 characters, allowing for secure password\
+        \ storage."
+accounts_probation:
+  description: The `accounts_probation` table stores information regarding accounts
+    that are currently under probation status. It tracks details such as the account
+    ID, probation start date, expected review date, reason for probation, and the
+    status of the probation period. This table is
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_probation' table is an integer
+        that serves as the unique identifier for each record in the table. It is used
+        to distinguish between different entries and facilitate efficient data retrieval
+        and management.
+    review_date:
+      type: date
+      description: The 'review_date' field in the 'accounts_probation' table stores
+        the date when the probation review is scheduled or has occurred for an account.
+        This field helps track the progress and evaluation timeline during the probationary
+        period.
+    probation_document:
+      type: varchar(100)
+      description: The 'probation_document' field in the 'accounts_probation' table
+        stores a string of up to 100 characters that represents the document related
+        to the probationary period of an account. This may include filenames or identifiers
+        for related documents.
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'accounts_probation' table is a long
+        text field used to store additional notes or comments related to a probation
+        account. It can accommodate extensive text entries, allowing for detailed
+        descriptions or observations that may be relevant to the
+    score:
+      type: int
+      description: The 'score' field in the 'accounts_probation' table represents
+        an integer value that indicates the performance or evaluation score of an
+        account during its probation period. This score may be used to determine the
+        outcome of the probation evaluation.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_probation' table stores
+        the date and time when a record was created. It is of type 'datetime(6)',
+        allowing for precision up to microseconds.
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'accounts_probation' table is
+        an integer that stores the identifier of the user or system account that created
+        the probation record. This field helps track the origin of the record for
+        auditing and accountability purposes.
+    employee_id:
+      type: int
+      description: The 'employee_id' field in the 'accounts_probation' table is an
+        integer type that uniquely identifies each employee undergoing probation.
+        This field serves as a foreign key linking to the employee's record in the
+        main employee database, facilitating tracking and management of
+    reviewed_by_id:
+      type: int
+      description: The 'reviewed_by_id' field in the 'accounts_probation' table is
+        an integer that stores the unique identifier of the user or staff member who
+        reviewed the probationary status of an account. This field is used to link
+        the account to the
+accounts_reasonofleaving:
+  description: The `accounts_reasonofleaving` table stores information about various
+    reasons employees or clients may leave an organization or service. It includes
+    details such as the reason code, description, and any relevant categorization
+    to facilitate analysis of turnover or attrition trends.
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_reasonofleaving' table is an integer
+        that serves as the unique identifier for each record in the table. It ensures
+        that each reason for leaving an account can be distinctly referenced and retrieved.
+    reason_of_leaving:
+      type: varchar(100)
+      description: The 'reason_of_leaving' field in the 'accounts_reasonofleaving'
+        table stores a short text description (up to 100 characters) of the reason
+        an employee left the organization. This field helps to categorize and understand
+        the motivations behind employee
+accounts_salescoordinatorandbrandsales:
+  description: The `accounts_salescoordinatorandbrandsales` table stores information
+    related to sales coordinators and brand sales within an organization. It includes
+    details such as coordinator names, associated brands, sales targets, performance
+    metrics, and account information relevant to managing sales relationships
+  fields:
+    id:
+      type: int
+      description: Field 'id' in the table 'accounts_salescoordinatorandbrandsales'
+        is an integer type that serves as the primary identifier for each record in
+        the table. It uniquely distinguishes each entry, ensuring efficient data retrieval
+        and management.
+    brand_id:
+      type: int
+      description: "**Field:** `brand_id`  \n**Type:** `int`  \n**Description:** A\
+        \ unique identifier for the brand associated with the sales coordinator in\
+        \ the `accounts_salescoordinatorandbrandsales` table. This field establishes\
+        \ a relationship between the sales"
+    region_id:
+      type: int
+      description: The field **'region_id'** is an integer that uniquely identifies
+        the region associated with a sales coordinator in the **'accounts_salescoordinatorandbrandsales'**
+        table. It links the sales coordination records to specific geographic regions,
+        facilitating regional sales
+    team_leader_id:
+      type: int
+      description: The field 'team_leader_id' is an integer type that stores the unique
+        identifier for the team leader associated with each sales coordinator and
+        brand sales account in the 'accounts_salescoordinatorandbrandsales' table.
+        This field establishes a relationship between the
+    user_id:
+      type: int
+      description: The `user_id` field in the `accounts_salescoordinatorandbrandsales`
+        table is an integer that uniquely identifies a user associated with a sales
+        coordinator or brand sales entry. It serves as a foreign key linking to the
+        user's profile in the system
+accounts_saletarget:
+  description: The 'accounts_saletarget' table stores sales target information associated
+    with different accounts. This includes data on expected sales performance, target
+    values, and time frames for achieving those targets. The table may link to specific
+    accounts, regions, or sales teams to
+  fields:
+    id:
+      type: int
+      description: The field 'id' in the 'accounts_saletarget' table is an integer
+        that serves as a unique identifier for each sale target record. It is typically
+        used as the primary key to distinguish individual entries within the table.
+    start_date:
+      type: date
+      description: The field 'start_date' in the 'accounts_saletarget' table represents
+        the date when the sales target period begins. It is of type 'date', allowing
+        for the storage of specific calendar dates.
+    end_date:
+      type: date
+      description: The 'end_date' field in the 'accounts_saletarget' table represents
+        the date when the sales target period concludes. It is used to define the
+        timeframe for the associated sales goals and metrics.
+    amount:
+      type: double
+      description: The 'amount' field in the 'accounts_saletarget' table represents
+        a numeric value of type double, which indicates the sales target amount for
+        a specific account. This field is used to quantify the sales goals set for
+        achieving business objectives.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_saletarget' table stores
+        the timestamp of when the record was created. It uses the 'datetime(6)' type,
+        which can represent date and time with microsecond precision, allowing for
+        accurate recording
+    modified_at:
+      type: datetime(6)
+      description: Field 'modified_at' in the 'accounts_saletarget' table stores the
+        timestamp of the last modification made to a record, with a precision of up
+        to six decimal places for fractions of a second.
+    created_by_id:
+      type: int
+      description: '`created_by_id`: An integer field that stores the unique identifier
+        of the user who created the sale target record in the `accounts_saletarget`
+        table. This field allows tracking of who initiated the entry for auditing
+        and ownership purposes.'
+    modified_by_id:
+      type: int
+      description: The `modified_by_id` field in the `accounts_saletarget` table is
+        an integer that stores the unique identifier of the user who last modified
+        the sales target record. This field helps track changes and maintain accountability
+        in the data management process.
+    user_id:
+      type: int
+      description: "**Field: user_id**  \n**Type:** int  \n**Description:** Unique\
+        \ identifier for the user associated with the sales target in the accounts_saletarget\
+        \ table. This field links each sales target to a specific user within the\
+        \ account management system."
+accounts_user:
+  description: The `accounts_user` table stores information related to user accounts
+    in the system. It typically includes fields such as user ID, username, password
+    hash, email address, account creation date, and status (active, inactive, etc.).
+    This table helps manage
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_user' table is an integer that
+        serves as a unique identifier for each user account. It is typically used
+        as the primary key to ensure that each record in the table can be distinctly
+        referenced.
+    password:
+      type: varchar(128)
+      description: The 'password' field in the 'accounts_user' table is a variable
+        character string with a maximum length of 128 characters. It is used to securely
+        store user passwords, typically hashed for security purposes.
+    last_login:
+      type: datetime(6)
+      description: The 'last_login' field in the 'accounts_user' table stores the
+        date and time of the user's most recent login. It is formatted as a datetime
+        value with microsecond precision, allowing for detailed tracking of user login
+        activities.
+    is_superuser:
+      type: tinyint(1)
+      description: The 'is_superuser' field is a tiny integer (1) that indicates whether
+        a user has superuser privileges within the application. A value of 1 signifies
+        that the user has elevated rights and can access all administrative features,
+        while a value of
+    email:
+      type: varchar(254)
+      description: The 'email' field in the 'accounts_user' table is a variable character
+        string (varchar) that can hold up to 254 characters. This field is used to
+        store the email address associated with each user account. It is typically
+        utilized for user
+    first_name:
+      type: varchar(30)
+      description: The field 'first_name' in the 'accounts_user' table stores the
+        user's first name as a variable character string, with a maximum length of
+        30 characters. This field is used to identify and personalize user accounts.
+    last_name:
+      type: varchar(30)
+      description: "**Field:** last_name  \n**Type:** varchar(30)  \n**Description:**\
+        \ This field stores the last name of the user, limited to a maximum of 30\
+        \ characters. It is used for identifying and personalizing user accounts within\
+        \ the system."
+    date_joined:
+      type: datetime(6)
+      description: The 'date_joined' field in the 'accounts_user' table records the
+        exact date and time when a user account was created. It is stored as a datetime
+        value with precision up to six decimal places, allowing for accurate tracking
+        of account creation timestamps
+    is_active:
+      type: tinyint(1)
+      description: The `is_active` field in the `accounts_user` table is a tiny integer
+        (1) that indicates the active status of a user account. It typically accepts
+        values of 0 (inactive) or 1 (active) to represent whether the
+    phone:
+      type: varchar(16)
+      description: The 'phone' field in the 'accounts_user' table is a VARCHAR data
+        type with a maximum length of 16 characters. It is used to store the user's
+        phone number, allowing for flexible formatting (such as inclusion of country
+        codes, dashes
+    is_staff:
+      type: tinyint(1)
+      description: The 'is_staff' field in the 'accounts_user' table is a tinyint
+        (1) that indicates whether a user has staff privileges. A value of 1 means
+        the user is a staff member and has access to administrative features, while
+        a
+    role_id:
+      type: int
+      description: The field 'role_id' in the 'accounts_user' table is an integer
+        that uniquely identifies the user's role within the system. It is used to
+        determine the permissions and access levels associated with the user account.we have different roles like in_roof_lead_electrical_sg, in_roof_finance, in_roof_site_installer, site_engineer, in_roof_crm, in_roof_project_coordinator, in_roof_sales, in_roof_vice_president_sale, in_roof_lead_electrical, in_roof_lead_mechanical, in_roof_procurement_head, clientLoan, HR, brandSales, salesCoordinator, customerOwner, customerEmploye, warehouseAdmin, warehouseEmployee, warehouseManager, finance, logistics, teamleader, customerservice, user, admin
+    is_sales_person:
+      type: tinyint(1)
+      description: The field 'is_sales_person' is a tiny integer (1) in the 'accounts_user'
+        table that indicates whether a user is designated as a sales person. A value
+        of '1' signifies that the user is a sales person, while a
+    designation:
+      type: varchar(100)
+      description: The 'designation' field in the 'accounts_user' table is a variable
+        character (varchar) field with a maximum length of 100 characters. It stores
+        the job title or role of the user within an organization.
+    seller_id:
+      type: int
+      description: '`seller_id`: An integer field that uniquely identifies the warehouse
+        associated with the user account in the `accounts_user` table.'
+    user_application_id:
+      type: int
+      description: The 'user_application_id' field in the 'accounts_user' table is
+        an integer that uniquely identifies the application associated with a user
+        account. It serves as a reference to link a user to their respective application
+        within the system.
+    organisation_id:
+      type: int
+      description: The 'organisation_id' field is an integer that uniquely identifies
+        the organization associated with the user account in the 'accounts_user' table.
+        It establishes a link between the user and their respective organization,
+        facilitating organizational-level data management and access.
+    is_inroof_sales:
+      type: tinyint(1)
+      description: The field `is_inroof_sales` is a boolean indicator (tinyint with
+        values 0 or 1) in the `accounts_user` table that specifies whether the user
+        is associated with in-roof sales activities. A value of 1 indicates
+    old_seller_id:
+      type: int
+      description: "**Field:** `old_seller_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the identifier for the previous seller associated with\
+        \ the user account. It is used to maintain a reference to prior seller information\
+        \ during account updates or"
+    user_code:
+      type: varchar(30)
+      description: The 'user_code' field in the 'accounts_user' table is a variable
+        character string with a maximum length of 30 characters. It uniquely identifies
+        each user within the system and may be used for user login or reference purposes.
+    project_site_installer_id:
+      type: bigint
+      description: The field `project_site_installer_id` in the `accounts_user` table
+        is a bigint type that stores the unique identifier for the installer associated
+        with a project site. This ID links the user to their respective project site
+        installation, facilitating the management and
+    hrm_access:
+      type: tinyint(1)
+      description: The field `hrm_access` in the `accounts_user` table is a tiny integer
+        (1) that indicates whether a user has access to Human Resource Management
+        features. A value of 1 typically means access is granted, while a value of
+accounts_user_groups:
+  description: The `accounts_user_groups` table serves as a junction table that links
+    users to specific groups within the account management system. It facilitates
+    the implementation of role-based access control by defining which users belong
+    to which groups. The table typically includes fields such as `
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_user_groups' table is an integer
+        type that serves as the unique identifier for each user group record. It is
+        used to distinguish individual user groups within the database.
+    user_id:
+      type: int
+      description: The `user_id` field in the `accounts_user_groups` table is an integer
+        that uniquely identifies a user within the user groups. This field serves
+        as a foreign key linking to the `users` table, enabling the association of
+        users with their respective
+    group_id:
+      type: int
+      description: The `group_id` field is an integer that serves as a unique identifier
+        for a user group within the `accounts_user_groups` table. It associates users
+        with specific groups, facilitating user group management and permissions.
+accounts_user_user_permissions:
+  description: The `accounts_user_user_permissions` table manages the permissions
+    assigned to users within the system. It serves as a junction table that links
+    user accounts (from the `accounts_user` table) to specific permission entries.
+    Each record typically includes user identifiers along with
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the primary identifier
+        for each record in the 'accounts_user_user_permissions' table. It uniquely
+        distinguishes each user's permission entry, ensuring efficient data retrieval
+        and management.
+    user_id:
+      type: int
+      description: The 'user_id' field is an integer that uniquely identifies a user
+        in the 'accounts_user_user_permissions' table, which stores the permissions
+        associated with each user account.
+    permission_id:
+      type: int
+      description: The 'permission_id' field is an integer that uniquely identifies
+        a specific permission associated with a user in the 'accounts_user_user_permissions'
+        table. This field links users to their granted permissions, facilitating access
+        control within the application.
+accounts_userapplicationform:
+  description: "The `accounts_userapplicationform` table stores user application submissions\
+    \ for various services or programs. It captures details such as the user's personal\
+    \ information, application status, submission dates, and any relevant documentation\
+    \ associated with the user\u2019s application. This table facilitates the management"
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_userapplicationform' table is an
+        integer that serves as the unique identifier for each record in the table.
+        It is commonly used as the primary key to uniquely distinguish different user
+        application forms.
+    first_name:
+      type: varchar(30)
+      description: '`first_name`: This field stores the user''s first name as a variable
+        character string, with a maximum length of 30 characters, in the `accounts_userapplicationform`
+        table.'
+    last_name:
+      type: varchar(30)
+      description: The 'last_name' field in the 'accounts_userapplicationform' table
+        stores the last name of the user, with a maximum length of 30 characters.
+        This field is typically used to identify the user and facilitate personalization
+        in communications.
+    date_of_birth:
+      type: date
+      description: The 'date_of_birth' field in the 'accounts_userapplicationform'
+        table stores the birthdate of the user as a date value. This field is used
+        to determine the age of the user and may be subject to validation for age-related
+        requirements.
+    gender:
+      type: varchar(30)
+      description: The 'gender' field in the 'accounts_userapplicationform' table
+        stores the gender identity of the user as a string, allowing for a maximum
+        length of 30 characters. This field can be used to capture various gender
+        identities, accommodating diverse responses.
+    marital_status:
+      type: varchar(30)
+      description: "**Field:** `marital_status`  \n**Type:** `varchar(30)`  \n**Description:**\
+        \ This field stores the marital status of the user, allowing for values such\
+        \ as \"Single\", \"Married\", \"Divorced\", \"Wid"
+    fathers_name:
+      type: varchar(100)
+      description: Field 'fathers_name' in the 'accounts_userapplicationform' table
+        stores the name of the applicant's father. It is a variable character field
+        with a maximum length of 100 characters.
+    fathers_pancard_no:
+      type: varchar(100)
+      description: The field 'fathers_pancard_no' in the 'accounts_userapplicationform'
+        table stores the Father's Permanent Account Number (PAN) as a string, with
+        a maximum length of 100 characters. This field is used to uniquely identify
+        the financial
+    fathers_occupation:
+      type: varchar(100)
+      description: "**Field:** fathers_occupation  \n**Type:** varchar(100)  \n**Description:**\
+        \ This field stores the father's occupation as a text string, allowing for\
+        \ up to 100 characters. It is used to capture information about the user's\
+        \ father's job title or"
+    fathers_date_of_birth:
+      type: date
+      description: "**Field: fathers_date_of_birth**  \n**Type:** Date  \n**Description:**\
+        \ This field stores the date of birth of the user's father. It is used to\
+        \ collect demographic information as part of the user application form in\
+        \ the accounts table."
+    present_zip_code:
+      type: int
+      description: The 'present_zip_code' field in the 'accounts_userapplicationform'
+        table stores the current postal code of the user in integer format. This field
+        is used to identify the user's address location for application processing
+        and demographic analysis.
+    present_address:
+      type: longtext
+      description: The 'present_address' field in the 'accounts_userapplicationform'
+        table stores the current residential address of the user as a long text. This
+        field allows for detailed input, accommodating complex address formats and
+        additional information.
+    permanent_zip_code:
+      type: int
+      description: The 'permanent_zip_code' field in the 'accounts_userapplicationform'
+        table stores the permanent residential zip code of the user as an integer.
+        This zip code is used for verifying the user's address and can be utilized
+        for geographical analysis and service delivery
+    permanent_address:
+      type: longtext
+      description: The 'permanent_address' field in the 'accounts_userapplicationform'
+        table is of type 'longtext' and is used to store the complete permanent address
+        of the user. This allows for extensive detail, accommodating various address
+        formats and lengths.
+    landline_no:
+      type: varchar(20)
+      description: The 'landline_no' field in the 'accounts_userapplicationform' table
+        stores the user's landline telephone number, if applicable. It is defined
+        as a variable character string with a maximum length of 20 characters, allowing
+        for various formatting and international
+    contact_number:
+      type: varchar(15)
+      description: The 'contact_number' field in the 'accounts_userapplicationform'
+        table is a variable character string with a maximum length of 15 characters.
+        It is used to store the user's contact phone number.
+    email:
+      type: varchar(254)
+      description: The 'email' field in the 'accounts_userapplicationform' table is
+        a variable character string with a maximum length of 254 characters. It is
+        used to store the email address of the user applying through the application
+        form, facilitating communication and account management
+    last_salary_drawn:
+      type: double
+      description: "**Field Name:** last_salary_drawn  \n**Type:** double  \n**Description:**\
+        \ This field stores the last salary amount received by the user, represented\
+        \ as a floating-point number. It captures the most recent salary figure for\
+        \ financial assessment or application purposes."
+    organization_name:
+      type: varchar(100)
+      description: "**Field:** `organization_name`  \n**Type:** `varchar(100)`  \n\
+        **Description:** This field stores the name of the organization associated\
+        \ with the user application form, with a maximum length of 100 characters."
+    annual_compensation:
+      type: double
+      description: The 'annual_compensation' field in the 'accounts_userapplicationform'
+        table is a double data type that represents the total yearly salary or compensation
+        amount for the user. It is used to capture the financial remuneration the
+        user expects or receives as part of
+    reference_name:
+      type: varchar(100)
+      description: The 'reference_name' field in the 'accounts_userapplicationform'
+        table is a variable character string that holds the name of the reference
+        associated with the user application form. It can contain up to 100 characters.
+    reference_contact:
+      type: varchar(30)
+      description: The field 'reference_contact' in the 'accounts_userapplicationform'
+        table stores a reference contact's information as a string, with a maximum
+        length of 30 characters. It is used to identify or provide details about a
+        reference for the user application.
+    is_selected:
+      type: tinyint(1)
+      description: The 'is_selected' field is a boolean indicator (tinyint(1)) in
+        the 'accounts_userapplicationform' table. It represents whether a user application
+        form has been selected (1) or not (0).
+    expected_salary:
+      type: double
+      description: "**Field:** expected_salary  \n**Type:** double  \n**Description:**\
+        \ Represents the anticipated salary the applicant expects to receive for the\
+        \ position they are applying for, expressed as a numerical value."
+    interview_date:
+      type: date
+      description: The field 'interview_date' in the 'accounts_userapplicationform'
+        table stores the date on which the user is scheduled for an interview related
+        to their application. This field is of type 'date' and allows for the recording
+        of specific interview dates
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'accounts_userapplicationform' table
+        stores the timestamp indicating when the user application form was created.
+        It is of type 'datetime(6)', allowing for precise representation of date and
+        time with microsecond precision.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'accounts_userapplicationform' table
+        records the date and time when the user application form was last updated.
+        It uses the 'datetime(6)' type, allowing for precise timestamps with up to
+        six digits of fractional
+    language_known:
+      type: json
+      description: The 'language_known' field in the 'accounts_userapplicationform'
+        table is of type JSON and stores a structured list of languages that the user
+        knows. This field allows for the inclusion of multiple languages and their
+        proficiency levels, enabling flexible data representation for
+    academy_qualification:
+      type: json
+      description: The `academy_qualification` field in the `accounts_userapplicationform`
+        table is of type JSON and is used to store structured data related to the
+        educational qualifications of a user. This field can include various attributes
+        such as degree type, institution name,
+    professional_qualification:
+      type: json
+      description: The 'professional_qualification' field in the 'accounts_userapplicationform'
+        table is a JSON type field that stores structured data related to the applicant's
+        professional qualifications. This may include details such as degrees, certifications,
+        institutions, and dates obtained, allowing
+    work_experience:
+      type: json
+      description: The 'work_experience' field in the 'accounts_userapplicationform'
+        table is a JSON type that stores structured information about the user's work
+        history. This can include details such as job titles, company names, employment
+        dates, and responsibilities, allowing for
+    employee_emergencyContact:
+      type: json
+      description: The field `employee_emergencyContact` in the `accounts_userapplicationform`
+        table is of type `json` and is used to store information regarding the emergency
+        contact for an employee. This field can hold structured data such as the name,
+        relationship,
+    employee_family_details:
+      type: json
+      description: The field 'employee_family_details' is a JSON data type within
+        the 'accounts_userapplicationform' table. It is designed to store structured
+        information related to the employee's family members, such as names, relationships,
+        ages, and other relevant details in
+    bank_details:
+      type: json
+      description: The 'bank_details' field in the 'accounts_userapplicationform'
+        table is of type JSON and is used to store various banking information related
+        to the user application form. This may include details such as account numbers,
+        bank names, routing numbers, and
+    trainings_attended:
+      type: json
+      description: The field `trainings_attended` is of type JSON in the `accounts_userapplicationform`
+        table. It stores a structured list of training programs that the user has
+        attended, including details such as training names, dates, durations, and
+        any relevant
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `accounts_userapplicationform`
+        table is an integer that stores the unique identifier of the user who created
+        the application form. This field references the user responsible for submitting
+        or initiating the record, enabling tracking of data
+    modified_by_id:
+      type: int
+      description: 'The field ''modified_by_id'' (type: int) in the ''accounts_userapplicationform''
+        table stores the unique identifier of the user who last modified the respective
+        application form. This helps track changes and manage user accountability
+        within the application process.'
+    permanent_city_id:
+      type: int
+      description: The 'permanent_city_id' field is an integer that stores the identifier
+        for the user's permanent city, linking to a corresponding city record in the
+        database. This field is used to associate the user application with the specific
+        city of permanent residence.
+    designation_id:
+      type: int
+      description: The field `designation_id` in the table `accounts_userapplicationform`
+        is an integer that uniquely identifies the designation associated with a user
+        application form. This field serves as a foreign key linking to the designations
+        in the related designations table, enabling
+    present_city_id:
+      type: int
+      description: The field 'present_city_id' is an integer that stores the unique
+        identifier for the city where the user currently resides, as specified in
+        the accounts_userapplicationform table.
+    application_status:
+      type: json
+      description: The field 'application_status' in the 'accounts_userapplicationform'
+        table stores the current status of a user's application in JSON format. This
+        may include various attributes such as the application stage, timestamps,
+        and comments, allowing for flexible representation of the application's
+    interview_link:
+      type: varchar(200)
+      description: The field `interview_link` in the `accounts_userapplicationform`
+        table is a variable character string (varchar) with a maximum length of 200
+        characters. It is intended to store a URL link to an interview resource or
+        platform associated with a
+    interview_type:
+      type: varchar(30)
+      description: The field 'interview_type' in the 'accounts_userapplicationform'
+        table is a variable character string (varchar) that can store up to 30 characters.
+        It is used to specify the type of interview associated with a user's application
+        form, such
+    interview_time:
+      type: time(6)
+      description: The 'interview_time' field in the 'accounts_userapplicationform'
+        table records the specific time of the interview, stored with a precision
+        of up to six decimal places.
+    application_steps:
+      type: varchar(30)
+      description: The 'application_steps' field in the 'accounts_userapplicationform'
+        table stores the current stage of the user's application process as a string,
+        with a maximum length of 30 characters.
+    aadhar_card_no:
+      type: varchar(100)
+      description: "**Field: aadhar_card_no**  \n**Type: varchar(100)**  \n**Description:**\
+        \ Stores the unique 12-digit Aadhar card number of the user, allowing for\
+        \ identification and verification. The field accepts alphanumeric characters\
+        \ and can accommodate up"
+    pan_card_no:
+      type: varchar(100)
+      description: The 'pan_card_no' field in the 'accounts_userapplicationform' table
+        stores the Permanent Account Number (PAN) of the user as a string of characters,
+        with a maximum length of 100 characters. This field is used for identity verification
+        and
+    date_of_joining:
+      type: date
+      description: The 'date_of_joining' field in the 'accounts_userapplicationform'
+        table represents the date when the user formally joined or registered for
+        the relevant program or service. It is stored as a date type, capturing only
+        the calendar date without any time
+    date_of_leaving:
+      type: date
+      description: The 'date_of_leaving' field in the 'accounts_userapplicationform'
+        table stores the date on which a user formally leaves or exits from a position
+        or program. It is of type 'date' and is used to track the end date of
+    employee_code:
+      type: varchar(30)
+      description: The 'employee_code' field in the 'accounts_userapplicationform'
+        table is a VARCHAR(30) data type that stores a unique identifier for each
+        employee. This code is used for tracking and managing employee information
+        within the application form.
+    uuid:
+      type: varchar(100)
+      description: The 'uuid' field in the 'accounts_userapplicationform' table is
+        a VARCHAR(100) type used to uniquely identify each user application form entry.
+        This field stores a universally unique identifier (UUID), ensuring that each
+        record can be distinctly referenced without
+    other_permanent_city:
+      type: varchar(100)
+      description: The field **'other_permanent_city'** in the **'accounts_userapplicationform'**
+        table stores a string of up to 100 characters representing the name of a city
+        that the user considers their permanent residence, specifically when it is
+        not one
+    other_present_city:
+      type: varchar(100)
+      description: The field 'other_present_city' in the 'accounts_userapplicationform'
+        table is a varchar data type with a maximum length of 100 characters. It is
+        used to store the name of a city where the user currently resides, specifically
+        when the city
+    permanent_state_id:
+      type: int
+      description: The field 'permanent_state_id' is an integer that stores the identifier
+        for the permanent state associated with the user's application form. This
+        foreign key links to a states table, representing the state where the user
+        has permanent residency.
+    present_state_id:
+      type: int
+      description: 'The field ''present_state_id'' (type: int) in the ''accounts_userapplicationform''
+        table stores the unique identifier for the user''s current state or status
+        within the application process. It serves as a reference to the applicable
+        state in a corresponding states'
+    blood_group:
+      type: varchar(30)
+      description: The 'blood_group' field in the 'accounts_userapplicationform' table
+        is a varchar(30) data type that stores the user's blood type information.
+        This field allows for the entry of various blood group categories, such as
+        A+, O-, B
+    is_differentily_abled:
+      type: tinyint(1)
+      description: The field 'is_differentily_abled' is a boolean indicator (tinyint(1))
+        in the 'accounts_userapplicationform' table that specifies whether the user
+        has a different ability status. A value of 1 indicates yes, while
+    salutation:
+      type: varchar(30)
+      description: "**Field: salutation**  \n**Type:** varchar(30)  \n**Description:**\
+        \ This field stores the salutation of the user, such as \"Mr.\", \"Ms.\",\
+        \ \"Dr.\", etc., with a maximum length of 30 characters."
+    interviewer_id:
+      type: int
+      description: The field 'interviewer_id' in the 'accounts_userapplicationform'
+        table is of type 'int' and stores the unique identifier of the interviewer
+        assigned to the user application form. This ID links the application to a
+        specific interviewer for review and assessment
+    is_offer_letter_generated:
+      type: tinyint(1)
+      description: The field `is_offer_letter_generated` is a tiny integer (1 byte)
+        that indicates whether an offer letter has been generated for the user application.
+        A value of `1` signifies that the offer letter has been generated, while a
+        value of `
+    candidate_id:
+      type: int
+      description: The `candidate_id` field in the `accounts_userapplicationform`
+        table is an integer that uniquely identifies a candidate associated with a
+        user application form.
+    jobapplication_history:
+      type: json
+      description: The `jobapplication_history` field in the `accounts_userapplicationform`
+        table is of type JSON and stores the historical record of job applications
+        submitted by the user. This field may include details such as application
+        dates, job titles, statuses, and any
+    is_fresher:
+      type: tinyint(1)
+      description: The 'is_fresher' field is a tinyint (1) data type that indicates
+        whether the user is a fresher (1) or not (0) in the accounts_userapplicationform
+        table.
+    jobapplication_id:
+      type: int
+      description: The field 'jobapplication_id' is an integer that uniquely identifies
+        a specific job application associated with the user application form in the
+        'accounts_userapplicationform' table.
+    duration:
+      type: int unsigned
+      description: The 'duration' field in the 'accounts_userapplicationform' table
+        is an unsigned integer that represents the length of time (in a specified
+        unit, such as seconds or minutes) associated with the user application form.
+        This field typically used to track how
+accounts_userregion:
+  description: The `accounts_userregion` table stores the mapping of users to their
+    respective geographical regions. It typically includes fields such as user IDs,
+    region IDs, and any relevant details that define the user's association with specific
+    regions, facilitating regional user management and localization in
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'accounts_userregion' table is an integer
+        that uniquely identifies each record in the table. It serves as the primary
+        key for the table, ensuring that each user region entry can be distinctly
+        referenced.
+    user_id:
+      type: int
+      description: The 'user_id' field is an integer that uniquely identifies a user
+        in the 'accounts_userregion' table, linking each record to a specific user
+        account.
+    region_id:
+      type: int
+      description: The `region_id` field in the `accounts_userregion` table is an
+        integer that uniquely identifies a specific geographic region associated with
+        a user account. This field serves as a foreign key to link users to their
+        respective regions.
+    team_leader_id:
+      type: int
+      description: "**Field Name:** `team_leader_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field represents the unique identifier for the team leader associated\
+        \ with the user region. It is used to link to the team leader's record in\
+        \ another"
+auth_group:
+  description: The 'auth_group' table stores information about user groups in the
+    authentication system. Each entry represents a distinct group that can be assigned
+    to users, allowing for organized permission management and access control within
+    the application. The table typically includes fields such as 'id
+  fields:
+    id:
+      type: int
+      description: The field 'id' in the 'auth_group' table is an integer that serves
+        as the unique identifier for each group. It is used to distinguish one group
+        from another within the authentication system.
+    name:
+      type: varchar(150)
+      description: The 'name' field in the 'auth_group' table is a VARCHAR data type
+        with a maximum length of 150 characters. It stores the name of the user group,
+        which is used to identify and categorize different permissions and access
+        levels within the authentication
+auth_group_permissions:
+  description: The `auth_group_permissions` table links groups of users to specific
+    permissions within an application. Each record represents an association between
+    a group (defined in the `auth_groups` table) and a permission (defined in the
+    `auth_permissions` table), enabling
+  fields:
+    id:
+      type: int
+      description: "**Field: id**  \n**Type: int**  \n**Description:** A unique identifier\
+        \ for each record in the `auth_group_permissions` table. This integer value\
+        \ serves as the primary key, ensuring that every entry can be distinctly referenced."
+    group_id:
+      type: int
+      description: The 'group_id' field in the 'auth_group_permissions' table represents
+        the unique identifier for a specific user group. This integer value is used
+        to associate permissions granted to the group, linking it to the corresponding
+        entry in the 'auth_group' table
+    permission_id:
+      type: int
+      description: "**Field:** `permission_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier for a permission associated with\
+        \ a specific authentication group. It links to the permissions granted to\
+        \ the group, allowing for the management of access"
+auth_permission:
+  description: The `auth_permission` table stores information about the permissions
+    that can be assigned to users within a system. Each record represents a specific
+    permission, detailing its name, associated content type (if applicable), and a
+    unique identifier. This table is essential for managing
+  fields:
+    id:
+      type: int
+      description: Field 'id' in the 'auth_permission' table is an integer that serves
+        as the primary key. It uniquely identifies each permission entry in the database.
+    name:
+      type: varchar(255)
+      description: The 'name' field in the 'auth_permission' table is a variable character
+        string with a maximum length of 255 characters. It is used to store the name
+        of a permission, which typically describes the action that can be performed
+        within the application,
+    content_type_id:
+      type: int
+      description: The field `content_type_id` in the `auth_permission` table is of
+        type `int` and serves as a foreign key that links to the `ContentType` model.
+        It identifies the specific type of content (e.g., models or applications
+    codename:
+      type: varchar(100)
+      description: The 'codename' field in the 'auth_permission' table is a varchar
+        data type with a maximum length of 100 characters. It uniquely identifies
+        a specific permission within the system, typically as a string that describes
+        the action or resource associated with the
+authtoken_token:
+  description: The `authtoken_token` table stores authentication tokens used for user
+    sessions in a system. Each entry typically includes fields for the token itself,
+    associated user information, expiration timestamps, and any relevant metadata
+    for managing and validating user sessions securely.
+  fields:
+    key:
+      type: varchar(40)
+      description: The 'key' field in the 'authtoken_token' table is a variable character
+        string with a maximum length of 40 characters. It uniquely identifies an authentication
+        token used for securing user sessions or API access.
+    created:
+      type: datetime(6)
+      description: The 'created' field in the 'authtoken_token' table is of type 'datetime(6)'
+        and stores the timestamp of when the authentication token was generated. This
+        field includes precision up to microseconds, allowing for high-resolution
+        tracking of token
+    user_id:
+      type: int
+      description: The 'user_id' field in the 'authtoken_token' table is an integer
+        that uniquely identifies the user associated with the authentication token.
+        It establishes a relationship between the token and the user's account within
+        the system.
+company_people_companypersonprofile:
+  description: The 'company_people_companypersonprofile' table stores profiles of
+    individuals associated with a company. Each record includes details such as personal
+    information, job roles, and contact information, enabling the management of employee
+    or affiliate data within the organization. The table likely includes
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the primary identifier
+        for each record in the 'company_people_companypersonprofile' table. It uniquely
+        distinguishes each company person profile entry, ensuring efficient retrieval
+        and management of related data.
+    email:
+      type: varchar(254)
+      description: The 'email' field in the 'company_people_companypersonprofile'
+        table is a variable character string with a maximum length of 254 characters.
+        It is used to store the email address of individuals associated with the company,
+        allowing for electronic communication and identification
+    password:
+      type: varchar(128)
+      description: "**Field Name:** password  \n**Type:** varchar(128)  \n**Description:**\
+        \ This field stores the hashed password for the user account associated with\
+        \ the company person profile. It has a maximum length of 128 characters to\
+        \ ensure secure password storage while allowing"
+    last_login:
+      type: datetime(6)
+      description: "**Field:** last_login  \n**Type:** datetime(6)  \n**Description:**\
+        \ This field records the date and time when the company person last accessed\
+        \ their account, down to microsecond precision. It is used to track user activity\
+        \ and engagement within the"
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'company_people_companypersonprofile'
+        table records the timestamp of when a company person profile was created.
+        It stores the date and time with microsecond precision (datetime(6)).
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'company_people_companypersonprofile'
+        table represents the date and time when the corresponding record was last
+        updated. It is stored as a datetime type with microsecond precision (6 decimal
+        places).
+    is_active:
+      type: tinyint(1)
+      description: Field **'is_active'** (type **'tinyint(1)'**) in the **'company_people_companypersonprofile'**
+        table indicates whether a company person profile is active. A value of **1**
+        typically represents that the profile is
+    poc_id:
+      type: int
+      description: The field 'poc_id' is an integer type that serves as a unique identifier
+        for a point of contact (POC) in the 'company_people_companypersonprofile'
+        table. It links a specific contact person to their associated company profile.
+company_people_companypersontoken:
+  description: The `company_people_companypersontoken` table is designed to manage
+    the relationship between company personnel and their associated authentication
+    tokens. It typically includes fields for identifying the token, linking it to
+    specific individuals within the company, and storing relevant metadata such as
+    creation
+  fields:
+    id:
+      type: int
+      description: "**Field Name:** id  \n**Type:** int  \n**Description:** A unique\
+        \ identifier for each record in the 'company_people_companypersontoken' table.\
+        \ This integer field serves as the primary key, ensuring that each entry can\
+        \ be uniquely referenced."
+    token:
+      type: varchar(100)
+      description: The 'token' field in the 'company_people_companypersontoken' table
+        is a variable character string with a maximum length of 100 characters. It
+        is used to store unique identifiers or access tokens associated with individuals
+        within the company context.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'company_people_companypersontoken'
+        table stores the date and time when the record was created. It is of type
+        'datetime(6)', allowing for precision up to six decimal places for fractional
+        seconds.
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'company_people_companypersontoken'
+        table is a tiny integer (1) that indicates the active status of the associated
+        company person token. A value of '1' typically signifies that the token is
+        active,
+    user_id:
+      type: int
+      description: The 'user_id' field is an integer that uniquely identifies a user
+        associated with a company person token in the 'company_people_companypersontoken'
+        table. It serves as a foreign key linking to the user record in the user management
+        system.
+customer_companyuser:
+  description: The `customer_companyuser` table stores information about the users
+    associated with various customer companies. It typically includes fields such
+    as user ID, company ID, user roles, and contact information to manage relationships
+    and permissions for users linked to different customer accounts.
+  fields:
+    id:
+      type: int
+      description: "**Field Name:** id  \n**Type:** int  \n**Description:** A unique\
+        \ identifier for each record in the 'customer_companyuser' table. This field\
+        \ serves as the primary key, ensuring that each customer company user can\
+        \ be uniquely referenced."
+    first_name:
+      type: varchar(30)
+      description: "**Field: `first_name`**  \n**Type:** `varchar(30)`  \n**Description:**\
+        \ This field stores the first name of the user associated with the customer\
+        \ company. It allows a maximum of 30 characters to accommodate various first\
+        \ name lengths"
+    last_name:
+      type: varchar(30)
+      description: The 'last_name' field in the 'customer_companyuser' table stores
+        the last name of the user associated with a customer company. It is of type
+        'varchar(30)', allowing for a maximum of 30 characters.
+    email:
+      type: varchar(254)
+      description: "**Field:** email  \n**Type:** varchar(254)  \n**Description:**\
+        \ This field stores the email address of the user associated with the customer\
+        \ company. It can contain up to 254 characters and is used for communication\
+        \ and account verification purposes. The"
+    contact_no:
+      type: varchar(16)
+      description: The 'contact_no' field in the 'customer_companyuser' table is a
+        varchar field designed to store the contact number of a user associated with
+        a company. It allows for a maximum length of 16 characters, accommodating
+        various phone number formats, including
+    designation:
+      type: varchar(30)
+      description: The 'designation' field in the 'customer_companyuser' table is
+        a VARCHAR(30) type that stores the job title or role of the user within the
+        customer's company. It is limited to a maximum of 30 characters.
+    is_default_company:
+      type: tinyint(1)
+      description: The 'is_default_company' field is a tiny integer (1) that indicates
+        whether the associated company is set as the default company for the user.
+        A value of '1' signifies it is the default company, while '0' indicates it
+        is
+    is_active:
+      type: int
+      description: The 'is_active' field in the 'customer_companyuser' table is an
+        integer that indicates the active status of a company user. A value of 1 typically
+        represents that the user is currently active, while a value of 0 indicates
+        the user
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'customer_companyuser' table records
+        the precise date and time when a new customer company user entry was created,
+        with a precision of up to six decimal places for the seconds.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'customer_companyuser' table stores
+        the date and time when the record was last updated. It is of type 'datetime(6)',
+        which allows for precision up to microseconds. This field is essential for
+        tracking
+    company_id:
+      type: int
+      description: The `company_id` field is an integer that uniquely identifies the
+        associated company for each record in the `customer_companyuser` table. It
+        serves as a foreign key linking users to their respective companies.
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'customer_companyuser' table is
+        an integer that stores the unique identifier of the user who created the customer
+        company entry. This field helps to track the origin of the record and associate
+        it with the responsible user
+    modified_by_id:
+      type: int
+      description: The field 'modified_by_id' is an integer that stores the unique
+        identifier of the user who last modified the record in the 'customer_companyuser'
+        table. This field is used for tracking changes and auditing purposes, ensuring
+        accountability in record modifications.
+    role_id:
+      type: int
+      description: The field 'role_id' is an integer that references the specific
+        role assigned to a user within a customer company. It is used to differentiate
+        user permissions and access levels associated with their role in the organization.
+    old_company_id:
+      type: int
+      description: The field 'old_company_id' in the 'customer_companyuser' table
+        stores an integer value representing the identifier of a previously associated
+        company for a customer user. This field is used to track historical relationships
+        with companies prior to any updates.
+django_admin_log:
+  description: The `django_admin_log` table stores records of actions performed in
+    the Django admin interface. It logs changes made to models, including create,
+    update, and delete operations, along with details such as the user who made the
+    change, the timestamp of the
+  fields:
+    id:
+      type: int
+      description: The field 'id' in the 'django_admin_log' table is an integer type
+        that serves as the primary key for unique identification of each log entry.
+        This field automatically increments with each new record, ensuring that every
+        log entry can be distinctly referenced.
+    action_time:
+      type: datetime(6)
+      description: The 'action_time' field in the 'django_admin_log' table stores
+        the exact date and time when an action was performed in the Django admin interface.
+        It uses the 'datetime(6)' type to provide high precision, allowing for the
+        recording of
+    object_id:
+      type: longtext
+      description: The field 'object_id' in the 'django_admin_log' table stores a
+        serialized representation of the primary key of the model instance that was
+        affected by the admin action. It is of type 'longtext' to accommodate large
+        identifiers, ensuring flexibility for
+    object_repr:
+      type: varchar(200)
+      description: The 'object_repr' field in the 'django_admin_log' table is a varchar(200)
+        type that stores a string representation of the object associated with the
+        logged action in the Django admin interface. This field typically contains
+        a human-readable description of the
+    action_flag:
+      type: smallint unsigned
+      description: The `action_flag` field in the `django_admin_log` table is of type
+        `smallint unsigned` and is used to indicate the type of action performed in
+        the admin interface. This value corresponds to specific actions such as add,
+        change, or
+    change_message:
+      type: longtext
+      description: The `change_message` field stores a detailed description of the
+        changes made to a model instance in the Django admin. This field is of type
+        `longtext`, allowing for the storage of extensive text data, which may include
+        information about the fields that were
+    content_type_id:
+      type: int
+      description: The `content_type_id` field in the `django_admin_log` table is
+        an integer that serves as a foreign key reference to the `django_content_type`
+        table. It identifies the type of content (model) associated with a specific
+        log entry,
+    user_id:
+      type: int
+      description: The `user_id` field is an integer that stores the unique identifier
+        of the user associated with a specific log entry in the `django_admin_log`
+        table. It links the log entry to the user who performed the action recorded
+        in the log.
+django_content_type:
+  description: The `django_content_type` table stores information about all the models
+    registered in a Django application. Each entry represents a specific model, including
+    details such as its name and the associated app. This table is essential for Django's
+    content type framework, enabling generic
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'django_content_type' table is an integer
+        that uniquely identifies each record in the table. It serves as the primary
+        key for the table, ensuring that each content type in the Django application
+        can be distinctly referenced.
+    app_label:
+      type: varchar(100)
+      description: The `app_label` field in the `django_content_type` table is a VARCHAR(100)
+        that stores the label of the application to which a specific model belongs.
+        It helps categorize and identify the content types related to different Django
+        applications within the project
+    model:
+      type: varchar(100)
+      description: The 'model' field in the 'django_content_type' table is a varchar
+        type field with a maximum length of 100 characters. It stores the name of
+        the model associated with the content type, representing the specific Django
+        model class that the content type
+django_migrations:
+  description: The `django_migrations` table in a Django database keeps track of the
+    migration history for the application. It records each migration that has been
+    applied, including fields such as the migration name, the app it belongs to, and
+    the timestamp of when the
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer type primary key in the 'django_migrations'
+        table, uniquely identifying each migration record within the database.
+    app:
+      type: varchar(255)
+      description: The 'app' field in the 'django_migrations' table is a varchar(255)
+        data type that stores the name of the Django application associated with a
+        particular migration. This field helps identify which application the migration
+        belongs to, facilitating the management and
+    name:
+      type: varchar(255)
+      description: The 'name' field in the 'django_migrations' table stores the name
+        of the migration as a string, with a maximum length of 255 characters. It
+        uniquely identifies each migration performed by Django in the database schema.
+    applied:
+      type: datetime(6)
+      description: The 'applied' field in the 'django_migrations' table is a datetime
+        field that records the precise timestamp (including fractional seconds) when
+        a migration was applied to the database. This information is used for tracking
+        the state of migrations over time.
+django_session:
+  description: 'The `django_session` table is used by Django to store session data
+    for users interacting with a web application. It typically contains the following
+    fields: a session key (a unique identifier for the session), session data (a serialized
+    representation of data associated with'
+  fields:
+    session_key:
+      type: varchar(40)
+      description: The `session_key` field in the `django_session` table is a string
+        (varchar) type with a maximum length of 40 characters. It uniquely identifies
+        a user session within the Django framework, serving as the primary key for
+        session data storage and
+    session_data:
+      type: longtext
+      description: The `session_data` field in the `django_session` table stores serialized
+        data of a user's session in a long-text format. This field can hold extensive
+        information related to the user's interactions and state during their session,
+        enabling persistent storage of session variables across
+    expire_date:
+      type: datetime(6)
+      description: The `expire_date` field in the `django_session` table is a datetime
+        field with microsecond precision (datetime(6)). It stores the date and time
+        when the session is set to expire, determining when the session data will
+        no longer be valid

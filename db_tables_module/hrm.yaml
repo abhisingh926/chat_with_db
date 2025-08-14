@@ -1,0 +1,993 @@
+hrm_assetallotment:
+  description: The `hrm_assetallotment` table tracks the allocation of assets to employees
+    within the organization. It contains records of assets assigned to individuals,
+    including details such as asset type, employee ID, allocation date, and any relevant
+    return information. This
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_assetallotment' table is an integer
+        that serves as a unique identifier for each record in the table. It is commonly
+        used as a primary key to distinguish individual asset allotment entries.
+    date_of_allotment:
+      type: date
+      description: The field 'date_of_allotment' in the 'hrm_assetallotment' table
+        records the specific date on which an asset is allocated to an employee or
+        department. This date indicates the official assignment of the asset for tracking
+        and management purposes
+    allotment_remark:
+      type: longtext
+      description: The field 'allotment_remark' in the 'hrm_assetallotment' table
+        is of type 'longtext' and is used to store detailed remarks or comments related
+        to the asset allotment processes. This field can hold extensive text
+    date_of_deallotment:
+      type: date
+      description: The field 'date_of_deallotment' in the 'hrm_assetallotment' table
+        stores the date on which an asset is officially deallocated from an employee
+        or department, signifying the end of its allotment period.
+    deallotment_remark:
+      type: longtext
+      description: The field 'deallotment_remark' in the 'hrm_assetallotment' table
+        is of type 'longtext' and is used to store detailed remarks or comments regarding
+        the deallocation of assets. This field allows users to provide
+    current_allotment_id:
+      type: int
+      description: The `current_allotment_id` field is an integer that uniquely identifies
+        the current asset allotment record in the `hrm_assetallotment` table. It is
+        used to track which allotment is presently assigned to an employee or department
+        within
+    product_details_id:
+      type: int
+      description: The field 'product_details_id' in the 'hrm_assetallotment' table
+        is an integer that uniquely identifies the details of a specific product allocated
+        to an employee. It serves as a foreign key, linking to the corresponding product
+        information in a
+    allotment_upload_image:
+      type: json
+      description: "**Field: allotment_upload_image**  \n**Type: JSON**  \n**Table:\
+        \ hrm_assetallotment**  \n\nDescription: This field stores the uploaded images\
+        \ related to asset allotments in a JSON format. It can contain multiple image\
+        \ entries"
+    deallotment_upload_image:
+      type: json
+      description: The field 'deallotment_upload_image' in the 'hrm_assetallotment'
+        table is of type 'json' and is used to store information related to images
+        uploaded during the de-allotment process of assets. This may include
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'hrm_assetallotment' table records
+        the timestamp of when the asset allotment entry was created. It is of type
+        'datetime(6)', allowing for storage of date and time values with up to
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'hrm_assetallotment' table is
+        an integer that stores the unique identifier of the user who created the asset
+        allotment record. This field helps in tracking the origin of the record for
+        accountability and
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'hrm_assetallotment' table stores
+        the timestamp of the last modification made to a record, represented as a
+        datetime value with precision up to microseconds. This field helps track updates
+        and changes to asset
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'hrm_assetallotment' table is
+        an integer that stores the identifier of the user or employee who last modified
+        the asset allotment record. This field helps track changes and maintain accountability
+        for updates made
+hrm_assetcategory:
+  description: The `hrm_assetcategory` table stores information about different categories
+    of assets within a human resource management system. Each record in this table
+    represents a unique asset category, facilitating the organization and classification
+    of assets such as equipment, tools, and other resources used
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_assetcategory' table is an integer type
+        that serves as the unique identifier for each asset category. It ensures that
+        each record can be distinctly referenced within the database.
+    category:
+      type: varchar(150)
+      description: The 'category' field in the 'hrm_assetcategory' table is a VARCHAR
+        type with a maximum length of 150 characters. It stores the name or description
+        of the asset category, allowing for the classification and organization of
+        various assets within the HR
+    total_number:
+      type: int
+      description: The 'total_number' field in the 'hrm_assetcategory' table represents
+        the total count of assets belonging to a specific asset category. Its data
+        type is 'int', indicating that it stores whole numbers.
+    available_number:
+      type: int
+      description: The 'available_number' field in the 'hrm_assetcategory' table represents
+        the total count of assets available within a specific asset category. This
+        integer value is used to track inventory levels and manage asset allocation
+        effectively.
+hrm_assetdetails:
+  description: The 'hrm_assetdetails' table stores information related to assets managed
+    by the HR department. It includes details such as asset identifiers, descriptions,
+    allocation status, and the employees to whom the assets are assigned. This table
+    helps in tracking and managing company
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer type that serves as the primary key
+        for the 'hrm_assetdetails' table, uniquely identifying each record of asset
+        details within the Human Resource Management system.
+    product_name:
+      type: varchar(100)
+      description: The 'product_name' field in the 'hrm_assetdetails' table is a VARCHAR
+        type with a maximum length of 100 characters. It stores the name of the asset
+        or product associated with the employee, providing a clear identification
+        of the item in
+    configuration:
+      type: longtext
+      description: "The 'configuration' field in the 'hrm_assetdetails' table is a\
+        \ longtext type that stores detailed configuration settings or specifications\
+        \ related to the asset. This field can hold extensive text data, allowing\
+        \ for comprehensive descriptions of the asset\u2019s features, usage"
+    date_of_purchase:
+      type: date
+      description: The 'date_of_purchase' field in the 'hrm_assetdetails' table stores
+        the date on which an asset was purchased. This field is of type 'date' and
+        helps track the acquisition date for assets managed within the human resources
+        management system.
+    status:
+      type: varchar(50)
+      description: The 'status' field in the 'hrm_assetdetails' table is a VARCHAR(50)
+        data type that stores the current condition or availability of an asset. This
+        may include values such as 'active', 'inactive', 'under maintenance', or
+    current_allotment_date:
+      type: date
+      description: "**Field:** current_allotment_date  \n**Type:** date  \n**Description:**\
+        \ This field stores the date when the asset was last allotted or assigned\
+        \ to an employee, serving as a record for tracking asset allocation within\
+        \ the HRM system."
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'hrm_assetdetails' table stores the
+        precise date and time (with microsecond precision) when the asset detail record
+        was created.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'hrm_assetdetails' table stores
+        the date and time when the record was last updated. It uses a precision of
+        6 for fractional seconds, allowing for high-resolution timestamps to track
+        modifications accurately.
+    category_id:
+      type: int
+      description: The 'category_id' field in the 'hrm_assetdetails' table is an integer
+        that serves as a foreign key, linking each asset detail to its corresponding
+        category in the asset categories table. This relationship helps categorize
+        assets for better organization and management within
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `hrm_assetdetails` table is an
+        integer that stores the unique identifier of the user or system account that
+        created the asset record. This field helps track the origin of the data and
+        maintain accountability for asset
+    current_allotment_id:
+      type: int
+      description: The field 'current_allotment_id' in the 'hrm_assetdetails' table
+        is an integer that represents the unique identifier for the current allotment
+        of the asset associated with the employee. This ID links to the specific allotment
+        record, facilitating
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'hrm_assetdetails' table is an
+        integer that stores the unique identifier of the user who last modified the
+        asset details record. This field helps track changes and maintain a history
+        of modifications for accountability and auditing
+    image:
+      type: json
+      description: The 'image' field in the 'hrm_assetdetails' table is of type 'json'
+        and is used to store metadata related to asset images. This may include various
+        attributes such as image URLs, formats, dimensions, and any additional properties
+        relevant
+    product_no:
+      type: varchar(100)
+      description: The 'product_no' field in the 'hrm_assetdetails' table is a variable
+        character string with a maximum length of 100 characters. It is used to uniquely
+        identify a product associated with the asset details, allowing for efficient
+        tracking and management of
+    product_serial_no:
+      type: varchar(100)
+      description: "**Field: `product_serial_no`**  \n**Type:** `varchar(100)`  \n\
+        **Description:** This field stores the unique serial number assigned to each\
+        \ asset, helping to identify and track individual products within the HRM\
+        \ asset details. It allows"
+    purchased_from:
+      type: varchar(100)
+      description: The 'purchased_from' field in the 'hrm_assetdetails' table is a
+        varchar(100) data type that stores the name of the vendor or supplier from
+        whom the asset was purchased. This field allows up to 100 characters to capture
+    warranty_to:
+      type: date
+      description: The 'warranty_to' field in the 'hrm_assetdetails' table represents
+        the expiration date of the warranty period for an asset. It indicates the
+        date until which the asset is covered under warranty terms, helping manage
+        and track warranty coverage effectively.
+    asset_bill_doc:
+      type: json
+      description: The field `asset_bill_doc` in the `hrm_assetdetails` table is a
+        JSON data type that stores billing documents related to assets. This may include
+        invoices, payment receipts, or other financial records associated with asset
+        transactions. The use of JSON
+    warranty_doc:
+      type: json
+      description: The field 'warranty_doc' in the 'hrm_assetdetails' table is of
+        type JSON and stores structured data related to the warranty information of
+        an asset. This may include details such as warranty period, terms, coverage,
+        and any associated documentation
+    current_allotment_detail_id:
+      type: int
+      description: The field `current_allotment_detail_id` is an integer that uniquely
+        identifies the current allotment detail record associated with an asset in
+        the `hrm_assetdetails` table. It serves as a foreign key referencing the specific
+        allotment details for tracking
+    organisation_id:
+      type: int
+      description: The 'organisation_id' field in the 'hrm_assetdetails' table is
+        an integer that uniquely identifies the organization associated with a specific
+        asset detail. This field is used to link asset information to the corresponding
+        organization in the database.
+hrm_assetservicedetails:
+  description: The `hrm_assetservicedetails` table stores detailed information about
+    the services and maintenance activities performed on organizational assets within
+    the human resources management (HRM) context. It may include fields such as service
+    type, service date, asset ID, service
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_assetservicedetails' table is of type
+        'int' and serves as the unique identifier for each record in the table. It
+        ensures that each asset service detail entry can be distinctly referenced
+        and managed within
+    service_type:
+      type: varchar(50)
+      description: The 'service_type' field in the 'hrm_assetservicedetails' table
+        is a varchar(50) data type that specifies the type of service provided for
+        an asset. This field can be used to categorize services, such as maintenance,
+        repair
+    date_of_service:
+      type: date
+      description: The 'date_of_service' field in the 'hrm_assetservicedetails' table
+        stores the date on which a specific service was performed on an asset. This
+        field is of type 'date' and allows for tracking service history related to
+        human resource
+    cost_of_service:
+      type: int
+      description: The field 'cost_of_service' in the table 'hrm_assetservicedetails'
+        represents the integer value indicating the total cost incurred for a specific
+        service rendered on an asset. This value helps in tracking and managing service
+        expenses associated with asset maintenance.
+    service_remark:
+      type: longtext
+      description: The field 'service_remark' in the 'hrm_assetservicedetails' table
+        is a long text field used to store detailed remarks or notes related to the
+        service performed on an asset. This may include observations, special instructions,
+        or other relevant
+    service_from:
+      type: varchar(100)
+      description: Field 'service_from' in the 'hrm_assetservicedetails' table stores
+        a string (up to 100 characters) that specifies the source or provider of the
+        service related to an asset. It typically contains the name of the service
+        provider or
+    service_doc:
+      type: varchar(100)
+      description: The 'service_doc' field in the 'hrm_assetservicedetails' table
+        stores a document identifier or reference associated with the service performed
+        on an asset. It is a VARCHAR field with a maximum length of 100 characters.
+    created_at:
+      type: datetime(6)
+      description: "**Field:** `created_at`  \n**Type:** `datetime(6)`  \n**Description:**\
+        \ This field records the date and time when the asset service detail entry\
+        \ was created, capturing the exact moment with up to six decimal places for\
+        \ precision in milliseconds"
+    asset_details_id:
+      type: int
+      description: The field 'asset_details_id' is of type 'int' in the 'hrm_assetservicedetails'
+        table. It serves as the unique identifier for each asset service detail record,
+        linking it to specific asset-related information within the human resources
+        management
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' in the 'hrm_assetservicedetails' table
+        is an integer that indicates the unique identifier of the user who created
+        the asset service detail entry. This field is used to track ownership and
+        the user responsible for the
+hrm_companypolicy:
+  description: The `hrm_companypolicy` table stores information about the various
+    policies established by the company. Each record includes details such as the
+    policy title, description, effective date, and any relevant guidelines or regulations
+    related to employee conduct and benefits. This table is
+  fields:
+    id:
+      type: int
+      description: Field 'id' is an integer type primary key in the 'hrm_companypolicy'
+        table, uniquely identifying each company policy record.
+    policy:
+      type: varchar(1000)
+      description: Field 'policy' in the 'hrm_companypolicy' table is a variable character
+        field with a maximum length of 1000 characters. It stores the text of the
+        company's policy, outlining rules, regulations, and guidelines related to
+        employee conduct and organizational
+    file:
+      type: varchar(100)
+      description: The 'file' field in the 'hrm_companypolicy' table stores the name
+        or path of a document related to company policies, with a maximum length of
+        100 characters.
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'hrm_companypolicy' table is a tinyint(1)
+        data type that indicates the current status of a company policy. It represents
+        whether the policy is active (1) or inactive (0).
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'hrm_companypolicy' table records
+        the precise date and time when a company policy entry was created. It stores
+        values as a datetime with microsecond precision (up to 6 digits), allowing
+        for detailed timestamp
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field records the date and time when the company
+        policy was last updated. It uses the 'datetime(6)' type to capture precise
+        timestamps, including microseconds, ensuring accurate tracking of modifications.
+    CompanyPolicyTitle_id:
+      type: int
+      description: "**Field: CompanyPolicyTitle_id**  \n**Type: int**  \n**Description:**\
+        \ This field serves as a foreign key that references the unique identifier\
+        \ of the company policy title in the related policy titles table. It links\
+        \ each record in the 'hr"
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is an integer that stores the unique
+        identifier of the user who created the company policy record in the 'hrm_companypolicy'
+        table. This helps track the origin of the record for auditing and accountability
+        purposes.
+    modified_by_id:
+      type: int
+      description: "**Field**: `modified_by_id`  \n**Type**: `int`  \n**Description**:\
+        \ This field stores the unique identifier of the user or system that last\
+        \ modified the company policy record in the `hrm_companypolicy` table."
+hrm_companypolicytitle:
+  description: The `hrm_companypolicytitle` table stores the titles of company policies
+    within the human resources management system. Each entry in the table represents
+    a distinct policy title, which can be referenced in conjunction with detailed
+    policy descriptions and amendments. This table is crucial
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_companypolicytitle' table is an integer
+        that serves as the primary key, uniquely identifying each record in the table.
+    title:
+      type: varchar(150)
+      description: "**Field: title**  \n**Type: varchar(150)**  \n**Table: hrm_companypolicytitle**\
+        \  \n\nDescription: This field stores the title of a company policy, with\
+        \ a maximum length of 150 characters. It is intended to provide"
+hrm_documentupload:
+  description: The `hrm_documentupload` table stores information related to documents
+    uploaded by employees within the Human Resources Management system. This table
+    typically includes fields for the document ID, employee ID, document type, upload
+    date, file path, and any relevant metadata associated
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_documentupload' table is an integer
+        type that serves as a unique identifier for each document upload record. It
+        is typically used as the primary key to ensure each entry can be distinctly
+        referenced.
+    file:
+      type: varchar(250)
+      description: The 'file' field in the 'hrm_documentupload' table stores the filename
+        or path of the uploaded document as a string, with a maximum length of 250
+        characters.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'hrm_documentupload' table stores
+        the timestamp indicating when a document was uploaded. It is of type 'datetime(6)',
+        allowing for precise tracking of the upload time, including milliseconds.
+hrm_employeeappraisal:
+  description: The `hrm_employeeappraisal` table stores records of performance appraisals
+    for employees within an organization. It tracks evaluation details such as employee
+    ID, appraisal date, performance ratings, comments, and any development plans or
+    recommendations. This table facilitates the
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_employeeappraisal' table is an integer
+        type that serves as the unique identifier for each employee appraisal record.
+        It ensures that each entry can be distinctly referenced and managed within
+        the database.
+    date:
+      type: date
+      description: The 'date' field in the 'hrm_employeeappraisal' table represents
+        the date when the employee appraisal was conducted. It is stored in a 'date'
+        format, allowing for efficient date-related queries and analysis of appraisal
+        records.
+    document:
+      type: varchar(100)
+      description: The 'document' field in the 'hrm_employeeappraisal' table is of
+        type 'varchar(100)' and stores the filename or description of the appraisal-related
+        document associated with an employee's performance evaluation. It allows for
+        a maximum length of
+    remark:
+      type: longtext
+      description: Field 'remark' in the 'hrm_employeeappraisal' table is a long text
+        field designed to store detailed comments or observations related to the employee's
+        appraisal. This can include feedback from supervisors, notes on performance,
+        or other relevant remarks that provide
+    score:
+      type: double
+      description: The 'score' field in the 'hrm_employeeappraisal' table is of type
+        'double' and represents the performance evaluation score assigned to an employee
+        during their appraisal process. This score reflects the employee's performance
+        metrics and can be used for assessments
+    created_at:
+      type: datetime(6)
+      description: "**Field:** `created_at`  \n**Type:** `datetime(6)`  \n**Description:**\
+        \ This field stores the date and time when the employee appraisal record was\
+        \ created, including fractional seconds for precision."
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'hrm_employeeappraisal' table
+        is an integer that stores the unique identifier of the user or system entity
+        that created the employee appraisal record.
+    employee_id:
+      type: int
+      description: "**Field Name:** employee_id  \n**Type:** int  \n**Description:**\
+        \ Unique identifier for each employee participating in the appraisal process.\
+        \ This field links the appraisal record to the corresponding employee in the\
+        \ human resources management system."
+    reviewed_by_id:
+      type: int
+      description: The field `reviewed_by_id` in the table `hrm_employeeappraisal`
+        is an integer that stores the unique identifier of the employee (or reviewer)
+        who conducted the appraisal review. This field links to the employee's record
+        in the HR
+hrm_employeeautoleavetransaction:
+  description: The `hrm_employeeautoleavetransaction` table stores records of automatic
+    leave transactions for employees within the Human Resources Management system.
+    It includes details such as employee ID, leave type, transaction date, duration,
+    reason for leave, and any
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_employeeautoleavetransaction' table
+        is an integer that serves as the unique identifier for each record in the
+        table. It is used to distinguish individual leave transaction entries associated
+        with employees.
+    date:
+      type: date
+      description: The 'date' field in the 'hrm_employeeautoleavetransaction' table
+        stores the specific date when an automatic leave transaction is recorded for
+        an employee. It is of type 'date', allowing for the representation of calendar
+        dates without time
+    leave_type:
+      type: varchar(25)
+      description: The 'leave_type' field in the 'hrm_employeeautoleavetransaction'
+        table is a varchar(25) data type that specifies the category of leave requested
+        or taken by an employee. This field can hold descriptive values such as "
+    leave_count:
+      type: double
+      description: The field 'leave_count' in the 'hrm_employeeautoleavetransaction'
+        table represents the total number of leave days allocated to an employee,
+        stored as a double-precision floating-point number. This value may include
+        fractional leave days to
+    previous_leave:
+      type: double
+      description: The 'previous_leave' field in the 'hrm_employeeautoleavetransaction'
+        table represents the total amount of leave (in hours or days) that an employee
+        had remaining prior to the current leave transaction. This field is of type
+        '
+    new_leave:
+      type: double
+      description: The field **new_leave** in the **hrm_employeeautoleavetransaction**
+        table represents the amount of leave (in days) that is automatically allocated
+        to an employee in the Human Resource Management system. This field is of type
+        **double
+    employee_id:
+      type: int
+      description: The field `employee_id` is of type `int` in the `hrm_employeeautoleavetransaction`
+        table. It uniquely identifies each employee associated with a leave transaction,
+        serving as a foreign key that links to the employee's record
+    description:
+      type: longtext
+      description: The 'description' field in the 'hrm_employeeautoleavetransaction'
+        table is of type 'longtext' and is used to store detailed information or notes
+        regarding the auto leave transaction for an employee. This may include reasons
+        for the
+    transaction_type:
+      type: varchar(6)
+      description: The `transaction_type` field in the `hrm_employeeautoleavetransaction`
+        table is a varchar(6) data type that stores the type of leave transaction
+        being recorded. This field can be used to specify different categories of
+        leave,
+hrm_holidaylist:
+  description: The `hrm_holidaylist` table stores information about designated holidays
+    for an organization. It includes details such as holiday dates, names, and descriptions
+    to facilitate planning and scheduling within the Human Resources Management system.
+    The table helps ensure that employees are aware
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_holidaylist' table is an integer that
+        serves as the unique identifier for each holiday entry in the list. It is
+        used to differentiate between individual records and is typically assigned
+        automatically.
+    holiday:
+      type: varchar(125)
+      description: The 'holiday' field in the 'hrm_holidaylist' table is a variable
+        character field with a maximum length of 125 characters. It is used to store
+        the name or description of a holiday observed by the organization.
+    leave_type:
+      type: varchar(20)
+      description: The 'leave_type' field in the 'hrm_holidaylist' table is a variable
+        character field with a maximum length of 20 characters. It is used to specify
+        the category of leave, such as 'sick', 'vacation',
+    start_date:
+      type: date
+      description: The 'start_date' field in the 'hrm_holidaylist' table represents
+        the date on which a holiday starts. It is of type 'date' and is used to track
+        the beginning of each holiday period in the human resources management system.
+    end_date:
+      type: date
+      description: "**Field: end_date**  \n**Table: hrm_holidaylist**  \nDescription:\
+        \ This field stores the end date of a holiday in the holiday list, indicating\
+        \ the date when the holiday period concludes. It is of type 'date' and"
+hrm_leavepolicy:
+  description: The `hrm_leavepolicy` table stores information about the leave policies
+    implemented by the human resources management system. It includes details such
+    as leave types, eligibility criteria, leave duration limits, and any specific
+    rules or notes associated with each policy. This table
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer that serves as the unique identifier
+        for each record in the 'hrm_leavepolicy' table. It ensures the distinctness
+        of each leave policy entry within the database.
+    use_it_or_lose_it:
+      type: tinyint(1)
+      description: The field 'use_it_or_lose_it' in the 'hrm_leavepolicy' table is
+        a tiny integer (1) that indicates whether unused leave benefits will expire
+        at the end of a defined period. A value of '1' signifies that
+    carry_forward_limit:
+      type: decimal(5,2)
+      description: The field **carry_forward_limit** in the **hrm_leavepolicy** table
+        is a decimal data type with a precision of 5 and a scale of 2. It represents
+        the maximum number of leave days that can be carried forward to the next
+    leave_type_id:
+      type: int
+      description: "**Field: leave_type_id**  \n**Type: int**  \n**Description:**\
+        \ This field stores the unique identifier for the type of leave associated\
+        \ with the leave policy in the HRM system. It links to a specific leave type,\
+        \ enabling differentiation between"
+hrm_leavereport:
+  description: The `hrm_leavereport` table stores information about employee leave
+    requests and their corresponding statuses within the human resources management
+    system. It includes details such as employee ID, leave type, duration, start and
+    end dates, approval status, and any
+  fields:
+    id:
+      type: int
+      description: "**Field: id**  \n**Type: int**  \n**Description:** A unique identifier\
+        \ for each leave report entry in the `hrm_leavereport` table. This field serves\
+        \ as the primary key, ensuring that each record can be distinctly"
+    leave_taken:
+      type: double
+      description: The 'leave_taken' field in the 'hrm_leavereport' table represents
+        the total amount of leave taken by an employee, measured in days. This value
+        is stored as a double data type, allowing for precise decimal representation
+        to accommodate partial
+    leave_carry_forwarded:
+      type: double
+      description: The field `leave_carry_forwarded` in the `hrm_leavereport` table
+        stores a double value representing the number of leave days that have been
+        carried forward from previous periods for the employee. This may indicate
+        unused leave days that are
+    date:
+      type: date
+      description: The 'date' field in the 'hrm_leavereport' table stores the specific
+        date on which the leave was taken or reported. It is of type 'date', allowing
+        for the entry of calendar dates in a standardized format, facilitating easy
+    employee_id:
+      type: int
+      description: "**Field:** `employee_id`  \n**Type:** `int`  \n**Description:**\
+        \ Unique identifier for each employee in the HRM leave report. This integer\
+        \ value references the corresponding employee's record in the employee database,\
+        \ allowing for tracking of leave reports"
+hrm_leaverequest:
+  description: The `hrm_leaverequest` table stores records of employee leave requests
+    within the human resources management system. It tracks details such as the employee
+    ID, leave type, start and end dates, status of the request, and any associated
+    notes or
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each leave request in the 'hrm_leaverequest' table. It ensures that each
+        record can be distinctly referenced and managed within the database.
+    start_date:
+      type: date
+      description: The field 'start_date' in the 'hrm_leaverequest' table represents
+        the date on which a leave request begins. It is of type 'date' and is used
+        to track the commencement of the leave period for an employee.
+    end_date:
+      type: date
+      description: "**Field:** `end_date`  \n**Type:** `date`  \n**Table:** `hrm_leaverequest`\
+        \  \n**Description:** Represents the date on which the leave request concludes.\
+        \ It indicates the last day of the leave period for"
+    is_half_day:
+      type: tinyint(1)
+      description: The field 'is_half_day' in the 'hrm_leaverequest' table indicates
+        whether the leave requested is for a half-day. It accepts a tiny integer value,
+        where typically '1' represents a half-day leave and '0'
+    status:
+      type: varchar(10)
+      description: The 'status' field in the 'hrm_leaverequest' table is a varchar
+        data type with a maximum length of 10 characters. It indicates the current
+        status of a leave request, such as 'approved', 'pending', or '
+    reason:
+      type: longtext
+      description: The 'reason' field in the 'hrm_leaverequest' table is a LongText
+        data type that stores a detailed explanation provided by an employee for their
+        leave request. This field allows for extensive text input, enabling employees
+        to articulate the circumstances
+    comments:
+      type: longtext
+      description: The 'comments' field in the 'hrm_leaverequest' table is a longtext
+        type that stores additional remarks or notes provided by employees regarding
+        their leave requests. This field allows for a detailed explanation or context
+        pertaining to the leave, supporting
+    approval_date:
+      type: datetime(6)
+      description: "**Field:** `approval_date`  \n**Type:** `datetime(6)`  \n**Description:**\
+        \ This field records the date and time when a leave request is approved. The\
+        \ precision of 6 allows for recording microseconds, providing detailed timestamping\
+        \ of"
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'hrm_leaverequest' table stores the
+        timestamp of when the leave request was created. It is of type 'datetime(6)',
+        which allows for precision up to six fractional seconds.
+    approved_by_id:
+      type: int
+      description: The 'approved_by_id' field in the 'hrm_leaverequest' table is of
+        type 'int' and holds the unique identifier of the user who approved the leave
+        request. This field links to the user table, facilitating tracking of approvals
+    created_by_id:
+      type: int
+      description: "**Field:** `created_by_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier of the user who created the leave\
+        \ request. It is used to trace the origin of the request and maintain a record\
+        \ of the"
+    employee_id:
+      type: int
+      description: The 'employee_id' field in the 'hrm_leaverequest' table is an integer
+        that uniquely identifies an employee associated with a leave request. This
+        field serves as a reference to the employee making the leave request, linking
+        it to their specific
+    leave_type_id:
+      type: int
+      description: "**Field:** leave_type_id  \n**Type:** int  \n**Description:**\
+        \ This field stores the unique identifier for the type of leave requested\
+        \ by an employee in the HRM Leave Request table. It references the specific\
+        \ leave type (e.g., vacation,"
+    duration_type:
+      type: varchar(20)
+      description: The 'duration_type' field in the 'hrm_leaverequest' table is a
+        varchar type with a maximum length of 20 characters. It is used to specify
+        the type of duration for a leave request, such as "full day,"
+    adjusted_leave:
+      type: double
+      description: The field 'adjusted_leave' (type 'double') in the 'hrm_leaverequest'
+        table represents the calculated number of leave days adjusted for various
+        factors, such as prior leave usage or policy changes. This value helps in
+        determining the
+    non_adjusted_leave:
+      type: double
+      description: The field 'non_adjusted_leave' in the 'hrm_leaverequest' table
+        represents the total amount of leave taken by an employee that has not been
+        adjusted against their leave balance. This value is stored as a double to
+        accommodate fractional leave
+    attachment:
+      type: varchar(100)
+      description: Field 'attachment' in the 'hrm_leaverequest' table is a VARCHAR(100)
+        type that stores the filename or path of any file attachments related to a
+        leave request. It can hold up to 100 characters.
+hrm_leavetransaction:
+  description: The `hrm_leavetransaction` table records the details of employee leave
+    transactions within the Human Resource Management system. It tracks leave requests,
+    approvals, and adjustments, including fields such as employee ID, leave type,
+    start and end dates,
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_leavetransaction' table is an integer
+        that serves as the unique identifier for each leave transaction record. It
+        ensures that each entry can be distinctly referenced within the database.
+    leave:
+      type: double
+      description: The 'leave' field in the 'hrm_leavetransaction' table represents
+        the amount of leave (in days or hours) associated with a specific leave transaction.
+        It is stored as a double data type to accommodate decimal values, allowing
+        for
+    status:
+      type: varchar(6)
+      description: The 'status' field in the 'hrm_leavetransaction' table is a varchar
+        type with a maximum length of 6 characters. It stores the current status of
+        a leave transaction, indicating whether it is pending, approved, rejected,
+    date:
+      type: date
+      description: The 'date' field in the 'hrm_leavetransaction' table stores the
+        specific date on which a leave transaction occurred. This field is of type
+        'date', ensuring that only valid date entries are accepted for recording leave
+        activities.
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'hrm_leavetransaction' table is of type
+        'longtext' and is used to store additional comments or notes related to a
+        leave transaction. This field can accommodate large amounts of text, providing
+        users
+    employee_id:
+      type: int
+      description: The field `employee_id` is an integer representing the unique identifier
+        for each employee involved in a leave transaction within the `hrm_leavetransaction`
+        table. It associates the leave transaction record with a specific employee
+        in the human resources management system
+    casual:
+      type: double
+      description: Field 'casual' in the 'hrm_leavetransaction' table represents the
+        number of casual leave days taken by an employee. The value is stored as a
+        double, allowing for decimal entries to accommodate partial days.
+    compensatory:
+      type: double
+      description: The 'compensatory' field in the 'hrm_leavetransaction' table represents
+        a double-precision floating-point value that indicates the amount of compensatory
+        leave (in hours/days) earned or taken by an employee as part of
+    earned:
+      type: double
+      description: "**Field Name:** earned  \n**Type:** double  \n**Table:** hrm_leavetransaction\
+        \  \n**Description:** Represents the number of leave hours or days earned\
+        \ by an employee within a specific period or as per leave policy. The value\
+        \ is"
+    restricted:
+      type: double
+      description: The 'restricted' field in the 'hrm_leavetransaction' table is of
+        type 'double' and is used to store numerical values representing restricted
+        leave balances or limits for employees. This field may indicate the amount
+        of leave that cannot be
+    sick:
+      type: double
+      description: "**Field: sick**  \n**Type: double**  \n**Table: hrm_leavetransaction**\
+        \  \n\nThis field represents the number of sick leave days taken by an employee,\
+        \ expressed as a decimal value. It allows for precise tracking of"
+    weekend_work:
+      type: double
+      description: "**Field Description:**\n\n**Field Name:** weekend_work  \n**Type:**\
+        \ double  \n**Table:** hrm_leavetransaction  \n\n**Description:** The 'weekend_work'\
+        \ field represents the number of hours worked by an employee during weekends."
+    work_from_home:
+      type: double
+      description: The field 'work_from_home' in the 'hrm_leavetransaction' table
+        represents the number of hours an employee is permitted to work from home
+        during a specific leave transaction. It is stored as a double to accommodate
+        decimal values, allowing
+    leaverequest_id:
+      type: int
+      description: The field 'leaverequest_id' of type 'int' in the table 'hrm_leavetransaction'
+        serves as a unique identifier for each leave request transaction recorded
+        in the HR management system. It links each transaction to its corresponding
+hrm_leavetype:
+  description: The 'hrm_leavetype' table stores information about different types
+    of leave that employees can request within the organization. It includes details
+    such as the leave type name, description, and any applicable policies or rules
+    associated with each leave category, helping to
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_leavetype' table is an integer that
+        serves as the primary key, uniquely identifying each leave type record in
+        the database.
+    name:
+      type: varchar(50)
+      description: The 'name' field in the 'hrm_leavetype' table is of type 'varchar(50)'
+        and stores the name of the leave type. It allows for a maximum of 50 characters
+        and is used to identify and describe various categories
+    description:
+      type: longtext
+      description: The 'description' field in the 'hrm_leavetype' table is a longtext
+        field that provides a detailed explanation of the leave type. It is used to
+        describe the purpose, policies, and any specific conditions associated with
+        the leave type,
+    available_days:
+      type: int unsigned
+      description: The `available_days` field in the `hrm_leavetype` table represents
+        the number of leave days that are available for a specific leave type. It
+        is stored as an unsigned integer, ensuring that the value is non-negative.
+    color_code:
+      type: varchar(50)
+      description: The 'color_code' field in the 'hrm_leavetype' table is a VARCHAR(50)
+        type that stores a hexadecimal or textual representation of a color associated
+        with a specific leave type. This field is used to visually distinguish different
+        leave categories
+hrm_offerletter:
+  description: The `hrm_offerletter` table stores information related to job offer
+    letters issued to candidates within the Human Resources Management (HRM) system.
+    It typically includes fields for candidate details, position offered, salary,
+    benefits, offer date, and any special
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_offerletter' table is an integer type
+        that serves as the unique identifier for each offer letter record. This primary
+        key ensures that each entry is distinct and can be referenced unambiguously
+        within the database.
+    refrence_number:
+      type: varchar(50)
+      description: The 'reference_number' field in the 'hrm_offerletter' table is
+        a variable character string (varchar) with a maximum length of 50 characters.
+        It is used to uniquely identify an offer letter associated with a job candidate,
+        providing a reference
+    joining_date:
+      type: date
+      description: The 'joining_date' field stores the date on which an employee is
+        scheduled to commence their employment, as specified in the offer letter.
+        This field is of type 'date' and is used to track the official start date
+        for new hires.
+    ctc:
+      type: int
+      description: The 'ctc' field in the 'hrm_offerletter' table represents the "Cost
+        to Company" as an integer value. It indicates the total annual compensation
+        package offered to an employee, including all benefits and allowances.
+    salary_breakup:
+      type: json
+      description: '**Field: salary_breakup**
+
+
+        *Type: JSON*
+
+
+        *Description: This field stores a structured JSON object containing detailed
+        components of the salary package offered to an employee. It may include elements
+        such as base salary, bonuses, allowances, and deductions,'
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'hrm_offerletter' table stores the
+        date and time when the offer letter record was created. It has a precision
+        of six decimal places for fractional seconds, allowing for detailed timestamp
+        tracking.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'hrm_offerletter' table stores the
+        date and time when the offer letter record was last updated. It is of type
+        'datetime(6)', allowing for precision to the microsecond, and helps track
+        changes
+    candidate_id:
+      type: int
+      description: The `candidate_id` field in the `hrm_offerletter` table is an integer
+        that uniquely identifies the candidate associated with the offer letter. It
+        serves as a foreign key linking to the corresponding candidate record in the
+        candidate database.
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' in the 'hrm_offerletter' table is an
+        integer that stores the unique identifier of the user or employee who created
+        the offer letter record. This field is used to track the creator of the record
+        for auditing and
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'hrm_offerletter' table is an
+        integer that records the unique identifier of the user who last modified the
+        offer letter. This field helps track changes and accountability for updates
+        made to the document.
+    salary_deductions:
+      type: json
+      description: The field `salary_deductions` in the `hrm_offerletter` table is
+        of type JSON, designed to store structured information regarding various deductions
+        from an employee's salary. This may include items such as tax withholdings,
+        benefits contributions,
+    offer_letter_date:
+      type: date
+      description: The field 'offer_letter_date' in the 'hrm_offerletter' table stores
+        the date when the offer letter was issued to a candidate. This date is crucial
+        for tracking the timeline of the hiring process.
+hrm_resignation:
+  description: The 'hrm_resignation' table stores records of employee resignations
+    within an organization. It typically includes fields such as employee ID, resignation
+    date, reason for resignation, notice period, and any related comments. This table
+    helps in tracking the turnover of
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'hrm_resignation' table is an integer that
+        serves as the unique identifier for each resignation record. It is used to
+        differentiate between individual entries in the table, ensuring data integrity
+        and facilitating efficient data retrieval.
+    email:
+      type: varchar(254)
+      description: "**Field Name:** email  \n**Table Name:** hrm_resignation  \n**Description:**\
+        \ This field stores the email address of the employee submitting their resignation.\
+        \ It is a variable character field with a maximum length of 254 characters,\
+        \ allowing for standard email"
+    reason:
+      type: longtext
+      description: The 'reason' field in the 'hrm_resignation' table is a longtext
+        data type that captures the detailed explanation or justification provided
+        by an employee for their resignation. This field allows for extensive input,
+        accommodating various lengths of text to ensure a
+    date_of_resignation:
+      type: date
+      description: The 'date_of_resignation' field in the 'hrm_resignation' table
+        stores the date on which an employee formally resigns from their position.
+        This field is of type 'date' and is used to track the resignation timing for
+        HR records
+    date_of_leaving:
+      type: date
+      description: "**Field:** `date_of_leaving`  \n**Type:** `date`  \n**Description:**\
+        \ This field records the official date on which an employee's resignation\
+        \ becomes effective, marking their last working day with the organization."
+    handover:
+      type: json
+      description: The 'handover' field in the 'hrm_resignation' table is a JSON data
+        type that stores detailed information regarding the handover process during
+        an employee's resignation. This may include items such as tasks to be transitioned,
+        knowledge transfer notes,
+    asset_submission:
+      type: tinyint(1)
+      description: The field 'asset_submission' in the 'hrm_resignation' table is
+        a tinyint (1) type that indicates whether the employee has submitted all required
+        company assets upon resignation. A value of '1' typically denotes that assets
+        have been submitted
+    full_and_final:
+      type: json
+      description: The field 'full_and_final' in the 'hrm_resignation' table is of
+        type JSON and stores detailed information related to the full and final settlement
+        for an employee's resignation. This may include various components such as
+        pending dues, deductions, and
+    status:
+      type: int
+      description: The 'status' field in the 'hrm_resignation' table is an integer
+        that indicates the current state of the resignation process. Possible values
+        may represent different stages, such as submitted, approved, or finalized,
+        allowing for tracking and management of resignation
+    documents:
+      type: json
+      description: The 'documents' field in the 'hrm_resignation' table is a JSON
+        type field that stores structured data related to the resignation process,
+        such as uploaded documents, supporting files, or additional information relevant
+        to the employee's resignation. This allows for
+    uuid:
+      type: varchar(100)
+      description: The 'uuid' field in the 'hrm_resignation' table is a varchar(100)
+        that stores a unique identifier for each resignation record. This identifier
+        helps to distinctly recognize and manage individual entries in the database.
+    employee_id:
+      type: int
+      description: "**Field: employee_id**  \n**Type: int**  \n**Description:** A\
+        \ unique identifier for each employee in the HRM system, used to associate\
+        \ resignations with specific employees in the 'hrm_resignation' table."
+    networks:
+      type: json
+      description: The 'networks' field in the 'hrm_resignation' table is a JSON data
+        type used to store the affiliations or social connections of an employee who
+        has resigned. This field may contain various network-related information such
+        as professional contacts, group memberships
+    is_all_due_clear:
+      type: tinyint(1)
+      description: The field 'is_all_due_clear' in the 'hrm_resignation' table is
+        a tinyint(1) data type that indicates whether all outstanding dues related
+        to an employee have been cleared prior to their resignation. A value of '1'
+    is_all_due_clear_verified_at:
+      type: datetime(6)
+      description: The field `is_all_due_clear_verified_at` in the `hrm_resignation`
+        table stores the date and time (with up to microsecond precision) when it
+        was verified that all dues related to the employee's resignation are cleared.
+        This timestamp
+    is_all_due_clear_verified_by_id:
+      type: int
+      description: The field 'is_all_due_clear_verified_by_id' in the 'hrm_resignation'
+        table is an integer that stores the identifier (ID) of the user who verified
+        that all dues related to the resignation have been cleared. This field helps
+        track

@@ -1,0 +1,1471 @@
+leads_bankdetails:
+  description: The `leads_bankdetails` table stores banking information associated
+    with potential customers (leads). It includes fields for lead identification,
+    bank account details, and related metadata to facilitate financial transactions
+    or verifications linked to the leads. This table helps manage and
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_bankdetails' table is an integer that
+        serves as the unique identifier for each record in the table. It ensures that
+        each entry can be uniquely referenced and accessed.
+    bank_name:
+      type: varchar(100)
+      description: "**Field: bank_name**  \n**Type:** varchar(100)  \n**Description:**\
+        \ This field stores the name of the bank associated with the lead's bank details,\
+        \ allowing a maximum of 100 characters."
+    bank_address:
+      type: varchar(100)
+      description: The 'bank_address' field in the 'leads_bankdetails' table stores
+        the address of the bank associated with a lead. It is a variable character
+        field with a maximum length of 100 characters.
+    bank_contact:
+      type: varchar(100)
+      description: The 'bank_contact' field in the 'leads_bankdetails' table is a
+        varchar(100) type that stores the contact name or representative associated
+        with the bank for each lead. This field is intended to facilitate direct communication
+        with bank officials regarding the
+    bank_ifsc:
+      type: varchar(100)
+      description: The 'bank_ifsc' field in the 'leads_bankdetails' table stores the
+        Indian Financial System Code (IFSC) for a bank account. This code is a unique
+        identifier used for electronic fund transfers, ensuring accurate routing of
+        payments to the
+    bank_email:
+      type: varchar(100)
+      description: The 'bank_email' field in the 'leads_bankdetails' table is a varchar
+        data type with a maximum length of 100 characters. It is designed to store
+        the email address associated with the bank details of a lead. This email is
+        used
+    bank_contact_list:
+      type: json
+      description: The `bank_contact_list` field in the `leads_bankdetails` table
+        is of type JSON and is used to store a structured collection of bank contact
+        information. This may include details such as bank names, contact numbers,
+        addresses, and any relevant
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'leads_bankdetails' table is a tiny
+        integer (1) that indicates the active status of the bank detail record. A
+        value of 1 typically signifies that the record is active, while a value of
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'leads_bankdetails' table stores
+        the timestamp of when the record was created, with a precision of up to six
+        decimal places for fractional seconds.
+    modified_at:
+      type: datetime(6)
+      description: The `modified_at` field in the `leads_bankdetails` table stores
+        the timestamp of the last update made to the bank details record. It is of
+        type `datetime(6)`, allowing for precise tracking of modifications down to
+        the microsecond
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'leads_bankdetails' table is an
+        integer that stores the unique identifier of the user or system responsible
+        for creating the record. This field is typically used for tracking purposes
+        and to maintain a record of who
+    modified_by_id:
+      type: int
+      description: The `modified_by_id` field in the `leads_bankdetails` table is
+        an integer that stores the unique identifier of the user who last modified
+        the bank details associated with a lead. This field helps track changes and
+        maintain a record of user actions
+leads_callingremarks:
+  description: The `leads_callingremarks` table stores comments and observations made
+    by representatives during calls with potential leads. Each entry typically includes
+    details such as the lead's ID, the representative's ID, the timestamp of the call,
+    and the remarks or notes
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_callingremarks' table is an integer
+        that serves as the primary identifier for each record. It uniquely distinguishes
+        each entry within the table, ensuring that all calling remarks can be referenced
+        and managed individually.
+    calling_status:
+      type: varchar(30)
+      description: The 'calling_status' field in the 'leads_callingremarks' table
+        stores the status of a call regarding a lead, represented as a string with
+        a maximum length of 30 characters. This status may indicate outcomes such
+        as "completed," "
+    remark:
+      type: varchar(300)
+      description: The 'remark' field in the 'leads_callingremarks' table is a VARCHAR
+        type field with a maximum length of 300 characters. It is used to store textual
+        comments or notes related to a specific calling remark associated with a lead,
+        providing
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'leads_callingremarks' table records
+        the date and time when the calling remark was created. It is stored as a datetime
+        with precision up to microseconds (6 decimal places).
+    created_by_id:
+      type: int
+      description: '`created_by_id`: An integer field that stores the unique identifier
+        of the user who created the calling remark in the `leads_callingremarks` table.
+        This field helps track the origin of each remark for reference and accountability.'
+    company_id:
+      type: int
+      description: The field 'company_id' is an integer that uniquely identifies the
+        company associated with a specific lead in the 'leads_callingremarks' table.
+        It serves as a foreign key linking the lead to the corresponding company in
+        the companies table.
+    is_lead_created:
+      type: tinyint(1)
+      description: The field 'is_lead_created' of type 'tinyint(1)' in the 'leads_callingremarks'
+        table indicates whether a lead has been created. It typically accepts values
+        of 0 (false) or 1 (true),
+    clients_id:
+      type: int
+      description: The `clients_id` field in the `leads_callingremarks` table is an
+        integer that uniquely identifies the client associated with a specific calling
+        remark. This field serves as a foreign key to link remarks to the corresponding
+        client record in the clients table
+    manufacturer_id:
+      type: int
+      description: "**Field:** `manufacturer_id`  \n**Type:** `int`  \n**Description:**\
+        \ A unique identifier that links a calling remark record to a specific manufacturer.\
+        \ This integer value references the manufacturer's record in the relevant\
+        \ manufacturers table, facilitating the association of remarks"
+    type_of_calling:
+      type: varchar(30)
+      description: The 'type_of_calling' field in the 'leads_callingremarks' table
+        is a variable character string (varchar) with a maximum length of 30 characters.
+        It is used to categorize the nature or purpose of the call made to a
+    old_company_id:
+      type: int
+      description: "**Field Name:** old_company_id  \n**Type:** int  \n**Description:**\
+        \ This field stores the identifier of the previous company associated with\
+        \ a lead. It is used for tracking changes in company affiliation during the\
+        \ lead management process."
+leads_client:
+  description: The `leads_client` table stores information about potential clients
+    or leads generated through marketing efforts. It includes fields for capturing
+    essential details such as client names, contact information, lead sources, and
+    status of engagement. This table helps track and manage prospective clients
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_client' table is an integer that serves
+        as the unique identifier for each client record. It ensures the distinct identification
+        of each lead within the database.
+    first_name:
+      type: varchar(30)
+      description: The field 'first_name' in the 'leads_client' table stores the first
+        name of the client as a variable character string, with a maximum length of
+        30 characters.
+    last_name:
+      type: varchar(30)
+      description: "**Field Name:** last_name  \n**Type:** varchar(30)  \n**Table:**\
+        \ leads_client  \n\n**Description:** This field stores the last name of the\
+        \ client, limited to a maximum of 30 characters. It's used to identify and\
+        \ distinguish clients"
+    email_primary:
+      type: varchar(254)
+      description: The 'email_primary' field in the 'leads_client' table stores the
+        primary email address of a client, allowing up to 254 characters. This field
+        is used for communication and account-related notifications.
+    email_secondary:
+      type: varchar(254)
+      description: "**Field: email_secondary**  \n**Type:** varchar(254)  \n**Description:**\
+        \ This field stores an optional secondary email address for the client. It\
+        \ allows for up to 254 characters."
+    phone_primary:
+      type: varchar(16)
+      description: The field 'phone_primary' in the 'leads_client' table stores the
+        primary telephone number of the client as a string with a maximum length of
+        16 characters. It is used to uniquely identify the client's main contact number
+        for communication purposes.
+    phone_secondary:
+      type: varchar(16)
+      description: The 'phone_secondary' field in the 'leads_client' table stores
+        an optional secondary phone number for the client, represented as a string
+        with a maximum length of 16 characters.
+    designation:
+      type: varchar(30)
+      description: The 'designation' field in the 'leads_client' table is a VARCHAR
+        data type with a maximum length of 30 characters. It is used to store the
+        job title or professional designation of the client associated with the lead.
+    is_active:
+      type: int
+      description: The 'is_active' field in the 'leads_client' table is an integer
+        that indicates the active status of a client. A value of 1 typically represents
+        that the client is active, while a value of 0 signifies that the client is
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'leads_client' table stores the timestamp
+        indicating when a client lead was created. It is of type 'datetime(6)', allowing
+        for precise date and time values with up to 6 digits of fractional seconds
+    modified_at:
+      type: datetime(6)
+      description: "**Field Name:** modified_at  \n**Type:** datetime(6)  \n**Description:**\
+        \ This field records the date and time when a lead's information was last\
+        \ modified. The precision of six decimal places allows for capturing changes\
+        \ down to microseconds."
+    is_primary:
+      type: tinyint(1)
+      description: The field 'is_primary' in the 'leads_client' table is a boolean
+        indicator represented as a tiny integer (1 for true, 0 for false). It signifies
+        whether the client is the primary contact for the lead.
+    company_id:
+      type: int
+      description: "**Field:** `company_id`  \n**Type:** `int`  \n**Description:**\
+        \ A unique identifier for the company associated with the client lead. This\
+        \ field links the lead to a specific company in the database, facilitating\
+        \ relationships and data integrity between clients"
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'leads_client' table is an integer
+        that identifies the user or system account responsible for creating the lead
+        entry. This field helps track the origin of the record and maintain accountability
+        within the leads management process.
+    modified_by_id:
+      type: int
+      description: 'Field ''modified_by_id'' (Type: int) in the ''leads_client'' table
+        stores the unique identifier of the user or system account that last modified
+        the lead record. This field helps track changes and maintain an audit trail
+        for accountability and record'
+    old_company_id:
+      type: int
+      description: The field `old_company_id` is an integer that represents the identifier
+        of a previously associated company for a lead in the `leads_client` table.
+        This field is used to track the legacy company association prior to any updates
+        or changes to the client
+leads_company:
+  description: The `leads_company` table stores information about companies that are
+    potential leads for business opportunities. It includes details such as the company
+    name, contact information, industry type, and lead status. This table helps in
+    managing and tracking interactions with potential clients to
+  fields:
+    id:
+      type: int
+      description: "**Field**: `id`  \n**Type**: `int`  \n**Description**: A unique\
+        \ identifier for each record in the `leads_company` table. This field is used\
+        \ to distinguish between different lead entries and serves as the primary"
+    name:
+      type: varchar(150)
+      description: The 'name' field in the 'leads_company' table is a variable character
+        field that stores the name of the company associated with a lead. It can hold
+        up to 150 characters.
+    email_primary:
+      type: varchar(254)
+      description: The 'email_primary' field in the 'leads_company' table stores the
+        primary email address of a company lead. It is a variable character string
+        with a maximum length of 254 characters, ensuring sufficient space for commonly
+        used email formats.
+    email_secondary:
+      type: varchar(254)
+      description: The field 'email_secondary' in the 'leads_company' table is a varchar
+        type with a maximum length of 254 characters. It is used to store an alternate
+        email address for contacts associated with the company, allowing for additional
+        communication options.
+    phone_primary:
+      type: varchar(16)
+      description: The field 'phone_primary' in the 'leads_company' table is a variable
+        character string with a maximum length of 16 characters. It stores the primary
+        phone number associated with a lead's company for contact purposes.
+    phone_secondary:
+      type: varchar(16)
+      description: Field 'phone_secondary' in the 'leads_company' table stores an
+        additional contact phone number for a company lead. It is a variable character
+        string with a maximum length of 16 characters.
+    website:
+      type: varchar(30)
+      description: "**Field:** `website`  \n**Type:** `varchar(30)`  \n**Description:**\
+        \ This field stores the website URL of the company associated with the lead,\
+        \ with a maximum length of 30 characters. It is used to identify the company's\
+        \ online"
+    gstin:
+      type: varchar(16)
+      description: The 'gstin' field in the 'leads_company' table stores the Goods
+        and Services Tax Identification Number (GSTIN) of the company. It is a variable
+        character string with a maximum length of 16 characters, used to uniquely
+        identify businesses
+    pan:
+      type: varchar(16)
+      description: The 'pan' field in the 'leads_company' table is a VARCHAR(16) data
+        type that stores the Permanent Account Number (PAN) of a company. This unique
+        identifier is used for tax purposes in India. It may contain alphanumeric
+    address:
+      type: longtext
+      description: The 'address' field in the 'leads_company' table is a longtext
+        data type that stores the complete address details for each company lead.
+        This field can accommodate large amounts of text, allowing for detailed address
+        information, including street, city,
+    area:
+      type: varchar(50)
+      description: The 'area' field in the 'leads_company' table is a varchar(50)
+        data type that stores the specific geographic or operational area associated
+        with a company lead. This field allows for the input of alphanumeric characters
+        up to 50 characters
+    pincode:
+      type: int
+      description: The 'pincode' field in the 'leads_company' table stores the postal
+        code associated with the company's address. It is represented as an integer
+        and is used for geographic location identification and mailing purposes.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'leads_company' table stores the
+        exact timestamp when a record was created. It is of type 'datetime(6)', allowing
+        for precision up to microseconds.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'leads_company' table stores the
+        timestamp of the last modification made to the record. It is of type 'datetime(6)',
+        which allows for precision up to 6 microseconds. This field helps track
+    is_active:
+      type: int
+      description: The `is_active` field in the `leads_company` table is an integer
+        that indicates the active status of a lead. A value of 1 typically signifies
+        that the lead is active, while a value of 0 indicates that it is inactive
+    city_id:
+      type: int
+      description: The 'city_id' field in the 'leads_company' table is an integer
+        that uniquely identifies the city associated with a lead's company. This field
+        serves as a foreign key, linking to a cities table to provide geographical
+        context for the lead.
+    created_by_id:
+      type: int
+      description: The field `created_by_id` in the `leads_company` table is an integer
+        that stores the identifier of the user or system that created the lead entry.
+        This field helps track the origin of the lead and associates it with the responsible
+        creator for
+    lead_source_id:
+      type: int
+      description: "**Field:** `lead_source_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier for the source of the lead, linking\
+        \ to a reference table that categorizes various channels or methods through\
+        \ which leads are acquired."
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'leads_company' table is an integer
+        that stores the ID of the user who last modified the record. This field is
+        used to track changes and maintain auditability within the database.
+    owner_id:
+      type: int
+      description: The 'owner_id' field in the 'leads_company' table is an integer
+        that represents the unique identifier of the user or account owner responsible
+        for managing the associated lead or company record.
+    activity_date:
+      type: date
+      description: The 'activity_date' field in the 'leads_company' table represents
+        the date when a specific activity related to the lead was recorded. This field
+        is used to track and manage the timeline of interactions with the lead.
+    activity_history:
+      type: json
+      description: The 'activity_history' field in the 'leads_company' table stores
+        a JSON object that records various interactions and activities associated
+        with each lead. This structure allows for flexible storage of data, including
+        timestamps, activity types, and notes, enabling efficient tracking
+    activity:
+      type: varchar(30)
+      description: The 'activity' field in the 'leads_company' table is a varchar
+        data type with a maximum length of 30 characters. It is used to store a brief
+        description of the lead's associated activity or engagement, providing insights
+        into the interactions or
+    platform:
+      type: varchar(30)
+      description: The 'platform' field in the 'leads_company' table is a varchar
+        data type with a maximum length of 30 characters. It is used to store the
+        name of the platform from which a lead was generated or associated, providing
+        insight into the
+    is_key_account:
+      type: tinyint(1)
+      description: "**Field:** `is_key_account`  \n**Type:** `tinyint(1)`  \n**Description:**\
+        \ Indicates whether the company is categorized as a key account (1 for true,\
+        \ 0 for false). This field helps differentiate high-priority clients"
+    primary_poc_designation:
+      type: varchar(30)
+      description: "**Field Name:** primary_poc_designation  \n**Type:** varchar(30)\
+        \  \n**Table:** leads_company  \n\n**Description:** This field stores the\
+        \ designation or job title of the primary point of contact (POC) for a company\
+        \ lead."
+    primary_poc_client_name:
+      type: varchar(50)
+      description: The field 'primary_poc_client_name' in the 'leads_company' table
+        stores the name of the primary point of contact (POC) for the client, limited
+        to a maximum of 50 characters. This information is essential for managing
+        communications
+    primary_poc_email:
+      type: varchar(254)
+      description: The field 'primary_poc_email' in the 'leads_company' table stores
+        the email address of the primary point of contact for the company. It is a
+        variable character field with a maximum length of 254 characters, allowing
+        for a standard email
+    primary_poc_phone:
+      type: varchar(16)
+      description: "**Field:** primary_poc_phone  \n**Type:** varchar(16)  \n**Description:**\
+        \ This field stores the primary point of contact's phone number for a company\
+        \ lead, allowing for a maximum of 16 characters. It captures the primary telephone\
+        \ number"
+    company_logo:
+      type: varchar(100)
+      description: The 'company_logo' field in the 'leads_company' table stores the
+        URL or file path of the company's logo as a string, with a maximum length
+        of 100 characters.
+    active_company:
+      type: int
+      description: The 'active_company' field in the 'leads_company' table is of type
+        'int' and indicates the status of the associated company. A value of 1 typically
+        represents that the company is active, while a value of 0 may indicate
+    is_clients_client:
+      type: tinyint(1)
+      description: The field `is_clients_client` in the `leads_company` table is a
+        binary indicator, represented as a tiny integer (1 or 0), that specifies whether
+        the company is a client of the organization. A value of 1 indicates that
+    is_epc:
+      type: tinyint(1)
+      description: The field 'is_epc' in the 'leads_company' table is a tiny integer
+        (1) that indicates whether the company is an EPC (Engineering, Procurement,
+        and Construction) entity. A value of 1 signifies that the company is
+    is_endcustomer:
+      type: tinyint(1)
+      description: The field `is_endcustomer` in the `leads_company` table is a boolean
+        indicator represented as a tiny integer (1 for true, 0 for false). It specifies
+        whether the associated lead is classified as an end customer.
+leads_companybankloantransaction:
+  description: The `leads_companybankloantransaction` table stores information related
+    to bank loan transactions for potential leads associated with a company. This
+    may include details such as transaction amounts, dates, loan types, and associated
+    company identifiers, allowing for effective tracking and analysis
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer that serves as the unique identifier
+        for each record in the 'leads_companybankloantransaction' table. It ensures
+        that each transaction can be distinctly referenced and managed within the
+        database.
+    loan_amount_applied:
+      type: varchar(100)
+      description: The field 'loan_amount_applied' in the 'leads_companybankloantransaction'
+        table stores the loan amount requested by the applicant, represented as a
+        string (varchar) with a maximum length of 100 characters. This allows for
+        flexible formatting,
+    loan_amount_passed:
+      type: varchar(100)
+      description: "**Field: loan_amount_passed**  \n**Type:** varchar(100)  \n**Description:**\
+        \ This field stores the approved loan amount in string format for each transaction\
+        \ related to a company bank loan in the 'leads_companybankloantransaction'\
+        \ table"
+    loan_tenure:
+      type: varchar(100)
+      description: The field 'loan_tenure' in the 'leads_companybankloantransaction'
+        table represents the duration of the loan, specified as a string (VARCHAR)
+        with a maximum length of 100 characters. It indicates the period over which
+        the loan
+    loan_date:
+      type: date
+      description: The 'loan_date' field in the 'leads_companybankloantransaction'
+        table represents the date on which the loan was issued or disbursed to the
+        borrower. This date is crucial for tracking loan terms and repayment schedules.
+    status:
+      type: varchar(50)
+      description: The 'status' field in the 'leads_companybankloantransaction' table
+        is a VARCHAR(50) data type that represents the current state of the bank loan
+        transaction associated with a lead. This field can contain values indicating
+        the transaction's progress,
+    status_history:
+      type: json
+      description: The `status_history` field in the `leads_companybankloantransaction`
+        table is of type `json` and stores a record of status changes related to the
+        bank loan transaction. This field captures various status updates over time,
+        allowing for detailed tracking
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'leads_companybankloantransaction'
+        table stores the timestamp of when a record was created. It has a data type
+        of 'datetime(6)', allowing for precision in fractions of a second, thereby
+        providing accurate
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'leads_companybankloantransaction'
+        table is a datetime(6) type that records the precise date and time when the
+        entry was last updated. This field captures nanosecond precision to facilitate
+        accurate tracking of
+    bank_name_id:
+      type: int
+      description: The field 'bank_name_id' is an integer that serves as a foreign
+        key in the 'leads_companybankloantransaction' table, linking each transaction
+        record to a specific bank identified in the related bank name table.
+    company_name_id:
+      type: int
+      description: The field 'company_name_id' is an integer identifier that links
+        each record in the 'leads_companybankloantransaction' table to a specific
+        company name in the associated companies table. This field serves as a foreign
+        key, establishing a relationship between bank
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'leads_companybankloantransaction'
+        table is an integer that represents the unique identifier of the user or system
+        entity that created the corresponding bank loan transaction record. This field
+        is used for auditing and tracking purposes
+    modified_by_id:
+      type: int
+      description: The `modified_by_id` field in the `leads_companybankloantransaction`
+        table is an integer that stores the identifier of the user who last modified
+        the record. This field helps track changes and maintain an audit trail of
+        user interactions with the transaction
+    client_remark:
+      type: longtext
+      description: The 'client_remark' field in the 'leads_companybankloantransaction'
+        table is a long text field designed to store additional comments or notes
+        provided by the client regarding their bank loan transaction. This can include
+        specific requests, concerns, or feedback
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'leads_companybankloantransaction' table
+        is a longtext data type used to store detailed comments or notes related to
+        a specific bank loan transaction associated with a lead. This field allows
+        for extensive text input, providing
+leads_companyloan:
+  description: '**Table: leads_companyloan**
+
+
+    Description: This table stores information about companies that have applied for
+    loans, including lead details, loan amounts, application statuses, and timestamps
+    for tracking their progress through the loan approval process. Each record represents
+    a distinct loan application'
+  fields:
+    id:
+      type: int
+      description: The field **'id'** in the **'leads_companyloan'** table is an integer
+        that serves as the unique identifier for each record in the table. It ensures
+        the distinctiveness of each company loan entry.
+    company_name:
+      type: varchar(100)
+      description: "**Field:** company_name  \n**Type:** varchar(100)  \n**Description:**\
+        \ This field stores the name of the company associated with a loan lead, with\
+        \ a maximum length of 100 characters."
+    company_type:
+      type: varchar(50)
+      description: "Field Name: `company_type`  \nType: `varchar(50)`  \nDescription:\
+        \ This field stores the type of company associated with the loan lead, such\
+        \ as 'LLC', 'Corporation', 'Sole Proprietorship', etc. It"
+    point_of_contact:
+      type: varchar(100)
+      description: The 'point_of_contact' field in the 'leads_companyloan' table is
+        a VARCHAR(100) that stores the name or title of the primary individual responsible
+        for communication regarding the company loan. This field facilitates easy
+        identification of the key contact person
+    contact_number:
+      type: varchar(15)
+      description: The 'contact_number' field in the 'leads_companyloan' table stores
+        a string representation of the company's contact phone number, allowing for
+        a maximum of 15 characters. This may include country codes, area codes, and
+        the number itself, facilitating
+    email:
+      type: varchar(254)
+      description: Field 'email' in the 'leads_companyloan' table stores the email
+        address of the lead. It is of type 'varchar(254)', allowing for a maximum
+        length of 254 characters to accommodate standard email formats.
+    designation:
+      type: varchar(100)
+      description: "**Field: designation**  \n**Type:** varchar(100)  \n**Description:**\
+        \ This field stores the job title or position of the contact person associated\
+        \ with a company loan lead, with a maximum length of 100 characters."
+    kyc_promoters:
+      type: json
+      description: "Field Name: `kyc_promoters`  \nType: JSON  \nDescription: This\
+        \ field stores detailed information about promoters related to the Know Your\
+        \ Customer (KYC) process for the company loan application. The JSON format\
+        \ allows for flexible storage of various attributes"
+    kyc_company:
+      type: json
+      description: The field `kyc_company` in the `leads_companyloan` table is of
+        type `json` and stores Know Your Customer (KYC) data related to the company.
+        This may include various attributes such as company identification, ownership
+        structure,
+    audit_finance_reports:
+      type: json
+      description: The 'audit_finance_reports' field in the 'leads_companyloan' table
+        is of type JSON and stores detailed audit records related to financial reports
+        for company loans. This field can include various structured data elements
+        such as report summaries, compliance checks,
+    latest_shareholding_pattern:
+      type: json
+      description: The field `latest_shareholding_pattern` in the `leads_companyloan`
+        table is of type JSON and stores information about the most recent distribution
+        of ownership shares within the company. This data may include details such
+        as shareholder names, percentage of ownership,
+    created_at:
+      type: datetime(6)
+      description: "**Field:** `created_at`  \n**Type:** `datetime(6)`  \n**Description:**\
+        \ This field records the exact date and time when a record in the `leads_companyloan`\
+        \ table was created, with precision up to microseconds."
+    mofified_at:
+      type: datetime(6)
+      description: The field `modified_at` in the `leads_companyloan` table stores
+        the date and time when a record was last updated. It is of type `datetime(6)`,
+        allowing for precision up to six fractional seconds.
+    created_by_id:
+      type: int
+      description: "**Field:** `created_by_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier (ID) of the user who created the\
+        \ record in the `leads_companyloan` table. It links to the user"
+    modified_by_id:
+      type: int
+      description: The field 'modified_by_id' is of type 'int' in the 'leads_companyloan'
+        table and stores the unique identifier of the user who last modified the record.
+        This field helps track changes and maintain an audit trail of modifications
+        made to
+    company_id:
+      type: int
+      description: The `company_id` field in the `leads_companyloan` table is an integer
+        that uniquely identifies the company associated with a loan lead. This field
+        serves as a foreign key, linking records in the `leads_companyloan` table
+        to the
+leads_companyloandocument:
+  description: The `leads_companyloandocument` table stores information related to
+    loan documents associated with potential clients (leads) in a company. It includes
+    fields that capture details such as document type, upload date, status, and any
+    relevant identifiers linking the
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each record in the 'leads_companyloandocument' table. It ensures that
+        each document record can be uniquely referenced and managed within the database.
+    file:
+      type: varchar(100)
+      description: Field 'file' in the table 'leads_companyloandocument' is a variable
+        character string (varchar) with a maximum length of 100 characters. It is
+        used to store the filename or path related to a document associated with a
+        company's loan
+    created_at:
+      type: datetime(6)
+      description: The `created_at` field in the `leads_companyloandocument` table
+        stores the timestamp of when a record was created. It is of type `datetime(6)`,
+        which allows for precision up to six decimal places in the fractional seconds
+    company_id:
+      type: int
+      description: "**Field:** company_id  \n**Type:** int  \n**Description:** A foreign\
+        \ key that uniquely identifies the company associated with the loan document\
+        \ in the leads_companyloandocument table. This field links each loan document\
+        \ to its corresponding company, facilitating the relationship"
+leads_companyowner:
+  description: The `leads_companyowner` table stores information about company owners
+    associated with leads in the sales or marketing process. It typically contains
+    fields that include owner identification details, contact information, and any
+    relevant data linking the owner to specific leads or companies. The
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_companyowner' table is an integer
+        that serves as the unique identifier for each record. It is used to distinguish
+        individual entries within the table.
+    sart_date:
+      type: datetime(6)
+      description: The field 'start_date' in the 'leads_companyowner' table is of
+        type 'datetime(6)', which stores the date and time when a lead's association
+        with the company owner begins. The precision of 'datetime(6)' allows for
+    end_date:
+      type: datetime(6)
+      description: The 'end_date' field in the 'leads_companyowner' table is a datetime(6)
+        type that records the precise date and time when the association between the
+        lead and the company owner ends. The field is useful for tracking the duration
+        of
+    assigned_at:
+      type: datetime(6)
+      description: The 'assigned_at' field in the 'leads_companyowner' table records
+        the exact date and time when a company owner was assigned to a lead, with
+        precision up to microseconds.
+    assigned_by_id:
+      type: int
+      description: The `assigned_by_id` field in the `leads_companyowner` table is
+        an integer that represents the unique identifier of the user who assigned
+        the lead to the company owner. This field helps track ownership and accountability
+        for lead management.
+    company_id:
+      type: int
+      description: The field 'company_id' in the 'leads_companyowner' table is an
+        integer that uniquely identifies the company associated with a specific lead
+        owner. This field serves as a foreign key linking to the primary key of the
+        companies table, establishing the relationship
+    owner_id:
+      type: int
+      description: "**Field: owner_id**  \n**Type: int**  \n**Description:** A unique\
+        \ identifier for the owner of the lead, linking to the corresponding owner\
+        \ record in another table. This integer value facilitates tracking and managing\
+        \ ownership of leads within the leads_company"
+    old_company_id:
+      type: int
+      description: The field 'old_company_id' is an integer that stores the unique
+        identifier for a previously associated company in the 'leads_companyowner'
+        table. This field helps track historical company associations for leads.
+leads_convenience:
+  description: The `leads_convenience` table stores information related to potential
+    customers (leads) and their convenience preferences. This includes details such
+    as preferred contact times, communication methods, and any specific convenience-related
+    requests or notes that may help enhance customer engagement
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_convenience' table is an integer that
+        serves as the unique identifier for each record in the table. It is typically
+        used as the primary key to distinguish individual leads within the convenience
+        data set.
+    convenience_amount:
+      type: double
+      description: The 'convenience_amount' field in the 'leads_convenience' table
+        is a numeric value of type double that represents the amount of convenience
+        fee associated with a lead. This fee may be applicable for services provided,
+        calculated to ensure revenue
+    convence_recipt:
+      type: varchar(100)
+      description: The field 'convence_recipt' in the 'leads_convenience' table stores
+        a string (up to 100 characters) that represents a receipt or confirmation
+        related to the convenience services lead. This can include references, identifiers,
+        or descriptions
+    status:
+      type: varchar(50)
+      description: The 'status' field in the 'leads_convenience' table is a VARCHAR(50)
+        data type that stores the current status of a lead. This field can be used
+        to track the progress of leads through various stages of the conversion process
+    status_log:
+      type: json
+      description: The 'status_log' field in the 'leads_convenience' table is of type
+        JSON and is used to store a record of status changes for each lead. This field
+        captures the history of modifications, including timestamps and status details,
+        allowing for
+    remark:
+      type: longtext
+      description: "**Field:** `remark`  \n**Type:** `longtext`  \n**Description:**\
+        \ This field stores additional remarks or comments related to a lead's convenience.\
+        \ It allows for extensive text input, enabling users to provide detailed information\
+        \ or notes that may be"
+    convenience_mode_id:
+      type: int
+      description: The field `convenience_mode_id` is an integer that uniquely identifies
+        the convenience mode associated with a lead in the `leads_convenience` table.
+        It is used to categorize leads based on their preferred convenience options
+        or service modes.
+    meeting_id:
+      type: int
+      description: The 'meeting_id' field is an integer that uniquely identifies a
+        specific meeting associated with a lead in the 'leads_convenience' table.
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'leads_convenience' table is an
+        integer that represents the unique identifier of the user or agent who created
+        the lead. This field helps to track the origin of the lead and associate it
+        with the
+    date:
+      type: date
+      description: The 'date' field in the 'leads_convenience' table stores the specific
+        date associated with each lead entry. It is used to track when the lead was
+        created or when a significant event related to the lead occurred. The field
+        type is
+    checkout_id:
+      type: int
+      description: "**Field:** `checkout_id`  \n**Type:** `int`  \n**Description:**\
+        \ A unique identifier for each checkout transaction associated with a lead\
+        \ in the 'leads_convenience' table. This field links the lead to a specific\
+        \ checkout event"
+leads_conveniencemode:
+  description: The `leads_conveniencemode` table stores information about various
+    convenience modes associated with leads in the system. Each record typically includes
+    details such as the lead's ID, the type of convenience mode selected, and any
+    relevant preferences or attributes that
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_conveniencemode' table is an integer
+        that serves as the unique identifier for each record in the table. It is used
+        to distinguish individual records and facilitate efficient data retrieval
+        and management.
+    name:
+      type: varchar(50)
+      description: The 'name' field in the 'leads_conveniencemode' table is a variable
+        character field with a maximum length of 50 characters. It is used to store
+        the name associated with a convenience mode lead, providing a way to identify
+    is_personal:
+      type: tinyint(1)
+      description: The 'is_personal' field in the 'leads_conveniencemode' table is
+        a boolean indicator represented as a tinyint(1). It specifies whether the
+        lead's convenience mode is personal (1) or not (0).
+    is_active:
+      type: tinyint(1)
+      description: The `is_active` field in the `leads_conveniencemode` table is a
+        tiny integer (1) that indicates the active status of a convenience mode lead.
+        A value of '1' typically represents 'active', while '0
+    rate:
+      type: double
+      description: The 'rate' field in the 'leads_conveniencemode' table is a double
+        data type that represents the rate or fee associated with a specific convenience
+        mode for leads. It allows for decimal values and is used to determine the
+        cost or
+    updated_at:
+      type: datetime(6)
+      description: The 'updated_at' field in the 'leads_conveniencemode' table records
+        the date and time when a lead's convenience mode information was last modified.
+        It is stored in datetime format with millisecond precision.
+leads_conveniencestatus:
+  description: The 'leads_conveniencestatus' table stores information regarding the
+    convenience status of leads within a sales or marketing context. Each record in
+    the table typically reflects a specific lead's convenience level, which may include
+    categories such as "highly convenient
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer that serves as the unique identifier
+        for each record in the 'leads_conveniencestatus' table. It ensures that every
+        entry can be distinctly referenced and managed within the database.
+    is_paid:
+      type: int
+      description: The field 'is_paid' in the 'leads_conveniencestatus' table is of
+        type 'int' and indicates the payment status of a lead. It typically uses integer
+        values to represent boolean states, where '0' may signify that
+    payment_date:
+      type: date
+      description: The field 'payment_date' in the 'leads_conveniencestatus' table
+        stores the date when a payment was made related to a lead's convenience status.
+        It is of type 'date' to capture the specific transaction date.
+    payment_mode:
+      type: varchar(30)
+      description: The 'payment_mode' field in the 'leads_conveniencestatus' table
+        is a varchar(30) type that stores the method of payment chosen by the lead
+        (e.g., credit card, cash, PayPal). It allows for
+    reference_id:
+      type: varchar(250)
+      description: The field 'reference_id' in the 'leads_conveniencestatus' table
+        is of type 'varchar(250)' and is used to store a unique identifier associated
+        with a lead's convenience status. This identifier is a variable-length string
+        with
+    payable_amount:
+      type: double
+      description: The 'payable_amount' field in the 'leads_conveniencestatus' table
+        represents the monetary amount due for payment related to a lead's convenience
+        status, stored as a double precision floating-point value for improved accuracy
+        in financial calculations.
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'leads_conveniencestatus' table is of
+        type 'longtext' and is used to store detailed comments or notes related to
+        the convenience status of leads. It allows for extensive text input, enabling
+        users
+    approved_at:
+      type: datetime(6)
+      description: The field 'approved_at' in the table 'leads_conveniencestatus'
+        records the date and time when a lead's convenience status was approved. It
+        is stored with a precision of up to six decimal places for fractional seconds,
+        allowing for
+    paid_at:
+      type: datetime(6)
+      description: The `paid_at` field in the `leads_conveniencestatus` table is a
+        datetime(6) type that records the precise date and time when a payment was
+        made for a lead, including up to microsecond precision.
+    approved_by_id:
+      type: int
+      description: The `approved_by_id` field is an integer that stores the identifier
+        of the user or administrator who approved the convenience status of a lead.
+        This field establishes a relationship with the user table, indicating who
+        granted approval for the lead's current status.
+    paid_by_id:
+      type: int
+      description: The 'paid_by_id' field in the 'leads_conveniencestatus' table is
+        an integer that represents the unique identifier for the entity (such as a
+        user or customer) responsible for making a payment related to the convenience
+        status of a
+    payment_from_bank_id:
+      type: int
+      description: The 'payment_from_bank_id' field is an integer that uniquely identifies
+        the bank associated with a payment in the 'leads_conveniencestatus' table.
+        It serves to link a specific payment transaction to the corresponding bank
+        entity in the database.
+    user_id:
+      type: int
+      description: "**Field**: `user_id`  \n**Type**: `int`  \n**Description**: This\
+        \ field represents the unique identifier of the user associated with the lead's\
+        \ convenience status. It is used to link the convenience status to a specific\
+        \ user"
+    month_int:
+      type: int
+      description: The field 'month_int' in the table 'leads_conveniencestatus' is
+        an integer that represents the month of a specific date, with values typically
+        ranging from 1 (January) to 12 (December).
+    year:
+      type: int
+      description: The 'year' field in the 'leads_conveniencestatus' table is an integer
+        that represents the year associated with the convenience status of a lead.
+        This field is used to track and categorize leads based on the specific year
+        of their convenience
+    is_approved:
+      type: tinyint(1)
+      description: '**Field Description for ''is_approved'':**
+
+
+        - **Field Name:** is_approved
+
+        - **Type:** tinyint(1)
+
+        - **Description:** This field indicates whether a lead has been approved.
+        A value of ''1'' signifies that'
+    status:
+      type: varchar(30)
+      description: The 'status' field in the 'leads_conveniencestatus' table represents
+        the current convenience status of a lead, stored as a variable character string
+        with a maximum length of 30 characters. This field is used to track the stage
+        or
+    status_history:
+      type: json
+      description: The `status_history` field in the `leads_conveniencestatus` table
+        is a JSON data type that stores a record of the various status changes associated
+        with a lead. This field allows for the capture of historical status information,
+        including timestamps
+leads_dailycheckincheckout:
+  description: The `leads_dailycheckincheckout` table tracks the daily check-in and
+    check-out activities of leads. It records the timestamps for when each lead checks
+    in and checks out, along with any relevant identifiers or status updates. This
+    table is useful for
+  fields:
+    id:
+      type: int
+      description: Field 'id' in the table 'leads_dailycheckincheckout' is an integer
+        type that serves as the unique identifier for each record in the table. It
+        ensures the distinctiveness of individual lead entries for daily check-in
+        and check-out activities.
+    checkin:
+      type: datetime(6)
+      description: The 'checkin' field in the 'leads_dailycheckincheckout' table stores
+        the date and time of when a lead checks in, recorded with microsecond precision
+        (datetime(6)).
+    checkout:
+      type: datetime(6)
+      description: The 'checkout' field in the 'leads_dailycheckincheckout' table
+        records the date and time (with microsecond precision) when a lead completes
+        their checkout process. This timestamp helps track the duration of lead engagement
+        and the timing of customer interactions
+    checkin_longitude:
+      type: varchar(30)
+      description: The `checkin_longitude` field in the `leads_dailycheckincheckout`
+        table stores the longitude coordinate of a lead's check-in location, represented
+        as a variable character string with a maximum length of 30 characters.
+    checkin_latitude:
+      type: varchar(30)
+      description: Field 'checkin_latitude' in the 'leads_dailycheckincheckout' table
+        stores the latitude coordinate of the location where a lead checked in, represented
+        as a string with a maximum length of 30 characters.
+    checkout_longitude:
+      type: varchar(30)
+      description: "**Field:** `checkout_longitude`  \n**Type:** `varchar(30)`  \n\
+        **Description:** This field stores the longitude coordinates (as a string)\
+        \ of the location where a lead checks out, with a maximum length of 30 characters."
+    checkout_latitude:
+      type: varchar(30)
+      description: The field 'checkout_latitude' in the 'leads_dailycheckincheckout'
+        table stores the geographical latitude of the location where a checkout event
+        occurred. It is represented as a string with a maximum length of 30 characters.
+    user_id:
+      type: int
+      description: The 'user_id' field in the 'leads_dailycheckincheckout' table is
+        an integer that uniquely identifies the user associated with each daily check-in
+        and check-out record.
+    distance_from_last_location:
+      type: int
+      description: The field 'distance_from_last_location' in the 'leads_dailycheckincheckout'
+        table stores the distance (in meters) from the last recorded location for
+        a lead during their daily check-in or check-out process. This integer value
+        helps in tracking
+leads_lead:
+  description: The `leads_lead` table stores information about potential customers
+    (leads) generated through various channels. It typically includes fields for lead
+    identification, contact details, source of the lead, status, and any relevant
+    notes or follow-up actions. This
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_lead' table is an integer that serves
+        as the unique identifier for each lead entry. It is used to distinguish records
+        and facilitate efficient data retrieval and management within the database.
+    expected_closure_date:
+      type: date
+      description: "**Field:** `expected_closure_date`  \n**Type:** Date  \n**Description:**\
+        \ This field represents the anticipated date on which a lead is expected to\
+        \ close, indicating when a decision is likely to be made regarding the potential\
+        \ conversion of the lead into"
+    recent_products:
+      type: varchar(50)
+      description: The 'recent_products' field in the 'leads_lead' table is a varchar-type
+        field with a maximum length of 50 characters. It stores a comma-separated
+        list of recently viewed or interacted products associated with a lead, providing
+        insight into their
+    expected_product_size:
+      type: varchar(50)
+      description: The field 'expected_product_size' in the 'leads_lead' table is
+        a variable character string with a maximum length of 50 characters. It stores
+        the anticipated size of the product that the lead is interested in, enabling
+        the categorization and
+    recent_product_size:
+      type: varchar(50)
+      description: The 'recent_product_size' field in the 'leads_lead' table stores
+        the size of the most recently considered product by the lead, represented
+        as a string with a maximum length of 50 characters. This field can be used
+        to capture details
+    requirement_description:
+      type: varchar(200)
+      description: The `requirement_description` field in the `leads_lead` table is
+        a variable character string (up to 200 characters) that stores a brief description
+        of the specific requirements or needs expressed by a lead.
+    remark:
+      type: varchar(300)
+      description: The 'remark' field in the 'leads_lead' table is a variable character
+        string with a maximum length of 300 characters. It is used to store additional
+        comments or notes relevant to the lead, allowing for contextual information
+        or special considerations to
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'leads_lead' table stores the date
+        and time when a lead was created. It uses the 'datetime(6)' type, allowing
+        for precision up to six decimal places for fractional seconds. This field
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'leads_lead' table stores the date
+        and time when a lead record was last updated. It uses the 'datetime(6)' data
+        type, which includes microsecond precision for more accurate timestamping.
+    clients_id:
+      type: int
+      description: The `clients_id` field in the `leads_lead` table is an integer
+        that represents the unique identifier for the client associated with a specific
+        lead. It serves as a foreign key linking the lead to the corresponding client
+        record in the clients table
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field is an integer that stores the unique
+        identifier of the user who created the lead record in the 'leads_lead' table.
+        This field is used to track the creator of each lead for accountability and
+        auditing purposes.
+    modified_by_id:
+      type: int
+      description: The field 'modified_by_id' is an integer that stores the identifier
+        of the user who last modified the lead entry in the 'leads_lead' table. This
+        field helps track modifications and maintain a record of who made changes
+        to each lead.
+    owner_id:
+      type: int
+      description: The `owner_id` field in the `leads_lead` table is an integer that
+        represents the unique identifier of the user or agent who owns or is responsible
+        for the lead. This field is used to associate leads with their respective
+        owners for tracking
+    product_id:
+      type: int
+      description: The 'product_id' field in the 'leads_lead' table is an integer
+        that uniquely identifies the product associated with a specific lead. It serves
+        as a foreign key to link leads to their corresponding products in the product
+        catalog.
+    end_exp_product_size:
+      type: int
+      description: The field 'end_exp_product_size' in the 'leads_lead' table represents
+        the integer value indicating the expected size or dimensions of the product
+        at the end of the sales process.
+    start_exp_product_size:
+      type: int
+      description: The field 'start_exp_product_size' in the 'leads_lead' table stores
+        an integer value representing the initial expected size of the product related
+        to the lead. This can be used to gauge the scale of the product the lead is
+        interested in
+    is_active:
+      type: int
+      description: "Field: `is_active`  \nType: `int`  \nDescription: Indicates the\
+        \ status of the lead. A value of 1 typically represents that the lead is active,\
+        \ while a value of 0 signifies that the lead is inactive. This field"
+    source_id:
+      type: int
+      description: The `source_id` field in the `leads_lead` table is an integer that
+        identifies the source from which the lead was generated. This field helps
+        categorize leads based on their acquisition channel, allowing for better tracking
+        and analysis of lead origin.
+    meeting_date:
+      type: date
+      description: "**Field:** meeting_date  \n**Table:** leads_lead  \n**Description:**\
+        \ This field stores the date of the scheduled meeting related to a lead. The\
+        \ value is of type 'date', representing the specific day when the meeting\
+        \ is planned or occurred."
+    lead_status:
+      type: varchar(30)
+      description: The 'lead_status' field in the 'leads_lead' table is a varchar
+        type with a maximum length of 30 characters. It represents the current status
+        of a lead, indicating its stage in the sales process (e.g., new,
+    last_followup_date:
+      type: date
+      description: The 'last_followup_date' field in the 'leads_lead' table stores
+        the date of the most recent follow-up communication with a lead. This value
+        helps track engagement and manage follow-up activities effectively.
+    estimated_lead_value:
+      type: double
+      description: The 'estimated_lead_value' field in the 'leads_lead' table is a
+        double data type that represents the monetary value estimated to be generated
+        from a specific lead. This value aids in assessing the potential profitability
+        of leads in the sales pipeline
+    probability_of_lead_closer:
+      type: int
+      description: "Field: `probability_of_lead_closer`  \nType: `int`  \nDescription:\
+        \ An integer representing the estimated probability (in percentage) that a\
+        \ lead will convert into a customer, with values typically ranging from 0\
+        \ to 100."
+    next_followup_date:
+      type: date
+      description: The `next_followup_date` field in the `leads_lead` table stores
+        the scheduled date for the next follow-up with a lead. This field helps in
+        managing follow-up activities and ensures timely communication with potential
+        customers.
+    last_remark:
+      type: longtext
+      description: The field 'last_remark' in the 'leads_lead' table is a longtext
+        data type that stores the most recent remark or comment related to a lead.
+        It allows for a detailed, unstructured text entry to capture notes or observations
+    last_followup_by_id:
+      type: int
+      description: The field 'last_followup_by_id' is an integer that stores the unique
+        identifier of the user or agent who conducted the most recent follow-up for
+        a lead in the 'leads_lead' table.
+    type:
+      type: varchar(30)
+      description: The 'type' field in the 'leads_lead' table is a variable character
+        string with a maximum length of 30 characters. It is used to categorize or
+        specify the type of lead, such as 'new', 'qualified', or '
+    calling_remark_id:
+      type: int
+      description: The field 'calling_remark_id' is an integer that serves as a foreign
+        key in the 'leads_lead' table, linking to a specific remark or note related
+        to calls made to the lead. This allows for tracking and categorizing the
+    meeting_lead_id:
+      type: int
+      description: The `meeting_lead_id` field is an integer that identifies the lead
+        associated with a specific meeting in the `leads_lead` table. This field serves
+        as a foreign key to link leads to their corresponding meetings.
+leads_leadactivity:
+  description: The `leads_leadactivity` table records the interactions and activities
+    related to leads within the sales or marketing workflow. Each entry captures details
+    such as the type of activity (e.g., call, email, meeting), the date and time of
+    the
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_leadactivity' table is an integer
+        that uniquely identifies each record of lead activity. It serves as the primary
+        key for the table, ensuring that each entry can be individually referenced
+        and managed.
+    activity:
+      type: varchar(30)
+      description: The 'activity' field in the 'leads_leadactivity' table is a varchar
+        data type with a maximum length of 30 characters. It is used to store a brief
+        description of the type of activity associated with a lead, such as '
+    status:
+      type: varchar(30)
+      description: The 'status' field in the 'leads_leadactivity' table is a varchar(30)
+        that indicates the current state or condition of a lead activity. This field
+        can store up to 30 characters of text, allowing for various statuses such
+    priority:
+      type: varchar(30)
+      description: The 'priority' field in the 'leads_leadactivity' table stores a
+        string value (up to 30 characters) that indicates the urgency or importance
+        level of a lead activity, allowing for categorization and prioritization of
+        tasks.
+    remark:
+      type: varchar(500)
+      description: The 'remark' field in the 'leads_leadactivity' table is a VARCHAR
+        data type with a maximum length of 500 characters. It is used to store additional
+        comments or notes related to a specific lead activity, providing context or
+        insights for
+    follow_up_date:
+      type: date
+      description: The 'follow_up_date' field in the 'leads_leadactivity' table stores
+        the date on which a follow-up action is scheduled for a lead. This helps in
+        tracking and managing communication with potential clients.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'leads_leadactivity' table is of
+        type 'datetime(6)' and records the exact date and time when a lead activity
+        was created, including fractional seconds for increased precision.
+    created_by_id:
+      type: int
+      description: The field `created_by_id` in the `leads_leadactivity` table stores
+        the integer identifier of the user who created the lead activity record. This
+        field is used to associate the activity with the responsible user for tracking
+        and accountability purposes.
+    lead_id:
+      type: int
+      description: The 'lead_id' field in the 'leads_leadactivity' table represents
+        the unique identifier for each lead associated with a specific activity. This
+        integer value establishes a relationship between the lead and their corresponding
+        activities, enabling tracking and management of lead actions
+    lost_reason:
+      type: varchar(30)
+      description: The 'lost_reason' field in the 'leads_leadactivity' table is a
+        VARCHAR data type with a maximum length of 30 characters. It captures the
+        specific reason why a lead was marked as lost, providing insights into potential
+        issues or challenges
+    is_follow_up:
+      type: tinyint(1)
+      description: "**Field Name:** is_follow_up  \n**Type:** tinyint(1)  \n**Description:**\
+        \ Indicates whether the lead activity is a follow-up. A value of 1 signifies\
+        \ that the activity is a follow-up, while a value of 0"
+leads_leadcomment:
+  description: The `leads_leadcomment` table stores comments associated with individual
+    leads in a customer relationship management (CRM) system. Each entry includes
+    details such as the comment text, the associated lead ID, the user who made the
+    comment, and timestamps for
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_leadcomment' table is an integer that
+        serves as the primary identifier for each lead comment entry. It ensures unique
+        identification of comments associated with leads in the database.
+    comment:
+      type: varchar(500)
+      description: The 'comment' field in the 'leads_leadcomment' table is a varchar
+        type with a maximum length of 500 characters. It is used to store user-provided
+        comments or notes related to a specific lead, capturing relevant insights
+        or feedback
+    created_at:
+      type: datetime(6)
+      description: The `created_at` field in the `leads_leadcomment` table stores
+        the timestamp indicating when a lead comment was created. It uses the `datetime(6)`
+        data type to capture date and time with up to six decimal places of precision
+    created_by_id:
+      type: int
+      description: "**Field: created_by_id**  \n**Type: int**  \n**Description:**\
+        \ This field stores the identifier (ID) of the user who created the lead comment.\
+        \ It is used to link the comment to the specific user, facilitating tracking\
+        \ and accountability"
+    lead_id:
+      type: int
+      description: The 'lead_id' field in the 'leads_leadcomment' table is an integer
+        that uniquely identifies the lead associated with a comment. It serves as
+        a foreign key linking comments to their respective leads, facilitating the
+        relationship between leads and their comments
+leads_leadproduct:
+  description: The `leads_leadproduct` table is used to associate leads with specific
+    products or services they are interested in. It typically contains fields such
+    as `lead_id`, which links to the unique identifier of the lead, and `product_id`,
+    which
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_leadproduct' table is an integer that
+        uniquely identifies each record in the table. This field serves as the primary
+        key, ensuring that each lead product can be distinctly referenced and queried.
+    quantity:
+      type: int
+      description: The field 'quantity' in the 'leads_leadproduct' table represents
+        the integer value indicating the number of units associated with a specific
+        lead product.
+    lead_id:
+      type: int
+      description: The field 'lead_id' is an integer that uniquely identifies a lead
+        in the 'leads_leadproduct' table. It serves as a foreign key linking to the
+        corresponding lead record in the leads database, enabling the association
+        of lead products with their
+    product_id:
+      type: int
+      description: The field 'product_id' in the 'leads_leadproduct' table is an integer
+        that uniquely identifies each product associated with a lead. This field serves
+        as a foreign key reference to the corresponding product in the products table,
+        enabling the linkage between
+leads_meeting:
+  description: The `leads_meeting` table records information about meetings scheduled
+    with potential clients (leads). Each entry typically includes details such as
+    the lead's ID, meeting date and time, location (virtual or physical), agenda,
+    participants, and the outcome
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_meeting' table is an integer that
+        uniquely identifies each meeting record. It serves as the primary key for
+        the table, ensuring that each meeting entry can be distinctly referenced and
+        accessed.
+    start_time:
+      type: time(6)
+      description: The field 'start_time' in the 'leads_meeting' table represents
+        the starting time of a meeting, recorded with a precision of microseconds
+        (up to 6 decimal places). It indicates the exact time when the meeting is
+        scheduled to begin
+    end_time:
+      type: time(6)
+      description: The 'end_time' field in the 'leads_meeting' table stores the time
+        at which a meeting concludes, represented as a time value with a precision
+        of up to six decimal places.
+    remark:
+      type: longtext
+      description: Field 'remark' in the 'leads_meeting' table is a longtext field
+        designed to store additional comments or notes related to a meeting with a
+        lead. This field allows for extensive text input, providing space for detailed
+        information and observations from the
+    upload_file:
+      type: varchar(100)
+      description: The 'upload_file' field in the 'leads_meeting' table is a VARCHAR
+        type with a maximum length of 100 characters. It stores the filename or path
+        of files uploaded during meetings related to leads, allowing for easy reference
+        and retrieval of
+    longitude:
+      type: varchar(30)
+      description: Field 'longitude' in the 'leads_meeting' table stores geographical
+        longitude coordinates as a string. It has a maximum length of 30 characters,
+        allowing for precise representation of location data.
+    latitude:
+      type: varchar(30)
+      description: The 'latitude' field in the 'leads_meeting' table stores the geographical
+        latitude of a meeting location as a string (varchar). It allows for up to
+        30 characters to accommodate different formats of latitude values.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'leads_meeting' table records the
+        precise date and time when a meeting entry was created, with a resolution
+        of microseconds (datetime(6)). This timestamp is essential for tracking the
+        chronological order of meetings
+    company_id:
+      type: int
+      description: The 'company_id' field is an integer that serves as a foreign key
+        linking each record in the 'leads_meeting' table to a specific company in
+        the corresponding 'companies' table. It identifies the company associated
+        with the meeting referenced in the
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'leads_meeting' table is of type
+        integer and stores the identifier of the user who created the meeting record.
+        This field helps track the origin of the entry and facilitates user accountability
+        within the system.
+    client_name:
+      type: varchar(100)
+      description: "**Field:** `client_name`  \n**Type:** `varchar(100)`  \n**Description:**\
+        \ This field stores the name of the client associated with a lead in the meetings\
+        \ table. It can contain up to 100 characters and is used to identify"
+    contact_no:
+      type: varchar(50)
+      description: The field 'contact_no' in the 'leads_meeting' table is a varchar(50)
+        data type that stores the contact number of a lead associated with a meeting.
+        It allows for a flexible format to accommodate various phone number styles
+        and lengths
+    designation:
+      type: varchar(100)
+      description: "**Field: designation**  \n**Type: varchar(100)**  \n**Table: leads_meeting**\
+        \  \n\nDescription: This field stores the job title or role of the individual\
+        \ associated with the meeting, up to 100 characters in length."
+    email_id:
+      type: varchar(100)
+      description: "**Field Name:** email_id  \n**Type:** varchar(100)  \n**Description:**\
+        \ Stores the email address of the lead associated with the meeting, allowing\
+        \ for communication and follow-up. It can accommodate up to 100 characters."
+    status:
+      type: varchar(50)
+      description: The `status` field in the `leads_meeting` table is a VARCHAR(50)
+        type that stores the current status of a meeting related to a lead. This may
+        include values such as "scheduled," "completed," "canceled,"
+    date:
+      type: date
+      description: The 'date' field in the 'leads_meeting' table stores the date of
+        the scheduled meeting related to a lead. This field is of type 'date' and
+        captures only the calendar date without any time component.
+    upload_file_2:
+      type: varchar(100)
+      description: "**Field: upload_file_2**  \n**Type: varchar(100)**  \n**Table:\
+        \ leads_meeting**  \n**Description:** This field stores the name or path of\
+        \ a second uploaded file related to a meeting in the leads system, with"
+    followup_meeting:
+      type: int
+      description: The field 'followup_meeting' in the 'leads_meeting' table is an
+        integer that represents the unique identifier for a follow-up meeting associated
+        with a lead. It is used to track and manage subsequent meetings related to
+        the initial lead meeting
+    distance_from_last_location:
+      type: int
+      description: The 'distance_from_last_location' field in the 'leads_meeting'
+        table stores the integer value representing the distance (in kilometers or
+        miles) from the lead's last recorded location to the current meeting location.
+        This measurement aids in assessing travel and
+    old_company_id:
+      type: int
+      description: The field 'old_company_id' is an integer that stores the identifier
+        of the company associated with the lead prior to any changes or updates. This
+        field helps track the historical company affiliation of a lead in the 'leads_meeting'
+        table.
+leads_meetingdailyaggregate:
+  description: The `leads_meetingdailyaggregate` table stores aggregated data regarding
+    daily meetings related to leads. It includes metrics such as the number of meetings
+    held, duration, participant details, and outcomes for each day, allowing for performance
+    analysis and tracking of lead
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'leads_meetingdailyaggregate' table is an
+        integer type that uniquely identifies each record in the table. It serves
+        as the primary key, ensuring that each entry can be distinctly referenced
+        and managed within the dataset.
+    active_days:
+      type: int
+      description: The field `active_days` in the `leads_meetingdailyaggregate` table
+        represents the total number of days a lead was active during the aggregation
+        period. It is stored as an integer value.
+    sales_person_id:
+      type: int
+      description: The field 'sales_person_id' in the 'leads_meetingdailyaggregate'
+        table is an integer that uniquely identifies the sales representative associated
+        with the daily meeting records. This field establishes a relationship between
+        the meeting data and the corresponding sales person for tracking
+    first_meeting:
+      type: date
+      description: The 'first_meeting' field in the 'leads_meetingdailyaggregate'
+        table stores the date of the first meeting held with a lead. This date is
+        used to track and analyze the timing of initial interactions within the lead
+        management process.
+    last_meeting:
+      type: date
+      description: The `last_meeting` field in the `leads_meetingdailyaggregate` table
+        stores the date of the most recent meeting related to a lead. This helps track
+        the recency of interactions for effective follow-ups and performance analysis.
+    average:
+      type: double
+      description: The 'average' field in the 'leads_meetingdailyaggregate' table
+        represents the calculated average value of a specific metric related to daily
+        lead meetings. It is stored as a double data type, allowing for precise numerical
+        representation with decimal points.
+    total_meeting:
+      type: int
+      description: "**Field:** total_meeting  \n**Type:** int  \n**Description:**\
+        \ This field represents the total number of meetings recorded for a specific\
+        \ lead on a given day, aggregated for reporting and analysis purposes."
+    day:
+      type: date
+      description: The 'day' field in the 'leads_meetingdailyaggregate' table represents
+        the specific date for which daily meeting statistics are recorded. This field
+        is of type 'date' and is used to aggregate and analyze meeting data on a per-day
+        basis
+leads_meetingmonthlyaggregate:
+  description: The `leads_meetingmonthlyaggregate` table stores aggregated data related
+    to monthly meetings for leads. It captures key metrics such as the number of meetings
+    held, the average duration, and participant activity, enabling analysis of engagement
+    trends and overall performance of lead
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that uniquely identifies each record
+        in the 'leads_meetingmonthlyaggregate' table. It serves as the primary key
+        for the table, ensuring that each entry can be distinctly referenced.
+    total_month_meeting:
+      type: int
+      description: "**Field:** total_month_meeting  \n**Type:** int  \n**Description:**\
+        \ Represents the total number of meetings held in a given month for each lead,\
+        \ aggregated from individual meeting records."
+    active_days:
+      type: int
+      description: The 'active_days' field represents the total number of days a lead
+        has been actively engaged or interacted over the course of the month. It is
+        stored as an integer in the 'leads_meetingmonthlyaggregate' table, providing
+        insights into lead activity
+    sales_person_id:
+      type: int
+      description: The 'sales_person_id' field in the 'leads_meetingmonthlyaggregate'
+        table is an integer that uniquely identifies the sales representative associated
+        with a specific lead. This field links the lead data to the respective sales
+        person for tracking and reporting purposes.
+    month:
+      type: date
+      description: The 'month' field in the 'leads_meetingmonthlyaggregate' table
+        represents the date of the month for which the meeting data is aggregated.
+        It is used to identify and categorize meeting metrics on a monthly basis.
+    monthly_average:
+      type: double
+      description: The 'monthly_average' field in the 'leads_meetingmonthlyaggregate'
+        table represents the average value of leads meetings for a given month, stored
+        as a double-precision floating-point number.

@@ -1,0 +1,2451 @@
+imports_billofentry:
+  description: The `imports_billofentry` table stores detailed records of imports
+    for customs processing. Each entry represents a specific bill of entry filed by
+    importers, containing essential information such as shipment details, importer's
+    information, goods description, customs duties, and compliance
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_billofentry' table is an integer
+        that uniquely identifies each record in the table. It serves as the primary
+        key and is used to establish relationships with other tables in the database.
+    bill_of_entry_no:
+      type: varchar(150)
+      description: The field 'bill_of_entry_no' in the 'imports_billofentry' table
+        stores the unique identification number assigned to a bill of entry, which
+        is a document required for the importation of goods. It is of type 'varchar(150)',
+    date:
+      type: date
+      description: The 'date' field in the 'imports_billofentry' table stores the
+        date of the import bill of entry transaction. It is of type 'date', which
+        ensures that only valid date entries are accepted, allowing for the tracking
+        of import activities by
+    exchange_rate:
+      type: double
+      description: The 'exchange_rate' field in the 'imports_billofentry' table is
+        a double-precision floating-point number that represents the currency exchange
+        rate applied to the transaction. This rate is used to convert the value of
+        goods from the foreign currency to the
+    type_of_be:
+      type: varchar(150)
+      description: Field 'type_of_be' in the 'imports_billofentry' table is a VARCHAR(150)
+        that specifies the category or classification of the bill of entry related
+        to imports. This field is used to identify the type of import transaction
+        being processed.
+    assessible_value:
+      type: double
+      description: The field 'assessible_value' in the 'imports_billofentry' table
+        represents the monetary value of goods that is subject to duty and taxes during
+        the importation process. This value is stored as a double to allow for precise
+        representation of decimal
+    type_of_duty:
+      type: varchar(150)
+      description: The `type_of_duty` field in the `imports_billofentry` table is
+        a varchar type with a maximum length of 150 characters. This field stores
+        information about the specific type of duty applicable to the imported goods
+        associated with the bill of
+    duty_rate:
+      type: double
+      description: The 'duty_rate' field in the 'imports_billofentry' table represents
+        the rate of duty applied to imported goods, expressed as a double-precision
+        floating-point number. This rate is typically used to calculate the total
+        customs duties owed on the
+    duty_amount:
+      type: double
+      description: The field 'duty_amount' in the 'imports_billofentry' table stores
+        the monetary value of duties payable on imported goods, represented as a double-precision
+        floating-point number.
+    igst_rate:
+      type: double
+      description: The field `igst_rate` in the `imports_billofentry` table represents
+        the Integrated Goods and Services Tax (IGST) rate applicable to the imported
+        goods. It is stored as a double precision number to accommodate decimal values,
+        allowing for precise calculations
+    igst_amount:
+      type: double
+      description: "**Field:** igst_amount  \n**Type:** double  \n**Description:**\
+        \ This field represents the amount of Integrated Goods and Services Tax (IGST)\
+        \ applicable to the import transaction recorded in the bill of entry. It is\
+        \ expressed as a decimal number,"
+    total_amount:
+      type: double
+      description: "**Field:** total_amount  \n**Type:** double  \n**Description:**\
+        \ Represents the total monetary value of goods listed in the bill of entry\
+        \ for imports, expressed as a decimal number."
+    file:
+      type: varchar(100)
+      description: The 'file' field in the 'imports_billofentry' table is a varchar(100)
+        data type that stores the name or path of a file related to the import bill
+        of entry, with a maximum length of 100 characters.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_billofentry' table records
+        the timestamp of when each bill of entry was created. It is of type 'datetime(6)',
+        allowing for precision up to six decimal places in the fractional seconds.
+    modified_at:
+      type: datetime(6)
+      description: The `modified_at` field in the `imports_billofentry` table records
+        the date and time when the entry was last updated, with precision up to microseconds.
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'imports_billofentry' table is a boolean
+        indicator represented as a tinyint(1). It signifies whether a particular import
+        bill of entry is currently active (1) or inactive (0).
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is an integer that stores the unique
+        identifier of the user who created the entry in the 'imports_billofentry'
+        table. This field is used for tracking the origin of the record and for auditing
+        purposes.
+    currency_id:
+      type: int
+      description: The field 'currency_id' in the 'imports_billofentry' table is an
+        integer that represents the unique identifier for the currency used in the
+        import transaction. This ID links to a currency reference table, enabling
+        accurate currency categorization and conversion for financial
+    invoice_id:
+      type: int
+      description: "**Field Name:** invoice_id  \n**Type:** int  \n**Description:**\
+        \ A unique identifier for each invoice associated with a bill of entry in\
+        \ the imports table. This field is used to link the bill of entry to its corresponding\
+        \ invoice for tracking and record"
+    modified_by_id:
+      type: int
+      description: The field **'modified_by_id'** in the **'imports_billofentry'**
+        table is an integer that stores the unique identifier of the user or system
+        entity that last modified the record. This field helps track changes and maintain
+        an audit trail
+imports_contract:
+  description: The 'imports_contract' table stores information related to contracts
+    for imported goods. It includes key details such as contract ID, supplier information,
+    product descriptions, quantities, pricing, terms of agreement, and relevant dates.
+    This table facilitates the management and tracking of
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_contract' table is an integer that
+        serves as the primary key, uniquely identifying each contract record within
+        the table.
+    contract_no:
+      type: varchar(40)
+      description: The field **'contract_no'** in the **'imports_contract'** table
+        is a variable character string of up to 40 characters. It uniquely identifies
+        each import contract and is used for reference and querying purposes.
+    date_from:
+      type: date
+      description: The 'date_from' field in the 'imports_contract' table represents
+        the starting date for the validity or effectiveness of the contract, indicating
+        when the terms and conditions outlined in the contract begin to apply.
+    date_to:
+      type: date
+      description: The 'date_to' field in the 'imports_contract' table stores the
+        end date of the import contract, indicating when the contract expires or is
+        set to conclude. This date helps in managing contract timelines and understanding
+        the duration of the agreement.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_contract' table stores the
+        date and time when the record was created, with a precision of up to 6 decimal
+        places for fractional seconds. This field helps track when each import contract
+        entry was initiated.
+    modified_at:
+      type: datetime(6)
+      description: "**Field Name:** modified_at  \n**Type:** datetime(6)  \n**Description:**\
+        \ This field stores the timestamp of the last modification made to the record\
+        \ in the 'imports_contract' table, with precision up to microseconds. It is\
+        \ used to"
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'imports_contract' table is an
+        integer that stores the unique identifier of the user or system account that
+        created the contract record.
+    modified_by_id:
+      type: int
+      description: The field `modified_by_id` is an integer that records the identifier
+        of the user or system process that last modified the record in the `imports_contract`
+        table. This helps track changes and accountability within the data management
+        process.
+    supplier_id:
+      type: int
+      description: The `supplier_id` field is an integer that uniquely identifies
+        the supplier associated with a specific import contract in the `imports_contract`
+        table. It serves as a foreign key linking to the supplier's record in the
+        suppliers table, facilitating the management and tracking
+    file:
+      type: varchar(500)
+      description: The 'file' field in the 'imports_contract' table stores the filename
+        or path of the imported contract document. It is a variable character string
+        with a maximum length of 500 characters.
+    file_type:
+      type: varchar(30)
+      description: The `file_type` field in the `imports_contract` table is a string
+        variable that stores the type of file being imported, with a maximum length
+        of 30 characters. It is used to categorize or identify the format of the uploaded
+        files.
+    doc:
+      type: longblob
+      description: The 'doc' field in the 'imports_contract' table is of type 'longblob'
+        and is used to store large binary data. This field is designed to hold documents,
+        such as contracts or related files, in binary format, accommodating files
+        of
+    po_refrence:
+      type: varchar(100)
+      description: "**Field: po_reference**  \n**Type:** varchar(100)  \n**Description:**\
+        \ This field stores the purchase order reference number associated with the\
+        \ import contract. It is a string value with a maximum length of 100 characters,\
+        \ used for tracking and"
+    contract_type:
+      type: varchar(100)
+      description: The 'contract_type' field in the 'imports_contract' table is a
+        variable character string with a maximum length of 100 characters. It is used
+        to specify the type of contract associated with the import, indicating the
+        nature or category of the agreement (
+imports_currency:
+  description: The `imports_currency` table stores information related to currency
+    transactions involved in imports. It typically includes fields for currencies
+    used in import processes, exchange rates, import dates, and associated transaction
+    values. This table helps track and manage the financial aspects of importing goods
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_currency' table is an integer that
+        serves as the unique identifier for each record in the table. It ensures that
+        each currency import entry can be distinctly referenced and accessed.
+    name:
+      type: varchar(100)
+      description: "**Field: name**  \n**Type:** varchar(100)  \n**Description:**\
+        \ This field stores the name of the currency being imported, allowing for\
+        \ a maximum length of 100 characters."
+    code:
+      type: varchar(40)
+      description: The 'code' field in the 'imports_currency' table is a varchar data
+        type with a maximum length of 40 characters. It is used to store the unique
+        currency code associated with each currency import, typically following ISO
+        4217 standards.
+    symbol:
+      type: varchar(100)
+      description: "The 'symbol' field in the 'imports_currency' table is a varchar(100)\
+        \ data type that stores the unique representation of a currency, typically\
+        \ consisting of symbols or abbreviations (e.g., $, \u20AC, \xA3) used to denote\
+        \ the currency in"
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_currency' table is a datetime(6)
+        data type that stores the exact date and time when a currency import record
+        was created, with precision up to microseconds.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_currency' table captures
+        the date and time when the record was last updated. It is stored with a precision
+        of up to six microseconds, allowing for accurate tracking of modifications.
+    created_by_id:
+      type: int
+      description: The field **created_by_id** in the **imports_currency** table is
+        an integer that stores the unique identifier of the user or system that created
+        the currency import record. This field is used to track the origin of the
+        entry for auditing and accountability purposes
+    modified_by_id:
+      type: int
+      description: The field 'modified_by_id' is an integer that stores the identifier
+        of the user who last modified the record in the 'imports_currency' table.
+        This field is used for tracking changes and maintaining an audit trail of
+        modifications made to currency import entries.
+imports_importdata:
+  description: The 'imports_importdata' table stores detailed records of imported
+    data entries. It typically includes fields for tracking the source of the import,
+    the timestamp of the import operation, status indicators, and relevant metadata
+    associated with each data import, enabling efficient data management
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_importdata' table is an integer
+        that serves as the primary key, uniquely identifying each record in the table.
+    be_no:
+      type: varchar(100)
+      description: The 'be_no' field in the 'imports_importdata' table is a string
+        type (varchar) with a maximum length of 100 characters. It is used to store
+        the unique business entity number associated with the imported data records.
+    imp_date:
+      type: date
+      description: "**Field:** `imp_date`  \n**Type:** Date  \n**Description:** This\
+        \ field stores the date on which the import data was recorded. It indicates\
+        \ the specific day when the import transaction occurred."
+    importer_name:
+      type: varchar(100)
+      description: The 'importer_name' field in the 'imports_importdata' table stores
+        the name of the importer associated with the imported goods, with a maximum
+        length of 100 characters.
+    city:
+      type: varchar(50)
+      description: The 'city' field in the 'imports_importdata' table is a variable
+        character string with a maximum length of 50 characters. It stores the name
+        of the city associated with the import data entry.
+    origin_country:
+      type: varchar(300)
+      description: The 'origin_country' field in the 'imports_importdata' table is
+        a varchar data type with a maximum length of 300 characters. It stores the
+        name of the country from which the imported goods originate.
+    hs_code:
+      type: int
+      description: The 'hs_code' field is an integer that stores the Harmonized System
+        (HS) code, which is used for classifying traded products in international
+        commerce. This code helps to identify the specific type of goods being imported.
+    product_description:
+      type: varchar(250)
+      description: "**Field Name:** product_description  \n**Type:** varchar(250)\
+        \  \n**Table:** imports_importdata  \n\n**Description:** This field stores\
+        \ a brief textual description of the product being imported, with a maximum\
+        \ length of 250 characters. It provides essential"
+    quantity:
+      type: double
+      description: The 'quantity' field in the 'imports_importdata' table represents
+        the numerical amount of imported goods, stored as a double-precision floating-point
+        number. This allows for precise representation of quantities, accommodating
+        both whole numbers and fractions as necessary for accurate inventory
+    unit:
+      type: varchar(30)
+      description: The field 'unit' in the 'imports_importdata' table stores a string
+        value (up to 30 characters) representing the unit of measurement associated
+        with the imported data, such as kilograms, liters, or pieces.
+    unit_value_inr:
+      type: double
+      description: The field 'unit_value_inr' in the 'imports_importdata' table represents
+        the unit value of imported goods in Indian Rupees (INR). It is stored as a
+        double data type to accommodate decimal values, allowing for precise monetary
+        calculations.
+    total_assessable_value_inr:
+      type: double
+      description: The field 'total_assessable_value_inr' in the 'imports_importdata'
+        table stores the total assessable value of imported goods in Indian Rupees
+        (INR). This value is represented as a double data type, allowing for precision
+        in
+    unit_price_usd:
+      type: double
+      description: The field 'unit_price_usd' in the 'imports_importdata' table represents
+        the price per unit of imported goods, expressed in U.S. dollars. It is stored
+        as a double type to accommodate decimal values for accurate pricing.
+    total_assess_usd:
+      type: double
+      description: The field 'total_assess_usd' in the 'imports_importdata' table
+        represents the total assessed value of imported goods in US dollars. It is
+        of type 'double', allowing for precise decimal values to accommodate varying
+        amounts.
+    total_duty_paid:
+      type: double
+      description: The field 'total_duty_paid' in the 'imports_importdata' table represents
+        the total amount of duty fees that have been paid for imported goods. It is
+        a numerical value stored as a double, allowing for precision in representing
+        monetary amounts.
+    invoice_currency:
+      type: varchar(30)
+      description: "**Field Name:** invoice_currency  \n**Type:** varchar(30)  \n\
+        **Description:** This field stores the currency in which the invoice is issued.\
+        \ It can contain up to 30 characters and typically includes currency codes\
+        \ (such as USD, EUR,"
+    supplier_name:
+      type: varchar(100)
+      description: '''supplier_name'' is a VARCHAR field with a maximum length of
+        100 characters in the ''imports_importdata'' table. It stores the name of
+        the supplier providing the imported goods.'
+    invoice_unitprice_fc:
+      type: double
+      description: The field 'invoice_unitprice_fc' in the 'imports_importdata' table
+        represents the unit price of an invoice in foreign currency, stored as a double
+        data type. It captures the price per unit for each item or service listed
+        in the invoice and
+    created_at:
+      type: date
+      description: Field 'created_at' in the table 'imports_importdata' stores the
+        date and time when the import data record was created. This field helps track
+        the origin of the data entries and is essential for maintaining data integrity
+        and history.
+    type:
+      type: varchar(30)
+      description: The 'type' field in the 'imports_importdata' table is a VARCHAR(30)
+        data type that stores a classification or category for each import record.
+        It allows for up to 30 characters to specify the nature of the import, such
+        as
+    wp:
+      type: varchar(30)
+      description: The 'wp' field in the 'imports_importdata' table is a variable
+        character string with a maximum length of 30 characters. It is used to store
+        additional product or import-related information, potentially linking to a
+        specific identifier or keyword associated with the
+    address:
+      type: varchar(500)
+      description: The 'address' field in the 'imports_importdata' table is a variable
+        character field with a maximum length of 500 characters. It is used to store
+        the address information related to the imported data entries.
+    cha_name:
+      type: varchar(255)
+      description: "**Field Name:** cha_name  \n**Type:** varchar(255)  \n**Description:**\
+        \ This field stores the name of the channel, with a maximum length of 255\
+        \ characters. It is used to identify the source or type of data being imported."
+    cha_no:
+      type: varchar(255)
+      description: Field 'cha_no' in the 'imports_importdata' table is a variable
+        character (varchar) field that can store up to 255 characters. It is typically
+        used to hold the unique identification number or code associated with a specific
+        import transaction.
+    contact_person:
+      type: varchar(255)
+      description: The 'contact_person' field in the 'imports_importdata' table is
+        a variable character field with a maximum length of 255 characters. It is
+        used to store the name of the individual responsible for communication regarding
+        the import data.
+    cush:
+      type: varchar(255)
+      description: Field 'cush' in the table 'imports_importdata' is a variable character
+        string with a maximum length of 255 characters. It is used to store information
+        related to the cushioning or padding specifications for imported goods, which
+        may be relevant for inventory
+    email:
+      type: varchar(255)
+      description: The 'email' field in the 'imports_importdata' table is a VARCHAR
+        data type with a maximum length of 255 characters. It stores the email addresses
+        associated with the import data entries, allowing for the tracking or communication
+        with relevant users or entities
+    indian_port:
+      type: varchar(255)
+      description: The 'indian_port' field in the 'imports_importdata' table stores
+        the name of the Indian port where the imported goods are received. This field
+        is of type 'varchar(255)', allowing for a variable-length string of up to
+        255
+    phone_no:
+      type: varchar(255)
+      description: "**Field:** `phone_no`  \n**Type:** `varchar(255)`  \n**Description:**\
+        \ A string field that stores the phone number associated with the import data.\
+        \ It allows for up to 255 characters, accommodating various phone number formats,\
+        \ including"
+    port_of_shipment:
+      type: varchar(255)
+      description: The `port_of_shipment` field in the `imports_importdata` table
+        stores the name or identifier of the port where the shipment originated. This
+        field is of type `varchar(255)`, allowing for a maximum length of 255 characters.
+    supplier_address:
+      type: varchar(500)
+      description: '''supplier_address'' is a VARCHAR field with a maximum length
+        of 500 characters in the ''imports_importdata'' table. It stores the address
+        of the supplier associated with the imported data.'
+    supplier_id:
+      type: int
+      description: The field 'supplier_id' is an integer that uniquely identifies
+        the supplier associated with a specific import record in the 'imports_importdata'
+        table. It establishes a relationship between the import data and the corresponding
+        supplier information.
+    import_product_id:
+      type: int
+      description: The field 'import_product_id' is an integer that uniquely identifies
+        a specific product associated with an import record in the 'imports_importdata'
+        table.
+imports_importinvoicecharges:
+  description: The `imports_importinvoicecharges` table stores information related
+    to charges associated with import invoices. This includes details such as charge
+    types, amounts, and any relevant foreign keys linked to invoices. The table is
+    essential for tracking the financial aspects of import transactions,
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_importinvoicecharges' table is an
+        integer that serves as a unique identifier for each record in the table, ensuring
+        that each invoice charge can be distinctly referenced.
+    bill_no:
+      type: varchar(150)
+      description: The 'bill_no' field in the 'imports_importinvoicecharges' table
+        is a varchar data type with a maximum length of 150 characters. It is designed
+        to store the unique identification number or reference associated with an
+        import invoice charge, facilitating tracking and
+    amount:
+      type: double
+      description: The 'amount' field in the 'imports_importinvoicecharges' table
+        is a double-precision floating-point number that represents the monetary value
+        of charges associated with import invoices. It captures the total cost or
+        expense incurred for specific charges related to the import process
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_importinvoicecharges' table
+        captures the timestamp indicating when the record was created. It is stored
+        as a datetime value with microsecond precision (datetime(6)), allowing for
+        precise tracking of the creation time down
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_importinvoicecharges' table
+        stores the timestamp of the last modification made to a record, with precision
+        up to microseconds. This field helps track changes and maintain an audit trail
+        for invoice charge records.
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `imports_importinvoicecharges`
+        table is an integer that stores the unique identifier of the user who created
+        the record. This field is used to associate the import invoice charge with
+        the user responsible for its entry into
+    invoice_id:
+      type: int
+      description: The field 'invoice_id' in the table 'imports_importinvoicecharges'
+        is an integer that uniquely identifies an invoice associated with the import
+        invoice charges. This field serves as a foreign key linking the charges to
+        the corresponding invoice record.
+    modified_by_id:
+      type: int
+      description: The `modified_by_id` field is an integer that stores the unique
+        identifier of the user who last modified the import invoice charge record
+        in the `imports_importinvoicecharges` table. It helps track changes and maintain
+        an audit trail of user activity for record
+    is_active:
+      type: tinyint(1)
+      description: "Field Name: `is_active`  \nType: `tinyint(1)`  \nDescription:\
+        \ Indicates whether the import invoice charge is currently active. A value\
+        \ of 1 represents \"active,\" while a value of 0 represents \"inactive.\""
+    credit_period:
+      type: int
+      description: "**Field:** credit_period  \n**Type:** int  \n**Description:**\
+        \ Represents the number of days allowed for payment after the invoice date\
+        \ for imported invoice charges. This value determines the credit terms extended\
+        \ to the purchaser."
+    currency_id:
+      type: int
+      description: The 'currency_id' field is an integer that stores the identifier
+        for the currency associated with the invoice charges in the 'imports_importinvoicecharges'
+        table. This field links to a currency reference table to define the specific
+        currency used for each charge.
+    due_date:
+      type: date
+      description: The 'due_date' field in the 'imports_importinvoicecharges' table
+        represents the deadline by which payment for the associated invoice charges
+        must be made. It is stored as a date value.
+    exchange_rate:
+      type: double
+      description: '**Field: exchange_rate**
+
+
+        **Type:** double
+
+
+        **Description:** Represents the currency exchange rate applied to the charges
+        on import invoices. This value is used to convert the invoice amounts into
+        the base currency of the importing entity.'
+    file:
+      type: varchar(100)
+      description: The 'file' field in the 'imports_importinvoicecharges' table is
+        a VARCHAR type with a maximum length of 100 characters. It is used to store
+        the name or path of a file associated with import invoice charges, allowing
+        for easy identification and
+    status:
+      type: varchar(150)
+      description: The 'status' field in the 'imports_importinvoicecharges' table
+        is a variable character string (varchar) with a maximum length of 150 characters.
+        It is used to indicate the current status of the import invoice charges, such
+        as 'Pending',
+    tax:
+      type: double
+      description: The 'tax' field in the 'imports_importinvoicecharges' table represents
+        the amount of tax applied to the import invoice charges, stored as a double-precision
+        floating-point number. This field allows for accurate representation of tax
+        values, accommodating decimal places when
+    total_amount:
+      type: double
+      description: "**Field:** total_amount  \n**Type:** double  \n**Description:**\
+        \ Represents the total monetary amount of the invoice charges associated with\
+        \ an import transaction. This value may include various charges such as shipping,\
+        \ handling, and customs duties, and is expressed in the"
+    type_of_job:
+      type: varchar(150)
+      description: The field 'type_of_job' in the 'imports_importinvoicecharges' table
+        is a VARCHAR(150) type that stores a textual description of the job type associated
+        with the invoice charge, allowing for up to 150 characters of input.
+    vendor_name:
+      type: varchar(150)
+      description: The 'vendor_name' field in the 'imports_importinvoicecharges' table
+        is a variable character string with a maximum length of 150 characters. It
+        stores the name of the vendor associated with the import invoice charges.
+imports_importinvoicechargespayment:
+  description: The `imports_importinvoicechargespayment` table stores information
+    related to payments made for import invoice charges. It includes details such
+    as payment amounts, dates, payment methods, and associations with corresponding
+    invoices, enabling the tracking and management of financial transactions related
+    to
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each record in the 'imports_importinvoicechargespayment' table. It ensures
+        the distinct identification of payment charge records associated with imported
+        invoices.
+    charges_type:
+      type: varchar(150)
+      description: The 'charges_type' field in the 'imports_importinvoicechargespayment'
+        table is a varchar field with a maximum length of 150 characters. It is used
+        to specify the type of charge associated with an import invoice payment, allowing
+        for detailed categor
+    payment_name:
+      type: varchar(150)
+      description: The field 'payment_name' in the 'imports_importinvoicechargespayment'
+        table is of type 'varchar(150)' and stores the name associated with a specific
+        payment, allowing for up to 150 characters. This field provides a descriptive
+        identifier for
+    payment_type:
+      type: varchar(150)
+      description: The field `payment_type` in the table `imports_importinvoicechargespayment`
+        is a variable character string with a maximum length of 150 characters. It
+        is used to specify the method of payment associated with an import invoice
+        charge, such as credit
+    amount:
+      type: double
+      description: The `amount` field in the `imports_importinvoicechargespayment`
+        table represents the monetary value of the payment associated with import
+        invoice charge. It is stored as a double data type to allow for precise representation
+        of decimal values, accommodating larger amounts and
+    date:
+      type: date
+      description: The 'date' field in the 'imports_importinvoicechargespayment' table
+        stores the date of the payment transaction associated with an import invoice
+        charge. It is of type 'date' and captures the specific day the payment was
+        made.
+    bank:
+      type: varchar(150)
+      description: Field 'bank' in the 'imports_importinvoicechargespayment' table
+        stores the name of the bank associated with the payment. It is a variable
+        character field with a maximum length of 150 characters, allowing for flexibility
+        in naming conventions.
+    reference_id:
+      type: varchar(150)
+      description: The 'reference_id' field in the 'imports_importinvoicechargespayment'
+        table is a varchar(150) type that stores a unique identifier for each payment
+        entry associated with import invoice charges. It allows for easy tracking
+        and referencing of payments within the
+    exchange_rate:
+      type: double
+      description: The field 'exchange_rate' in the 'imports_importinvoicechargespayment'
+        table represents the conversion rate used to translate foreign currency payments
+        into the local currency. This field is of type 'double', allowing for precise
+        decimal values to reflect varying exchange rates
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_importinvoicechargespayment'
+        table stores the precise date and time when a record was created, capturing
+        up to six decimal places for fractional seconds. This field helps track the
+        creation timestamp for import invoice charge
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field records the date and time when a record
+        in the 'imports_importinvoicechargespayment' table was last updated. It uses
+        the 'datetime(6)' type to capture precise timestamps with up to six decimal
+        places for fractional
+    is_active:
+      type: tinyint(1)
+      description: The field 'is_active' in the table 'imports_importinvoicechargespayment'
+        is a tiny integer (1) that indicates the active status of a payment charge.
+        A value of 1 typically represents that the payment charge is active, while
+        a
+    billofentry_id:
+      type: int
+      description: The field 'billofentry_id' is an integer that serves as a unique
+        identifier for the associated bill of entry in the 'imports_importinvoicechargespayment'
+        table. This field links import invoice charge payments to their corresponding
+        bill of entry records,
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is an integer that stores the unique
+        identifier of the user or system account responsible for creating the record
+        in the 'imports_importinvoicechargespayment' table.
+    currency_id:
+      type: int
+      description: The `currency_id` field is an integer that stores the unique identifier
+        for the currency associated with a specific import invoice charge payment.
+        This field links to a currency reference, enabling the system to handle different
+        currencies in financial transactions.
+    importinvoicecharges_id:
+      type: int
+      description: The field `importinvoicecharges_id` is an integer that serves as
+        a unique identifier for each entry in the `imports_importinvoicechargespayment`
+        table, linking payment records to specific import invoice charges.
+    invoice_id:
+      type: int
+      description: The field 'invoice_id' is an integer that uniquely identifies the
+        associated invoice within the 'imports_importinvoicechargespayment' table,
+        linking payment records to their corresponding invoices.
+    modified_by_id:
+      type: int
+      description: The `modified_by_id` field in the `imports_importinvoicechargespayment`
+        table is an integer that represents the unique identifier of the user who
+        last modified the import invoice charges payment record. This field is used
+        for tracking changes and maintaining audit trails
+    pi_id:
+      type: int
+      description: Field **'pi_id'** in the table **'imports_importinvoicechargespayment'**
+        is an integer that serves as a unique identifier for each payment record associated
+        with imported invoice charge transactions.
+    po_id:
+      type: int
+      description: The field `po_id` is an integer that uniquely identifies the associated
+        purchase order within the `imports_importinvoicechargespayment` table. This
+        field serves as a foreign key linking to the corresponding purchase order
+        record, facilitating the relationship between payment charges and
+    transporterchargesproduct_id:
+      type: int
+      description: The field `transporterchargesproduct_id` is of type 'int' and represents
+        a unique identifier for the transporter charge product associated with an
+        import invoice charge payment in the `imports_importinvoicechargespayment`
+        table. This field links the payment record
+    file:
+      type: varchar(100)
+      description: The 'file' field in the 'imports_importinvoicechargespayment' table
+        is a varchar type with a maximum length of 100 characters. It is used to store
+        the name or path of a file associated with an import invoice charge payment.
+imports_importinvoicefile:
+  description: The `imports_importinvoicefile` table stores information about invoice
+    files related to imported goods. This table may include fields such as the file
+    name, upload date, associated import transaction details, and any metadata necessary
+    for processing or tracking the invoice files within the
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer type identifier for each record in
+        the 'imports_importinvoicefile' table. It serves as the primary key, uniquely
+        distinguishing each import invoice file entry within the database.
+    file_name:
+      type: varchar(150)
+      description: The 'file_name' field in the 'imports_importinvoicefile' table
+        stores the name of the imported invoice file as a string with a maximum length
+        of 150 characters.
+    file:
+      type: longtext
+      description: The 'file' field in the 'imports_importinvoicefile' table is a
+        longtext data type that stores the content of uploaded import invoice files.
+        It can accommodate large amounts of textual data, making it suitable for storing
+        comprehensive document information related to import
+    is_active:
+      type: tinyint(1)
+      description: The `is_active` field is a boolean indicator represented as a tiny
+        integer (1 for true, 0 for false) in the `imports_importinvoicefile` table.
+        It signifies whether the import invoice file is currently active or not.
+    invoice_id:
+      type: int
+      description: Field 'invoice_id' is an integer that uniquely identifies each
+        invoice in the 'imports_importinvoicefile' table. It serves as a primary key
+        to relate the invoice file records to their corresponding invoices.
+imports_importinvoiceproduct:
+  description: The `imports_importinvoiceproduct` table stores information about products
+    listed in import invoices. It includes details such as product identifiers, quantities,
+    prices, and associated invoices, facilitating the tracking and management of imported
+    goods in the inventory system.
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_importinvoiceproduct' table is an
+        integer that uniquely identifies each record in the table. It serves as the
+        primary key, ensuring that each import invoice product entry can be distinctly
+        referenced and accessed.
+    qty:
+      type: int unsigned
+      description: The field 'qty' in the table 'imports_importinvoiceproduct' represents
+        the quantity of the product being imported, defined as an unsigned integer.
+        This value indicates the total number of units for that specific product in
+        the import invoice.
+    container_number:
+      type: varchar(100)
+      description: The field 'container_number' in the 'imports_importinvoiceproduct'
+        table is a VARCHAR data type with a maximum length of 100 characters. It stores
+        the unique identification number assigned to a shipping container associated
+        with the imported invoice product. This field is
+    gross_weight:
+      type: int unsigned
+      description: The 'gross_weight' field in the 'imports_importinvoiceproduct'
+        table represents the total weight of the imported product, measured in units
+        appropriate for the context (e.g., kilograms or pounds). This field is stored
+        as an unsigned integer, indicating that
+    net_weight:
+      type: int unsigned
+      description: The `net_weight` field in the `imports_importinvoiceproduct` table
+        represents the net weight of the imported product, measured in kilograms.
+        It is stored as an unsigned integer, ensuring that it can't hold negative
+        values.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_importinvoiceproduct' table
+        is of type 'datetime(6)' and records the exact timestamp when a specific import
+        invoice product entry was created, with precision up to microseconds.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_importinvoiceproduct' table
+        records the date and time of the last modification made to the invoice product
+        entry. It is stored with a precision of up to six decimal places for fractional
+        seconds, allowing for high
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `imports_importinvoiceproduct`
+        table is an integer that identifies the user or system account responsible
+        for creating the corresponding import invoice product record.
+    invoice_id:
+      type: int
+      description: "**Field: `invoice_id`**  \n**Type: `int`**  \n**Table: `imports_importinvoiceproduct`**\
+        \  \n**Description:** This field stores the unique identifier for an invoice\
+        \ associated with a specific imported invoice product. It is"
+    modified_by_id:
+      type: int
+      description: The field `modified_by_id` is an integer that stores the identifier
+        of the user or system process that last modified the record in the `imports_importinvoiceproduct`
+        table. This field helps track changes and maintain an audit trail for the
+        invoice product entries
+    product_id:
+      type: int
+      description: The 'product_id' field is an integer that uniquely identifies a
+        product in the 'imports_importinvoiceproduct' table. It serves as a reference
+        to the specific product associated with an import invoice entry.
+    job_no:
+      type: varchar(100)
+      description: Field **'job_no'** in the **'imports_importinvoiceproduct'** table
+        is a variable character string (varchar) with a maximum length of 100 characters.
+        It is used to store the unique identification number associated with a job
+        or project
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'imports_importinvoiceproduct' table
+        is a tiny integer (1) that indicates whether the product is currently active
+        or not. A value of 1 signifies that the product is active, while a value of
+    transporter_charges_product_id:
+      type: int
+      description: The field `transporter_charges_product_id` is an integer that uniquely
+        identifies the product associated with transporter charges in the `imports_importinvoiceproduct`
+        table. This field links specific charges to the corresponding transport product
+        for accurate billing and record-keeping in
+    pi_id:
+      type: int
+      description: The 'pi_id' field in the 'imports_importinvoiceproduct' table is
+        an integer that serves as a unique identifier for each product entry associated
+        with an import invoice. This field is used to reference and link specific
+        products to their respective invoices within the
+    pi_product_id:
+      type: int
+      description: "**Field:** `pi_product_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier for the product associated with\
+        \ an import invoice in the `imports_importinvoiceproduct` table. It serves\
+        \ as a foreign key linking"
+imports_ornateimportinvoice:
+  description: The `imports_ornateimportinvoice` table stores detailed records of
+    ornate import invoices. It includes information about imported goods, invoice
+    numbers, supplier details, transaction dates, and amounts owed. This table is
+    essential for tracking and managing import transactions efficiently within
+  fields:
+    id:
+      type: int
+      description: The field 'id' in the table 'imports_ornateimportinvoice' is an
+        integer that serves as the unique identifier for each import invoice record.
+        It ensures each entry can be distinctly referenced within the database.
+    invoice_number:
+      type: varchar(100)
+      description: "**Field:** `invoice_number`  \n**Type:** `varchar(100)`  \n**Description:**\
+        \ A unique identifier for each import invoice, represented as a variable character\
+        \ string with a maximum length of 100 characters. This field is used to reference\
+        \ and"
+    invoice_date:
+      type: date
+      description: The 'invoice_date' field in the 'imports_ornateimportinvoice' table
+        represents the date when the invoice was issued for the imported goods. It
+        is stored in a date format.
+    amount:
+      type: double
+      description: "**Field: amount**  \n**Type:** double  \n**Description:** Represents\
+        \ the monetary value of the ornate import invoice, indicating the total amount\
+        \ to be paid for the imported goods."
+    packing_list_number:
+      type: varchar(100)
+      description: The field 'packing_list_number' in the 'imports_ornateimportinvoice'
+        table is a variable character string (varchar) that holds a packing list identifier,
+        with a maximum length of 100 characters. This field is used to reference the
+        packing
+    hsn_code:
+      type: varchar(100)
+      description: The 'hsn_code' field in the 'imports_ornateimportinvoice' table
+        stores the Harmonized System Nomenclature (HSN) code, represented as a variable
+        character string with a maximum length of 100 characters. This code is
+    packing_list_date:
+      type: date
+      description: The field 'packing_list_date' in the table 'imports_ornateimportinvoice'
+        represents the date on which the packing list was created for the imported
+        goods. This date is crucial for tracking shipment timelines and inventory
+        management.
+    insurance_number:
+      type: varchar(100)
+      description: The 'insurance_number' field in the 'imports_ornateimportinvoice'
+        table stores the insurance policy number associated with the import invoice,
+        represented as a string with a maximum length of 100 characters.
+    insurance_company:
+      type: varchar(100)
+      description: The field `insurance_company` in the table `imports_ornateimportinvoice`
+        is of type `varchar(100)` and stores the name of the insurance company associated
+        with the import invoice. This field allows for a maximum of 100 characters,
+    insurance_date:
+      type: date
+      description: The 'insurance_date' field in the 'imports_ornateimportinvoice'
+        table stores the date on which insurance coverage for the imported goods is
+        effective. This field is of type 'date' and is used to track the validity
+        period of insurance associated
+    bl_number:
+      type: varchar(100)
+      description: The 'bl_number' field in the 'imports_ornateimportinvoice' table
+        stores the Bill of Lading number as a string, with a maximum length of 100
+        characters. This field is used to uniquely identify a shipping document that
+        details the
+    terms_of_delivery:
+      type: varchar(300)
+      description: The 'terms_of_delivery' field in the 'imports_ornateimportinvoice'
+        table is a string (varchar) that stores the delivery terms associated with
+        the import invoice, detailing the conditions under which goods are delivered.
+        It has a maximum length of
+    bl_date:
+      type: date
+      description: The field 'bl_date' in the table 'imports_ornateimportinvoice'
+        represents the date of the bill of lading associated with the import invoice.
+        This field stores the specific date when the bill of lading was issued, providing
+        critical information
+    forwarder:
+      type: varchar(300)
+      description: The 'forwarder' field in the 'imports_ornateimportinvoice' table
+        is a VARCHAR(300) type that stores the name or identifier of the freight forwarder
+        responsible for transporting goods associated with the import invoice. This
+        field can hold up
+    carrier:
+      type: varchar(300)
+      description: The 'carrier' field in the 'imports_ornateimportinvoice' table
+        stores the name of the shipping carrier responsible for transporting the imported
+        goods. It is a variable character field that can hold up to 300 characters.
+    agent:
+      type: varchar(300)
+      description: The 'agent' field in the 'imports_ornateimportinvoice' table is
+        a variable character string with a maximum length of 300 characters. It is
+        used to store the name or identification of the agent associated with the
+        import invoice.
+    description:
+      type: varchar(300)
+      description: The 'description' field in the 'imports_ornateimportinvoice' table
+        is a variable character string with a maximum length of 300 characters. It
+        is used to provide a textual description of the import invoice, detailing
+        the nature of the goods or
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_ornateimportinvoice' table
+        is a datetime(6) type that records the precise date and time when the invoice
+        was created. The '(6)' indicates that the field can store fractional seconds,
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_ornateimportinvoice' table
+        stores the date and time of the last modification made to the record, with
+        a precision of up to microseconds (datetime(6)).
+    created_by_id:
+      type: int
+      description: 'The field `created_by_id` (type: int) in the table `imports_ornateimportinvoice`
+        represents the unique identifier of the user who created the import invoice
+        record. This field is used to track the creator of each invoice for auditing'
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'imports_ornateimportinvoice'
+        table is an integer that identifies the user who last modified the specific
+        import invoice record. This field is used for tracking changes and maintaining
+        an audit trail for data integrity.
+    pi_id:
+      type: int
+      description: The field 'pi_id' is an integer that serves as a unique identifier
+        for each record in the 'imports_ornateimportinvoice' table, representing the
+        specific import invoice associated with the entry.
+    invoice_file:
+      type: varchar(100)
+      description: The field 'invoice_file' in the 'imports_ornateimportinvoice' table
+        is a varchar data type with a maximum length of 100 characters. It stores
+        the filename or path of the invoice document associated with the import process.
+    po_id:
+      type: int
+      description: The field 'po_id' in the table 'imports_ornateimportinvoice' is
+        an integer that uniquely identifies the purchase order associated with each
+        ornate import invoice.
+    currency_id:
+      type: int
+      description: The `currency_id` field is an integer that specifies the identifier
+        for the currency used in a particular import invoice within the `imports_ornateimportinvoice`
+        table. It links to a currency reference, allowing for the accurate representation
+        of monetary values associated
+    exchange_rate:
+      type: double
+      description: The field 'exchange_rate' in the table 'imports_ornateimportinvoice'
+        stores the conversion rate between the invoice currency and the base currency,
+        represented as a double. This value is used to calculate the equivalent amount
+        of the invoice in the base
+    transport_date:
+      type: date
+      description: The 'transport_date' field in the 'imports_ornateimportinvoice'
+        table captures the date on which the imported goods were transported. This
+        field is of type 'date' and is used to track the shipping timeline of the
+        import invoices.
+    transporter_mode:
+      type: varchar(150)
+      description: The 'transporter_mode' field in the 'imports_ornateimportinvoice'
+        table is a VARCHAR(150) type that stores the mode of transportation used for
+        the imported goods. This may include options such as air, sea, road, or
+    is_active:
+      type: tinyint(1)
+      description: The field `is_active` in the table `imports_ornateimportinvoice`
+        is a tiny integer (1) that indicates the status of the import invoice. A value
+        of 1 signifies that the invoice is active, while a value of
+imports_ornateimportlcdetails:
+  description: The `imports_ornateimportlcdetails` table stores detailed information
+    related to imported ornate items, specifically focusing on the item specifications,
+    quantities, suppliers, and import transaction identifiers. Each record in this
+    table corresponds to a specific importation event, capturing
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_ornateimportlcdetails' table is
+        an integer that serves as the unique identifier for each record in the table.
+        It is typically used to reference and distinguish individual entries within
+        the dataset.
+    lc_number:
+      type: varchar(150)
+      description: The field 'lc_number' in the table 'imports_ornateimportlcdetails'
+        stores the letter of credit (LC) number associated with an import transaction.
+        It is a variable character field with a maximum length of 150 characters.
+    lc_date:
+      type: date
+      description: The field 'lc_date' in the table 'imports_ornateimportlcdetails'
+        represents the date associated with the letter of credit (LC) transaction.
+        It stores the date when the LC was issued or relevant to the import process.
+    lc_expiry_date:
+      type: date
+      description: "**Field:** `lc_expiry_date`  \n**Type:** Date  \n**Description:**\
+        \ Represents the expiration date of the letter of credit associated with the\
+        \ ornate import transaction. It is used to track the validity period of the\
+        \ financial guarantee provided for the import"
+    bank_name:
+      type: varchar(150)
+      description: "**Field: bank_name**  \n**Type:** varchar(150)  \n**Description:**\
+        \ This field stores the name of the bank associated with the import transaction,\
+        \ allowing for a maximum of 150 characters."
+    lc_amount:
+      type: double
+      description: The field 'lc_amount' in the table 'imports_ornateimportlcdetails'
+        represents the monetary value associated with the letter of credit for ornate
+        import transactions. It is stored as a double data type to accommodate precise
+        decimal values.
+    last_shipment_date:
+      type: date
+      description: The field 'last_shipment_date' in the 'imports_ornateimportlcdetails'
+        table stores the date of the most recent shipment associated with the import.
+        It is of type 'date' and helps track the timing of shipments for inventory
+        and
+    file:
+      type: varchar(100)
+      description: The 'file' field in the 'imports_ornateimportlcdetails' table is
+        a VARCHAR type with a maximum length of 100 characters. It is intended to
+        store the name or path of the file associated with the import process, enabling
+        easy
+    advance_paid_amount:
+      type: double
+      description: The field 'advance_paid_amount' in the table 'imports_ornateimportlcdetails'
+        represents the amount of advance payment made for the import transaction,
+        stored as a double data type to accommodate decimal values.
+    advance_paid_ref:
+      type: varchar(150)
+      description: The field `advance_paid_ref` in the table `imports_ornateimportlcdetails`
+        stores a reference number (up to 150 characters) related to any advance payments
+        made for ornamental import letter of credit details.
+    advance_paid_date:
+      type: date
+      description: The field 'advance_paid_date' in the 'imports_ornateimportlcdetails'
+        table represents the date on which an advance payment was made for the imported
+        goods or services.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_ornateimportlcdetails' table
+        is a datetime (with microsecond precision) that records the exact timestamp
+        when a record was created. This field helps track the creation time for each
+        entry in the
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_ornateimportlcdetails'
+        table stores the timestamp indicating when a record was last updated, with
+        precision up to microseconds. This field helps track changes and maintain
+        the history of modifications made to each
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' in the 'imports_ornateimportlcdetails'
+        table is an integer that stores the unique identifier of the user or system
+        account that created the record. This field is used for tracking the origin
+        of the data entry
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'imports_ornateimportlcdetails'
+        table is an integer that stores the unique identifier of the user who last
+        modified the record. This field helps track changes and maintain an audit
+        trail of updates made to
+    pi_id:
+      type: int
+      description: The `pi_id` field is an integer that serves as a unique identifier
+        for each record in the `imports_ornateimportlcdetails` table. It is used to
+        uniquely distinguish individual import details within the dataset.
+    po_id:
+      type: int
+      description: "**Field: po_id**  \n**Type: int**  \n**Description:** This field\
+        \ represents the unique identifier for a purchase order associated with the\
+        \ entry in the 'imports_ornateimportlcdetails' table. It is used to link the\
+        \ detailed"
+    currency_id:
+      type: int
+      description: The field 'currency_id' in the 'imports_ornateimportlcdetails'
+        table is an integer that identifies the currency used for the transaction.
+        It typically references a currency table, allowing for the specification of
+        different monetary units associated with the imported items
+    exchange_rate:
+      type: double
+      description: The 'exchange_rate' field in the 'imports_ornateimportlcdetails'
+        table represents the conversion rate between the currency used for the transaction
+        and the reference currency, expressed as a double data type. This value is
+        used to calculate the equivalent amount
+imports_ornatepo:
+  description: The 'imports_ornatepo' table stores data related to the importation
+    of products or materials identified by the 'ornatepo' category. It includes fields
+    for details such as import dates, item descriptions, quantities, supplier information,
+    and relevant
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_ornatepo' table is an integer type
+        that serves as a unique identifier for each record in the table. It is typically
+        used as a primary key to facilitate efficient data retrieval and organization.
+    po_no:
+      type: varchar(50)
+      description: The field 'po_no' in the 'imports_ornatepo' table is a varchar
+        data type with a maximum length of 50 characters. It stores the purchase order
+        number associated with imported items, serving as a unique identifier for
+        tracking and referencing
+    date:
+      type: date
+      description: The 'date' field in the 'imports_ornatepo' table stores the date
+        associated with each import record, representing the specific date on which
+        the import occurred. The field is of type 'date', ensuring that only valid
+        date entries are allowed
+    exchange_rate:
+      type: double
+      description: The 'exchange_rate' field in the 'imports_ornatepo' table represents
+        the conversion rate between the currency used in the import transaction and
+        the base currency. It is of type 'double', allowing for precise decimal values
+        to account for fluctuations in
+    total_amount:
+      type: double
+      description: The 'total_amount' field in the 'imports_ornatepo' table represents
+        the total monetary value of goods imported, stored as a double-precision floating-point
+        number. It reflects the cumulative cost of transactions related to the imported
+        items.
+    place_of_loading:
+      type: varchar(300)
+      description: The field 'place_of_loading' in the 'imports_ornatepo' table stores
+        the location where goods are loaded for shipment, represented as a variable
+        character string with a maximum length of 300 characters.
+    delivery_terms:
+      type: varchar(500)
+      description: The 'delivery_terms' field in the 'imports_ornatepo' table is a
+        variable character string with a maximum length of 500 characters. It captures
+        the specific terms and conditions related to the delivery of imported goods,
+        including shipping methods, responsibilities
+    payment_terms:
+      type: varchar(500)
+      description: The 'payment_terms' field in the 'imports_ornatepo' table is a
+        VARCHAR data type that allows up to 500 characters. It stores the conditions
+        under which payment is to be made for imported goods, detailing aspects such
+        as payment due
+    remark:
+      type: varchar(1500)
+      description: The 'remark' field in the 'imports_ornatepo' table is a varchar
+        type with a maximum length of 1500 characters. It is intended to store additional
+        comments or notes related to the import records, allowing for detailed explanations
+        or observations
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_ornatepo' table stores the
+        timestamp for when a record was created. It is of type 'datetime(6)', which
+        means it can capture date and time values with precision up to six decimal
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_ornatepo' table records
+        the date and time when a record was last updated. It is stored in 'datetime(6)'
+        format, allowing for precision up to microseconds.
+    contract_no_id:
+      type: int
+      description: The 'contract_no_id' field in the 'imports_ornatepo' table is an
+        integer that uniquely identifies a contract associated with the imported data.
+        It serves as a foreign key linking to the relevant contract record in another
+        table, ensuring data integrity
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'imports_ornatepo' table is of
+        type 'int' and stores the unique identifier of the user who created the record.
+        It is used to track the origin of the entry for auditing and accountability
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'imports_ornatepo' table is an
+        integer that stores the unique identifier of the user who last modified the
+        record.
+    product_company_poc_id:
+      type: int
+      description: The field `product_company_poc_id` in the `imports_ornatepo` table
+        is an integer that represents the unique identifier for the point of contact
+        (POC) at the product company associated with the imported data. This ID links
+        the
+    purchaser_name_id_id:
+      type: int
+      description: "**Field:** `purchaser_name_id_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier associated with the purchaser's\
+        \ name in the imports_ornatepo table, linking each import record to the corresponding"
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'imports_ornatepo' table is a tiny
+        integer (1 byte) that indicates whether a record is currently active. It typically
+        uses a value of 1 to signify "active" and 0 for
+    product_company_plant_id:
+      type: int
+      description: The field 'product_company_plant_id' is an integer that uniquely
+        identifies the plant associated with a specific product company within the
+        'imports_ornatepo' table. This identifier links products to their respective
+        manufacturing or processing facilities, facilitating inventory and supply
+    product_type_id:
+      type: int
+      description: '**Field: `product_type_id`**
+
+
+        **Type:** Integer
+
+
+        **Description:** This field represents the unique identifier for the type
+        of product being imported in the `imports_ornatepo` table. It is used to categorize
+        and differentiate between various'
+    currency_id:
+      type: int
+      description: "**Field: `currency_id`**  \n**Type:** Integer  \n**Description:**\
+        \ This field stores a unique identifier for the currency used in the import\
+        \ transaction. It links to a currency reference table, allowing for the consistent\
+        \ representation of various currencies in the"
+    country_of_origin:
+      type: varchar(200)
+      description: The 'country_of_origin' field in the 'imports_ornatepo' table stores
+        the name of the country where the imported item was originally produced or
+        manufactured. It is a variable character field with a maximum length of 200
+        characters.
+    destination_port:
+      type: varchar(200)
+      description: The 'destination_port' field in the 'imports_ornatepo' table stores
+        the name of the port where imported goods are to be delivered. It is a variable
+        character (varchar) type with a maximum length of 200 characters, allowing
+        for
+    discount:
+      type: double
+      description: The 'discount' field is a double type that represents the percentage
+        or amount of discount applied to the imported ornate products within the 'imports_ornatepo'
+        table. It allows for decimal values to accurately reflect partial discounts.
+    tax_percent:
+      type: double
+      description: The field 'tax_percent' in the 'imports_ornatepo' table stores
+        the tax percentage applicable to imported items, expressed as a double-precision
+        floating point number. This value represents the percentage rate that will
+        be applied for tax calculations on the
+    billing_from_id:
+      type: int
+      description: The field 'billing_from_id' is an integer that identifies the source
+        of billing information associated with each record in the 'imports_ornatepo'
+        table. It serves as a reference to a specific billing entity or external system.
+    billing_from1_id:
+      type: int
+      description: The field 'billing_from1_id' is an integer that stores the identifier
+        for the primary billing source associated with each record in the 'imports_ornatepo'
+        table. This ID links to a specific billing entity, enabling the management
+        and tracking of
+    shipping_to_id:
+      type: int
+      description: The field **'shipping_to_id'** in the **'imports_ornatepo'** table
+        is an integer that represents the unique identifier for the shipping destination
+        associated with the import transaction. This ID links to a corresponding record
+        in a shipping or
+    shipping_to1_id:
+      type: int
+      description: The `shipping_to1_id` field in the `imports_ornatepo` table is
+        an integer that represents the unique identifier for the primary shipping
+        destination associated with the import record.
+    port_of_discharge:
+      type: varchar(200)
+      description: "**Field: `port_of_discharge`**  \n**Type:** `varchar(200)`  \n\
+        **Description:** This field stores the name of the port where the imported\
+        \ goods are discharged. It can contain up to 200 characters and is used to"
+    remark1:
+      type: varchar(1500)
+      description: The field 'remark1' in the 'imports_ornatepo' table is a variable
+        character string with a maximum length of 1500 characters. It is used to store
+        additional remarks or comments related to the import records, providing flexibility
+        for users
+    old_billing_from_id:
+      type: int
+      description: The field `old_billing_from_id` is an integer that stores the identifier
+        for the previous billing source associated with an import record in the `imports_ornatepo`
+        table.
+    old_shipping_to_id:
+      type: int
+      description: The field `old_shipping_to_id` in the `imports_ornatepo` table
+        is an integer that stores the identifier for the previous shipping destination
+        associated with the import records.
+imports_ornatepobackup:
+  description: The `imports_ornatepobackup` table is designed to store backup records
+    of ornate product orders, capturing essential details for restoration and reference.
+    It includes fields related to order specifications, customer information, and
+    timestamps to track data integrity and changes
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the primary key in
+        the 'imports_ornatepobackup' table, uniquely identifying each record in the
+        table.
+    po_no:
+      type: varchar(50)
+      description: The field 'po_no' in the 'imports_ornatepobackup' table is a VARCHAR
+        type with a maximum length of 50 characters. It stores the Purchase Order
+        number associated with each import record, allowing for the identification
+        and tracking
+    date:
+      type: date
+      description: The 'date' field in the 'imports_ornatepobackup' table stores the
+        date of the import transaction in a 'YYYY-MM-DD' format. This field is used
+        to track when the data was imported into the database.
+    exchange_rate:
+      type: double
+      description: The `exchange_rate` field in the `imports_ornatepobackup` table
+        stores the conversion rate between the currency used in the import transaction
+        and a reference currency, represented as a double data type. This value is
+        used to calculate the
+    total_amount:
+      type: double
+      description: The 'total_amount' field in the 'imports_ornatepobackup' table
+        stores a double-precision floating-point number representing the total monetary
+        value of imported items. This field is used to quantify financial transactions
+        related to the imports recorded in
+    place_of_loading:
+      type: varchar(300)
+      description: "**Field:** `place_of_loading`  \n**Type:** `varchar(300)`  \n\
+        **Description:** This field captures the location where goods are loaded for\
+        \ import. It can store up to 300 characters, allowing for detailed descriptions\
+        \ of the loading site"
+    delivery_terms:
+      type: varchar(500)
+      description: The 'delivery_terms' field in the 'imports_ornatepobackup' table
+        is a VARCHAR data type with a maximum length of 500 characters. It is used
+        to store the terms and conditions related to the delivery of goods, specifying
+    payment_terms:
+      type: varchar(500)
+      description: The 'payment_terms' field in the 'imports_ornatepobackup' table
+        stores payment conditions related to transactions, represented as a variable
+        character string with a maximum length of 500 characters. This field outlines
+        the agreed-upon terms for
+    remark:
+      type: varchar(1500)
+      description: The 'remark' field in the 'imports_ornatepobackup' table is a variable
+        character field that can store up to 1500 characters. It is intended for recording
+        additional notes or comments related to the import records, providing context
+    created_at:
+      type: datetime(6)
+      description: "**Field Name:** `created_at`  \n**Type:** `datetime(6)`  \n**Description:**\
+        \ This field records the precise date and time when a record in the `imports_ornatepobackup`\
+        \ table was created. The `"
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_ornatepobackup' table records
+        the date and time when a record was last updated. It is stored as a datetime
+        value with microsecond precision, allowing for precise tracking of modifications.
+    is_active:
+      type: tinyint(1)
+      description: The field 'is_active' in the table 'imports_ornatepobackup' is
+        a boolean indicator represented as a tiny integer (1 or 0). It signifies whether
+        a record is currently active (1) or inactive (0).
+    country_of_origin:
+      type: varchar(200)
+      description: "**Field:** `country_of_origin`  \n**Type:** `varchar(200)`  \n\
+        **Description:** This field stores the name of the country from which the\
+        \ item was imported. It can contain up to 200 characters."
+    destination_port:
+      type: varchar(200)
+      description: The field 'destination_port' in the table 'imports_ornatepobackup'
+        stores the destination port information as a variable character string with
+        a maximum length of 200 characters. This field is used to identify the port
+        where goods are being
+    tax_percent:
+      type: double
+      description: The field 'tax_percent' in the table 'imports_ornatepobackup' stores
+        the tax rate applicable to imported items, represented as a decimal percentage
+        (e.g., 0.05 for 5%). This field is of type
+    discount:
+      type: double
+      description: The 'discount' field is a double-precision numeric value in the
+        'imports_ornatepobackup' table. It represents the percentage or amount of
+        discount applied to the imported products, allowing for precise calculations
+        of reduced prices.
+    billing_from_id:
+      type: int
+      description: "**Field: `billing_from_id`**  \n**Type: `int`**  \n**Table: `imports_ornatepobackup`**\
+        \  \n**Description:** A unique identifier that references the billing source\
+        \ or entity associated with the record"
+    billing_from1_id:
+      type: int
+      description: 'Field **billing_from1_id**: An integer that serves as a foreign
+        key referencing the identifier for the billing source associated with the
+        record in the `imports_ornatepobackup` table.'
+    contract_no_id:
+      type: int
+      description: The field 'contract_no_id' is an integer that serves as a unique
+        identifier for contracts associated with each record in the 'imports_ornatepobackup'
+        table.
+    created_by_id:
+      type: int
+      description: The field `created_by_id` is an integer that stores the unique
+        identifier of the user or system that created the record in the `imports_ornatepobackup`
+        table.
+    currency_id:
+      type: int
+      description: The field `currency_id` is an integer that represents the unique
+        identifier for the currency associated with the import record in the `imports_ornatepobackup`
+        table. This field links to a currency reference that defines the monetary
+        unit used in
+    modified_by_id:
+      type: int
+      description: "**Field: `modified_by_id`**  \n**Type:** Integer  \n**Description:**\
+        \ This field stores the identifier of the user who last modified the record\
+        \ in the `imports_ornatepobackup` table. It is used to track"
+    product_company_plant_id:
+      type: int
+      description: The field `product_company_plant_id` is an integer that uniquely
+        identifies the plant associated with a specific product in the `imports_ornatepobackup`
+        table. This field is used to link product information to the corresponding
+        company plant within
+    product_company_poc_id:
+      type: int
+      description: "**Field**: `product_company_poc_id`  \n**Type**: `int`  \n**Description**:\
+        \ This field stores the unique identifier (ID) for the point of contact (POC)\
+        \ associated with the product company within the `"
+    product_type_id:
+      type: int
+      description: The field 'product_type_id' is an integer identifier that represents
+        the type of product being imported in the 'imports_ornatepobackup' table.
+        It is used to categorize the products based on predefined types for better
+        organization and retrieval during
+    purchaser_name_id_id:
+      type: int
+      description: The field 'purchaser_name_id_id' in the 'imports_ornatepobackup'
+        table is of type 'int' and stores the unique identifier associated with the
+        purchaser's name. This field acts as a foreign key, linking
+    shipping_to_id:
+      type: int
+      description: The field 'shipping_to_id' is of type 'int' in the table 'imports_ornatepobackup'.
+        It represents a unique identifier for the shipping destination associated
+        with a particular import record.
+    shipping_to1_id:
+      type: int
+      description: The field 'shipping_to1_id' in the table 'imports_ornatepobackup'
+        is of type 'int' and represents the unique identifier for the shipping destination
+        associated with a specific import transaction. This field links to a record
+        in
+    port_of_discharge:
+      type: varchar(200)
+      description: '`port_of_discharge` (varchar(200)): This field stores the name
+        of the port where goods are unloaded during the import process. It is intended
+        for use in tracking and managing import shipments.'
+    po_ref_id:
+      type: int
+      description: The 'po_ref_id' field in the 'imports_ornatepobackup' table is
+        an integer that serves as a reference identifier for purchase orders. It links
+        each record in this table to a specific purchase order, facilitating data
+        organization and
+    remark1:
+      type: varchar(1500)
+      description: Field 'remark1' in the table 'imports_ornatepobackup' is a VARCHAR
+        type field with a maximum length of 1500 characters. It is intended for storing
+        additional remarks or comments related to the import records, providing context
+    old_billing_from_id:
+      type: int
+      description: The field `old_billing_from_id` is an integer that stores the identifier
+        for the previous billing source in the `imports_ornatepobackup` table. This
+        field is used to link records to their prior billing entries for historical
+        reference
+    old_shipping_to_id:
+      type: int
+      description: The field 'old_shipping_to_id' of type 'int' in the table 'imports_ornatepobackup'
+        represents the unique identifier for a previous shipping destination associated
+        with the data record. This field is used to track historical shipping information
+imports_ornatepopi:
+  description: The `imports_ornatepopi` table stores data related to the importation
+    details of the Ornate Popi species. It includes fields that capture information
+    such as the date of import, source location, quantity imported, and any relevant
+    regulatory details
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_ornatepopi' table is an integer
+        that serves as a unique identifier for each record in the table. It is typically
+        used as the primary key to ensure each entry can be distinctly referenced.
+    pi_no:
+      type: varchar(50)
+      description: The field 'pi_no' in the 'imports_ornatepopi' table is a variable
+        character string with a maximum length of 50 characters. It stores the identifier
+        for each purchase invoice associated with ornate popi imports.
+    date:
+      type: date
+      description: The 'date' field in the 'imports_ornatepopi' table stores the specific
+        date associated with each import record. It is of type 'date', allowing for
+        the representation of calendar dates without time components.
+    pi_amount:
+      type: double
+      description: The field 'pi_amount' in the 'imports_ornatepopi' table represents
+        the monetary amount associated with a specific import transaction. It is stored
+        as a double-precision floating-point number to accommodate decimal values
+        for accurate financial calculations.
+    advance_amount:
+      type: double
+      description: The field 'advance_amount' in the table 'imports_ornatepopi' represents
+        the monetary amount paid in advance for imported items, stored as a double-precision
+        floating-point number.
+    lc_amount:
+      type: double
+      description: The field 'lc_amount' in the table 'imports_ornatepopi' represents
+        the monetary amount in local currency associated with the imported items.
+        It is stored as a double, allowing for precision in decimal values.
+    delivery_terms:
+      type: varchar(200)
+      description: The 'delivery_terms' field in the 'imports_ornatepopi' table is
+        a varchar data type with a maximum length of 200 characters. It is used to
+        specify the terms and conditions related to the delivery of goods, including
+        details such
+    payment_terms:
+      type: varchar(200)
+      description: "**Field Name:** payment_terms  \n**Type:** varchar(200)  \n**Description:**\
+        \ This field stores the payment terms associated with a transaction in the\
+        \ 'imports_ornatepopi' table. It can contain contractual details related to\
+        \ payment schedules,"
+    remark:
+      type: varchar(500)
+      description: The 'remark' field in the 'imports_ornatepopi' table is a varchar
+        data type with a maximum length of 500 characters. It is used to store additional
+        comments or notes related to each record in the table, providing users with
+    credit_period:
+      type: int
+      description: "**Field: `credit_period`**  \n**Type:** Integer  \n**Description:**\
+        \ Represents the duration of the credit period, in days, for transactions\
+        \ related to ornate popi imports. This field indicates the time frame within\
+        \ which payment is expected to be"
+    file:
+      type: varchar(100)
+      description: "**Field: file**  \n**Type:** varchar(100)  \n**Description:**\
+        \ This field stores the name or path of the file associated with the import\
+        \ process in the 'imports_ornatepopi' table. It can contain up to"
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_ornatepopi' table stores
+        the date and time when each record was created. It is of type 'datetime(6)',
+        allowing for precise timestamping down to microseconds. This field is
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_ornatepopi' table stores
+        the timestamp indicating the last time a record was updated. It is of type
+        'datetime(6)', allowing for precision to the microsecond.
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'imports_ornatepopi' table is a tiny
+        integer (1) that indicates whether the corresponding record is currently active.
+        A value of 1 signifies that the record is active, while a value of
+    created_by_id:
+      type: int
+      description: The field `created_by_id` in the `imports_ornatepopi` table is
+        an integer that stores the unique identifier of the user who created the record.
+        This field is used to track the user responsible for the entry.
+    modified_by_id:
+      type: int
+      description: The field 'modified_by_id' in the 'imports_ornatepopi' table is
+        of type 'int' and stores the unique identifier of the user or system that
+        last modified the record. This field helps track changes and maintain an audit
+        trail
+    po_id:
+      type: int
+      description: The field 'po_id' in the 'imports_ornatepopi' table is an integer
+        that uniquely identifies each purchase order within the dataset.
+    advance_date:
+      type: date
+      description: The field 'advance_date' in the 'imports_ornatepopi' table stores
+        the date indicating when an advance payment was made for imported ornate pop
+        items. This date is critical for tracking payment timelines and ensuring accurate
+        financial records related to imports.
+    bank:
+      type: varchar(150)
+      description: "**Field:** bank  \n**Type:** varchar(150)  \n**Description:**\
+        \ This field stores the name of the bank associated with the import transaction,\
+        \ with a maximum length of 150 characters."
+    currency_id:
+      type: int
+      description: The field 'currency_id' in the 'imports_ornatepopi' table is an
+        integer that specifies the unique identifier for the currency used in the
+        import transaction. This field links the import record to a corresponding
+        currency entry in a related currency table
+    exchange_rate:
+      type: double
+      description: The 'exchange_rate' field in the 'imports_ornatepopi' table stores
+        the currency exchange rate as a double-precision floating-point number. This
+        value represents the conversion rate between the importing currency and a
+        designated reference currency at the time of
+    payment_type:
+      type: varchar(150)
+      description: "Field Name: `payment_type`  \nType: `varchar(150)`  \nDescription:\
+        \ This field stores the method of payment used for transactions recorded in\
+        \ the `imports_ornatepopi` table. It can accommodate a variety of payment\
+        \ types,"
+    reference_id:
+      type: varchar(150)
+      description: The 'reference_id' field in the 'imports_ornatepopi' table stores
+        a unique identifier for each import record, represented as a variable character
+        string with a maximum length of 150 characters. It is used to facilitate tracking
+        and referencing specific
+imports_ornatepopiproductdetails:
+  description: The `imports_ornatepopiproductdetails` table stores detailed information
+    about products imported from the Ornate Poppy supplier. It includes attributes
+    such as product IDs, descriptions, prices, quantities, and any relevant specifications
+    necessary for inventory management and sales
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each record in the 'imports_ornatepopiproductdetails' table. It is used
+        to distinguish one product detail entry from another.
+    etd:
+      type: varchar(50)
+      description: The 'etd' field in the 'imports_ornatepopiproductdetails' table
+        is of type 'varchar(50)' and is used to store the estimated time of delivery
+        (ETD) for the associated product. This field can hold
+    qty:
+      type: int unsigned
+      description: The field `qty` in the table `imports_ornatepopiproductdetails`
+        represents the quantity of products being imported. It is an unsigned integer,
+        indicating that it cannot have negative values and is used to track the total
+        count of items for
+    price:
+      type: double
+      description: The 'price' field in the 'imports_ornatepopiproductdetails' table
+        stores the monetary value of each ornate popi product, represented as a double-precision
+        floating-point number to allow for accurate pricing details, including cents.
+    created_at:
+      type: datetime(6)
+      description: The `created_at` field in the `imports_ornatepopiproductdetails`
+        table stores the timestamp indicating when a record was created. It is of
+        type `datetime(6)`, which allows for precision up to fractional seconds, ensuring
+        accurate
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_ornatepopiproductdetails'
+        table records the date and time when the product details were last modified.
+        It is stored with a precision of up to six fractional seconds, allowing for
+        precise tracking of
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field is an integer that stores the unique
+        identifier of the user who created the record in the 'imports_ornatepopiproductdetails'
+        table. This field helps track the origin of the data entry for auditing and
+        management
+    modified_by_id:
+      type: int
+      description: The `modified_by_id` field in the `imports_ornatepopiproductdetails`
+        table is an integer that stores the unique identifier of the user or system
+        that last modified the record. This field is used for tracking changes and
+        maintaining data integrity
+    ornatepi_id:
+      type: int
+      description: The field `ornatepi_id` is an integer that uniquely identifies
+        each record in the `imports_ornatepopiproductdetails` table, serving as a
+        primary key or foreign key to link related data.
+    product_id:
+      type: int
+      description: The 'product_id' field in the 'imports_ornatepopiproductdetails'
+        table is an integer that uniquely identifies each product within the dataset.
+        It serves as a primary or foreign key to link product details to corresponding
+        records in related tables.
+    po_id:
+      type: int
+      description: The field 'po_id' is an integer that serves as a unique identifier
+        for each purchase order associated with the records in the 'imports_ornatepopiproductdetails'
+        table.
+    po_product_id:
+      type: int
+      description: The field 'po_product_id' is an integer that uniquely identifies
+        a product within the 'imports_ornatepopiproductdetails' table, linking each
+        record to a specific product in the database.
+imports_ornatepoproducts:
+  description: The `imports_ornatepoproducts` table stores information about ornate
+    products imported into the inventory system. It includes details such as product
+    identifiers, descriptions, categories, quantities, prices, and supplier information.
+    This table is used to track and
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each record in the 'imports_ornatepoproducts' table. It is used to distinguish
+        individual entries and ensure data integrity.
+    etd:
+      type: date
+      description: The field 'etd' in the table 'imports_ornatepoproducts' represents
+        the estimated time of departure for imported ornate products. It stores a
+        date value indicating when the shipment is scheduled to leave the origin location.
+    qty:
+      type: int unsigned
+      description: The 'qty' field in the 'imports_ornatepoproducts' table is an unsigned
+        integer that represents the quantity of ornate poproducts imported. It stores
+        only non-negative values, providing a count of available items for inventory
+        management
+    unit_price:
+      type: double
+      description: The 'unit_price' field represents the price per unit of the ornate
+        pop product in the 'imports_ornatepoproducts' table. It is stored as a double
+        data type, allowing for precise monetary values, including decimal points
+        to account
+    total_amount:
+      type: double
+      description: The `total_amount` field in the `imports_ornatepoproducts` table
+        represents the total monetary value of the imported ornate products, stored
+        as a double-precision floating-point number. This field captures the aggregate
+        amount, allowing for decimal
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_ornatepoproducts' table
+        records the date and time when a new entry was created, with precision up
+        to six decimal places for fractional seconds.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_ornatepoproducts' table
+        records the date and time of the most recent update to a product entry, with
+        a precision of up to microseconds (datetime(6)).
+    created_by_id:
+      type: int
+      description: The field `created_by_id` in the table `imports_ornatepoproducts`
+        is an integer that stores the unique identifier of the user who created the
+        record. This field is used to track the origin of the data entry, allowing
+    modified_by_id:
+      type: int
+      description: The field 'modified_by_id' is an integer that stores the unique
+        identifier of the user who last modified the record in the 'imports_ornatepoproducts'
+        table. This helps track changes and maintain an audit trail of updates made
+        to
+    po_id:
+      type: int
+      description: The field 'po_id' in the table 'imports_ornatepoproducts' is an
+        integer that represents the unique identifier for each purchase order associated
+        with a product import.
+    product_id:
+      type: int
+      description: The field 'product_id' is an integer that uniquely identifies each
+        product in the 'imports_ornatepoproducts' table. It serves as a primary key
+        for referencing products in the database.
+    is_active:
+      type: tinyint(1)
+      description: The `is_active` field in the `imports_ornatepoproducts` table is
+        a tiny integer (1 byte) that indicates the active status of a product. A value
+        of 1 typically signifies that the product is active and available
+    specification:
+      type: varchar(200)
+      description: The 'specification' field in the 'imports_ornatepoproducts' table
+        is a character string with a maximum length of 200 characters. It is used
+        to store detailed specifications or features of ornate products imported into
+        the database.
+imports_ornatepoproductsbackup:
+  description: The `imports_ornatepoproductsbackup` table serves as a backup storage
+    for the imported data related to ornate pop products. This table preserves historical
+    records of product details, including attributes such as product IDs, names, descriptions,
+    prices,
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each record in the 'imports_ornatepoproductsbackup' table. It is used
+        to distinguish between different entries and facilitate efficient data retrieval
+        and management.
+    etd:
+      type: date
+      description: The 'etd' field in the 'imports_ornatepoproductsbackup' table represents
+        the estimated time of departure for products being imported, stored as a date
+        value.
+    qty:
+      type: int unsigned
+      description: The 'qty' field in the 'imports_ornatepoproductsbackup' table represents
+        the quantity of products being imported. It is stored as an unsigned integer,
+        which means it can only hold non-negative values.
+    unit_price:
+      type: double
+      description: The 'unit_price' field in the 'imports_ornatepoproductsbackup'
+        table represents the price per individual unit of an ornate pop product. It
+        is stored as a double value to accommodate decimal prices with precision.
+    total_amount:
+      type: double
+      description: The field 'total_amount' in the table 'imports_ornatepoproductsbackup'
+        represents the total monetary value associated with the imported ornate pop
+        products. This field is of type 'double', allowing it to store precise numerical
+        values, including
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_ornatepoproductsbackup'
+        table stores the date and time when a record was created. It is of type 'datetime(6)',
+        which means it includes microsecond precision for accurate time
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_ornatepoproductsbackup'
+        table records the date and time when a specific record was last updated. It
+        is of type 'datetime(6)', allowing for precision up to microseconds.
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'imports_ornatepoproductsbackup' table
+        is a tiny integer (1 byte) that indicates the active status of a product.
+        A value of '1' signifies that the product is currently active
+    created_by_id:
+      type: int
+      description: The `created_by_id` field is an integer that stores the unique
+        identifier of the user or system entity that created the record in the `imports_ornatepoproductsbackup`
+        table.
+    modified_by_id:
+      type: int
+      description: The field 'modified_by_id' is an integer that stores the identifier
+        of the user or system that last modified the record in the 'imports_ornatepoproductsbackup'
+        table. This field helps track changes and audit the history of modifications
+    po_id:
+      type: int
+      description: "**Field: po_id**  \n**Type:** int  \n**Description:** A unique\
+        \ identifier for purchase orders associated with products in the 'imports_ornatepoproductsbackup'\
+        \ table. This integer field is used to link the product records to"
+    product_id:
+      type: int
+      description: The field 'product_id' is an integer that uniquely identifies each
+        product within the 'imports_ornatepoproductsbackup' table. It serves as a
+        key reference for distinguishing individual entries related to ornate pop
+        products in the backup data.
+    specification:
+      type: varchar(200)
+      description: The 'specification' field in the 'imports_ornatepoproductsbackup'
+        table is a variable character string that can hold up to 200 characters. It
+        is used to store detailed descriptions or technical specifications of the
+        ornate products being imported
+    po_product_ref_id:
+      type: int
+      description: The field 'po_product_ref_id' is an integer that serves as a unique
+        identifier for products within the 'imports_ornatepoproductsbackup' table,
+        allowing for the tracking and referencing of specific products in the database.
+imports_performainvoice:
+  description: The `imports_performainvoice` table stores data related to performance
+    invoices for imported goods. It includes details such as invoice numbers, import
+    dates, item descriptions, quantities, unit prices, and total amounts. This table
+    facilitates tracking and managing the financial
+  fields:
+    id:
+      type: int
+      description: The field 'id' in the table 'imports_performainvoice' is an integer
+        value used as the primary identifier for each record in the table. It uniquely
+        distinguishes each import performance invoice entry and ensures data integrity
+        within the database.
+    pi_number:
+      type: varchar(150)
+      description: The 'pi_number' field in the 'imports_performainvoice' table stores
+        a unique identifier for each performance invoice, represented as a variable
+        character string with a maximum length of 150 characters. This field is used
+        to track and reference specific performance
+    pi_date:
+      type: varchar(50)
+      description: The `pi_date` field in the `imports_performainvoice` table stores
+        the date associated with the performance invoice as a string. The field is
+        of type `varchar(50)`, allowing for flexibility in date formatting, but it
+        is recommended
+    watt_value:
+      type: double
+      description: The field 'watt_value' in the 'imports_performainvoice' table represents
+        the measured power consumption or output in watts, recorded as a double-precision
+        floating-point number. It allows for precise representation of wattage values
+        associated with imports in
+    pi_attachment:
+      type: varchar(100)
+      description: The `pi_attachment` field in the `imports_performainvoice` table
+        is a variable character string with a maximum length of 100 characters. It
+        is used to store the filename or path of an attachment related to the performance
+        invoice.
+    pi_amount:
+      type: double
+      description: The field 'pi_amount' in the 'imports_performainvoice' table represents
+        the monetary amount associated with a specific performance invoice. It is
+        stored as a double data type, allowing for precise representation of decimal
+        values.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_performainvoice' table stores
+        the timestamp indicating when each record was created. It is of type 'datetime(6)',
+        which allows for precise storage of date and time with fractional seconds
+        up to six
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_performainvoice' table
+        records the timestamp of the last update made to the corresponding record.
+        It stores date and time values with microsecond precision, allowing for accurate
+        tracking of changes in the data.
+    created_by_id:
+      type: int
+      description: The field `created_by_id` is an integer that represents the unique
+        identifier of the user or system that created the record in the `imports_performainvoice`
+        table. This field establishes a link to the user responsible for the entry,
+        facilitating tracking
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field is an integer that stores the identifier
+        of the user or system that last modified the record in the 'imports_performainvoice'
+        table. It is used for tracking changes and maintaining audit trails for modifications.
+    po_id:
+      type: int
+      description: The field 'po_id' in the 'imports_performainvoice' table is an
+        integer that uniquely identifies a purchase order associated with a performance
+        invoice.
+    description:
+      type: varchar(150)
+      description: The 'description' field in the 'imports_performainvoice' table
+        is a VARCHAR(150) type column that holds a brief textual description related
+        to the performance invoice. It is designed to provide additional context or
+        details about the imported data associated with
+imports_pipayments:
+  description: The `imports_pipayments` table stores information related to payment
+    transactions made through various payment processing systems. It includes fields
+    for recording details such as transaction IDs, payment amounts, currencies, timestamps,
+    and associated user or order identifiers. This table is essential
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_pipayments' table is an integer
+        that serves as the unique identifier for each payment record. It is typically
+        used as the primary key to distinguish individual entries within the table.
+    payment_type:
+      type: varchar(150)
+      description: The 'payment_type' field in the 'imports_pipayments' table is a
+        VARCHAR(150) data type that stores the method or category of payment used
+        in a transaction. This could include types such as credit card, debit card,
+        PayPal
+    amount:
+      type: double
+      description: The 'amount' field in the 'imports_pipayments' table represents
+        the monetary value of payments made through the PIPAYMENTS system. It is stored
+        as a double to accommodate both large and precise decimal values, reflecting
+        the total payment amount in
+    date:
+      type: date
+      description: "**Field: date**  \n**Type:** date  \n**Description:** Represents\
+        \ the date when the payment was made or recorded in the imports_pipayments\
+        \ table. This field is used to track payment transactions over time."
+    bank:
+      type: varchar(150)
+      description: The 'bank' field in the 'imports_pipayments' table stores the name
+        of the financial institution associated with the payment. It is a variable
+        character field with a maximum length of 150 characters.
+    reference_id:
+      type: varchar(150)
+      description: The `reference_id` field in the `imports_pipayments` table is a
+        variable character string with a maximum length of 150 characters. It is used
+        to uniquely identify a specific payment transaction or reference, facilitating
+        tracking and management of payment records.
+    exchange_rate:
+      type: double
+      description: "**Field:** `exchange_rate`  \n**Type:** `double`  \n**Description:**\
+        \ Represents the rate at which one currency can be exchanged for another,\
+        \ applied to the payment amounts in the `imports_pipayments` table. This value\
+        \ is used"
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_pipayments' table records
+        the exact date and time when each payment import entry was created. It captures
+        timestamps with microsecond precision, allowing for detailed tracking of import
+        activities.
+    modified_at:
+      type: datetime(6)
+      description: The `modified_at` field in the `imports_pipayments` table stores
+        the timestamp of the last modification made to a record, with precision up
+        to six decimal places. This field is of type `datetime(6)`, allowing for accurate
+        tracking
+    is_active:
+      type: tinyint(1)
+      description: The `is_active` field in the `imports_pipayments` table is a tiny
+        integer (1) that indicates the active status of a payment record. A value
+        of 1 represents that the payment is currently active, while a value of
+    created_by_id:
+      type: int
+      description: "**Field:** `created_by_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier of the user who created the payment\
+        \ import entry in the `imports_pipayments` table. It serves as a foreign key"
+    currency_id:
+      type: int
+      description: "**Field: `currency_id`**  \n**Type:** Integer  \n**Description:**\
+        \ This field stores the unique identifier for the currency associated with\
+        \ the payment in the `imports_pipayments` table. It references the corresponding\
+        \ currency in the related currency table"
+    lc_id:
+      type: int
+      description: The field `lc_id` in the `imports_pipayments` table is an integer
+        that serves as a unique identifier for the related letter of credit. It links
+        payment records to their corresponding letter of credit entries, facilitating
+        the tracking and management of transactions
+    modified_by_id:
+      type: int
+      description: The field 'modified_by_id' is an integer that stores the identifier
+        of the user who last modified the record in the 'imports_pipayments' table.
+        This helps track changes and maintain an audit trail of modifications made
+        to payment import records.
+    pi_id:
+      type: int
+      description: The field 'pi_id' in the 'imports_pipayments' table is an integer
+        that serves as a unique identifier for each payment entry. It is used to link
+        payment records to their respective transactions within the database.
+    po_id:
+      type: int
+      description: The 'po_id' field in the 'imports_pipayments' table is an integer
+        that serves as a unique identifier for each purchase order associated with
+        a payment transaction.
+    payment_name:
+      type: varchar(150)
+      description: The `payment_name` field in the `imports_pipayments` table is a
+        varchar type with a maximum length of 150 characters. It stores the name of
+        the payment method or transaction for reference in payment records.
+    bank_charges:
+      type: double
+      description: The field 'bank_charges' in the 'imports_pipayments' table represents
+        the monetary amount, in double precision, that has been incurred as bank fees
+        or charges associated with processing payments.
+    prepayment_discount:
+      type: double
+      description: The field `prepayment_discount` in the `imports_pipayments` table
+        represents the monetary discount amount applied to payments made in advance.
+        This value is stored as a double to accommodate precise monetary calculations.
+    total_amount:
+      type: double
+      description: The 'total_amount' field in the 'imports_pipayments' table represents
+        the total monetary value associated with a payment transaction. It is stored
+        as a double precision floating-point number, allowing for precise representation
+        of monetary values, including decimals.
+imports_productdetailspi:
+  description: The `imports_productdetailspi` table stores detailed information about
+    products imported into the system. It includes fields for product specifications,
+    attributes, pricing, and supplier information, facilitating efficient inventory
+    management and processing of imported goods.
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_productdetailspi' table is an integer
+        type that serves as the primary identifier for each record in the table, ensuring
+        uniqueness and enabling efficient referencing of product detail entries.
+    etd:
+      type: varchar(50)
+      description: The field 'etd' in the 'imports_productdetailspi' table is a varchar
+        data type with a maximum length of 50 characters. It is used to store the
+        estimated time of departure for imported products, providing critical information
+        for logistics and shipment
+    qty:
+      type: int unsigned
+      description: The 'qty' field in the 'imports_productdetailspi' table is an unsigned
+        integer that represents the quantity of products being imported in a specific
+        transaction. It cannot hold negative values and is used to track inventory
+        levels associated with each imported product detail.
+    price:
+      type: double
+      description: "Field Name: `price`  \nTable Name: `imports_productdetailspi`\
+        \  \nDescription: This field stores the price of the product in double precision\
+        \ format, allowing for accurate representation of monetary values, including\
+        \ decimals."
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_productdetailspi' table
+        stores the date and time when a record was created. It is of type 'datetime(6)',
+        which allows for precision up to six fractional seconds, enabling accurate
+        tracking of creation
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_productdetailspi' table
+        stores the date and time when the record was last updated. It is of type 'datetime(6)',
+        allowing for precision up to six decimal places for fractional seconds.
+    created_by_id:
+      type: int
+      description: The `created_by_id` field is an integer that stores the unique
+        identifier of the user or system that created the record in the `imports_productdetailspi`
+        table. This field is used for tracking and auditing purposes, helping to identify
+        the origin of
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field is an integer that stores the identifier
+        of the user or system that last modified the record in the 'imports_productdetailspi'
+        table. This field helps track changes and maintain an audit trail for data
+        modifications.
+    pi_id:
+      type: int
+      description: The field 'pi_id' is an integer that uniquely identifies each product
+        detail entry in the 'imports_productdetailspi' table, serving as the primary
+        key for referencing individual records.
+    product_id:
+      type: int
+      description: The 'product_id' field in the 'imports_productdetailspi' table
+        is an integer that uniquely identifies each product in the dataset. It serves
+        as a primary key to link product details to their respective records within
+        the imports system.
+imports_productdetailspo:
+  description: The `imports_productdetailspo` table stores detailed information about
+    products related to import transactions. It includes fields that capture attributes
+    such as product specifications, quantities, pricing, and associated supplier information.
+    This table is essential for tracking and managing product details during the
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'imports_productdetailspo' table is an integer
+        that serves as the unique identifier for each record in the table. It ensures
+        that each product detail entry can be distinctly referenced and managed within
+        the database.
+    description:
+      type: varchar(300)
+      description: The 'description' field in the 'imports_productdetailspo' table
+        is a variable character field with a maximum length of 300 characters. It
+        stores a textual description of the product details, providing essential information
+        about the product for reference and display purposes.
+    etd:
+      type: datetime(6)
+      description: The field 'etd' in the 'imports_productdetailspo' table represents
+        the Estimated Time of Departure, recorded as a datetime with a precision of
+        6 microseconds. It indicates the anticipated date and time when a shipment
+        is scheduled to leave.
+    qty:
+      type: int unsigned
+      description: The field 'qty' in the table 'imports_productdetailspo' represents
+        the quantity of the imported product details, stored as an unsigned integer.
+        This ensures that only non-negative values are allowed, reflecting the total
+        count of products detailed in the import records
+    tax_percent:
+      type: double
+      description: The field 'tax_percent' in the table 'imports_productdetailspo'
+        represents the percentage rate of tax applied to the product details. It is
+        stored as a double data type to accommodate fractional values, allowing for
+        precise representation of tax rates.
+    offer_price:
+      type: double
+      description: "**Field: offer_price**  \n**Type: double**  \n**Description:**\
+        \ Represents the discounted or promotional price of the product being imported,\
+        \ expressed as a decimal value. This field may be used for pricing calculations\
+        \ and comparisons."
+    total_amount:
+      type: double
+      description: The 'total_amount' field in the 'imports_productdetailspo' table
+        represents the total monetary value of the imported product details, stored
+        as a double-precision floating-point number.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_productdetailspo' table
+        records the exact date and time when a product detail was created. It is stored
+        as a datetime type with microsecond precision (6), allowing for precise tracking
+        of creation timestamps.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_productdetailspo' table
+        records the date and time of the last update made to the product details,
+        stored with a precision of up to six fractional seconds.
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'imports_productdetailspo' table
+        is an integer that stores the unique identifier of the user or system that
+        created the corresponding product detail entry. This field is used for tracking
+        the origin of the record for audit
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'imports_productdetailspo' table
+        is an integer that stores the identifier of the user or system account that
+        last modified the record. This field helps track changes and maintain an audit
+        trail for product details.
+    po_id:
+      type: int
+      description: The field 'po_id' in the 'imports_productdetailspo' table is an
+        integer that serves as a unique identifier for each purchase order (PO) record
+        associated with the product details in imports.
+    product_id:
+      type: int
+      description: The field 'product_id' in the table 'imports_productdetailspo'
+        is an integer that uniquely identifies each product within the import product
+        details. It serves as a foreign key to link the product with its associated
+        data in other tables.
+imports_purchaseorder:
+  description: The `imports_purchaseorder` table is designed to store information
+    related to purchase orders for imported goods. It includes fields that capture
+    details such as order ID, supplier information, item descriptions, quantities,
+    prices, order dates, and shipment statuses. This table
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each record in the 'imports_purchaseorder' table. It ensures that each
+        purchase order can be distinctly referenced and managed within the database.
+    region:
+      type: varchar(50)
+      description: The 'region' field in the 'imports_purchaseorder' table is a VARCHAR(50)
+        data type that stores the geographical region associated with the purchase
+        order. This field is used to categorize or specify the area relevant to the
+        order, enabling better organization
+    contract_no:
+      type: varchar(100)
+      description: The field 'contract_no' in the 'imports_purchaseorder' table stores
+        the unique identifier for the purchase order contracts as a variable character
+        string, with a maximum length of 100 characters. This field is used to reference
+        and manage specific contracts associated with
+    date:
+      type: datetime(6)
+      description: The 'date' field in the 'imports_purchaseorder' table is of type
+        'datetime(6)' and stores the precise date and time when a purchase order was
+        imported. The precision of 6 allows for fractional seconds, enabling detailed
+        timestamp information for
+    currency:
+      type: varchar(10)
+      description: The 'currency' field in the 'imports_purchaseorder' table stores
+        the currency code used for transactions, represented as a string with a maximum
+        length of 10 characters (e.g., 'USD', 'EUR').
+    exchange_rate:
+      type: double
+      description: The 'exchange_rate' field in the 'imports_purchaseorder' table
+        stores the conversion rate between the currency used for the purchase order
+        and the base currency (typically the company's local currency). This field
+        is of type 'double' to accommodate decimal values,
+    total_cost:
+      type: double
+      description: "**Field: total_cost**  \n**Type: double**  \n**Table: imports_purchaseorder**\
+        \  \nDescription: Represents the total monetary cost of the purchase order,\
+        \ calculated as the sum of all associated item costs and shipping fees, stored\
+        \ as a double"
+    discount:
+      type: double
+      description: "**Field:** discount  \n**Type:** double  \n**Description:** Represents\
+        \ the discount amount applied to the purchase order, expressed as a decimal\
+        \ value. This field allows for precise calculations of total costs by indicating\
+        \ reductions in the purchase price."
+    total_amount:
+      type: double
+      description: The `total_amount` field represents the total monetary value of
+        the purchase order in the `imports_purchaseorder` table. It is stored as a
+        double data type to accommodate decimal values and allows for precise calculations
+        involving currency.
+    payment_on:
+      type: varchar(10)
+      description: The 'payment_on' field in the 'imports_purchaseorder' table is
+        a varchar(10) field that stores the date or timestamp indicating when the
+        payment was made for the purchase order. The format should be consistent,
+        and it typically contains a date
+    expiry_date:
+      type: varchar(100)
+      description: The 'expiry_date' field in the 'imports_purchaseorder' table stores
+        the expiration date of the purchase order as a string in VARCHAR format, with
+        a maximum length of 100 characters. This field is used to indicate until when
+        the purchase order is
+    delivery_terms:
+      type: varchar(300)
+      description: The 'delivery_terms' field in the 'imports_purchaseorder' table
+        stores the specific conditions and terms related to the delivery of goods
+        as part of a purchase order. This field is a variable character string with
+        a maximum length of 300 characters, allowing
+    payment_terms:
+      type: varchar(300)
+      description: The 'payment_terms' field in the 'imports_purchaseorder' table
+        is a variable character string with a maximum length of 300 characters. It
+        is used to specify the payment conditions and timeline agreed upon between
+        the buyer and seller for the purchase order.
+    other_note:
+      type: varchar(300)
+      description: "**Field**: `other_note`  \n**Type**: `varchar(300)`  \n**Description**:\
+        \ This field stores additional comments or notes related to the purchase order,\
+        \ allowing up to 300 characters for supplementary information that doesn't\
+        \ fit into other"
+    created_at:
+      type: datetime(6)
+      description: The field 'created_at' in the 'imports_purchaseorder' table stores
+        the timestamp of when a purchase order record was created. It is of type 'datetime(6)',
+        which allows for precision up to six fractional seconds.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_purchaseorder' table is
+        a datetime(6) data type that records the exact date and time when a purchase
+        order was last updated, including microsecond precision.
+    billing_from_id:
+      type: int
+      description: "**Field:** `billing_from_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field represents the unique identifier for the billing source associated\
+        \ with the purchase order in the `imports_purchaseorder` table. It is used\
+        \ to link the purchase"
+    created_by_id:
+      type: int
+      description: The field `created_by_id` is an integer that references the unique
+        identifier of the user who created the purchase order record in the `imports_purchaseorder`
+        table. This field helps track the origin of the record for auditing and accountability
+        purposes.
+    modified_by_id:
+      type: int
+      description: The `modified_by_id` field in the `imports_purchaseorder` table
+        is an integer that stores the unique identifier of the user who last modified
+        the purchase order record. This field helps track changes and maintain an
+        audit trail for modifications made to the data
+    port_id:
+      type: int
+      description: The 'port_id' field in the 'imports_purchaseorder' table is an
+        integer that uniquely identifies the port associated with a specific purchase
+        order. This field serves as a foreign key linking to the ports table, allowing
+        for the tracking of import activities at
+    product_company_poc_id:
+      type: int
+      description: The field `product_company_poc_id` is an integer that serves as
+        a foreign key reference to the primary key of the product company point of
+        contact (POC). It is used to associate a purchase order with a specific contact
+        person at the product
+    shipping_to_id:
+      type: int
+      description: The field 'shipping_to_id' is an integer that represents the unique
+        identifier of the shipping destination associated with the purchase order
+        in the 'imports_purchaseorder' table.
+    po_no:
+      type: varchar(300)
+      description: The field 'po_no' in the 'imports_purchaseorder' table is a string
+        data type with a maximum length of 300 characters. It is used to store the
+        purchase order number associated with an import transaction.
+    generated_by_id:
+      type: int
+      description: The field 'generated_by_id' in the 'imports_purchaseorder' table
+        is an integer that stores the unique identifier of the user or system process
+        that created the purchase order entry.
+    advance:
+      type: double
+      description: The 'advance' field in the 'imports_purchaseorder' table stores
+        the amount of money paid in advance for the purchase order, represented as
+        a double-precision floating-point number. This value can include decimals
+        to accommodate transactions involving fractional currency amounts.
+    old_billing_from_id:
+      type: int
+      description: The 'old_billing_from_id' field is an integer that stores the identifier
+        for the previous billing source associated with a purchase order in the 'imports_purchaseorder'
+        table. This field is used to track the legacy billing reference during the
+        import process.
+    old_shipping_to_id:
+      type: int
+      description: The field 'old_shipping_to_id' in the 'imports_purchaseorder' table
+        is an integer that stores the identifier for the previous shipping address
+        associated with the purchase order. This field is used to track historical
+        shipping information for reference or data migration purposes.
+imports_safeguardduty:
+  description: The `imports_safeguardduty` table stores data related to the importation
+    of security alerts and findings from AWS GuardDuty. This table tracks details
+    such as the type of threat detected, the severity of the alert, resource identifiers,
+    timestamps
+  fields:
+    id:
+      type: int
+      description: Field 'id' in the table 'imports_safeguardduty' is an integer type
+        that serves as a unique identifier for each record in the table. It is typically
+        used as the primary key to facilitate efficient data retrieval and ensure
+        data integrity
+    duty_percent:
+      type: double
+      description: The field 'duty_percent' in the 'imports_safeguardduty' table represents
+        the percentage of the safeguard duty applied to imported goods. It is stored
+        as a double type, allowing for precise decimal values to account for varying
+        duty rates
+    start_date:
+      type: date
+      description: The 'start_date' field in the 'imports_safeguardduty' table represents
+        the date when the import process for the Safeguard Duty starts. It is stored
+        in the standard date format and is essential for tracking the beginning of
+        relevant
+    end_date:
+      type: date
+      description: The 'end_date' field in the 'imports_safeguardduty' table represents
+        the date on which the import safeguard measure expires or ends. It is of type
+        'date' and helps to determine the validity period of the associated safeguard
+        action
+imports_transporterchargesproduct:
+  description: The `imports_transporterchargesproduct` table stores information related
+    to transport charges for products involved in import transactions. It typically
+    includes fields that specify product identifiers, associated transport costs,
+    and potentially details about the transporter used for shipping. This table facilitates
+    the management
+  fields:
+    id:
+      type: int
+      description: The field 'id' is of type 'int' and serves as the primary key for
+        the 'imports_transporterchargesproduct' table. It uniquely identifies each
+        record within the table, ensuring that all entries can be precisely referenced
+        and managed.
+    trunk_no:
+      type: varchar(150)
+      description: "**Field**: `trunk_no`  \n**Type**: `varchar(150)`  \n**Description**:\
+        \ This field stores a unique identifier for the transport trunk associated\
+        \ with product charges in the imports process. It allows for up to 150"
+    ewaybill:
+      type: varchar(150)
+      description: The 'ewaybill' field is a VARCHAR(150) data type that stores the
+        electronic waybill number associated with the transport of imported goods.
+        This field is used to link shipments to their corresponding transport documentation,
+        facilitating tracking and compliance with transport regulations.
+    ewaybill_file:
+      type: varchar(100)
+      description: The field 'ewaybill_file' in the 'imports_transporterchargesproduct'
+        table is a varchar type with a maximum length of 100 characters. It is used
+        to store the filename or path of the e-way bill associated with the transport
+        charges for
+    lr_no:
+      type: varchar(150)
+      description: '`lr_no`: A varchar field with a maximum length of 150 characters
+        in the `imports_transporterchargesproduct` table, representing the Letter
+        of Request (LR) number associated with the transport charges for imported
+        products.'
+    lr_file:
+      type: varchar(100)
+      description: The 'lr_file' field in the 'imports_transporterchargesproduct'
+        table is a VARCHAR data type with a maximum length of 100 characters. It stores
+        the filename or identifier of the associated load receipt (LR) document related
+        to transporter charges for
+    amount:
+      type: double
+      description: The 'amount' field in the 'imports_transporterchargesproduct' table
+        represents the monetary value associated with the transporter charges for
+        a specific product. It is stored as a double data type to accommodate decimal
+        values, allowing for precise calculations of transportation costs.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'imports_transporterchargesproduct'
+        table stores the date and time when a record was created. It is of type 'datetime(6)',
+        allowing for precision up to microseconds.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'imports_transporterchargesproduct'
+        table stores the timestamp of the most recent modification made to the record.
+        It captures date and time with microsecond precision, allowing for precise
+        tracking of updates to transporter charges related to
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'imports_transporterchargesproduct'
+        table is an integer that stores the identifier of the user or process responsible
+        for creating the record. This field helps track the origin of entries for
+        auditing and accountability purposes.
+    invoice_id:
+      type: int
+      description: "**Field: `invoice_id`**  \n**Type:** `int`  \n**Description:**\
+        \ A unique identifier for each invoice related to transporter charges for\
+        \ products. This field serves as a reference to link the transporter charges\
+        \ to the corresponding invoice within the `"
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'imports_transporterchargesproduct'
+        table is an integer that stores the identifier of the user or system that
+        last modified the record. This helps track changes and maintain audit trails
+        for data integrity and accountability.
+    pi_id:
+      type: int
+      description: The field `pi_id` is an integer that serves as a unique identifier
+        for each record in the `imports_transporterchargesproduct` table, representing
+        the associated product import transaction.
+    po_id:
+      type: int
+      description: The field `po_id` is an integer that represents the unique identifier
+        for a purchase order associated with the transporter charge product in the
+        `imports_transporterchargesproduct` table.
+    transporter_id:
+      type: int
+      description: The field 'transporter_id' is an integer that uniquely identifies
+        the transporter associated with a specific transport charge for a product
+        in the 'imports_transporterchargesproduct' table.

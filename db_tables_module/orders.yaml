@@ -1,0 +1,716 @@
+orders_booking:
+  description: The 'orders_booking' table stores information related to customer orders
+    and their corresponding bookings. It includes details such as order IDs, customer
+    information, booking dates, product or service details, payment status, and timestamps
+    for order creation and updates. This table is
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'orders_booking' table is an integer that
+        uniquely identifies each booking entry. It serves as the primary key, ensuring
+        that each record can be distinctly referenced and managed within the database.
+    date:
+      type: date
+      description: The 'date' field in the 'orders_booking' table stores the date
+        on which the booking was made. It is of type 'date' and represents the calendar
+        date, facilitating the tracking and management of booking records.
+    warehouse:
+      type: varchar(30)
+      description: The 'warehouse' field in the 'orders_booking' table is a VARCHAR
+        data type with a maximum length of 30 characters. It stores the identifier
+        or name of the warehouse associated with the order, indicating where the ordered
+        items are stored or shipped from
+    remark:
+      type: varchar(500)
+      description: The 'remark' field in the 'orders_booking' table is a variable
+        character string with a maximum length of 500 characters. It is used to store
+        additional comments or notes related to the booking order, providing contextual
+        information that may be useful for processing
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'orders_booking' table stores the
+        precise date and time when a booking record was created. It is of type 'datetime(6)',
+        allowing for fractional seconds, and is used to track the creation timestamp
+        for accurate
+    modified_at:
+      type: datetime(6)
+      description: The `modified_at` field in the `orders_booking` table stores the
+        date and time of the last modification made to the booking record. It is represented
+        with a precision of microseconds (datetime(6)). This field is useful for tracking
+        changes and
+    client_id:
+      type: int
+      description: "**Field Name:** client_id  \n**Type:** int  \n**Description:**\
+        \ This field represents the unique identifier for the client associated with\
+        \ a specific booking in the orders_booking table. It is used to establish\
+        \ a relationship between the order and the client."
+    company_id:
+      type: int
+      description: The 'company_id' field in the 'orders_booking' table is an integer
+        that uniquely identifies the company associated with a specific order booking.
+        It acts as a foreign key linking to the 'companies' table, enabling the relational
+        connection between order bookings and
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is an integer that stores the identifier
+        of the user or system that created the order booking entry. It establishes
+        a link between the order booking and the user responsible for its creation.
+    modified_by_id:
+      type: int
+      description: The `modified_by_id` field in the `orders_booking` table is an
+        integer that stores the unique identifier of the user or system that last
+        modified the order booking record. This helps track changes and maintain a
+        history of updates made to the order.
+    user_id:
+      type: int
+      description: The 'user_id' field in the 'orders_booking' table is an integer
+        that uniquely identifies the user associated with each booking order. It serves
+        as a reference to link the order to the corresponding user in the user database.
+orders_booking_product:
+  description: The `orders_booking_product` table stores information related to products
+    that are associated with customer bookings in an orders management system. It
+    includes details such as product IDs, booking IDs, quantities, pricing, and any
+    relevant attributes pertaining to the products in a specific
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'orders_booking_product' table is an integer
+        that uniquely identifies each record in the table. It serves as the primary
+        key, ensuring that each order booking product can be distinctly referenced.
+    product_req:
+      type: int
+      description: The field 'product_req' in the 'orders_booking_product' table represents
+        the quantity of the product requested in a specific order. It is stored as
+        an integer value, indicating the number of units that the customer wishes
+        to purchase.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'orders_booking_product' table stores
+        the timestamp indicating when a booking product order was created. It uses
+        the 'datetime(6)' datatype, which allows for precision up to six decimal places,
+        capturing both date and
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'orders_booking_product' table stores
+        the timestamp of the last modification made to the record. It is of type 'datetime(6)',
+        which allows for precision up to microseconds, providing a detailed record
+        of when
+    booking_id:
+      type: int
+      description: "**Field: booking_id**  \n**Type: int**  \n**Description:** A unique\
+        \ identifier for each booking in the orders_booking_product table, used to\
+        \ reference and associate specific bookings with their corresponding products\
+        \ in the order."
+    created_by_id:
+      type: int
+      description: '`created_by_id` (int): This field stores the identifier of the
+        user or system that created the entry in the `orders_booking_product` table.
+        It is used for tracking and auditing purposes to identify who initiated the
+        creation of the order booking product'
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'orders_booking_product' table
+        is an integer that stores the unique identifier of the user or system that
+        last modified the booking product record. This field helps track changes and
+        maintain an audit trail for accountability and data
+    product_details_id:
+      type: int
+      description: The field 'product_details_id' in the 'orders_booking_product'
+        table is an integer that uniquely identifies the product details associated
+        with a specific order booking. This field serves as a foreign key linking
+        to the corresponding product details in another table, facilitating the
+orders_invoice:
+  description: The `orders_invoice` table stores the billing information for customer
+    orders. It includes details such as invoice number, order ID, customer ID, invoice
+    date, payment status, total amount, and associated billing address. This table
+    facilitates tracking and management of customer
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'orders_invoice' table is an integer type
+        that serves as the unique identifier for each invoice record. It is used to
+        distinguish individual invoices and ensure data integrity within the table.
+    date:
+      type: date
+      description: Field 'date' in the 'orders_invoice' table represents the date
+        when the invoice was issued. It stores values in the format 'YYYY-MM-DD' to
+        indicate the specific calendar date.
+    shipping_address_id:
+      type: int
+      description: "**Field:** `shipping_address_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier for the shipping address associated\
+        \ with an order invoice. It links to the corresponding entry in the shipping\
+        \ address table, allowing the system"
+    company_seller_id:
+      type: int
+      description: "**Field**: `company_seller_id`  \n**Type**: `int`  \n**Description**:\
+        \ This field stores the unique identifier of the company that is selling the\
+        \ products or services related to the invoice in the `orders_invoice` table"
+    duties:
+      type: double
+      description: The 'duties' field in the 'orders_invoice' table represents the
+        monetary value of import or export duties applied to the invoice. It is stored
+        as a double data type to accommodate decimal values, allowing for precise
+        calculations of duty amounts.
+    freight:
+      type: double
+      description: "**Field: freight**  \n**Type: double**  \n**Description:** Represents\
+        \ the cost of freight charges associated with the order detailed in the invoice.\
+        \ This value is expressed as a decimal number and may include shipping fees\
+        \ based on weight, distance, and"
+    custom_clr:
+      type: double
+      description: The 'custom_clr' field in the 'orders_invoice' table is of type
+        'double' and is used to store a custom clearance value associated with the
+        invoice. This field represents a monetary amount, allowing for precision in
+        financial calculations related to customs
+    total_amount:
+      type: double
+      description: The 'total_amount' field in the 'orders_invoice' table represents
+        the total monetary value of the invoice, expressed as a double precision number.
+        It captures the sum of all charges, including products, taxes, and discounts,
+        associated with the order.
+    advance_r:
+      type: double
+      description: "Field: `advance_r`  \nType: `double`  \nDescription: Represents\
+        \ the amount of advance payment received for the order in the invoice, expressed\
+        \ as a decimal value."
+    balance_due:
+      type: double
+      description: The 'balance_due' field in the 'orders_invoice' table represents
+        the outstanding amount that the customer is required to pay for a specific
+        order invoice. It is stored as a double data type to accommodate decimal values,
+        allowing for precise financial calculations.
+    p_terms:
+      type: varchar(1500)
+      description: The field 'p_terms' in the 'orders_invoice' table stores the payment
+        terms related to the invoice. It is of type 'varchar(1500)', allowing for
+        a maximum of 1500 characters to provide detailed terms and conditions regarding
+        payment.
+    d_terms:
+      type: varchar(1500)
+      description: The field 'd_terms' in the 'orders_invoice' table is a varchar(1500)
+        data type that stores the terms and conditions associated with the invoice.
+        This field can contain up to 1500 characters and is used to provide detailed
+        information
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'orders_invoice' table records the
+        date and time when the invoice was created. It is stored with a precision
+        of up to six decimal places for fractional seconds, allowing for precise timestamping
+        of the creation event.
+    modified_at:
+      type: datetime(6)
+      description: The `modified_at` field in the `orders_invoice` table stores the
+        timestamp of the last modification made to the invoice record, with precision
+        up to microseconds. This field helps track changes over time and is useful
+        for auditing and synchronizing data.
+    client_id:
+      type: int
+      description: The field 'client_id' (int) in the 'orders_invoice' table represents
+        a unique identifier for each client associated with the invoice. It serves
+        as a foreign key linking the invoice to the corresponding client's record
+        in the clients table.
+    company_id:
+      type: int
+      description: The 'company_id' field in the 'orders_invoice' table is an integer
+        that uniquely identifies the company associated with a specific invoice. This
+        field is used to link invoices to the respective company in the database.
+    created_by_id:
+      type: int
+      description: "**Field Name:** created_by_id  \n**Type:** int  \n**Description:**\
+        \ This field stores the unique identifier (ID) of the user or system that\
+        \ created the invoice record in the 'orders_invoice' table. It is used to\
+        \ track the origin"
+    lead_id:
+      type: int
+      description: "**Field: lead_id**  \n**Type:** int  \n**Description:** This field\
+        \ stores the unique identifier for the lead associated with the invoice in\
+        \ the orders_invoice table. It is used to link the invoice to a specific lead\
+        \ record for tracking and reporting"
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'orders_invoice' table is an
+        integer that stores the unique identifier of the user who last modified the
+        invoice record. This helps track changes and maintain accountability within
+        the invoicing process.
+    user_id:
+      type: int
+      description: The field 'user_id' is an integer that serves as a foreign key
+        in the 'orders_invoice' table, linking each invoice to a specific user in
+        the system. It uniquely identifies the user associated with the order.
+    invoice_no:
+      type: varchar(300)
+      description: The 'invoice_no' field in the 'orders_invoice' table is a variable
+        character field with a maximum length of 300 characters. It is used to store
+        the unique invoice number associated with each order, facilitating easy identification
+        and tracking of invoices.
+    exchange_rate:
+      type: double
+      description: "**Field: exchange_rate**  \n**Type:** double  \n**Description:**\
+        \ This field represents the exchange rate applied to the transaction currency\
+        \ relative to the base currency for the invoice. It is used to convert the\
+        \ total invoice amount into the base currency for accounting"
+    is_active:
+      type: int
+      description: The 'is_active' field in the 'orders_invoice' table is an integer
+        that indicates the current active status of the invoice. A value of 1 typically
+        signifies that the invoice is active and valid, while a value of 0 indicates
+        that the
+    uuid:
+      type: varchar(100)
+      description: The 'uuid' field in the 'orders_invoice' table is a varchar(100)
+        type that stores a unique identifier for each invoice record. This identifier
+        ensures the distinct tracking and management of invoices within the database.
+    is_tcs:
+      type: int
+      description: "**Field Name:** is_tcs  \n**Type:** int  \n**Description:** Indicates\
+        \ whether the order is subject to Tax Collected at Source (TCS). A value of\
+        \ 1 signifies that TCS applies, while a value of 0 indicates"
+    total_amount_without_tax:
+      type: double
+      description: The field 'total_amount_without_tax' in the 'orders_invoice' table
+        represents the total monetary amount of the invoice before any taxes are applied.
+        It is stored as a double to accommodate decimal values for precise financial
+        calculations.
+    invoice_validity:
+      type: varchar(1500)
+      description: "**Field: `invoice_validity`**  \n**Type:** `varchar(1500)`  \n\
+        **Description:** This field stores information regarding the validity period\
+        \ of the invoice, including any relevant conditions or parameters. It may\
+        \ contain expiration dates, legal obligations"
+    sales_person_id:
+      type: bigint
+      description: '''sales_person_id'' is a bigint field in the ''orders_invoice''
+        table that uniquely identifies the sales representative responsible for processing
+        the order or invoice. It serves as a foreign key linking to a sales representative''s
+        record in the relevant personnel or employee table'
+    old_company_id:
+      type: int
+      description: "**Field Name:** old_company_id  \n**Type:** int  \n**Description:**\
+        \ This field stores the identifier for a previous company associated with\
+        \ the invoice, allowing for tracking of historical company relationships in\
+        \ the orders invoice records."
+    refrence_po_no:
+      type: varchar(50)
+      description: The field 'reference_po_no' in the 'orders_invoice' table is a
+        VARCHAR(50) type that stores the reference number associated with the purchase
+        order. This value is used to link the invoice to the corresponding purchase
+        order for tracking and verification purposes
+    is_approved:
+      type: tinyint(1)
+      description: The `is_approved` field in the `orders_invoice` table is a tiny
+        integer (1 byte) that indicates the approval status of an invoice. A value
+        of `1` signifies that the invoice has been approved, while a value of `
+    approved_at:
+      type: datetime(6)
+      description: The field 'approved_at' in the 'orders_invoice' table stores the
+        date and time when the invoice was approved. It uses a precision of up to
+        6 decimal places for fractional seconds, allowing for high-resolution timestamp
+        recording.
+    approved_by_id:
+      type: int
+      description: The 'approved_by_id' field in the 'orders_invoice' table is an
+        integer that stores the unique identifier of the user who approved the invoice.
+        This field is used to track the individual responsible for verifying and authorizing
+        the invoice for processing.
+    old_company_seller_id:
+      type: int
+      description: The field `old_company_seller_id` in the `orders_invoice` table
+        is an integer that references the unique identifier of the seller associated
+        with a previous company. This field is used to track historical seller information
+        during the invoice processing.
+    status:
+      type: varchar(100)
+      description: The 'status' field in the 'orders_invoice' table is a varchar data
+        type with a maximum length of 100 characters. It is used to indicate the current
+        status of the invoice, such as 'Pending', 'Paid', 'Cancelled', or
+    tax_amount:
+      type: double
+      description: "**Field: `tax_amount`**  \n**Type:** Double  \n**Description:**\
+        \ Stores the total tax amount applied to the invoice in the `orders_invoice`\
+        \ table, represented as a decimal number. This value reflects the calculated\
+        \ tax based on the relevant"
+    tcs_amount:
+      type: double
+      description: "**Field:** tcs_amount  \n**Type:** double  \n**Description:**\
+        \ Represents the total amount of Tax Collected at Source (TCS) applicable\
+        \ to the invoice in the 'orders_invoice' table. This field captures the financial\
+        \ impact of TCS"
+    tcs_percentage:
+      type: double
+      description: The field 'tcs_percentage' in the 'orders_invoice' table represents
+        the percentage of Tax Collected at Source (TCS) applicable to the invoice.
+        It is stored as a double data type to accommodate fractional values and allows
+        for precise calculation of
+orders_invoice_product:
+  description: The `orders_invoice_product` table stores details of products associated
+    with customer invoices within the ordering system. It maintains a record of individual
+    products included in each invoice, linking them to their respective orders and
+    invoices. This table typically includes fields for product ID,
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'orders_invoice_product' table is an integer
+        that serves as the unique identifier for each record in the table. It is used
+        to distinguish individual invoice product entries within the order's invoices.
+    product_req:
+      type: int
+      description: The 'product_req' field in the 'orders_invoice_product' table is
+        an integer that indicates the quantity of the specified product requested
+        in the order.
+    offer_price:
+      type: double
+      description: "**Field Name:** offer_price  \n**Type:** double  \n**Description:**\
+        \ This field represents the discounted price of a product in the order invoice,\
+        \ reflecting any promotional offers applied to the standard price."
+    tax:
+      type: int
+      description: Field 'tax' in the 'orders_invoice_product' table represents the
+        tax amount applied to a specific product within an invoice, stored as an integer
+        value. This field is used to calculate the total tax for the invoice based
+        on the products included.
+    created_at:
+      type: datetime(6)
+      description: The `created_at` field in the `orders_invoice_product` table records
+        the timestamp of when the invoice product entry was created. It is of type
+        `datetime(6)`, which means it stores date and time information with precision
+        down to microseconds
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'orders_invoice_product' table records
+        the date and time (with microsecond precision) when the invoice product entry
+        was last modified. This timestamp helps track changes and updates made to
+        the invoice product.
+    created_by_id:
+      type: int
+      description: The field `created_by_id` in the `orders_invoice_product` table
+        is an integer that represents the unique identifier of the user or system
+        that created the invoice product record. It is typically used for tracking
+        and auditing purposes to determine who initiated the entry
+    invoice_id:
+      type: int
+      description: The field 'invoice_id' is an integer that uniquely identifies each
+        invoice associated with a product in the 'orders_invoice_product' table. It
+        serves as a foreign key linking to the corresponding invoice in the invoices
+        table, facilitating the tracking and management of invoice
+    modified_by_id:
+      type: int
+      description: The field 'modified_by_id' in the 'orders_invoice_product' table
+        is an integer that stores the unique identifier of the user who last modified
+        the invoice product record.
+    product_details_id:
+      type: int
+      description: The `product_details_id` field is an integer that serves as a unique
+        identifier for the specific product associated with an invoice in the `orders_invoice_product`
+        table. It links each invoice line item to its corresponding product details
+        in the product catalog.
+    is_active:
+      type: int
+      description: The `is_active` field in the `orders_invoice_product` table is
+        an integer that indicates the active status of the invoice product. A value
+        of 1 typically signifies that the product is currently active or available,
+        while a value of 0 indicates
+orders_invoice_status:
+  description: The `orders_invoice_status` table stores the status information related
+    to each invoice associated with customer orders. It tracks the current status
+    of invoices, such as 'pending', 'paid', 'cancelled', and 'refunded', along with
+    relevant timestamps and
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'orders_invoice_status' table is an integer
+        that serves as the unique identifier for each invoice status record. It is
+        used to distinguish between different statuses and ensure efficient retrieval
+        and management of data within the table.
+    status:
+      type: varchar(100)
+      description: The 'status' field in the 'orders_invoice_status' table is a variable
+        character string (varchar) with a maximum length of 100 characters. It is
+        used to store the current status of an invoice related to an order, indicating
+        various states such
+    remark:
+      type: varchar(300)
+      description: The 'remark' field in the 'orders_invoice_status' table is a variable
+        character string with a maximum length of 300 characters. It is used to store
+        additional notes or comments related to the status of an invoice, providing
+        context or explanation for the
+    invoice_id:
+      type: int
+      description: The field 'invoice_id' is an integer that uniquely identifies an
+        invoice within the 'orders_invoice_status' table. It serves as a foreign key
+        to reference the related invoice, allowing for tracking and management of
+        invoice statuses associated with specific orders.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'orders_invoice_status' table stores
+        the timestamp of when the record was created. It is of type 'datetime(6)',
+        allowing for high-resolution datetime values with up to six decimal places
+        for fractional seconds.
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'orders_invoice_status' table
+        is an integer that stores the unique identifier of the user or system entity
+        that created the invoice status record. This field helps track the origin
+        of the entry for auditing and accountability purposes
+    lost_reason:
+      type: varchar(100)
+      description: The 'lost_reason' field in the 'orders_invoice_status' table is
+        a variable character string that can store up to 100 characters. It is used
+        to record the reason for marking an invoice or order as lost, providing context
+        for tracking and analysis
+    invoice_activity_id:
+      type: int
+      description: The field 'invoice_activity_id' in the 'orders_invoice_status'
+        table is an integer that uniquely identifies the specific activity or action
+        associated with an invoice. This field is used to track the status changes
+        or updates made to an invoice throughout its lifecycle.
+orders_quotation:
+  description: The `orders_quotation` table stores information related to customer
+    quotes for potential orders. It includes details such as the customer ID, product
+    specifications, quoted prices, quantities, and any applicable discounts or terms.
+    This table facilitates the management and tracking of quotations
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'orders_quotation' table is an integer that
+        serves as a unique identifier for each quotation record. It is typically used
+        as the primary key to ensure that each entry can be distinctly referenced.
+    date:
+      type: date
+      description: The 'date' field in the 'orders_quotation' table represents the
+        date when the quotation was created or issued. It is stored in the standard
+        date format, allowing for accurate tracking and management of order quotations
+        over time.
+    p_terms:
+      type: varchar(1500)
+      description: The field 'p_terms' in the 'orders_quotation' table stores the
+        terms and conditions associated with a quotation, allowing for a maximum length
+        of 1500 characters. This field is used to specify any contractual or procedural
+        details relevant to the quotation
+    d_terms:
+      type: varchar(1500)
+      description: "**Field Name:** d_terms  \n**Type:** varchar(1500)  \n**Description:**\
+        \ This field stores the terms and conditions related to the quotation for\
+        \ an order. It can contain up to 1500 characters of text, providing detailed\
+        \ information about"
+    d_schedule:
+      type: varchar(400)
+      description: The field 'd_schedule' in the 'orders_quotation' table is a VARCHAR(400)
+        type that stores a detailed schedule or timeline information related to the
+        quotation. This field can contain up to 400 characters of text, allowing for
+        flexible input
+    m_avaibility:
+      type: varchar(400)
+      description: The field 'm_availability' in the 'orders_quotation' table is a
+        variable character string with a maximum length of 400 characters. It is used
+        to indicate the availability status of items in the quotation, providing details
+        about stock levels, expected
+    incoterms:
+      type: varchar(400)
+      description: The 'incoterms' field in the 'orders_quotation' table stores shipping
+        terms that define the responsibilities of buyers and sellers in international
+        trade. It is a variable character field with a maximum length of 400 characters,
+        allowing for detailed descriptions of
+    warranty:
+      type: varchar(400)
+      description: The 'warranty' field in the 'orders_quotation' table is a VARCHAR
+        type with a maximum length of 400 characters. It is used to store information
+        regarding the warranty terms or conditions applicable to the quoted order.
+    q_validation:
+      type: varchar(400)
+      description: The 'q_validation' field in the 'orders_quotation' table is a VARCHAR
+        data type with a maximum length of 400 characters. It is used to store validation
+        notes or remarks related to a specific quotation, ensuring that all necessary
+        checks and assessments
+    seller_id:
+      type: int
+      description: The 'seller_id' field in the 'orders_quotation' table is an integer
+        that uniquely identifies the seller associated with the quotation. It serves
+        as a foreign key linking to the seller's record in the sellers table, enabling
+        the tracking of sales transactions
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'orders_quotation' table stores the
+        timestamp of when the quotation record was created. It is of type 'datetime(6)',
+        allowing for high-precision storage of up to six decimal places for fractional
+        seconds.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'orders_quotation' table stores
+        the date and time when the quotation was last modified, with precision up
+        to six decimal places for fractional seconds. This field helps track updates
+        and changes to the quotation records.
+    client_id:
+      type: int
+      description: The 'client_id' field in the 'orders_quotation' table is an integer
+        that uniquely identifies the client associated with a specific quotation.
+        It serves as a foreign key to link the quotation to the corresponding client
+        record in the client database.
+    company_id:
+      type: int
+      description: "**Field:** `company_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field represents the unique identifier for the company associated with\
+        \ the quotation in the `orders_quotation` table. It establishes a relationship\
+        \ between the quotation and the corresponding"
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `orders_quotation` table is an
+        integer that stores the unique identifier of the user who created the quotation.
+        This field is used to track the author of the quotation for auditing and accountability
+        purposes.
+    lead_id:
+      type: int
+      description: The 'lead_id' field in the 'orders_quotation' table is an integer
+        that uniquely identifies the lead associated with a specific quotation. This
+        field helps link the quotation to the corresponding sales lead, facilitating
+        tracking and management of customer inquiries and sales opportunities
+    modified_by_id:
+      type: int
+      description: The field 'modified_by_id' in the 'orders_quotation' table is an
+        integer that stores the unique identifier of the user or system entity that
+        last modified the quotation record. This field helps track changes and maintain
+        an audit trail of who updated the
+    user_id:
+      type: int
+      description: The `user_id` field in the `orders_quotation` table is of type
+        integer (int) and serves as a foreign key that uniquely identifies the user
+        associated with a specific order quotation. It links each quotation to the
+        corresponding user in the system
+    uuid:
+      type: varchar(100)
+      description: "**Field Name:** uuid  \n**Type:** varchar(100)  \n**Table:** orders_quotation\
+        \  \n\n**Description:** A unique identifier for each quotation in the orders_quotation\
+        \ table. This field stores a universally unique identifier (UUID) as a string"
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'orders_quotation' table is a longtext
+        data type that stores additional comments or notes related to a specific quotation.
+        This field allows for a detailed and extensive description, providing flexibility
+        for users to include relevant information that
+    total_amount:
+      type: double
+      description: "**Field: total_amount**  \n**Type: double**  \n**Description:**\
+        \ Represents the total monetary value of the quotation in the 'orders_quotation'\
+        \ table, including all applicable taxes and discounts. This field is used\
+        \ to summarize the financial aspect of"
+    quotation_no:
+      type: varchar(50)
+      description: "**Field:** `quotation_no`  \n**Type:** `varchar(50)`  \n**Description:**\
+        \ A unique identifier for each quotation in the orders quotation table, used\
+        \ to track and reference specific quotations. It may consist of alphanumeric\
+        \ characters and can be"
+    old_company_id:
+      type: int
+      description: 'The field ''old_company_id'' (type: int) in the ''orders_quotation''
+        table stores the identifier of a previous company associated with the order
+        quotation, allowing for tracking of company changes over time.'
+    old_seller_id:
+      type: int
+      description: "**Field: old_seller_id**  \n**Type: int**  \n**Description:**\
+        \ This field stores the identifier of the previous seller associated with\
+        \ the quotation order. It is used for tracking and referencing previous seller\
+        \ information in order management processes."
+orders_quotation_product:
+  description: The `orders_quotation_product` table stores detailed information about
+    products associated with customer quotations for orders. Each entry includes references
+    to the specific order and quotation, along with product details such as quantity,
+    price, and any applicable discounts. This table facilitates the
+  fields:
+    id:
+      type: int
+      description: 'Field ''id'': An integer uniquely identifying each record in the
+        ''orders_quotation_product'' table. This serves as the primary key for the
+        table, ensuring each product entry related to an order quotation can be distinctly
+        referenced.'
+    product_req:
+      type: int
+      description: 'Field ''product_req'' (type: int) in the ''orders_quotation_product''
+        table represents the quantity of products requested in a specific quotation
+        order.'
+    offer_price:
+      type: double
+      description: The 'offer_price' field in the 'orders_quotation_product' table
+        represents the price of a product being offered in a quotation. It is stored
+        as a double data type to accommodate decimal values, allowing for precise
+        pricing information.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'orders_quotation_product' table
+        stores the timestamp of when a record was created. It is of type 'datetime(6)',
+        which includes the date and time along with fractional seconds precision up
+        to six digits.
+    modified_at:
+      type: datetime(6)
+      description: The `modified_at` field in the `orders_quotation_product` table
+        stores the date and time of the last modification made to a quotation product
+        record. It is of type `datetime(6)`, which includes precision up to microseconds,
+        allowing
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' in the 'orders_quotation_product' table
+        is an integer that stores the unique identifier of the user or system that
+        created the quotation product entry. This field is used to track the origin
+        of the record and may be
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field in the 'orders_quotation_product' table
+        is an integer that stores the identifier of the user who last modified the
+        record. This helps track changes and maintain accountability for updates made
+        to the quotation product entries.
+    product_details_id:
+      type: int
+      description: The field 'product_details_id' is an integer that serves as a unique
+        identifier for the specific product details associated with a quotation in
+        the 'orders_quotation_product' table. This ID links the quotation to the relevant
+        product information.
+    quotation_id:
+      type: int
+      description: The field 'quotation_id' is an integer that serves as a unique
+        identifier for each quotation associated with products in the 'orders_quotation_product'
+        table. It links the product entries to their respective quotations, facilitating
+        the management and retrieval of quotation-related data
+    tax:
+      type: double
+      description: The 'tax' field in the 'orders_quotation_product' table represents
+        the tax amount applied to the product within a quotation. It is of type 'double',
+        allowing for precise representation of fractional values, which is essential
+        for accurate financial calculations.
+orders_quotation_status:
+  description: The `orders_quotation_status` table stores the various status updates
+    related to customer quotations within the order processing system. Each record
+    in the table represents a distinct status that can be assigned to a quotation,
+    including details such as the status name, description,
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'orders_quotation_status' table is an integer
+        that serves as the unique identifier for each record in the table, ensuring
+        that each status entry can be distinctly referenced.
+    status:
+      type: varchar(100)
+      description: The 'status' field in the 'orders_quotation_status' table is a
+        variable character string with a maximum length of 100 characters. It is used
+        to represent the current status of an order quotation, indicating various
+        states such as 'pending', '
+    remark:
+      type: varchar(300)
+      description: "**Field: remark**  \n**Type: varchar(300)**  \n**Description:**\
+        \ This field stores comments or additional notes related to the status of\
+        \ an order quotation. It allows for a maximum length of 300 characters, providing\
+        \ flexibility to capture important insights"
+    quotation_id:
+      type: int
+      description: The field 'quotation_id' is an integer that uniquely identifies
+        a quotation associated with the order in the 'orders_quotation_status' table.
+        This field serves as a reference to link the status of a given quotation to
+        its corresponding order.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'orders_quotation_status' table records
+        the exact date and time when a quotation status was created. It is stored
+        with precision up to microseconds (datetime(6)).
+    created_by_id:
+      type: int
+      description: '`created_by_id`: An integer field that stores the unique identifier
+        of the user who created the record in the ''orders_quotation_status'' table.'

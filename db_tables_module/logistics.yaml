@@ -1,0 +1,2733 @@
+
+logistics_dailystockinreportsummary:
+  description: The `logistics_dailystockinreportsummary` table stores summarized data
+    related to daily stock-in reports for inventory management. It consolidates key
+    metrics associated with stock receipts, including totals by category, quantities
+    received, and timestamps of stock entries for
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the primary key for
+        the 'logistics_dailystockinreportsummary' table. It uniquely identifies each
+        record in the table, ensuring data integrity and facilitating efficient data
+        retrieval.
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'logistics_dailystockinreportsummary'
+        table represents the total number of items received or recorded in stock on
+        a specific day. It is stored as an integer value.
+    date:
+      type: date
+      description: The 'date' field in the 'logistics_dailystockinreportsummary' table
+        represents the specific calendar date on which stock-in activities were recorded.
+        This field is used to identify and organize daily stock inventory reports.
+    product_id:
+      type: int
+      description: The 'product_id' field is an integer that uniquely identifies each
+        product within the logistics daily stock-in report summary. It is used to
+        associate stock-in records with their respective products for inventory tracking
+        and reporting purposes.
+    warehouse_id:
+      type: int
+      description: The field `warehouse_id` is an integer that uniquely identifies
+        the warehouse associated with the daily stock-in report within the `logistics_dailystockinreportsummary`
+        table. It serves as a foreign key that links the report to a specific warehouse
+    old_warehouse_id:
+      type: int
+      description: The field `old_warehouse_id` (integer) in the `logistics_dailystockinreportsummary`
+        table stores the identifier of the warehouse from which stock was previously
+        reported, allowing for tracking of stock movements between warehouses.
+logistics_dailystockoutreportsummary:
+  description: The `logistics_dailystockoutreportsummary` table stores summarized
+    data related to daily stockouts in the logistics department. It includes fields
+    that capture essential details such as the date of the report, total stockouts,
+    affected products, and any
+  fields:
+    id:
+      type: int
+      description: Field 'id' is an integer that serves as the unique identifier for
+        each entry in the 'logistics_dailystockoutreportsummary' table.
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'logistics_dailystockoutreportsummary'
+        table represents the total number of items that are out of stock for a specific
+        product on a given day. It is stored as an integer value.
+    date:
+      type: date
+      description: The 'date' field in the 'logistics_dailystockoutreportsummary'
+        table represents the specific date for which the stock-out report is generated.
+        It is stored as a date type, allowing for precise tracking of stock levels
+        on a daily
+    product_id:
+      type: int
+      description: The field 'product_id' is an integer that uniquely identifies each
+        product in the 'logistics_dailystockoutreportsummary' table. It serves as
+        a key reference for tracking product-specific stock-out reports on a daily
+        basis.
+    warehouse_id:
+      type: int
+      description: The field 'warehouse_id' is an integer that uniquely identifies
+        the warehouse associated with a specific entry in the logistics_dailystockoutreportsummary
+        table. It is used to correlate stock out events to the respective warehouse
+        location.
+    old_warehouse_id:
+      type: int
+      description: The field 'old_warehouse_id' is of type 'int' and represents the
+        identifier of the previous warehouse associated with the stock out report.
+        It is used to track the warehouse from which inventory was sourced before
+        any adjustments or changes were made in the
+logistics_delivereddetail:
+  description: The `logistics_delivereddetail` table stores detailed information about
+    the delivery transactions within the logistics system. It includes records related
+    to individual deliveries, such as delivery IDs, associated order IDs, items delivered,
+    quantities, timestamps, and delivery status.
+  fields:
+    id:
+      type: int
+      description: "**Field Name:** id  \n**Table Name:** logistics_delivereddetail\
+        \  \n**Description:** A unique integer identifier for each record in the logistics_delivereddetail\
+        \ table, used to distinguish between different delivery detail entries."
+    delivered_at:
+      type: datetime(6)
+      description: The 'delivered_at' field in the 'logistics_delivereddetail' table
+        stores the exact date and time when a delivery was completed. It is of type
+        'datetime(6)', allowing for fractional seconds precision to enhance accuracy
+        in tracking delivery
+    remark:
+      type: varchar(250)
+      description: "**Field: remark**  \n**Type:** varchar(250)  \n**Description:**\
+        \ This field stores additional comments or notes related to the delivered\
+        \ detail, providing context or explanations that may be relevant for logistics\
+        \ processing. It can contain up to 250 characters"
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_delivereddetail' table
+        stores the timestamp of when the delivery detail record was created. It is
+        of type 'datetime(6)', allowing for precision up to microseconds.
+    created_by_id:
+      type: int
+      description: The field `created_by_id` of type `int` in the `logistics_delivereddetail`
+        table stores the unique identifier of the user or system that created the
+        record. This field references the user who initiated the delivery detail entry,
+        enabling
+    dispatch_id:
+      type: int
+      description: "Field Name: `dispatch_id`  \nType: `int`  \nDescription: A unique\
+        \ identifier for each dispatch record in the logistics delivered detail table,\
+        \ used to track and reference specific delivery transactions."
+    invoice_activity_id:
+      type: int
+      description: The field 'invoice_activity_id' in the 'logistics_delivereddetail'
+        table is an integer that uniquely identifies the specific invoice activity
+        related to a delivered detail record. This field serves as a reference to
+        associated invoice transactions or activities for better tracking
+    POD:
+      type: varchar(100)
+      description: The 'POD' field in the 'logistics_delivereddetail' table is a VARCHAR(100)
+        type that stores the Proof of Delivery information, which may include signatures,
+        timestamps, or confirmation details for delivered shipments.
+logistics_dispatchdetail:
+  description: The `logistics_dispatchdetail` table stores detailed information about
+    each dispatch related to the logistics operations. It typically includes fields
+    such as dispatch ID, item details, quantity dispatched, destination, dispatch
+    date, and tracking information. This table is essential for tracking
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_dispatchdetail' table is an integer
+        that serves as the unique identifier for each dispatch detail record. It ensures
+        each entry can be distinctly referenced and is typically set to auto-increment.
+    lr_file:
+      type: varchar(100)
+      description: The `lr_file` field in the `logistics_dispatchdetail` table is
+        a VARCHAR data type with a maximum length of 100 characters. It is used to
+        store a reference or identifier for a logistics-related file associated with
+        a specific dispatch detail entry
+    lr_no:
+      type: varchar(250)
+      description: The field 'lr_no' in the 'logistics_dispatchdetail' table stores
+        the Logistic Receipt Number as a string, allowing for up to 250 characters.
+        This unique identifier is used to track and reference specific logistics dispatch
+        transactions.
+    dispatched_at:
+      type: date
+      description: The 'dispatched_at' field in the 'logistics_dispatchdetail' table
+        stores the date when a shipment was dispatched. This field helps track the
+        timing of logistics operations and assists in managing delivery schedules.
+    exp_delivery_date:
+      type: date
+      description: The 'exp_delivery_date' field in the 'logistics_dispatchdetail'
+        table represents the expected date for the delivery of dispatched items. This
+        field is of type 'date' and is used to track and manage delivery timelines
+        within the logistics process.
+    driver_name:
+      type: varchar(250)
+      description: The 'driver_name' field in the 'logistics_dispatchdetail' table
+        is a varchar data type with a maximum length of 250 characters. It stores
+        the name of the driver assigned to a specific logistics dispatch.
+    driver_mobile:
+      type: varchar(100)
+      description: Field 'driver_mobile' in the 'logistics_dispatchdetail' table stores
+        the mobile phone number of the driver assigned to a logistics dispatch. It
+        is a variable character field with a maximum length of 100 characters, allowing
+        for the inclusion of various phone
+    driver_id_proof_file:
+      type: varchar(100)
+      description: The field **'driver_id_proof_file'** in the **'logistics_dispatchdetail'**
+        table is a VARCHAR(100) that stores the filename or path of the driver's identification
+        proof document related to the dispatch details. This file may include
+    remark:
+      type: varchar(250)
+      description: The 'remark' field in the 'logistics_dispatchdetail' table is a
+        variable character string with a maximum length of 250 characters. It is used
+        to store additional comments or notes related to the dispatch detail, allowing
+        for supplementary information to be recorded
+    created_at:
+      type: datetime(6)
+      description: The field 'created_at' in the 'logistics_dispatchdetail' table
+        represents the date and time when the record was created. It is stored in
+        the datetime format with fractional seconds precision up to 6 digits.
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is an integer that stores the identifier
+        of the user who created the dispatch detail record in the 'logistics_dispatchdetail'
+        table. This field is used for tracking the origin of the record and ensuring
+        accountability for data entry
+    ewaybill_id:
+      type: int
+      description: "**Field: ewaybill_id**  \n**Type: int**  \n**Description:** This\
+        \ field stores the unique identifier for the e-way bill associated with the\
+        \ logistics dispatch detail. It is used to track and reference specific shipments\
+        \ in compliance with regulatory requirements"
+    invoice_activity_id:
+      type: int
+      description: The field 'invoice_activity_id' in the 'logistics_dispatchdetail'
+        table is an integer that uniquely identifies the associated invoice activity
+        related to each dispatch detail record. This ID links the dispatch entry to
+        its corresponding invoice activity for tracking and reporting purposes.
+    id_proof_file_name:
+      type: varchar(500)
+      description: The field 'id_proof_file_name' in the 'logistics_dispatchdetail'
+        table is a varchar(500) that stores the name of the identification proof file
+        associated with a logistics dispatch. This field can hold up to 500 characters,
+        allowing
+    lr_file_name:
+      type: varchar(500)
+      description: The field 'lr_file_name' in the 'logistics_dispatchdetail' table
+        is defined as a variable character string with a maximum length of 500 characters.
+        It is used to store the name of the file related to the logistics dispatch
+        details, allowing
+    deliver_terms:
+      type: varchar(32)
+      description: The field 'deliver_terms' in the 'logistics_dispatchdetail' table
+        is a varchar type with a maximum length of 32 characters. It is used to specify
+        the terms of delivery associated with the dispatched goods, outlining the
+        conditions or agreements for the
+    transportation_cost:
+      type: double
+      description: The 'transportation_cost' field in the 'logistics_dispatchdetail'
+        table represents the monetary cost associated with the transportation of goods
+        for a specific dispatch. This value is stored as a double, allowing for precise
+        representation of potentially fractional costs.
+logistics_ewaybilldetail:
+  description: The `logistics_ewaybilldetail` table stores detailed information related
+    to e-way bills generated for the transportation of goods. It contains fields for
+    identifiers, item descriptions, quantities, and associated logistics data essential
+    for tracking and managing shipments in compliance with regulatory
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_ewaybilldetail' table is an integer
+        that serves as the unique identifier for each record in the table. It is used
+        to distinguish individual entries and facilitate efficient data retrieval
+        and management.
+    ewaybill_no:
+      type: varchar(250)
+      description: The field 'ewaybill_no' in the 'logistics_ewaybilldetail' table
+        stores the unique identification number of the e-way bill, represented as
+        a string with a maximum length of 250 characters. This identifier is used
+        to track and manage
+    ewaybill_file:
+      type: varchar(100)
+      description: The field 'ewaybill_file' in the 'logistics_ewaybilldetail' table
+        stores the filename or path of the electronic waybill file associated with
+        a shipment, with a maximum character limit of 100.
+    remark:
+      type: varchar(250)
+      description: The 'remark' field in the 'logistics_ewaybilldetail' table is a
+        variable character field with a maximum length of 250 characters. It is used
+        to store additional comments or notes related to the e-way bill details, providing
+        context or
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_ewaybilldetail' table
+        represents the timestamp indicating when the record was created. It is stored
+        as a datetime value with microsecond precision (up to 6 decimal places).
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field (integer) in the 'logistics_ewaybilldetail'
+        table identifies the user or system account that created the e-way bill detail
+        record. This field is typically used for tracking and auditing purposes.
+    invoice_activity_id:
+      type: int
+      description: The field 'invoice_activity_id' is an integer that uniquely identifies
+        the activity associated with a specific invoice in the 'logistics_ewaybilldetail'
+        table. This field is used to track and relate logistics activities to corresponding
+        invoice records for effective management and
+    transporter_id:
+      type: int
+      description: The field 'transporter_id' is an integer that uniquely identifies
+        the transporter associated with a specific eWay Bill detail in the 'logistics_ewaybilldetail'
+        table. It establishes a relationship between the eWay Bill details and the
+        transporter responsible for
+logistics_invoiceactivity:
+  description: The `logistics_invoiceactivity` table stores records of activities
+    related to invoices within the logistics operations. This includes details such
+    as the status updates, timestamps, and actions taken on each invoice. The table
+    is used to track the workflow and ensure accurate management
+  fields:
+    id:
+      type: int
+      description: "**Field: `id`**  \n**Type:** `int`  \n**Description:** A unique\
+        \ identifier for each entry in the `logistics_invoiceactivity` table. This\
+        \ field serves as the primary key, ensuring the distinct identification of\
+        \ each invoice activity"
+    activity:
+      type: varchar(32)
+      description: The 'activity' field in the 'logistics_invoiceactivity' table is
+        a variable character string with a maximum length of 32 characters. It is
+        used to describe the specific activity or event related to the logistics invoice,
+        such as "created," "
+    reference_id:
+      type: varchar(150)
+      description: The 'reference_id' field in the 'logistics_invoiceactivity' table
+        is a variable character string with a maximum length of 150 characters. It
+        serves as a unique identifier for each invoice activity, enabling clear tracking
+        and reference of activity records within the
+    remark:
+      type: varchar(250)
+      description: Field 'remark' in the 'logistics_invoiceactivity' table is a varchar(250)
+        type field that stores additional comments or notes related to the invoice
+        activity. It can be used to provide context or details that are relevant to
+        the specific entry in
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_invoiceactivity' table
+        stores the date and time when the invoice activity record was created, with
+        precision up to microseconds. This field is of type 'datetime(6)', allowing
+        for high-resolution timestamp
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'logistics_invoiceactivity' table
+        represents the unique identifier (integer) of the user or system that created
+        the invoice activity record. This field is used to track the origin of the
+        entry for auditing and accountability
+    invoice_id:
+      type: int
+      description: '`invoice_id`: An integer field that uniquely identifies each invoice
+        associated with an activity logged in the ''logistics_invoiceactivity'' table.'
+logistics_invoiceactivityfile:
+  description: The `logistics_invoiceactivityfile` table stores records of invoice
+    activity files related to logistics operations. Each entry represents a specific
+    file associated with invoice activities, including details such as file names,
+    paths, timestamps, and relevant identifiers linking to corresponding invoices
+    or
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_invoiceactivityfile' table is
+        an integer that serves as the primary identifier for each record within the
+        table. This unique identifier allows for the distinction and retrieval of
+        specific invoice activity file entries.
+    file:
+      type: varchar(100)
+      description: The 'file' field in the 'logistics_invoiceactivityfile' table is
+        a VARCHAR type with a maximum length of 100 characters. It is used to store
+        the name or path of a file associated with a logistics invoice activity. This
+        field may
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_invoiceactivityfile' table
+        stores the timestamp indicating when the record was created. It is of type
+        'datetime(6)', which means it includes up to six digits of fractional seconds
+        for precise time tracking
+    created_by_id:
+      type: int
+      description: 'The field `created_by_id` (type: int) in the `logistics_invoiceactivityfile`
+        table specifies the unique identifier of the user or system that created the
+        invoice activity file record.'
+    invoice_activity_id:
+      type: int
+      description: The field 'invoice_activity_id' is an integer that serves as a
+        unique identifier for each invoice activity record in the 'logistics_invoiceactivityfile'
+        table. It links specific invoice activities to their corresponding entries,
+        facilitating efficient tracking and management of logistics processes
+logistics_invoicepayment:
+  description: The `logistics_invoicepayment` table stores information related to
+    payments made for logistics invoices. It includes fields for payment identification,
+    invoice association, payment amount, payment date, method of payment, and status
+    of the transaction. This table is essential for tracking
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_invoicepayment' table is an integer
+        that serves as the unique identifier for each invoice payment record. It ensures
+        the distinct identification of entries within the table.
+    received_payment:
+      type: double
+      description: The 'received_payment' field in the 'logistics_invoicepayment'
+        table represents the total amount of payment received for a specific invoice,
+        measured in a double data type to accommodate decimal values for precision.
+    reference_id:
+      type: varchar(150)
+      description: The 'reference_id' field in the 'logistics_invoicepayment' table
+        is a varchar data type with a maximum length of 150 characters. It is used
+        to store a unique identifier for each invoice payment, facilitating tracking
+        and referencing of payment transactions.
+    date:
+      type: date
+      description: The 'date' field in the 'logistics_invoicepayment' table represents
+        the specific date when the invoice payment was recorded. It is of type 'date',
+        ensuring that the information captured is precise and formatted to reflect
+        only the date without time details.
+    remark:
+      type: varchar(250)
+      description: "**Field Name:** remark  \n**Type:** varchar(250)  \n**Description:**\
+        \ This field stores additional comments or notes related to the invoice payment,\
+        \ allowing up to 250 characters of text for user-entered remarks."
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_invoicepayment' table
+        records the precise date and time when the invoice payment entry was created,
+        with a resolution of up to microseconds (datetime(6)).
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `logistics_invoicepayment` table
+        stores the unique identifier (integer) of the user or system that created
+        the invoice payment record. This field is used for tracking and auditing the
+        source of the entry.
+    invoice_activity_id:
+      type: int
+      description: The field 'invoice_activity_id' is an integer that uniquely identifies
+        the specific invoice activity associated with a payment recorded in the 'logistics_invoicepayment'
+        table.
+    payment_received_bank_id:
+      type: int
+      description: The field `payment_received_bank_id` in the `logistics_invoicepayment`
+        table is an integer that stores the unique identifier of the bank through
+        which the payment for the invoice was received. This field helps track and
+        associate payments with specific banking institutions.
+    transaction_mode:
+      type: varchar(250)
+      description: The 'transaction_mode' field in the 'logistics_invoicepayment'
+        table stores the method used for the payment transaction, represented as a
+        string with a maximum length of 250 characters. This may include values such
+        as 'credit card', 'bank transfer
+    invoice_id:
+      type: int
+      description: The field 'invoice_id' in the 'logistics_invoicepayment' table
+        represents a unique identifier for each invoice associated with a payment
+        transaction. It is of type 'int' and is used to link payments to their corresponding
+        invoices.
+    invoice_status_id:
+      type: int
+      description: The field 'invoice_status_id' in the 'logistics_invoicepayment'
+        table is an integer that represents the unique identifier for the status of
+        an invoice. This status indicates the current processing stage or state of
+        the invoice, such as pending, paid,
+logistics_makeorder:
+  description: The `logistics_makeorder` table stores information related to customer
+    orders in the logistics system. It includes fields for order details such as order
+    ID, customer ID, product ID, quantity, order date, shipping status, and payment
+    information. This table
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_makeorder' table is an integer
+        that serves as the unique identifier for each order entry. It ensures that
+        each record can be distinctly referenced and retrieved within the database.
+    tally_invoice_file:
+      type: varchar(255)
+      description: The field 'tally_invoice_file' in the 'logistics_makeorder' table
+        is a VARCHAR type with a maximum length of 255 characters. It is used to store
+        the file name or path of the Tally invoice associated with a specific order
+    tally_invoice_no:
+      type: varchar(250)
+      description: The field `tally_invoice_no` in the `logistics_makeorder` table
+        stores the invoice number associated with a tally order. It is a variable
+        character field with a maximum length of 250 characters, allowing for alphanumeric
+        and special character entries
+    tally_invoice_amount:
+      type: double
+      description: "**Field Name:** tally_invoice_amount  \n**Table Name:** logistics_makeorder\
+        \  \n**Description:** This field stores the total invoice amount as a double-precision\
+        \ floating point number for each order recorded in the logistics make order\
+        \ table. It represents the monetary value"
+    remark:
+      type: varchar(250)
+      description: The 'remark' field in the 'logistics_makeorder' table is a variable
+        character field with a maximum length of 250 characters. It is used to store
+        additional notes or comments related to the order, providing context or specific
+        instructions that may be
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_makeorder' table stores
+        the date and time when a new order entry is created. It is recorded with a
+        precision of up to 6 digits for fractional seconds, allowing for high-resolution
+        timestamping
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `logistics_makeorder` table is
+        an integer that references the unique identifier of the user or system that
+        created the order entry. It is used to track the origin of the log entry for
+        accountability and auditing
+    invoice_activity_id:
+      type: int
+      description: "**Field Name:** invoice_activity_id  \n**Type:** int  \n**Description:**\
+        \ This field stores the unique identifier for the invoice activity associated\
+        \ with a specific order in the logistics_makeorder table. It is used to link\
+        \ the order to its corresponding invoice activities"
+    payment_approval_id:
+      type: int
+      description: The `payment_approval_id` field in the `logistics_makeorder` table
+        is an integer that serves as a unique identifier for the payment approval
+        associated with a specific order. This field links the order to its corresponding
+        payment approval process, allowing for
+    payment_receive_id:
+      type: int
+      description: The field 'payment_receive_id' is an integer that uniquely identifies
+        the payment transaction associated with an order in the 'logistics_makeorder'
+        table.
+    payment_to_approve_id:
+      type: int
+      description: The field **'payment_to_approve_id'** is of type **'int'** in the
+        **'logistics_makeorder'** table. It stores the unique identifier of the payment
+        that requires approval within the logistics order processing system. This
+    seller_id:
+      type: int
+      description: '`seller_id`: An integer field that represents the unique identifier
+        of the seller associated with the order in the `logistics_makeorder` table.
+        This field links the order to the corresponding seller for tracking and management
+        purposes.'
+    shipping_address_id:
+      type: int
+      description: "**Field: shipping_address_id**  \n**Type:** int  \n**Description:**\
+        \ This field stores the unique identifier for the shipping address associated\
+        \ with a specific order in the logistics_makeorder table. It is used to link\
+        \ the order to the corresponding shipping address"
+    tally_invoice_date:
+      type: date
+      description: The field 'tally_invoice_date' in the 'logistics_makeorder' table
+        represents the date when the invoice was generated for a specific order in
+        the logistics system. It captures the exact date of the invoicing event, facilitating
+        tracking and reporting of
+    sales_person_id:
+      type: int
+      description: '`sales_person_id`: An integer field that uniquely identifies the
+        salesperson associated with a specific order in the logistics_makeorder table.
+        This field establishes a relationship between the order and the salesperson
+        responsible for processing it.'
+    is_tally_approved:
+      type: tinyint(1)
+      description: The 'is_tally_approved' field in the 'logistics_makeorder' table
+        is a tiny integer field (1 or 0) that indicates whether a tally for a given
+        order has been approved. A value of 1 signifies that the
+    old_seller_id:
+      type: int
+      description: The `old_seller_id` field is an integer that stores the identifier
+        of the previous seller associated with an order in the `logistics_makeorder`
+        table. This field is used to track changes in seller assignments for orders
+        over time.
+logistics_paymentapproval:
+  description: The `logistics_paymentapproval` table tracks the approval status of
+    payments associated with logistics operations. It records details such as payment
+    amounts, associated logistics orders, approval timestamps, and user information
+    related to the approval process. This table helps ensure accountability and transparency
+  fields:
+    id:
+      type: int
+      description: Field 'id' in the 'logistics_paymentapproval' table is an integer
+        that serves as the unique identifier for each payment approval record.
+    exp_payment_received_date:
+      type: date
+      description: The field 'exp_payment_received_date' in the 'logistics_paymentapproval'
+        table stores the date on which the expected payment was received for a logistics
+        transaction. This date is crucial for tracking payment timelines and ensuring
+        financial accountability.
+    remark:
+      type: varchar(250)
+      description: The 'remark' field in the 'logistics_paymentapproval' table is
+        a variable character string with a maximum length of 250 characters. It is
+        used to store additional notes or comments related to the payment approval
+        process.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_paymentapproval' table
+        records the timestamp of when a payment approval entry was created. It is
+        of type 'datetime(6)', allowing for precision up to six decimal places for
+        fractional seconds. This field
+    created_by_id:
+      type: int
+      description: The field **'created_by_id'** in the **'logistics_paymentapproval'**
+        table is an integer that stores the unique identifier of the user who created
+        the payment approval record. This field helps to track the origin of each
+        record for accountability
+    invoice_id:
+      type: int
+      description: "**Field: `invoice_id`**  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier for the invoice associated with\
+        \ the payment approval in the logistics payment approval table. It is used\
+        \ to link payment approvals to specific invoices"
+    invoice_activity_id:
+      type: int
+      description: The field 'invoice_activity_id' (type 'int') in the 'logistics_paymentapproval'
+        table represents a unique identifier for specific invoice activities related
+        to payment approvals in the logistics system.
+    invoice_status_id:
+      type: int
+      description: The field 'invoice_status_id' is of type 'int' in the 'logistics_paymentapproval'
+        table. It serves as a foreign key that references the status of the invoice
+        associated with the payment approval process, indicating the current state
+        (such as
+    payment_approval_file:
+      type: varchar(100)
+      description: The field 'payment_approval_file' in the 'logistics_paymentapproval'
+        table stores the filename or path of the associated payment approval document.
+        It is a variable character string with a maximum length of 100 characters,
+        used to reference the location of
+    payment_receive_id:
+      type: int
+      description: The field 'payment_receive_id' is an integer that uniquely identifies
+        each payment received in the logistics payment approval process. It serves
+        as a reference for tracking and managing payment transactions associated with
+        logistics activities.
+logistics_paymenttoapprove:
+  description: "The `logistics_paymenttoapprove` table stores records of payments\
+    \ that require approval within the logistics department. Each entry includes details\
+    \ such as payment amount, the requester\u2019s information, the status of the\
+    \ approval process, and timestamps for when the payment was submitted"
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_paymenttoapprove' table is an
+        integer that uniquely identifies each record in the table. It serves as the
+        primary key, ensuring that each payment approval entry can be distinctly referenced.
+    activity:
+      type: varchar(150)
+      description: The 'activity' field in the 'logistics_paymenttoapprove' table
+        is a variable character string with a maximum length of 150 characters. It
+        is used to describe the specific activity or action related to the payment
+        that is awaiting approval in the logistics
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_paymenttoapprove' table
+        records the exact date and time when a payment approval entry was created.
+        It is stored with a precision of up to six decimal places for seconds, allowing
+        for highly accurate time
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'logistics_paymenttoapprove' table
+        is an integer that stores the unique identifier of the user who created the
+        payment approval record. This field is used to track the originator of the
+        entry for auditing and
+    invoice_activity_id:
+      type: int
+      description: '`invoice_activity_id`: This integer field uniquely identifies
+        the associated invoice activity related to a payment that is pending approval
+        in the `logistics_paymenttoapprove` table.'
+    payment_receive_id:
+      type: int
+      description: "**Field Name:** payment_receive_id  \n**Type:** int  \n**Description:**\
+        \ This field stores the unique identifier for each payment received, linking\
+        \ it to the corresponding record in the logistics payments approval process."
+    invoice_id:
+      type: int
+      description: The field 'invoice_id' in the 'logistics_paymenttoapprove' table
+        is of type 'int' and serves as a unique identifier for each invoice associated
+        with a payment approval. It links payment records to specific invoices, facilitating
+        easy tracking and management
+    invoice_status_id:
+      type: int
+      description: 'Field `invoice_status_id` (type: int) in the table `logistics_paymenttoapprove`
+        represents a unique identifier for the status of an invoice associated with
+        a payment approval request. This field is used to track the progress or state
+        of the'
+logistics_productagainsttally:
+  description: The `logistics_productagainsttally` table stores records of products
+    that have been matched or reconciled against tally counts during logistical processes.
+    It typically includes fields to identify the product, the tally count, discrepancies,
+    timestamps, and any relevant notes to
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the primary identifier
+        for each record in the 'logistics_productagainsttally' table. It uniquely
+        distinguishes each entry, allowing for efficient data retrieval and management.
+    qty:
+      type: int
+      description: "**Field Name:** qty  \n**Type:** int  \n**Description:** This\
+        \ field represents the quantity of products recorded in the logistics tally,\
+        \ indicating the number of items associated with a specific transaction or\
+        \ inventory check."
+    created_at:
+      type: datetime(6)
+      description: The `created_at` field in the `logistics_productagainsttally` table
+        is a datetime field that records the exact timestamp (including milliseconds)
+        when a record was created. This helps track the creation time of each entry
+        for auditing and historical reference
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field is an integer that stores the unique
+        identifier of the user or system entity that created the corresponding record
+        in the 'logistics_productagainsttally' table. This field enables tracking
+        of the originator of the log entry
+    product_id:
+      type: int
+      description: The `product_id` field in the `logistics_productagainsttally` table
+        is an integer that uniquely identifies a product within the logistics system.
+        It serves as a reference point for tracking and managing product tallies against
+        inventory or shipment records.
+    ewaybill_id:
+      type: int
+      description: "**Field: ewaybill_id**  \n**Type: int**  \n**Description:** This\
+        \ integer field stores the unique identifier for the e-way bill associated\
+        \ with the logistics transaction, used to track and verify the movement of\
+        \ goods as per regulatory requirements."
+    amount:
+      type: double
+      description: "Field: `amount`  \nType: `double`  \nDescription: Represents the\
+        \ numerical value indicating the quantity or total cost associated with a\
+        \ product in the logistics tally records. This value can accommodate fractional\
+        \ amounts for precision in financial or quantity calculations."
+    warehouse_transction_id:
+      type: int
+      description: The field 'warehouse_transaction_id' is an integer that uniquely
+        identifies a specific transaction within the warehouse. It is used to track
+        and manage inventory movements and related activities associated with product
+        tallying in the 'logistics_productagainsttally' table.
+    dispatch_id:
+      type: int
+      description: The field 'dispatch_id' is an integer that uniquely identifies
+        each dispatch entry in the 'logistics_productagainsttally' table.
+logistics_producthistory:
+  description: The `logistics_producthistory` table stores historical records of product
+    movements and status changes within the logistics system. It tracks details such
+    as product IDs, location changes, timestamps, quantities, and any relevant notes
+    regarding the handling or condition of the products throughout
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_producthistory' table is an integer
+        that serves as the unique identifier for each record in the table, ensuring
+        distinct tracking of product history entries.
+    product_id:
+      type: varchar(100)
+      description: "Field: `product_id`  \nType: `varchar(100)`  \nDescription: This\
+        \ field stores a unique identifier for each product in the logistics product\
+        \ history table. It allows for the tracking of specific product records and\
+        \ can accommodate alphanumeric values up to"
+    product_type:
+      type: varchar(50)
+      description: The `product_type` field is a variable character string (varchar)
+        with a maximum length of 50 characters in the `logistics_producthistory` table.
+        It is used to denote the categorization or classification of the product within
+        the logistics system,
+    product:
+      type: varchar(150)
+      description: The 'product' field in the 'logistics_producthistory' table is
+        a VARCHAR(150) type that stores the name or identifier of the product associated
+        with the logistics transaction. This field can hold alphanumeric characters
+        up to 150 characters in length
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'logistics_producthistory' table represents
+        the amount of a specific product recorded in the context of inventory transactions.
+        It is stored as an integer value and is used to track changes in product quantities
+        over time, such as
+    transaction_type:
+      type: varchar(50)
+      description: The 'transaction_type' field in the 'logistics_producthistory'
+        table is a string (varchar) with a maximum length of 50 characters. It records
+        the type of transaction performed on the product, such as "purchase," "return,"
+        "
+    remark:
+      type: varchar(50)
+      description: The 'remark' field in the 'logistics_producthistory' table is a
+        VARCHAR data type that can store up to 50 characters. It is used to provide
+        additional comments or notes related to the product's history or status during
+        logistics processes.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_producthistory' table
+        stores the date and time when a record was created. It uses the 'datetime(6)'
+        data type, which includes precision for fractional seconds, allowing for accurate
+        timestamping down
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field is an integer that stores the unique
+        identifier of the user who created the record in the 'logistics_producthistory'
+        table. This field helps track the origin of the record for accountability
+        and auditing purposes.
+logistics_productpaymentapproval:
+  description: The `logistics_productpaymentapproval` table stores records of payment
+    approvals related to product logistics. It includes details such as approval status,
+    timestamps, associated product IDs, payment amounts, and user information for
+    tracking and auditing financial transactions within the logistics process.
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_productpaymentapproval' table
+        is an integer that serves as the unique identifier for each record in the
+        table. It is used to distinguish between different product payment approval
+        entries.
+    approved:
+      type: tinyint(1)
+      description: The 'approved' field in the 'logistics_productpaymentapproval'
+        table is a boolean indicator represented as a tinyint(1). It denotes whether
+        a payment approval for a product is granted (1) or not granted (0).
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'logistics_productpaymentapproval' table
+        is of type 'longtext' and is used to store detailed comments or observations
+        related to the approval process of product payments. This field can accommodate
+        large amounts of text, allowing
+    freight_cost:
+      type: double
+      description: The 'freight_cost' field in the 'logistics_productpaymentapproval'
+        table represents the cost of shipping or transporting goods associated with
+        a product payment approval. It is stored as a double data type to accommodate
+        decimal values, allowing for precise calculations of
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_productpaymentapproval'
+        table stores the timestamp indicating when the record was created. It is of
+        type 'datetime(6)', allowing for precision up to microseconds.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'logistics_productpaymentapproval'
+        table is a datetime(6) type that records the precise timestamp of the most
+        recent modification made to a product payment approval record, including fractional
+        seconds. This field is used for
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `logistics_productpaymentapproval`
+        table is an integer that references the unique identifier of the user or system
+        account that created the payment approval record. This field helps track the
+        origin of the entry for audit and
+    invoice_product_id:
+      type: int
+      description: The field 'invoice_product_id' is an integer type that serves as
+        a unique identifier for each product associated with a specific invoice in
+        the logistics_productpaymentapproval table.
+    modified_by_id:
+      type: int
+      description: "**Field**: `modified_by_id`  \n**Type**: `int`  \n**Description**:\
+        \ This field stores the unique identifier (ID) of the user who last modified\
+        \ the record in the `logistics_productpaymentapproval` table."
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'logistics_productpaymentapproval'
+        table is a tiny integer (1) that indicates the active status of a product
+        payment approval. A value of '1' signifies that the approval is currently
+        active, while a
+    uuid:
+      type: varchar(100)
+      description: The 'uuid' field in the 'logistics_productpaymentapproval' table
+        stores a unique identifier for each payment approval record. It is of type
+        'varchar(100)', allowing for alphanumeric values that conform to the universally
+        unique identifier (UUID) format
+    transportation_cost:
+      type: double
+      description: The field 'transportation_cost' in the 'logistics_productpaymentapproval'
+        table represents the monetary cost associated with the transportation of products.
+        It is stored as a double data type to accommodate decimal values, allowing
+        for precise financial calculations related to shipping expenses
+    rejected:
+      type: tinyint(1)
+      description: The field 'rejected' in the 'logistics_productpaymentapproval'
+        table is a tiny integer (1) that indicates whether a payment approval has
+        been rejected. A value of 1 represents rejection, while a value of 0 indicates
+        that the
+logistics_producttransction:
+  description: The `logistics_producttransaction` table records details about the
+    transactions involving products within the logistics system. It includes fields
+    for tracking product identifiers, transaction types (e.g., shipment, receipt),
+    quantities, transaction dates, and associated logistics processes, facilitating
+    efficient
+  fields:
+    id:
+      type: int
+      description: Field 'id' in the table 'logistics_producttransaction' is an integer
+        that serves as the primary identifier for each transaction record. It uniquely
+        distinguishes each entry within the table, ensuring efficient data retrieval
+        and integrity.
+    product_id:
+      type: varchar(100)
+      description: The field 'product_id' in the 'logistics_producttransaction' table
+        is a variable character string (varchar) with a maximum length of 100 characters.
+        It uniquely identifies each product involved in a transaction, serving as
+        a reference to associate the transaction
+    product_type:
+      type: varchar(50)
+      description: The field 'product_type' in the 'logistics_producttransaction'
+        table stores the type of product involved in the transaction, represented
+        as a variable character string with a maximum length of 50 characters. This
+        field helps categorize products for better tracking and analysis
+    quantity:
+      type: int
+      description: "**Field Name:** quantity  \n**Type:** int  \n**Description:**\
+        \ Represents the number of units involved in a product transaction. This field\
+        \ tracks the amount of a specific product that is being received, shipped,\
+        \ or otherwise handled in the logistics process."
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_producttransaction' table
+        records the date and time when a product transaction was created. It is stored
+        as a datetime value with up to six decimal places of fractional seconds, allowing
+        for precise timestamping of
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'logistics_producttransaction'
+        table is an integer that stores the unique identifier of the user or entity
+        that created the transaction record. This field is used for tracking and auditing
+        purposes to determine who initiated the entry
+    product_against_tally_id:
+      type: int
+      description: The field `product_against_tally_id` is an integer that serves
+        as a reference identifier linking a product transaction to a corresponding
+        entry in a Tally accounting system, used for tracking and reconciling inventory
+        movements within logistics operations.
+    warehouse_transction_id:
+      type: int
+      description: "**Field Name:** warehouse_transaction_id  \n**Type:** int  \n\
+        **Description:** A unique identifier for each transaction recorded in the\
+        \ logistics_producttransaction table, representing the specific transaction\
+        \ that occurred within the warehouse. This ID is used to link transactions\
+        \ to related records"
+    project_completion_id:
+      type: int
+      description: "**Field:** `project_completion_id`  \n**Type:** `int`  \n**Description:**\
+        \ A unique identifier for the project associated with the completion of a\
+        \ logistics product transaction. This ID links the transaction to a specific\
+        \ project and is used for tracking and"
+logistics_projectcompletion:
+  description: The `logistics_projectcompletion` table records the completion details
+    of various logistics projects. It includes fields for tracking project identifiers,
+    completion dates, status, budget adherence, and any remarks related to the project's
+    conclusion. This table facilitates project management and reporting within
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_projectcompletion' table is an
+        integer that serves as the unique identifier for each record in the table.
+        It ensures the distinct identification of project completion entries within
+        the logistics system.
+    site_address:
+      type: varchar(300)
+      description: The `site_address` field in the `logistics_projectcompletion` table
+        is a string type (VARCHAR) that stores the address of the project site, with
+        a maximum length of 300 characters. This field captures the location details
+        relevant to the project's
+    site_pincode:
+      type: int
+      description: The field 'site_pincode' in the 'logistics_projectcompletion' table
+        represents the postal code assigned to the location of the project site, stored
+        as an integer. It is used to identify the geographic area for logistics and
+        delivery purposes.
+    latitude:
+      type: varchar(30)
+      description: The 'latitude' field in the 'logistics_projectcompletion' table
+        stores the geographic latitude coordinate as a string with a maximum length
+        of 30 characters. This field is used to specify the precise north-south position
+        of a location related to the project
+    longitude:
+      type: varchar(30)
+      description: "**Field Name:** longitude  \n**Type:** varchar(30)  \n**Table:**\
+        \ logistics_projectcompletion  \n\n**Description:** This field stores the\
+        \ geographical longitude coordinate associated with the project completion\
+        \ location, represented as a string. The maximum length for this value is"
+    installation_date:
+      type: date
+      description: The 'installation_date' field in the 'logistics_projectcompletion'
+        table represents the date on which the installation of a project was completed.
+        This field is of type 'date' and is used to track the completion timeline
+        of logistics projects.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_projectcompletion' table
+        stores the timestamp of when the project completion record was created. It
+        is of type 'datetime(6)', allowing for precision up to six decimal places
+        for fractional seconds.
+    updated_at:
+      type: datetime(6)
+      description: The 'updated_at' field in the 'logistics_projectcompletion' table
+        records the timestamp of the most recent update to a project completion record.
+        It is stored as a datetime with precision up to six fractional seconds, allowing
+        for detailed tracking of modifications.
+    created_by_id:
+      type: int
+      description: "**Field:** `created_by_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier (ID) of the user or system that\
+        \ created the project completion record in the `logistics_projectcompletion`\
+        \ table. It"
+    product_against_tally_id:
+      type: int
+      description: The field 'product_against_tally_id' is an integer that uniquely
+        identifies a product associated with a specific tally in the logistics project
+        completion process. It serves as a reference for linking project completion
+        records to related product data in the database.
+    site_city_id:
+      type: int
+      description: The field 'site_city_id' in the 'logistics_projectcompletion' table
+        is an integer that represents the unique identifier for the city associated
+        with a specific logistics project completion. It is used to link the project
+        to its corresponding city within the database.
+    warehouse_transction_id:
+      type: int
+      description: "**Field:** `warehouse_transaction_id`  \n**Type:** `int`  \n**Description:**\
+        \ A unique identifier for each transaction recorded in the warehouse related\
+        \ to project completion activities. This ID is used to track and reference\
+        \ specific warehouse transactions within the logistics management"
+    client_name:
+      type: varchar(100)
+      description: "**Field:** `client_name`  \n**Type:** `varchar(100)`  \n**Description:**\
+        \ This field stores the name of the client associated with each logistics\
+        \ project completion, with a maximum length of 100 characters."
+    warranty_doc:
+      type: varchar(100)
+      description: The 'warranty_doc' field in the 'logistics_projectcompletion' table
+        is a varchar(100) type that stores a reference or filename for the warranty
+        documentation related to the completed logistics project. This field can hold
+        alphanumeric characters up to
+logistics_salesdailyaggregate:
+  description: The `logistics_salesdailyaggregate` table stores daily aggregated sales
+    data for logistics operations. It includes summaries of sales figures, order counts,
+    and other relevant metrics, allowing for analysis of sales performance over time.
+    This table is essential for tracking trends,
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_salesdailyaggregate' table is
+        an integer that serves as the unique identifier for each record in the table.
+        It ensures that every entry can be distinctly referenced and retrieved.
+    total_sales:
+      type: int
+      description: The 'total_sales' field in the 'logistics_salesdailyaggregate'
+        table represents the total number of sales transactions completed on a given
+        day. It is stored as an integer value and is used for analyzing daily sales
+        performance.
+    active_order:
+      type: int
+      description: The field 'active_order' is of type 'int' in the 'logistics_salesdailyaggregate'
+        table. It represents the total number of active orders processed on a given
+        day, providing insights into daily sales performance and order management.
+    average:
+      type: double
+      description: The 'average' field in the 'logistics_salesdailyaggregate' table
+        represents the average sales figure for a given day. This value is stored
+        as a double data type to accommodate decimal values, allowing for precise
+        calculations and reporting of daily sales performance.
+    day:
+      type: date
+      description: The 'day' field in the 'logistics_salesdailyaggregate' table represents
+        the specific date for which daily sales data is aggregated. It is stored in
+        a date format, indicating the start of the period for the recorded sales metrics.
+    sales_person_id:
+      type: int
+      description: The field `sales_person_id` in the `logistics_salesdailyaggregate`
+        table is of type `int` and represents the unique identifier for the salesperson
+        associated with the sales data recorded in the daily aggregate. This field
+        links each sales record to the
+logistics_salesincentivemapping:
+  description: The `logistics_salesincentivemapping` table stores the mappings of
+    sales incentives to specific logistics parameters. It includes details on how
+    sales incentives are allocated based on various logistics criteria, facilitating
+    tracking and optimization of incentive programs related to sales performance in
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_salesincentivemapping' table is
+        an integer type that serves as the unique identifier for each record in the
+        table, ensuring that each sales incentive mapping can be distinctly referenced.
+    applied_to:
+      type: int
+      description: The 'applied_to' field in the 'logistics_salesincentivemapping'
+        table is of type 'int' and represents the identifier for the entity or category
+        to which the sales incentive is applied. This field is used to link the
+    status:
+      type: varchar(250)
+      description: The 'status' field in the 'logistics_salesincentivemapping' table
+        is a variable character (varchar) type with a maximum length of 250 characters.
+        It is used to indicate the current state or condition of a sales incentive
+        mapping
+    current_achivement:
+      type: double
+      description: "Field: `current_achievement`  \nType: `double`  \nDescription:\
+        \ This field stores the current achievement value as a floating-point number,\
+        \ representing the performance metrics achieved by the sales team in relation\
+        \ to their targets within the logistics sales incentive mapping."
+    current_incentive:
+      type: double
+      description: The `current_incentive` field is a double data type representing
+        the current incentive amount assigned to a sales representative or team in
+        the logistics sales incentive mapping. It reflects the monetary value of the
+        incentive applicable at the time of recording for performance-related compensation
+    start_date:
+      type: date
+      description: The 'start_date' field in the 'logistics_salesincentivemapping'
+        table represents the date when the sales incentive program begins. It is stored
+        in the date format and is used to track the effective start of the incentive
+        mapping.
+    end_date:
+      type: date
+      description: The 'end_date' field in the 'logistics_salesincentivemapping' table
+        represents the date on which the sales incentive period concludes. It is used
+        to track the validity period of sales incentives allocated to logistics operations.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_salesincentivemapping'
+        table stores the date and time when the record was created. It is of type
+        'datetime(6)', which means it includes microsecond precision to capture the
+        exact
+    created_by_id:
+      type: int
+      description: The field `created_by_id` in the `logistics_salesincentivemapping`
+        table is an integer that stores the unique identifier of the user or system
+        that created the sales incentive mapping record.
+    sales_incentive_plan_id:
+      type: int
+      description: '`sales_incentive_plan_id`: An integer field that uniquely identifies
+        the sales incentive plan associated with the sales incentive mapping in the
+        `logistics_salesincentivemapping` table.'
+logistics_salesincentiveplan:
+  description: The `logistics_salesincentiveplan` table stores information regarding
+    sales incentive plans used by the logistics department. It includes details such
+    as incentive plan identifiers, descriptions, eligibility criteria, start and end
+    dates, and associated sales targets. This table facilitates
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the primary identifier
+        for each record in the 'logistics_salesincentiveplan' table. It uniquely distinguishes
+        each sales incentive plan entry, facilitating efficient data retrieval and
+        management.
+    financialyear:
+      type: varchar(30)
+      description: The 'financialyear' field in the 'logistics_salesincentiveplan'
+        table stores the financial year associated with the sales incentive plan,
+        represented as a string with a maximum length of 30 characters. This allows
+        for flexibility in formatting, accommodating
+    plantype:
+      type: varchar(250)
+      description: "**Field:** `plantype`  \n**Type:** `varchar(250)`  \n**Description:**\
+        \ This field stores the type of sales incentive plan as a string, with a maximum\
+        \ length of 250 characters. It categorizes the incentive plans to facilitate"
+    grouptype:
+      type: varchar(250)
+      description: The `grouptype` field in the `logistics_salesincentiveplan` table
+        is a VARCHAR data type with a maximum length of 250 characters. It is used
+        to specify the category or classification of the sales incentive group, helping
+        to
+    applicable_on:
+      type: varchar(250)
+      description: The 'applicable_on' field in the 'logistics_salesincentiveplan'
+        table is a VARCHAR(250) data type that stores descriptive information regarding
+        the specific conditions, date, or context under which the sales incentive
+        plan is applicable.
+    is_active:
+      type: int
+      description: The field 'is_active' in the 'logistics_salesincentiveplan' table
+        is an integer that indicates the status of the sales incentive plan. A value
+        of 1 typically represents an active plan, while a value of 0 indicates that
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_salesincentiveplan' table
+        records the exact date and time when the sales incentive plan entry was created.
+        It is stored with a precision of microseconds (datetime(6)).
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'logistics_salesincentiveplan' table
+        stores the timestamp of the last modification made to a record, represented
+        in datetime format with microsecond precision (datetime(6)). This field helps
+        track changes and maintain
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'logistics_salesincentiveplan' table
+        is a long text field used to store additional notes or comments related to
+        the sales incentive plan. It can accommodate extensive text, allowing for
+        detailed descriptions or observations pertinent to
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is an integer that stores the unique
+        identifier of the user who created the corresponding sales incentive plan
+        in the 'logistics_salesincentiveplan' table.
+    modified_by_id:
+      type: int
+      description: "**Field: modified_by_id**  \n**Type: int**  \n**Description:**\
+        \ A foreign key that references the user ID of the individual who last modified\
+        \ the sales incentive plan record in the logistics_salesincentiveplan table.\
+        \ This field helps track"
+    plan_name:
+      type: varchar(100)
+      description: The 'plan_name' field in the 'logistics_salesincentiveplan' table
+        is a varchar data type with a maximum length of 100 characters. It stores
+        the name of the sales incentive plan, which is used to identify and distinguish
+        different
+logistics_salesincentivetarget:
+  description: The `logistics_salesincentivetarget` table stores data related to sales
+    incentive targets set for logistics personnel. It includes information on target
+    amounts, performance metrics, associated sales periods, and the personnel eligible
+    for incentives, facilitating the tracking and management of
+  fields:
+    id:
+      type: int
+      description: "**Field: id**  \n**Type:** int  \n**Description:** A unique identifier\
+        \ for each record in the logistics_salesincentivetarget table, used to distinguish\
+        \ between different sales incentive targets. This field serves as the primary\
+        \ key for the table."
+    target_amount:
+      type: double
+      description: The 'target_amount' field in the 'logistics_salesincentivetarget'
+        table represents the monetary value set as a sales incentive target. This
+        field is of type 'double', allowing for decimal values to accommodate precise
+        financial figures.
+    value:
+      type: double
+      description: The 'value' field in the 'logistics_salesincentivetarget' table
+        represents the numerical target amount (as a double) for sales incentives
+        to be achieved, allowing for precise decimal values in performance metrics.
+    target_in:
+      type: varchar(250)
+      description: The 'target_in' field in the 'logistics_salesincentivetarget' table
+        is a VARCHAR type with a maximum length of 250 characters. It is used to store
+        the target incentive information for sales, typically representing a goal
+        or benchmark that
+    sales_incentive_plan_id:
+      type: int
+      description: The 'sales_incentive_plan_id' field is an integer that serves as
+        a unique identifier for the sales incentive plan associated with a particular
+        entry in the 'logistics_salesincentivetarget' table. This field links incentive
+        targets to specific sales
+logistics_salesmonthlyaggregate:
+  description: The `logistics_salesmonthlyaggregate` table stores aggregated sales
+    data on a monthly basis for logistics operations. Each record represents total
+    sales metrics, such as revenue and order counts, consolidated per month to facilitate
+    analysis and reporting of sales performance over time.
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer type that serves as the unique identifier
+        for each record in the 'logistics_salesmonthlyaggregate' table. It ensures
+        that each entry can be distinctly referenced and is typically used as the
+        primary key for the table.
+    total_month_sales:
+      type: int
+      description: The field 'total_month_sales' in the 'logistics_salesmonthlyaggregate'
+        table represents the total sales revenue generated during a specific month,
+        measured in integer values.
+    total_order:
+      type: int
+      description: The 'total_order' field in the 'logistics_salesmonthlyaggregate'
+        table represents the total count of orders processed within a specific month.
+        This integer value aggregates the number of sales transactions, providing
+        insights into monthly sales performance.
+    monthly_average:
+      type: double
+      description: "**Field Name:** monthly_average  \n**Type:** Double  \n**Description:**\
+        \ Represents the average sales value for the month, calculated from daily\
+        \ sales data. This field provides insights into the monthly sales performance\
+        \ and trends in the logistics sector."
+    month:
+      type: date
+      description: "**Field:** month  \n**Type:** date  \n**Description:** Represents\
+        \ the specific month associated with the aggregated sales data in the logistics\
+        \ sales monthly aggregate table. The value indicates the first day of the\
+        \ month and is used for grouping and analysis of sales performance"
+    sales_person_id:
+      type: int
+      description: The 'sales_person_id' field of type 'int' in the 'logistics_salesmonthlyaggregate'
+        table uniquely identifies the sales representative associated with the recorded
+        sales data for the month.
+logistics_sentemail:
+  description: The `logistics_sentemail` table stores records of email communications
+    sent within the logistics department. Each entry typically includes details such
+    as the recipient's information, the email subject, timestamp of when the email
+    was sent, and any relevant status indicators for tracking
+  fields:
+    id:
+      type: int
+      description: Field 'id' in the table 'logistics_sentemail' is an integer that
+        serves as the primary key, uniquely identifying each record in the table.
+    email_type:
+      type: varchar(100)
+      description: The 'email_type' field in the 'logistics_sentemail' table stores
+        the type of email sent, represented as a variable character string with a
+        maximum length of 100 characters. This field helps categorize the email for
+        tracking and reporting purposes.
+    sent_at:
+      type: datetime(6)
+      description: The 'sent_at' field in the 'logistics_sentemail' table records
+        the date and time when an email was successfully sent, with precision up to
+        microseconds (datetime(6)).
+    invoice_id:
+      type: int
+      description: The field 'invoice_id' is of type 'int' in the 'logistics_sentemail'
+        table. It uniquely identifies the associated invoice for each email sent within
+        the logistics system, facilitating the tracking and management of correspondence
+        related to specific invoices.
+    order_id:
+      type: int
+      description: The field 'order_id' in the 'logistics_sentemail' table is of type
+        'int' and stores the unique identifier for each order associated with the
+        sent email record. This field helps in linking the email logs to specific
+        orders for tracking and
+    sent_by_id:
+      type: int
+      description: The field 'sent_by_id' is of type 'int' in the 'logistics_sentemail'
+        table and represents the unique identifier of the user or system that initiated
+        the sending of the email.
+logistics_stockin:
+  description: database table named 'logistics_stockin' (auto-generated description)
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_stockin' table is an integer that
+        serves as the unique identifier for each stock-in record. It ensures that
+        each entry can be distinctly referenced within the database.
+    invoice_no:
+      type: varchar(250)
+      description: The 'invoice_no' field in the 'logistics_stockin' table is a variable
+        character string field with a maximum length of 250 characters. It is used
+        to store the unique invoice number associated with stock-in transactions for
+        logistics purposes.
+    invoice_date:
+      type: date
+      description: The 'invoice_date' field in the 'logistics_stockin' table represents
+        the date when the invoice for the stock-in transaction was issued. This field
+        is of type 'date' and is used for tracking the timing of inventory receipts
+        and financial records
+    stock_from:
+      type: varchar(250)
+      description: The 'stock_from' field in the 'logistics_stockin' table is a VARCHAR(250)
+        type that stores the source or origin of the stock being received. It provides
+        information about where the inventory is coming from, such as a supplier,
+    from_address:
+      type: varchar(250)
+      description: The field 'from_address' in the 'logistics_stockin' table stores
+        the source address of incoming stock items as a variable character string
+        with a maximum length of 250 characters.
+    is_active:
+      type: int
+      description: The 'is_active' field in the 'logistics_stockin' table is an integer
+        that indicates the active status of a stock-in record. A value of 1 typically
+        represents that the record is active, while a value of 0 indicates that
+    cost:
+      type: double
+      description: The 'cost' field in the 'logistics_stockin' table is of type 'double'
+        and represents the monetary value associated with the goods being received
+        into inventory. This field captures the cost incurred for each item or shipment,
+        enabling accurate tracking of
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_stockin' table records
+        the exact date and time when a stock-in entry was created. This field uses
+        a 'datetime(6)' data type, providing precision up to microseconds.
+    updated_at:
+      type: datetime(6)
+      description: The 'updated_at' field in the 'logistics_stockin' table is a timestamp
+        that records the date and time when a record was last updated. It uses the
+        'datetime(6)' type, allowing for precision up to microseconds.
+    created_by_id:
+      type: int
+      description: The field `created_by_id` is an integer that identifies the user
+        or system process that created the stock-in record in the `logistics_stockin`
+        table. This field serves as a foreign key, linking to the user's unique identifier
+        in the users
+    transporter_point_of_contact_id:
+      type: int
+      description: The field `transporter_point_of_contact_id` is an integer that
+        identifies the point of contact at the transporter for logistics stock-in
+        operations. This ID links to the specific contact person responsible for communication
+        and coordination related to the stock-in process.
+    warehouse_id:
+      type: int
+      description: The `warehouse_id` field in the `logistics_stockin` table is an
+        integer that uniquely identifies the warehouse where stock is received. It
+        serves as a foreign key to link stock-in records to specific warehouses in
+        the logistics system.
+    stock_in_date:
+      type: date
+      description: "**Field: stock_in_date**  \n**Type:** Date  \n**Description:**\
+        \ This field records the date on which stock items were received into the\
+        \ inventory, providing a chronological log of stock inflow for tracking and\
+        \ management purposes."
+    from_port_id:
+      type: int
+      description: The field 'from_port_id' in the 'logistics_stockin' table is an
+        integer that represents the unique identifier of the port from which the stock
+        is being received.
+    from_seller_id:
+      type: int
+      description: The field `from_seller_id` is an integer that represents the unique
+        identifier of the seller from whom the stock is being received in the `logistics_stockin`
+        table.
+    product_company_id:
+      type: int
+      description: The field 'product_company_id' is an integer that stores the unique
+        identifier for the company associated with a specific product in the 'logistics_stockin'
+        table. This field links the stock-in records to the respective product companies,
+        facilitating inventory management and
+    ewaybill_no:
+      type: varchar(250)
+      description: The field 'ewaybill_no' in the 'logistics_stockin' table is a variable-length
+        character string (up to 250 characters) that stores the unique identification
+        number for the e-way bill associated with incoming logistics shipments. This
+        number is used
+    lr_no:
+      type: varchar(250)
+      description: field 'lr_no' of type 'varchar(250)' in table 'logistics_stockin'
+        (auto-generated description)
+    vehicle_no:
+      type: varchar(250)
+      description: "**Field: vehicle_no**  \n**Type:** varchar(250)  \n**Description:**\
+        \ This field stores the identification number or registration number of the\
+        \ vehicle used for stock-in logistics. The maximum length of the vehicle number\
+        \ is 250 characters, allowing for"
+    liblity_of_payment:
+      type: double
+      description: "**Field: liblity_of_payment**  \n**Type: Double**  \n**Description:**\
+        \ This field records the liability of payment associated with the stock-in\
+        \ transaction. It represents the monetary obligation that must be settled\
+        \ for the received goods in the logistics inventory"
+    eway_bill_file:
+      type: varchar(100)
+      description: The 'eway_bill_file' field in the 'logistics_stockin' table is
+        a varchar(100) type that stores the file name or path of the e-way bill associated
+        with a stock-in transaction. This field is used to link and reference
+    invoice_amount:
+      type: double
+      description: "**Field Name:** invoice_amount  \n**Type:** double  \n**Description:**\
+        \ Represents the total monetary amount of the invoice associated with a stock-in\
+        \ transaction in the logistics system. This value is used for accounting and\
+        \ inventory purposes."
+    invoice_file:
+      type: varchar(100)
+      description: The 'invoice_file' field in the 'logistics_stockin' table is a
+        VARCHAR data type with a maximum length of 100 characters. It is used to store
+        the filename or path of the invoice document associated with stock-in transactions
+        in the logistics
+    lr_file:
+      type: varchar(100)
+      description: The field 'lr_file' in the 'logistics_stockin' table is a variable
+        character string with a maximum length of 100 characters. It is used to store
+        the name or path of a logistics-related file associated with stock-in records.
+    old_from_seller_id:
+      type: int
+      description: The field 'old_from_seller_id' is an integer that represents the
+        unique identifier of the seller from whom stock was previously received. This
+        field is used to track changes in seller relationships during stock-in transactions
+        in the 'logistics_stockin' table
+    old_warehouse_id:
+      type: int
+      description: The field 'old_warehouse_id' in the 'logistics_stockin' table is
+        an integer that stores the identifier of the previous warehouse from which
+        items were received during stock-in operations.
+logistics_stockinproducts:
+  description: The `logistics_stockinproducts` table stores information about products
+    that have been received into inventory. It typically includes details such as
+    product ID, quantity received, supplier information, receiving date, and other
+    relevant metrics to facilitate tracking and management of stock levels
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_stockinproducts' table is an integer
+        data type that serves as the unique identifier for each record in the table,
+        ensuring that each stock-in product entry can be distinctly referenced.
+    qty:
+      type: int
+      description: The 'qty' field in the 'logistics_stockinproducts' table represents
+        the quantity of products being received into stock. It is of type 'int' and
+        records the total number of units for each stock-in transaction.
+    is_active:
+      type: int
+      description: The 'is_active' field in the 'logistics_stockinproducts' table
+        is an integer that indicates the active status of the stock-in product. A
+        value of 1 typically signifies that the product is currently active, while
+        a value of 0
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_stockinproducts' table
+        stores the precise date and time when a stock-in product record was created.
+        It uses a datetime format with microsecond precision (up to 6 decimal places).
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'logistics_stockinproducts' table
+        is an integer that stores the unique identifier of the user who created the
+        record. This field helps track the origin of the entry for auditing and accountability
+        purposes.
+    product_id:
+      type: int
+      description: The 'product_id' field is an integer that uniquely identifies each
+        product in the 'logistics_stockinproducts' table. It serves as a reference
+        to associate stock-in entries with specific products in the inventory system.
+    stock_in_id:
+      type: int
+      description: The field **'stock_in_id'** in the **'logistics_stockinproducts'**
+        table is an integer that uniquely identifies a specific stock-in transaction.
+        It serves as a reference to associate products with their corresponding stock-in
+        records for inventory management
+    is_temp:
+      type: tinyint(1)
+      description: The 'is_temp' field in the 'logistics_stockinproducts' table is
+        a tiny integer (1) that indicates whether a stock-in product is temporary
+        (1) or permanent (0).
+logistics_stockinproducttransction:
+  description: The `logistics_stockinproducttransction` table records transactions
+    related to the stock-in process of products within a logistics or inventory management
+    system. It includes details about incoming product shipments, such as quantities,
+    associated suppliers, timestamps, and relevant product identifiers
+  fields:
+    id:
+      type: int
+      description: Field 'id' in the table 'logistics_stockinproducttransction' is
+        an integer that serves as the unique identifier for each record in the transaction
+        log. It ensures that each stock-in product transaction can be uniquely referenced.
+    product_id:
+      type: varchar(100)
+      description: The 'product_id' field in the 'logistics_stockinproducttransction'
+        table is a variable character field with a maximum length of 100 characters.
+        It uniquely identifies each product involved in stock-in transactions within
+        the logistics system.
+    product_type:
+      type: varchar(50)
+      description: The 'product_type' field in the 'logistics_stockinproducttransaction'
+        table is a varchar(50) data type that stores the category or classification
+        of the product being processed in the stock-in transaction. This field allows
+        for up to 50
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'logistics_stockinproducttransaction'
+        table represents the total number of items being received or transferred in
+        the stock-in product transaction. It is of integer type, allowing for whole
+        number entries to accurately reflect the count of
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_stockinproducttransction'
+        table is a datetime(6) data type that records the exact date and time (including
+        fractions of a second) when a stock-in product transaction was created. This
+    Stock_in_warehouse_transction_id:
+      type: int
+      description: '`Stock_in_warehouse_transaction_id`: An integer field that uniquely
+        identifies each stock-in transaction recorded in the `logistics_stockinproducttransction`
+        table. This ID is used to track and reference specific inventory movements
+        into the warehouse.'
+    created_by_id:
+      type: int
+      description: "Field Name: `created_by_id`  \nType: `int`  \nDescription: This\
+        \ field stores the unique identifier of the user who created the stock-in\
+        \ product transaction record. It is used to track the origin of the entry\
+        \ and associate it with the"
+    stock_in_product_id:
+      type: int
+      description: The field `stock_in_product_id` is an integer that uniquely identifies
+        a specific product involved in a stock-in transaction within the `logistics_stockinproducttransction`
+        table. This field is used to link the transaction record to the corresponding
+        product in
+logistics_stockinproducttransctiontemp:
+  description: The `logistics_stockinproducttransctiontemp` table is a temporary storage
+    table used to track and manage stock-in product transactions within the logistics
+    system. It likely contains fields for transaction details, including product identifiers,
+    quantities received, timestamps, and any
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer that serves as the primary identifier
+        for each record in the 'logistics_stockinproducttransctiontemp' table. It
+        uniquely distinguishes each stock-in product transaction entry, ensuring data
+        integrity and facilitating efficient record retrieval.
+    product_id:
+      type: varchar(100)
+      description: The field 'product_id' in the table 'logistics_stockinproducttransctiontemp'
+        stores a unique identifier for each product involved in stock-in transactions.
+        It is of type 'varchar(100)', allowing for alphanumeric values up to 100
+    product_type:
+      type: varchar(50)
+      description: The field 'product_type' in the 'logistics_stockinproducttransctiontemp'
+        table is a varchar(50) data type that stores the category or classification
+        of the product involved in the stock-in transaction. This field can contain
+        alphanumeric characters
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'logistics_stockinproducttransctiontemp'
+        table represents the number of units of a product being recorded in a stock-in
+        transaction. It is of integer type and indicates the amount of inventory that
+        is being added to
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_stockinproducttransctiontemp'
+        table is a timestamp that records the exact date and time when the stock-in
+        product transaction entry was created. It is stored with microsecond precision
+        (datetime(6
+    Stock_in_warehouse_transction_id:
+      type: int
+      description: "**Field:** `Stock_in_warehouse_transction_id`  \n**Type:** `int`\
+        \  \n**Description:** A unique identifier for each stock-in transaction recorded\
+        \ in the temporary logistics stock-in product transactions table. This ID\
+        \ facilitates tracking and management of inventory"
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field is an integer that stores the identifier
+        of the user or system process that created the record in the 'logistics_stockinproducttransctiontemp'
+        table. This field is used for audit purposes to track the origin of
+    stock_in_product_id:
+      type: int
+      description: The field 'stock_in_product_id' is an integer that uniquely identifies
+        each stock-in product transaction within the 'logistics_stockinproducttransctiontemp'
+        table. It serves as a reference for tracking and managing the specific products
+        being received into inventory.
+logistics_stockinreportsummary:
+  description: The `logistics_stockinreportsummary` table stores summarized information
+    about stock-in transactions within a logistics system. It includes aggregated
+    data such as total quantities received, item details, supplier information, and
+    timestamps, providing an overview of stock inflows for inventory
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each record in the 'logistics_stockinreportsummary' table. It ensures
+        that each entry can be distinctly referenced and accessed within the database.
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'logistics_stockinreportsummary' table
+        represents the total number of items received during a stock-in operation.
+        It is defined as an integer (int) and is used to track the volume of stock
+        added to inventory
+    date:
+      type: date
+      description: The 'date' field in the 'logistics_stockinreportsummary' table
+        stores the specific date of the stock-in report, providing a timestamp for
+        when the inventory was recorded or updated.
+    product_id:
+      type: int
+      description: The 'product_id' field is an integer that uniquely identifies a
+        product within the logistics stock-in report summary. It is used to link the
+        stock-in report to the corresponding product in the inventory database.
+    warehouse_id:
+      type: int
+      description: "**Field:** warehouse_id  \n**Type:** int  \n**Description:** This\
+        \ field represents the unique identifier for the warehouse associated with\
+        \ the stock-in report summary. It links the report to a specific warehouse\
+        \ in the logistics database."
+    old_warehouse_id:
+      type: int
+      description: The field 'old_warehouse_id' is an integer that stores the unique
+        identifier of the previous warehouse associated with the stock-in report in
+        the 'logistics_stockinreportsummary' table. This field helps track the historical
+        movement of inventory between warehouses.
+logistics_stockinwarehousetransction:
+  description: The `logistics_stockinwarehousetransction` table records transactions
+    related to the receipt and storage of inventory in a warehouse. It captures details
+    about stock items being received, including quantities, warehouse locations, timestamps,
+    and transaction statuses, allowing
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer type that serves as the primary key
+        for the 'logistics_stockinwarehousetransaction' table. It uniquely identifies
+        each stock-in warehouse transaction record in the database, ensuring data
+        integrity and facilitating efficient
+    stock_in_date:
+      type: date
+      description: "**Field:** `stock_in_date`  \n**Type:** Date  \n**Description:**\
+        \ The date when stock items were received and recorded in the warehouse during\
+        \ a stock-in transaction. This field helps track inventory availability and\
+        \ manage stock levels over time."
+    status:
+      type: varchar(250)
+      description: The 'status' field in the 'logistics_stockinwarehousetransction'
+        table is a variable character string (varchar) that can store up to 250 characters.
+        It indicates the current state or condition of the stock-in warehouse transaction
+    created_at:
+      type: datetime(6)
+      description: The field 'created_at' in the 'logistics_stockinwarehousetransction'
+        table stores the precise date and time (with up to 6 decimal places for fractional
+        seconds) when a stock-in warehouse transaction was created. This timestamp
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'logistics_stockinwarehousetransaction'
+        table captures the date and time of the last modification made to a stock-in
+        warehouse transaction record. It is stored with a precision of microseconds
+        (datetime
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'logistics_stockinwarehousetransaction'
+        table is a long text field used to store additional comments or observations
+        related to the stock-in warehouse transaction. This field allows for detailed
+        notes that can help in
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' in the 'logistics_stockinwarehousetransction'
+        table is an integer that stores the unique identifier of the user or system
+        entity responsible for creating the stock-in warehouse transaction record.
+    modified_by_id:
+      type: int
+      description: The 'modified_by_id' field is an integer that stores the unique
+        identifier of the user or system that last modified the record in the 'logistics_stockinwarehousetransaction'
+        table. This field helps track changes made to the transaction
+    stock_in_id:
+      type: int
+      description: The field 'stock_in_id' is an integer that uniquely identifies
+        each stock-in transaction recorded in the 'logistics_stockinwarehousetransction'
+        table. It serves as the primary key for tracking inventory movements into
+        the warehouse.
+logistics_stockout:
+  description: The `logistics_stockout` table stores records of stockout events within
+    a logistics management system. Each entry details the occurrence of inventory
+    shortages, including the affected product, quantity unavailable, location, and
+    the date and time of the stockout. This
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_stockout' table is an integer
+        that uniquely identifies each record within the table. It serves as the primary
+        key, ensuring that each stock-out transaction can be distinctly retrieved
+        and referenced.
+    cost:
+      type: double
+      description: "**Field Name:** cost  \n**Type:** double  \n**Description:** Represents\
+        \ the monetary cost associated with items that are out of stock in the logistics\
+        \ system. This value is typically expressed in the relevant currency and may\
+        \ reflect purchase costs, shipping expenses, or"
+    reference_id:
+      type: varchar(150)
+      description: The 'reference_id' field in the 'logistics_stockout' table is a
+        varchar(150) type that stores a unique identifier for each stock-out transaction.
+        This field is used to reference specific stock-out events, facilitating tracking
+        and management of inventory
+    remark:
+      type: varchar(250)
+      description: The 'remark' field in the 'logistics_stockout' table is of type
+        'varchar(250)' and is used to store additional comments or notes related to
+        a stockout event. It can contain up to 250 characters, providing a space
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_stockout' table records
+        the exact date and time when a stockout entry was created. It is stored as
+        a datetime value with precision up to microseconds (6). This field is useful
+        for
+    created_by_id:
+      type: int
+      description: "**Field:** `created_by_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier of the user or system account that\
+        \ created the stock-out record in the `logistics_stockout` table. It is used"
+    invoice_activity_id:
+      type: int
+      description: The field `invoice_activity_id` in the `logistics_stockout` table
+        is an integer that uniquely identifies the associated invoice activity related
+        to a stockout event. This field links stockout records to specific invoice
+        activities for tracking and reporting purposes.
+    transporter_point_of_contact_id:
+      type: int
+      description: The field `transporter_point_of_contact_id` in the `logistics_stockout`
+        table is an integer that references the unique identifier for the point of
+        contact at the transport company responsible for the stockout logistics. This
+        field helps link stockout records
+logistics_stockoutreportsummary:
+  description: The `logistics_stockoutreportsummary` table stores summarized data
+    on stockouts within the logistics operations. It includes key metrics and insights
+    regarding inventory shortages, helping to track and analyze stockout occurrences
+    over specific periods. This table is essential for inventory management
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each record in the 'logistics_stockoutreportsummary' table, ensuring that
+        each stock out report summary can be distinctly referenced.
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'logistics_stockoutreportsummary' table
+        represents the total number of items that have been reported as out of stock.
+        It is an integer value that indicates the count of products unavailable for
+        sale or distribution.
+    date:
+      type: date
+      description: The 'date' field in the 'logistics_stockoutreportsummary' table
+        stores the specific date of the stockout report. This field helps identify
+        when the stockout event occurred, facilitating tracking and analysis of inventory
+        shortages over time.
+    product_id:
+      type: int
+      description: The field 'product_id' in the 'logistics_stockoutreportsummary'
+        table is an integer that uniquely identifies each product associated with
+        stock-out reports. This field serves as a foreign key, linking to a product
+        in the products table, and is
+    warehouse_id:
+      type: int
+      description: '''warehouse_id'': An integer that uniquely identifies the warehouse
+        where the stockout event occurred, used to associate each report summary with
+        a specific warehouse location.'
+    old_warehouse_id:
+      type: int
+      description: The field `old_warehouse_id` is an integer that represents the
+        identifier of the previous warehouse associated with the inventory item in
+        the `logistics_stockoutreportsummary` table. It tracks the original warehouse
+        location from which stock was removed, aiding in
+logistics_stockreportsummary:
+  description: The `logistics_stockreportsummary` table stores aggregated data related
+    to stock levels and inventory movements across various locations in the logistics
+    system. It provides a summary of stock quantities, locations, and product details,
+    enabling efficient monitoring and management of inventory for operational
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer type that serves as the primary identifier
+        for each record in the 'logistics_stockreportsummary' table. It uniquely distinguishes
+        each entry within the table, facilitating efficient data retrieval and management.
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'logistics_stockreportsummary' table
+        represents the total amount of stock available for each item reported in the
+        logistics summary, stored as an integer value.
+    date:
+      type: date
+      description: The 'date' field in the 'logistics_stockreportsummary' table stores
+        the date on which the stock report was generated or recorded. It is of type
+        'date' and is used to track inventory status over time.
+    product_id:
+      type: int
+      description: "**Field:** product_id  \n**Type:** int  \n**Description:** Unique\
+        \ identifier for each product in the logistics stock report summary, used\
+        \ to associate stock data with the corresponding product in the inventory\
+        \ system."
+    warehouse_id:
+      type: int
+      description: The `warehouse_id` field in the `logistics_stockreportsummary`
+        table is an integer that uniquely identifies the warehouse associated with
+        the stock report. This field links the summary data to a specific warehouse,
+        enabling inventory tracking and management across multiple locations.
+    old_warehouse_id:
+      type: int
+      description: The field 'old_warehouse_id' in the 'logistics_stockreportsummary'
+        table stores an integer value representing the unique identifier of the previous
+        warehouse associated with the stock report. This field helps track changes
+        in warehouse assignments over time.
+logistics_stockserialnoverify:
+  description: The 'logistics_stockserialnoverify' table stores information related
+    to the verification of stock serial numbers in a logistics system. It tracks the
+    status and details of each serial number associated with inventory items, ensuring
+    accurate record-keeping and facilitating inventory management and
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_stockserialnoverify' table is
+        an integer that uniquely identifies each record within the table. It serves
+        as the primary key, ensuring that each entry can be distinctly referenced.
+    serial_no:
+      type: varchar(50)
+      description: The 'serial_no' field in the 'logistics_stockserialnoverify' table
+        stores a unique serial number as a string, with a maximum length of 50 characters.
+        This field is used to identify and verify individual stock items in the logistics
+        system
+    box_no:
+      type: varchar(50)
+      description: The field 'box_no' in the 'logistics_stockserialnoverify' table
+        stores the unique identifier for a shipping box, represented as a variable
+        character string with a maximum length of 50 characters. This field is used
+        to track and manage the
+    container_no:
+      type: varchar(50)
+      description: '`container_no`: This field stores the unique identifier for a
+        shipping container, represented as a variable character string with a maximum
+        length of 50 characters. It is used to track and verify the associated stock
+        serial numbers in the logistics process.'
+    brand_id:
+      type: int
+      description: The 'brand_id' field in the 'logistics_stockserialnoverify' table
+        is an integer that uniquely identifies the brand associated with a particular
+        stock serial number verification record. This field establishes a link between
+        the stock verification data and the corresponding brand in
+    stock_in_or_stock_out_id:
+      type: int
+      description: "**Field: stock_in_or_stock_out_id**  \n**Type: int**  \n**Description:**\
+        \ This field stores an identifier indicating whether the transaction is a\
+        \ stock-in or stock-out event. It is used to link the record in the 'logistics"
+    stock_out_warehouse_id:
+      type: int
+      description: The field 'stock_out_warehouse_id' is an integer type that identifies
+        the unique warehouse location from which stock is being dispatched or removed.
+        It is used to track inventory movements within the logistics system in the
+        'logistics_stockserialnoverify' table
+    stockin_warehouse_id:
+      type: int
+      description: The field `stockin_warehouse_id` is an integer that represents
+        the unique identifier for the warehouse where stock items are received and
+        stored. This field is part of the `logistics_stockserialnoverify` table, which
+        tracks the verification of stock
+    old_stock_out_warehouse_id:
+      type: int
+      description: "**Field: old_stock_out_warehouse_id**  \n**Type: int**  \n**Description:**\
+        \ This field stores the unique identifier of the warehouse from which stock\
+        \ was previously dispatched. It helps in tracking inventory movements and\
+        \ ensuring accuracy in stock management within the"
+    old_stockin_warehouse_id:
+      type: int
+      description: "**Field: old_stockin_warehouse_id**  \n**Type: int**  \n**Description:**\
+        \ This field stores the identifier for the warehouse where the stock was previously\
+        \ stored before any recent changes or updates in the logistics process. It\
+        \ enables tracking of inventory"
+logistics_tallyeinvoice:
+  description: The `logistics_tallyeinvoice` table stores detailed records of invoices
+    related to tallying logistics operations. It includes fields for tracking invoice
+    numbers, associated order details, dates, amounts, and status indicators, enabling
+    efficient management and auditing of logistics financial
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_tallyeinvoice' table is an integer
+        type that serves as the unique identifier for each invoice entry. It is used
+        to distinguish between different records within the table.
+    the_json:
+      type: json
+      description: "Field: `the_json`  \nType: `json`  \nDescription: This field stores\
+        \ detailed information in JSON format related to the logistics tally invoice,\
+        \ allowing for flexible data representation of various attributes such as\
+        \ item descriptions, quantities, pricing, and metadata associated"
+    voucher_number:
+      type: varchar(250)
+      description: The `voucher_number` field in the `logistics_tallyeinvoice` table
+        stores a unique identifier for each invoice in the form of a variable character
+        string, with a maximum length of 250 characters. This field is used to track
+        and reference
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_tallyeinvoice' table records
+        the precise date and time when the entry was created, including fractional
+        seconds. It is stored as a 'datetime(6)' type, which allows for up to
+    pi_no:
+      type: varchar(250)
+      description: The field 'pi_no' in the 'logistics_tallyeinvoice' table is a varchar
+        type with a maximum length of 250 characters. It stores the Purchase Invoice
+        number associated with the transaction, which is used for tracking and referencing
+        invoices in
+logistics_tallyewaybill:
+  description: The `logistics_tallyewaybill` table stores information related to waybills
+    for logistics and transportation operations. It includes details such as tracking
+    numbers, shipment origins and destinations, delivery statuses, timestamps for
+    each shipment stage, and associated documentation. This
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_tallyewaybill' table is an integer
+        that serves as the primary identifier for each record. It uniquely distinguishes
+        each tally waybill entry within the table, ensuring that every record can
+        be referenced and accessed
+    the_json:
+      type: json
+      description: Field 'the_json' in the table 'logistics_tallyewaybill' stores
+        JSON-formatted data related to the waybill logistics, encapsulating various
+        attributes and details for easy retrieval and processing.
+    bill_number:
+      type: varchar(250)
+      description: The field 'bill_number' in the 'logistics_tallyewaybill' table
+        is a varchar(250) that stores the unique identification number assigned to
+        a waybill for tracking and reference purposes in logistics management.
+    voucher_number:
+      type: varchar(250)
+      description: "**Field: voucher_number**  \n**Type: varchar(250)**  \n**Description:**\
+        \ This field stores the unique identifier for each voucher associated with\
+        \ a logistics tally andewaybill. It can contain alphanumeric characters and\
+        \ has a maximum length of 250"
+logistics_transporterbill:
+  description: The `logistics_transporterbill` table stores detailed information about
+    transportation bills generated for logistics operations. It includes data related
+    to shipments, billing details, transporter information, and associated costs,
+    facilitating tracking and management of financial transactions related to freight
+    services.
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_transporterbill' table is an integer
+        that serves as the primary identifier for each record, ensuring uniqueness
+        and enabling efficient retrieval of transporter bill information.
+    payment_bill:
+      type: varchar(100)
+      description: The 'payment_bill' field in the 'logistics_transporterbill' table
+        stores a string of up to 100 characters representing the unique identifier
+        or reference number associated with a payment transaction for transporter
+        bills.
+    bill_no:
+      type: varchar(250)
+      description: "**Field:** `bill_no`  \n**Type:** `varchar(250)`  \n**Description:**\
+        \ A unique identifier for each transporter bill, representing the billing\
+        \ number associated with logistics transactions. This field can contain alphanumeric\
+        \ characters and has a maximum length of"
+    bill_amt:
+      type: double
+      description: The field 'bill_amt' in the 'logistics_transporterbill' table represents
+        the total amount billed for transportation services, expressed as a double-precision
+        floating-point number. This value indicates the cost incurred for the services
+        provided by the transporter.
+    remark:
+      type: varchar(250)
+      description: The 'remark' field in the 'logistics_transporterbill' table is
+        a variable character string field with a maximum length of 250 characters.
+        It is used to store additional comments or notes related to the transporter
+        bill, providing context or clarification as
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_transporterbill' table
+        records the timestamp of when a transport bill entry was created. It is stored
+        as a datetime value with microsecond precision (up to 6 digits).
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `logistics_transporterbill` table
+        is an integer that stores the unique identifier of the user or system account
+        responsible for creating the transporter bill record. This field helps track
+        the origin of data entries for auditing
+    delivered_id:
+      type: int
+      description: The 'delivered_id' field in the 'logistics_transporterbill' table
+        is an integer that uniquely identifies the delivery record associated with
+        a specific transporter bill. It is used to link the bill to the corresponding
+        delivery transaction in the logistics system.
+    invoice_activity_id:
+      type: int
+      description: The field 'invoice_activity_id' is an integer that uniquely identifies
+        the specific invoice activity related to a transporter bill in the 'logistics_transporterbill'
+        table. This field allows for the association between transport-related billing
+        and the corresponding invoice activities.
+    gst_percentage:
+      type: double
+      description: The 'gst_percentage' field in the 'logistics_transporterbill' table
+        stores the Goods and Services Tax (GST) rate applicable to the transportation
+        bill, represented as a double value. This field indicates the percentage of
+        GST to be applied to the
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'logistics_transporterbill' table
+        stores the timestamp of the last modification made to the transporter bill
+        record. It is of type 'datetime(6)', allowing for precision up to six fractional
+        seconds.
+    modified_by_id:
+      type: int
+      description: The `modified_by_id` field in the `logistics_transporterbill` table
+        stores the unique identifier (integer) of the user or system that last modified
+        the transporter bill record. This field is used for auditing and tracking
+        changes made to the record
+    voucher_no:
+      type: varchar(250)
+      description: The 'voucher_no' field in the 'logistics_transporterbill' table
+        is a varchar(250) data type that stores the unique identification number or
+        code associated with a transporter's bill, facilitating easy tracking and
+        reference of individual transactions within the logistics
+    date:
+      type: datetime(6)
+      description: The 'date' field in the 'logistics_transporterbill' table is of
+        type 'datetime(6)' and stores the precise date and time of the transporter
+        bill transaction, including fractional seconds for enhanced accuracy in recordings.
+logistics_transporterdetails:
+  description: '**Table Name:** logistics_transporterdetails
+
+
+    **Description:** This table stores detailed information about transport providers
+    used in logistics operations. It includes fields for the transporter''s name,
+    contact information, vehicle details, service area, and any associated regulatory
+    compliance documentation.'
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the primary key for
+        the 'logistics_transporterdetails' table. It uniquely identifies each record
+        within the table, ensuring that each transporter detail can be distinctly
+        referenced and managed.
+    transporter_name:
+      type: varchar(250)
+      description: The field 'transporter_name' in the 'logistics_transporterdetails'
+        table stores the name of the transport service provider or carrier. It is
+        a variable character string with a maximum length of 250 characters, allowing
+        for the inclusion of full business
+    address:
+      type: varchar(500)
+      description: The 'address' field in the 'logistics_transporterdetails' table
+        is a VARCHAR data type with a maximum length of 500 characters. It stores
+        the address information of the transporter, providing details such as street
+        name, number, city, and
+    pincode:
+      type: varchar(100)
+      description: The 'pincode' field in the 'logistics_transporterdetails' table
+        is of type 'varchar(100)' and stores the postal code associated with the transporter's
+        address. This field is used for identifying geographical locations for shipping
+        and delivery purposes.
+    gstn:
+      type: varchar(100)
+      description: The field 'gstn' in the 'logistics_transporterdetails' table stores
+        the Goods and Services Tax Identification Number (GSTN) of the transporter.
+        It is a varchar data type with a maximum length of 100 characters, allowing
+        for the
+    tds_deduction:
+      type: int
+      description: The `tds_deduction` field in the `logistics_transporterdetails`
+        table is an integer that represents the amount of Tax Deducted at Source (TDS)
+        applicable to the transporter. This value indicates the portion of payments
+        that
+    status:
+      type: varchar(50)
+      description: The 'status' field in the 'logistics_transporterdetails' table
+        is a VARCHAR type with a maximum length of 50 characters. It is used to indicate
+        the current operational state or condition of the transporter, such as "active,"
+        "inactive
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_transporterdetails' table
+        stores the date and time when a record was created. It is of type 'datetime(6)',
+        allowing for precise timestamp storage with up to six decimal places for fractional
+        seconds
+    updated_at:
+      type: datetime(6)
+      description: The 'updated_at' field in the 'logistics_transporterdetails' table
+        stores the date and time of the last update made to the transport details,
+        recorded with microsecond precision. This field helps track when the information
+        was last modified.
+    city_id:
+      type: int
+      description: The field 'city_id' in the 'logistics_transporterdetails' table
+        is an integer that uniquely identifies the city associated with a particular
+        transporter. It serves as a foreign key linking to the cities table, facilitating
+        geographic categorization of transporters.
+    created_by_id:
+      type: int
+      description: The `created_by_id` field is an integer that records the unique
+        identifier of the user who created the entry in the `logistics_transporterdetails`
+        table. This field helps track the origin of each record for auditing and accountability
+        purposes.
+    transporter_tally_name:
+      type: varchar(250)
+      description: The field 'transporter_tally_name' in the 'logistics_transporterdetails'
+        table is a VARCHAR data type with a maximum length of 250 characters. It stores
+        the name associated with the transporter tally, typically used to identify
+        and reference specific
+    is_courier:
+      type: tinyint(1)
+      description: The 'is_courier' field in the 'logistics_transporterdetails' table
+        is a tiny integer (1) that indicates whether a transporter is classified as
+        a courier. A value of '1' signifies that the transporter is a courier,
+logistics_transporterdriverdetails:
+  description: The `logistics_transporterdriverdetails` table stores information about
+    drivers associated with transporters in the logistics system. It includes details
+    such as driver identification, contact information, license information, and any
+    relevant certifications. This table is essential for managing and tracking
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer type that serves as the unique identifier
+        for each record in the 'logistics_transporterdriverdetails' table. It ensures
+        that each driver detail entry can be distinctly referenced and managed within
+        the database.
+    name:
+      type: varchar(100)
+      description: The 'name' field in the 'logistics_transporterdriverdetails' table
+        is a VARCHAR(100) that stores the full name of the transporter driver, with
+        a maximum length of 100 characters.
+    age:
+      type: int
+      description: "**Field: age**  \n**Type:** int  \n**Description:** This field\
+        \ stores the age of the transporter driver in years, represented as an integer."
+    mobile_no:
+      type: varchar(15)
+      description: "**Field:** `mobile_no`  \n**Type:** `varchar(15)`  \n**Description:**\
+        \ This field stores the mobile phone number of the transporter driver, allowing\
+        \ for up to 15 characters. It is used for contact purposes within the logistics\
+        \ system"
+    email_id:
+      type: varchar(254)
+      description: The 'email_id' field in the 'logistics_transporterdriverdetails'
+        table stores the email address of the transporter driver. It is of type 'varchar(254)',
+        allowing for a maximum length of 254 characters to accommodate standard email
+        formats.
+    aadhar_card_no:
+      type: varchar(20)
+      description: "Field: `aadhar_card_no`  \nType: `varchar(20)`  \nDescription:\
+        \ This field stores the Aadhar card number of the transporter driver. It is\
+        \ a string with a maximum length of 20 characters, used for unique identification\
+        \ and"
+    photo:
+      type: varchar(100)
+      description: The 'photo' field in the 'logistics_transporterdriverdetails' table
+        is a VARCHAR(100) type that stores the file path or URL of an image representing
+        the transporter driver. This field is used to associate a visual identification
+        with each driver
+    id_proof:
+      type: varchar(100)
+      description: The 'id_proof' field in the 'logistics_transporterdriverdetails'
+        table stores a string of up to 100 characters that represents the identification
+        proof of the transporter driver, such as a driver's license or other government-issued
+        ID.
+    is_active:
+      type: tinyint(1)
+      description: Field 'is_active' in the 'logistics_transporterdriverdetails' table
+        is a tinyint(1) that indicates whether the transporter driver is currently
+        active. A value of '1' signifies that the driver is active, while a value
+        of
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_transporterdriverdetails'
+        table records the date and time when the entry was created, with precision
+        up to microseconds (6 digits). This timestamp is used for tracking the creation
+        time of the specific
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'logistics_transporterdriverdetails'
+        table stores the timestamp of the last modification made to a record. It uses
+        the 'datetime(6)' type to include precision up to microseconds, allowing for
+        detailed tracking
+    created_by_id:
+      type: int
+      description: "**Field:** `created_by_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the unique identifier (ID) of the user or system entity\
+        \ that created the record in the `logistics_transporterdriverdetails` table."
+    modified_by_id:
+      type: int
+      description: "Field Description: `modified_by_id` (int)  \nThis field stores\
+        \ the unique identifier of the user who last modified the record in the `logistics_transporterdriverdetails`\
+        \ table. It serves as a foreign key linking to the user account responsible"
+    transporter_id:
+      type: int
+      description: The field 'transporter_id' is an integer that uniquely identifies
+        a transporter in the 'logistics_transporterdriverdetails' table. This field
+        is used to associate driver details with a specific transporter entity within
+        the logistics database.
+logistics_transporterpayment:
+  description: The `logistics_transporterpayment` table stores information related
+    to payments made to transporters for logistics services. It includes fields that
+    capture payment details, such as payment amounts, dates, transporter identification,
+    and payment statuses, facilitating the tracking and management of
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_transporterpayment' table is an
+        integer that serves as the unique identifier for each record in the table.
+        It ensures that each transporter payment entry can be distinctly referenced.
+    payment_mode:
+      type: varchar(250)
+      description: The 'payment_mode' field in the 'logistics_transporterpayment'
+        table is a VARCHAR data type with a maximum length of 250 characters. It stores
+        the method of payment used for transactions, allowing for various payment
+        types such as credit card,
+    reference_id:
+      type: varchar(250)
+      description: '`reference_id`: A varchar field with a maximum length of 250 characters,
+        used to store a unique identifier or reference number associated with a transporter
+        payment in the ''logistics_transporterpayment'' table.'
+    payable_amt:
+      type: double
+      description: Field 'payable_amt' in the 'logistics_transporterpayment' table
+        represents the amount of money that is due to be paid to the transporter for
+        services rendered. It is stored as a double to allow for high precision in
+        monetary calculations.
+    remark:
+      type: varchar(250)
+      description: The 'remark' field in the 'logistics_transporterpayment' table
+        is a variable character string with a maximum length of 250 characters. It
+        is used to store additional comments or notes related to the transporter payment
+        records for reference or clarification purposes.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_transporterpayment' table
+        is a datetime column that records the exact timestamp (with microsecond precision)
+        when a transporter's payment entry was created.
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'logistics_transporterpayment'
+        table is an integer that identifies the user or system account responsible
+        for creating the transporter payment record. This field typically references
+        the unique identifier of the user in the system, ensuring
+    payment_received_bank_id:
+      type: int
+      description: 'The field `payment_received_bank_id` (type: int) in the `logistics_transporterpayment`
+        table represents the unique identifier of the bank where the payment has been
+        received. This ID links to the corresponding bank in the database, facilitating
+        the'
+    transporter_bill_id:
+      type: int
+      description: '`transporter_bill_id`: An integer field that uniquely identifies
+        a specific transporter bill associated with a payment record in the `logistics_transporterpayment`
+        table.'
+    invoice_activity_id:
+      type: int
+      description: "**Field Name:** invoice_activity_id  \n**Type:** int  \n**Description:**\
+        \ A unique identifier for the invoice activity associated with the transporter\
+        \ payment. This ID links the payment record to specific invoice activities\
+        \ in the logistics system."
+    tds_amount:
+      type: double
+      description: field 'tds_amount' of type 'double' in table 'logistics_transporterpayment'
+        (auto-generated description)
+    date:
+      type: datetime(6)
+      description: The 'date' field in the 'logistics_transporterpayment' table is
+        of type 'datetime(6)' and stores the precise date and time when a transporter
+        payment transaction occurs, including fractional seconds for enhanced accuracy.
+logistics_transporterpaymentapproval:
+  description: The `logistics_transporterpaymentapproval` table tracks the approval
+    status of payments made to transporters within a logistics system. It includes
+    details such as the payment request ID, transporter information, approval status,
+    approval dates, and any comments related to the
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer type that serves as the primary key
+        in the 'logistics_transporterpaymentapproval' table. It uniquely identifies
+        each record related to transporter payment approvals.
+    status:
+      type: varchar(32)
+      description: The 'status' field in the 'logistics_transporterpaymentapproval'
+        table is a varchar(32) data type that stores the current status of the transporter
+        payment approval process. This field may contain values indicating various
+        stages such as 'pending', '
+    comment:
+      type: longtext
+      description: The 'comment' field in the 'logistics_transporterpaymentapproval'
+        table is of type 'longtext' and is used to store detailed notes or remarks
+        related to the approval process of transporter payments. This field can accommodate
+        large amounts of text,
+    approval_date:
+      type: date
+      description: The 'approval_date' field in the 'logistics_transporterpaymentapproval'
+        table stores the date on which a payment approval was granted for a transporter.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_transporterpaymentapproval'
+        table records the precise date and time when a payment approval entry was
+        created. It is stored as a datetime value with a precision of 6 microseconds,
+        allowing for detailed
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' in the 'logistics_transporterpaymentapproval'
+        table is an integer that identifies the user or system account responsible
+        for creating the record. This field is used to track the origin of the entry
+        for auditing and accountability purposes
+    transporter_bill_id:
+      type: int
+      description: The field 'transporter_bill_id' in the 'logistics_transporterpaymentapproval'
+        table is an integer that uniquely identifies a specific transporter bill associated
+        with the payment approval process. It serves as a foreign key that links to
+        the corresponding transporter bill record
+logistics_transporterpointofcontact:
+  description: The 'logistics_transporterpointofcontact' table stores information
+    about points of contact for transporters involved in logistics operations. It
+    includes details such as the contact person's name, role, phone number, email
+    address, and the associated transporter organization. This
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each record in the 'logistics_transporterpointofcontact' table. It ensures
+        distinct identification of transporter point of contact entries within the
+        logistics database.
+    contact_person:
+      type: varchar(250)
+      description: The 'contact_person' field in the 'logistics_transporterpointofcontact'
+        table is a VARCHAR data type that stores the name of the individual responsible
+        for communication at the transporter's location. It can hold up to 250 characters.
+    contact_no:
+      type: varchar(100)
+      description: The field 'contact_no' in the table 'logistics_transporterpointofcontact'
+        stores the contact number of the transporter point of contact. It is of type
+        'varchar(100)', allowing for flexible formatting of phone numbers, including
+        international dialing codes
+    contact_email:
+      type: varchar(250)
+      description: The field 'contact_email' in the table 'logistics_transporterpointofcontact'
+        stores the email address of the point of contact for the transporter. It is
+        a variable character field with a maximum length of 250 characters.
+    is_active:
+      type: int
+      description: The 'is_active' field is an integer that indicates the active status
+        of a transporter point of contact in the 'logistics_transporterpointofcontact'
+        table. A value of 1 typically signifies that the contact is currently active,
+        while a value
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_transporterpointofcontact'
+        table stores the date and time when the record was created. It is of type
+        'datetime(6)', allowing for precision up to microseconds.
+    updated_at:
+      type: datetime(6)
+      description: The 'updated_at' field in the 'logistics_transporterpointofcontact'
+        table stores the date and time when the record was last modified. It is of
+        type 'datetime(6)', allowing for precision to the microsecond level.
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `logistics_transporterpointofcontact`
+        table is an integer that stores the identifier of the user or system account
+        responsible for creating the record.
+    transporter_id:
+      type: int
+      description: The field 'transporter_id' in the table 'logistics_transporterpointofcontact'
+        is an integer that uniquely identifies the transporter associated with a specific
+        point of contact in the logistics system.
+logistics_transportervehicledetail:
+  description: The `logistics_transportervehicledetail` table stores detailed information
+    about vehicles used for transportation within a logistics framework. It includes
+    attributes related to vehicle specifications, capacity, ownership, operational
+    status, and maintenance records, facilitating efficient management and tracking
+    of transport
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer type identifier that uniquely distinguishes
+        each record within the 'logistics_transportervehicledetail' table. It serves
+        as the primary key for the table, ensuring that each vehicle detail entry
+        can be reliably referenced.
+    truck_no:
+      type: varchar(250)
+      description: The field 'truck_no' in the 'logistics_transportervehicledetail'
+        table stores the vehicle identification number or license plate of the truck,
+        represented as a string with a maximum length of 250 characters.
+    cost:
+      type: double
+      description: The 'cost' field in the 'logistics_transportervehicledetail' table
+        is of type 'double' and represents the monetary expense associated with the
+        operation or maintenance of the transport vehicle. This value is typically
+        expressed in the relevant currency and can
+    remark:
+      type: varchar(250)
+      description: The 'remark' field in the 'logistics_transportervehicledetail'
+        table is a variable character string with a maximum length of 250 characters.
+        It is used to store additional comments or notes related to the vehicle details
+        in the logistics system.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_transportervehicledetail'
+        table records the exact date and time when a transport vehicle detail entry
+        was created. It is stored as a datetime value with microsecond precision (datetime(6)).
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' in the 'logistics_transportervehicledetail'
+        table is of type 'int' and represents the unique identifier of the user or
+        system that created the transport vehicle detail record. This field helps
+        track the provenance of
+    invoice_activity_id:
+      type: int
+      description: The field 'invoice_activity_id' is of type 'int' and serves as
+        a unique identifier for the associated invoice activity within the 'logistics_transportervehicledetail'
+        table. It links the vehicle detail records to specific invoice activities,
+        enabling tracking
+    makeorder_id:
+      type: int
+      description: The field 'makeorder_id' of type 'int' in the table 'logistics_transportervehicledetail'
+        uniquely identifies a specific order associated with a transport vehicle.
+        This integer value serves as a foreign key that links to the corresponding
+        entry in
+    transporter_point_of_contact_id:
+      type: int
+      description: "**Field Name**: transporter_point_of_contact_id  \n**Type**: int\
+        \  \n\n**Description**: This field stores the unique identifier for the point\
+        \ of contact associated with the transporter. It links to a record in the\
+        \ relevant contact information table, facilitating"
+    vehicle_size:
+      type: varchar(250)
+      description: The 'vehicle_size' field in the 'logistics_transportervehicledetail'
+        table is a VARCHAR data type with a maximum length of 250 characters. It stores
+        descriptive information about the size of the vehicle used for transportation,
+        allowing for flexibility in
+    file:
+      type: varchar(100)
+      description: The 'file' field in the 'logistics_transportervehicledetail' table
+        is a variable character string with a maximum length of 100 characters. This
+        field is used to store the name or path of a file associated with the vehicle
+        details in
+    transporter_id:
+      type: int
+      description: The 'transporter_id' field is an integer that uniquely identifies
+        a transporter associated with a specific vehicle detail in the 'logistics_transportervehicledetail'
+        table.
+logistics_truckimage:
+  description: The `logistics_truckimage` table stores images associated with trucks
+    in the logistics system. Each record typically includes fields for the truck's
+    unique identifier, the image file name or URL, timestamps for creation and updates,
+    and any relevant metadata about the
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_truckimage' table is an integer
+        that serves as the unique identifier for each record in the table. It is used
+        to differentiate between individual truck image entries and may be referenced
+        in other tables or components
+    photo:
+      type: varchar(100)
+      description: The 'photo' field in the 'logistics_truckimage' table stores the
+        file path or URL of the truck images as a string, with a maximum length of
+        100 characters.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_truckimage' table stores
+        the timestamp of when a truck image entry was created. It is recorded with
+        a precision of up to microseconds (datetime(6)).
+    warehouse_transction_id:
+      type: int
+      description: "**Field: `warehouse_transaction_id`**  \n**Type:** `int`  \n**Description:**\
+        \ A unique identifier for transactions associated with warehouse operations,\
+        \ linking the truck image records to specific inventory transactions in the\
+        \ logistics system."
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'logistics_truckimage' table stores
+        an integer value representing the unique identifier of the user who created
+        the truck image entry. This field is used to track the origin of the data
+        for auditing and accountability
+    makeorder_id:
+      type: int
+      description: The field 'makeorder_id' is an integer that serves as a unique
+        identifier for the associated make order within the 'logistics_truckimage'
+        table. It links each truck image record to its corresponding make order entry,
+        facilitating the tracking and management
+logistics_warehouseproductquantity:
+  description: The `logistics_warehouseproductquantity` table stores information about
+    the quantities of products held in various warehouses. It tracks each product's
+    inventory levels, including attributes such as warehouse location, product identifier,
+    and the current quantity available. This table is essential
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer type that serves as the unique identifier
+        for each record in the 'logistics_warehouseproductquantity' table. It ensures
+        distinct identification of product quantities in the logistics warehouse system.
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'logistics_warehouseproductquantity'
+        table represents the integer value indicating the number of units of a specific
+        product stored in the warehouse.
+    product_id:
+      type: int
+      description: The 'product_id' field in the 'logistics_warehouseproductquantity'
+        table is an integer that uniquely identifies each product stored in the warehouse.
+        It serves as a reference to the specific product for managing inventory quantities.
+    warehouse_id:
+      type: int
+      description: The `warehouse_id` field is an integer that uniquely identifies
+        a specific warehouse in the `logistics_warehouseproductquantity` table. It
+        associates product quantities with their respective warehouses for efficient
+        inventory management.
+    old_warehouse_id:
+      type: int
+      description: "**Field: old_warehouse_id**  \n**Type: int**  \n**Description:**\
+        \ This field stores the identifier for the previous warehouse associated with\
+        \ a product's quantity record, allowing for tracking of inventory movements\
+        \ and historical data analysis."
+logistics_warehousestatustransaction:
+  description: The `logistics_warehousestatustransaction` table records transactions
+    related to changes in the status of warehouse operations. This table captures
+    details such as the transaction ID, warehouse identifier, status type (e.g., incoming,
+    outgoing, inventory
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the unique identifier
+        for each entry in the 'logistics_warehousestatustransaction' table. It ensures
+        that each transaction record can be distinctly referenced and managed within
+        the database.
+    warehouse_transction:
+      type: int
+      description: The 'warehouse_transaction' field in the 'logistics_warehousestatustransaction'
+        table stores the unique identifier of each warehouse transaction as an integer.
+        This field is used to track and reference specific transactions within the
+        warehouse status logs.
+    status:
+      type: varchar(30)
+      description: The 'status' field in the 'logistics_warehousestatustransaction'
+        table is of type 'varchar(30)' and is used to store the current status of
+        the warehouse status transaction. This field can hold textual values that
+        describe
+    transction_type:
+      type: varchar(30)
+      description: The 'transction_type' field in the 'logistics_warehousestatustransaction'
+        table is a VARCHAR(30) data type that stores the type of transaction related
+        to warehouse status changes. This field can contain various transaction types,
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_warehousestatustransaction'
+        table records the precise date and time (with microsecond precision) when
+        a specific warehouse status transaction was created. This field helps track
+        the timing of events
+    created_by_id:
+      type: int
+      description: "**Field:** `created_by_id`  \n**Type:** Integer  \n**Description:**\
+        \ This field stores the unique identifier (ID) of the user or system that\
+        \ created the record in the logistics warehouse status transaction table.\
+        \ It helps to trace and manage the"
+logistics_warehousetransactionflag:
+  description: The `logistics_warehousetransactionflag` table stores flags that indicate
+    the status or conditions of warehouse transactions. It includes records that help
+    track the state of various logistical processes, such as order fulfillment, inventory
+    management, and shipping status
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'logistics_warehousetransactionflag' table
+        is an integer that uniquely identifies each record in the table. It serves
+        as the primary key, ensuring that each warehouse transaction flag has a distinct
+        value for
+    flag_remark:
+      type: longtext
+      description: The 'flag_remark' field in the 'logistics_warehousetransactionflag'
+        table is a long text field used to store additional comments or notes related
+        to a specific warehouse transaction flag. It provides context or explanations
+        that may be
+    flag_created_at:
+      type: datetime(6)
+      description: The field `flag_created_at` in the `logistics_warehousetransactionflag`
+        table records the precise date and time when a flag was created, allowing
+        for accurate tracking of events and changes. It is stored as a `datetime
+    resolve_remark:
+      type: longtext
+      description: The `resolve_remark` field in the `logistics_warehousetransactionflag`
+        table is of type `longtext` and is used to store detailed remarks or notes
+        related to the resolution of warehouse transaction flags. This field can
+    resolved_at:
+      type: datetime(6)
+      description: The `resolved_at` field in the `logistics_warehousetransactionflag`
+        table records the date and time when a specific warehouse transaction flag
+        was resolved. It is stored as a datetime value with a precision of 6 fractional
+        seconds
+    flag_created_by_id:
+      type: int
+      description: The field 'flag_created_by_id' is an integer that stores the identifier
+        of the user who created the corresponding warehouse transaction flag in the
+        'logistics_warehousetransactionflag' table. This field helps track the origin
+        of the flag
+    resolved_by_id:
+      type: int
+      description: The field 'resolved_by_id' is an integer that stores the identifier
+        of the user or system entity that resolved a specific transaction flag within
+        the 'logistics_warehousetransactionflag' table. It helps track accountability
+        and facilitates auditing of
+    warehouse_transction_id:
+      type: int
+      description: 'Field ''warehouse_transaction_id'' (type: int) in the table ''logistics_warehousetransactionflag''
+        represents a unique identifier for each warehouse transaction. It serves as
+        a reference to track and manage logistics activities associated with specific
+        transactions'
+    is_resolved:
+      type: tinyint(1)
+      description: The 'is_resolved' field in the 'logistics_warehousetransactionflag'
+        table is a tiny integer (1) that indicates whether a particular warehouse
+        transaction issue has been resolved. A value of '1' signifies that the
+logistics_warehousetransction:
+  description: The `logistics_warehousetransaction` table records details of transactions
+    that occur within a warehouse setting. It includes information about inventory
+    movements, stock levels, and transaction types (such as incoming shipments or
+    outgoing deliveries) to facilitate effective inventory
+  fields:
+    id:
+      type: int
+      description: 'Field `id`: An integer that uniquely identifies each record in
+        the `logistics_warehousetransction` table, serving as the primary key for
+        the table.'
+    dispatch_date:
+      type: date
+      description: The 'dispatch_date' field in the 'logistics_warehousetransaction'
+        table represents the date on which goods were dispatched from the warehouse.
+        This date is crucial for tracking shipment timelines and managing inventory
+        flow.
+    assigned_at:
+      type: datetime(6)
+      description: The 'assigned_at' field in the 'logistics_warehousetransaction'
+        table stores the date and time at which a warehouse transaction was assigned.
+        It uses a precision of six fractional seconds (datetime(6)), allowing for
+        detailed timestamp
+    status:
+      type: varchar(250)
+      description: The 'status' field in the 'logistics_warehousetransaction' table
+        is a varchar(250) type that stores the current state of a warehouse transaction.
+        It can hold various values indicating the transaction's progress, such as
+        '
+    vehicle_no:
+      type: varchar(50)
+      description: The field 'vehicle_no' in the 'logistics_warehousetransaction'
+        table stores the vehicle identification number or license plate number as
+        a string. This field has a maximum length of 50 characters and is used for
+        tracking and managing
+    vehicle_size:
+      type: varchar(250)
+      description: The 'vehicle_size' field in the 'logistics_warehousetransction'
+        table stores information about the size of the vehicle involved in the warehouse
+        transaction. It is a variable character string with a maximum length of 250
+        characters, allowing
+    vehicle_image:
+      type: varchar(100)
+      description: The field `vehicle_image` in the `logistics_warehousetransaction`
+        table stores a URL or file path (up to 100 characters) referencing an image
+        of the vehicle associated with the warehouse transaction.
+    eway_bill:
+      type: varchar(50)
+      description: The 'eway_bill' field in the 'logistics_warehousetransaction' table
+        stores the electronic waybill number associated with a shipment. It is a variable
+        character string with a maximum length of 50 characters, used to track the
+    lr_no:
+      type: varchar(50)
+      description: The field 'lr_no' in the table 'logistics_warehousetransaction'
+        stores a unique identifier for a logistics receipt or load receipt in the
+        form of a variable character string, with a maximum length of 50 characters.
+        It
+    lr_document_file:
+      type: varchar(100)
+      description: The field 'lr_document_file' in the 'logistics_warehousetransction'
+        table is a variable character (varchar) field with a maximum length of 100
+        characters. It is used to store the name or path of a document
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'logistics_warehousetransaction'
+        table records the precise date and time (down to microsecond precision) when
+        a warehouse transaction was created. This field is crucial for tracking the
+        timing of transactions
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'logistics_warehousetransaction'
+        table records the precise date and time (with microsecond precision) when
+        a warehouse transaction was last modified. It serves to track updates and
+        changes in transaction records
+    assigned_by_id:
+      type: int
+      description: The field 'assigned_by_id' is an integer that identifies the user
+        or system entity responsible for assigning or managing the warehouse transaction
+        recorded in the 'logistics_warehousetransction' table.
+    assigned_to_id:
+      type: int
+      description: 'The field ''assigned_to_id'' (type: int) in the ''logistics_warehousetransaction''
+        table stores the unique identifier of the user or employee assigned to manage
+        or oversee a specific warehouse transaction. This field helps in tracking'
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field is an integer that stores the unique
+        identifier of the user who created the warehouse transaction record. This
+        field helps track the origin of each transaction for auditing and accountability
+        purposes in the logistics system.
+    driver_id:
+      type: int
+      description: The field 'driver_id' is an integer that uniquely identifies the
+        driver associated with a specific warehouse transaction in the 'logistics_warehousetransction'
+        table.
+    makeorder_id:
+      type: int
+      description: The field `makeorder_id` in the `logistics_warehousetransction`
+        table is an integer that uniquely identifies a specific order created in the
+        logistics system. It is utilized to track and associate transactions related
+        to that order within the
+    modified_by_id:
+      type: int
+      description: '`modified_by_id` (int): This field stores the identifier of the
+        user or system that last modified the corresponding warehouse transaction
+        record in the `logistics_warehousetransction` table. It enables tracking of
+        changes and accountability for alterations'
+    remark:
+      type: longtext
+      description: The 'remark' field in the 'logistics_warehousetransaction' table
+        is of type 'longtext' and is used to store additional comments or notes related
+        to the warehouse transaction. This field can accommodate extensive text, allowing
+        users
+    is_flag:
+      type: tinyint(1)
+      description: The field 'is_flag' in the 'logistics_warehousetransaction' table
+        is of type 'tinyint(1)' and is used to indicate a binary state. It typically
+        represents a flag that shows whether a specific condition is

@@ -1,0 +1,1516 @@
+master_data_appversion:
+  description: The `master_data_appversion` table stores versioning information for
+    applications within the system. It includes details such as the application name,
+    version number, release date, and any relevant notes or changes associated with
+    each version. This table helps track application updates
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer that serves as the primary key for
+        the 'master_data_appversion' table. It uniquely identifies each record in
+        the table, ensuring that each app version entry can be distinguished from
+        others.
+    app_version:
+      type: int
+      description: The 'app_version' field in the 'master_data_appversion' table represents
+        the version number of the application as an integer value. This field is used
+        to track and manage different releases of the application for compatibility
+        and update purposes.
+    is_mandatory:
+      type: tinyint(1)
+      description: "**Field Name:** is_mandatory  \n**Type:** tinyint(1)  \n**Description:**\
+        \ Indicates whether a specific app version is mandatory for users to update.\
+        \ A value of 1 represents that the update is mandatory, while a value of"
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_appversion' table records
+        the precise date and time when a new application version entry was created.
+        It is stored as a datetime type with microsecond precision (datetime(6)).
+master_data_billingaddress:
+  description: The `master_data_billingaddress` table stores comprehensive information
+    about customer billing addresses. It includes fields for the address details such
+    as street, city, state, postal code, and country, as well as associations with
+    customer IDs. This table is essential
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_billingaddress' table is an
+        integer that serves as the unique identifier for each billing address entry.
+        It is used to distinguish between different records in the table and is typically
+        set as the primary key.
+    name:
+      type: varchar(255)
+      description: The 'name' field in the 'master_data_billingaddress' table is a
+        variable character (varchar) field with a maximum length of 255 characters.
+        It is used to store the name associated with the billing address, which may
+        include the name
+    billing_name:
+      type: varchar(255)
+      description: The 'billing_name' field in the 'master_data_billingaddress' table
+        stores the name of the individual or organization responsible for the billing.
+        It is a variable character string with a maximum length of 255 characters.
+    addess_ine_1:
+      type: varchar(255)
+      description: The field 'address_line_1' in the table 'master_data_billingaddress'
+        is a VARCHAR(255) type that stores the primary address line for billing purposes,
+        typically including the street number, street name, and other essential address
+        details.
+    addess_ine_2:
+      type: varchar(255)
+      description: 'Field ''address_line_2'' (type: varchar(255)) in the table ''master_data_billingaddress''
+        is used to store an optional secondary address line for billing purposes,
+        allowing for more detailed address information, such as apartment number,
+        suite'
+    addess_line_3:
+      type: varchar(255)
+      description: "Field Name: `address_line_3`  \nType: `varchar(255)`  \nDescription:\
+        \ This field stores an optional additional line for the billing address, which\
+        \ can include supplementary information such as apartment numbers, suite numbers,\
+        \ or secondary address details,"
+    GST_No:
+      type: varchar(255)
+      description: "**Field Name:** GST_No  \n**Type:** varchar(255)  \n**Description:**\
+        \ This field stores the Goods and Services Tax (GST) identification number\
+        \ for the billing address, which is a unique identifier assigned to businesses\
+        \ registered under GST. It can"
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_billingaddress' table
+        stores the timestamp of when a billing address record was created. The field
+        is of type 'datetime(6)', which allows for precision up to six decimal places,
+        capturing the
+    created_by_id:
+      type: int
+      description: "**Field:** created_by_id  \n**Type:** int  \n**Description:**\
+        \ This field stores the identifier of the user or system that created the\
+        \ billing address entry in the master_data_billingaddress table. It serves\
+        \ as a reference for tracking the origin of"
+master_data_canadianftr:
+  description: The `master_data_canadianftr` table stores comprehensive information
+    related to Canadian Freight Transportation Regulation (FTR). It includes data
+    attributes relevant to Canadian transportation regulations, freight classifications,
+    compliance status, and associated metadata, facilitating the analysis and management
+    of transportation
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_canadianftr' table is an integer
+        type that serves as the unique identifier for each record in the table, ensuring
+        data integrity and facilitating efficient data retrieval.
+    barcode:
+      type: varchar(250)
+      description: The 'barcode' field in the 'master_data_canadianftr' table is a
+        variable character string with a maximum length of 250 characters. It is used
+        to store unique barcode identifiers associated with products or items in the
+        database.
+    iscA:
+      type: varchar(250)
+      description: "**Field Name:** iscA  \n**Data Type:** varchar(250)  \n**Description:**\
+        \ This field stores alphanumeric codes or identifiers related to Canadian\
+        \ Financial Transaction Reporting (FTR) data. It has a maximum length of 250\
+        \ characters and"
+    vocA:
+      type: varchar(250)
+      description: The field 'vocA' in the 'master_data_canadianftr' table is a variable
+        character string with a maximum length of 250 characters. It is used to store
+        textual data related to the Canadian FTR (Financial Transmission Rights),
+        potentially
+    impA:
+      type: varchar(250)
+      description: Field 'impA' in the 'master_data_canadianftr' table is a varchar(250)
+        type that stores alphanumeric import-related data, with a maximum length of
+        250 characters.
+    vmpA:
+      type: varchar(250)
+      description: "**Field Name:** vmpA  \n**Table Name:** master_data_canadianftr\
+        \  \n**Description:** This field stores alphanumeric values (up to 250 characters)\
+        \ related to a specific attribute or identifier in the Canadian FTR (Financial\
+        \ Transmission"
+    pmaxw:
+      type: varchar(250)
+      description: The field 'pmaxw' in the table 'master_data_canadianftr' is a VARCHAR(250)
+        data type that stores a maximum allowable weight value, potentially representing
+        weight limits associated with Canadian freight transactions.
+    carton_no:
+      type: varchar(250)
+      description: "**Field: carton_no**  \n**Type:** varchar(250)  \n**Description:**\
+        \ This field stores the identification number or code for a carton, allowing\
+        \ for the tracking and management of packaged goods within the Canadian FTR\
+        \ (Freight Transportation Reporting)"
+    pallet_no:
+      type: varchar(250)
+      description: The 'pallet_no' field in the 'master_data_canadianftr' table stores
+        alphanumeric identifiers for pallets, with a maximum length of 250 characters.
+        It is used to uniquely identify and track individual pallets within the Canadian
+        freight data.
+    cable_length:
+      type: varchar(250)
+      description: The 'cable_length' field in the 'master_data_canadianftr' table
+        stores the length of the cable as a string, with a maximum character limit
+        of 250. This field is used to record the measurement of cable length, which
+    connector:
+      type: varchar(250)
+      description: The 'connector' field in the 'master_data_canadianftr' table is
+        a varchar(250) data type that stores the name or identifier of a connector.
+        This field is designed to hold a string value up to 250 characters, representing
+    country_of_origin:
+      type: varchar(250)
+      description: "**Field: `country_of_origin`**  \n**Type:** `varchar(250)`  \n\
+        **Description:** This field stores the name of the country from which a product\
+        \ or item originates. It allows for a maximum length of 250 characters. This"
+    job_no:
+      type: varchar(250)
+      description: The 'job_no' field in the 'master_data_canadianftr' table is a
+        VARCHAR data type with a maximum length of 250 characters. It is used to store
+        the unique identifier for each job entry in the dataset, allowing for efficient
+    is_completed:
+      type: tinyint(1)
+      description: The field 'is_completed' in the table 'master_data_canadianftr'
+        is a Boolean indicator represented as a tiny integer (1 or 0). It signifies
+        whether a particular record has been completed (1) or not (0).
+    is_active:
+      type: tinyint(1)
+      description: The `is_active` field in the `master_data_canadianftr` table indicates
+        the active status of a record. It is of type `tinyint(1)`, where a value of
+        `1` represents that the record is active,
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_canadianftr' table is
+        a datetime(6) type that stores the timestamp indicating when the record was
+        created. The precision of 6 allows for fractional seconds, enabling detailed
+        tracking of the
+    product_against_tally_id:
+      type: int
+      description: The field `product_against_tally_id` in the table `master_data_canadianftr`
+        is an integer that serves as a unique identifier linking a product to its
+        corresponding tally entry in a related dataset.
+    site_addr_id:
+      type: int
+      description: The field 'site_addr_id' in the 'master_data_canadianftr' table
+        is an integer that uniquely identifies the site address associated with each
+        record in the table.
+    stock_in_product_id:
+      type: int
+      description: The field 'stock_in_product_id' is an integer that serves as a
+        unique identifier for products in the 'master_data_canadianftr' table. It
+        is used to track and manage the inventory of stock-in products within the
+        Canadian FTR (
+master_data_city:
+  description: The `master_data_city` table stores essential information about cities,
+    including their names, geographical coordinates, population statistics, and associated
+    regions or countries. This table serves as a primary reference for city-related
+    data within the database.
+  fields:
+    id:
+      type: int
+      description: The field 'id' in the 'master_data_city' table is an integer that
+        serves as the primary key, uniquely identifying each entry within the table.
+    name:
+      type: varchar(30)
+      description: The 'name' field in the 'master_data_city' table is a varchar data
+        type with a maximum length of 30 characters. It stores the names of cities
+        for reference and identification purposes.
+    state_id:
+      type: int
+      description: The field 'state_id' in the 'master_data_city' table is an integer
+        that uniquely identifies the state to which a city belongs. It serves as a
+        foreign key relating cities to their respective states within the master data
+        structure.
+master_data_country:
+  description: The `master_data_country` table stores essential information about
+    countries, including their names, codes, and other relevant attributes. This table
+    serves as a reference for country-related data across the database, ensuring consistency
+    and accuracy in identifying countries in various datasets. Fields
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_country' table is an integer
+        identifier that uniquely distinguishes each record in the table. It serves
+        as the primary key, ensuring the integrity and efficient retrieval of country
+        data.
+    name:
+      type: varchar(50)
+      description: The 'name' field in the 'master_data_country' table is a VARCHAR
+        type with a maximum length of 50 characters. It stores the name of the country,
+        providing a text representation for identification and reference purposes.
+    code:
+      type: varchar(5)
+      description: The 'code' field in the 'master_data_country' table is a VARCHAR(5)
+        data type that stores a unique, standardized code representing each country.
+        This code typically consists of up to 5 alphanumeric characters, facilitating
+        identification and classification of
+    currency:
+      type: varchar(10)
+      description: The 'currency' field in the 'master_data_country' table is a varchar(10)
+        data type that stores the currency code associated with each country, adhering
+        to the ISO 4217 standard.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_country' table stores
+        the precise date and time when a record was created, with a precision of up
+        to 6 decimal places for fractional seconds. This field is typically used for
+        tracking the creation timestamp
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is an integer that stores the identifier
+        of the user or system that created the record in the 'master_data_country'
+        table. This field is used for tracking the origin of the entry and may be
+        linked to a user
+master_data_importer:
+  description: The `master_data_importer` table is designed to store records related
+    to the bulk import of master data into the database. It typically includes fields
+    that capture details such as the import process status, timestamps for the import
+    operation, the source of the data
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_importer' table is an integer
+        data type that uniquely identifies each record in the table. It serves as
+        the primary key, ensuring that each entry can be referenced distinctly for
+        data management and retrieval purposes.
+    name:
+      type: varchar(100)
+      description: The 'name' field in the 'master_data_importer' table is a variable
+        character string with a maximum length of 100 characters. It is used to store
+        the name of the entity being imported into the system.
+    abbr:
+      type: varchar(32)
+      description: The 'abbr' field in the 'master_data_importer' table stores a short
+        textual abbreviation (up to 32 characters) that represents a specific entity
+        or category within the data import process.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_importer' table is of
+        type 'datetime(6)' and records the timestamp for when a record was created.
+        It captures the date and time with microsecond precision, allowing for accurate
+        tracking of
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field indicates the active status of a data importer
+        entry. It uses a tinyint(1) type, where a value of '1' represents an active
+        state, and '0' indicates that the entry is inactive.
+    created_by_id:
+      type: int
+      description: '`created_by_id`: An integer field that represents the unique identifier
+        of the user who created the record in the `master_data_importer` table. This
+        field is used for tracking purposes and to associate the record with the user
+        responsible for its creation.'
+    type_id:
+      type: int
+      description: The field 'type_id' in the 'master_data_importer' table is an integer
+        that serves as a unique identifier for the type of data being imported. It
+        associates the imported data with specific categories or classifications,
+        facilitating data organization and retrieval.
+master_data_importertype:
+  description: The `master_data_importertype` table stores information about various
+    types of importers. It typically includes fields that specify the unique identifier,
+    name, description, and classification of each importer type. This data helps in
+    categorizing and managing different importers within
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_importertype' table is an integer
+        that serves as the primary key, uniquely identifying each record in the table.
+        It is used to distinguish different importer types and may be automatically
+        generated.
+    title:
+      type: varchar(100)
+      description: The 'title' field in the 'master_data_importertype' table is a
+        variable character string with a maximum length of 100 characters. It is used
+        to store the name or designation of the importer type.
+master_data_importproduct:
+  description: The `master_data_importproduct` table is designed to store and manage
+    product information imported from external sources. It includes details such as
+    product identifiers, names, descriptions, pricing, and categorization, facilitating
+    the integration of diverse product datasets into the main product
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_importproduct' table is an integer
+        type that serves as the unique identifier for each record in the table. It
+        ensures that each product import entry can be distinctly referenced and managed
+        within the database.
+    name:
+      type: varchar(100)
+      description: The 'name' field in the 'master_data_importproduct' table is of
+        type 'varchar(100)', and it stores the name of the product being imported.
+        It can hold up to 100 characters, allowing for detailed product names.
+    power_rating:
+      type: double
+      description: The 'power_rating' field in the 'master_data_importproduct' table
+        is a double-precision decimal value that represents the power consumption
+        or capacity of a product, typically measured in watts (W) or kilowatts (kW).
+        This field
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_importproduct' table
+        records the date and time when a product import entry was created. It is stored
+        as a datetime value with a precision of up to 6 decimal places for fractions
+        of a second
+    is_active:
+      type: tinyint(1)
+      description: The field `is_active` in the `master_data_importproduct` table
+        is a tiny integer (1 byte) that indicates whether a product import process
+        is currently active. A value of `1` typically represents "active," while a
+        value of `
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field in the 'master_data_importproduct' table
+        is an integer that represents the unique identifier of the user or system
+        responsible for creating the record. This field helps track the origin of
+        the data entry for auditing and accountability purposes
+    supplier_id:
+      type: int
+      description: The field 'supplier_id' is an integer that uniquely identifies
+        a supplier associated with a product in the 'master_data_importproduct' table.
+        This field serves as a foreign key, linking products to their respective suppliers
+        for efficient data management and reference.
+    type_id:
+      type: int
+      description: The field 'type_id' in the 'master_data_importproduct' table is
+        an integer that serves as a foreign key, referencing the type of product being
+        imported. It categorizes the products based on predefined types, enabling
+        differentiation and organization within the import
+master_data_leadcompanyshippingdetails:
+  description: The `master_data_leadcompanyshippingdetails` table stores shipping
+    information for lead companies, including details such as shipping addresses,
+    contact information, and related logistical data. It serves as a reference for
+    managing shipping operations and ensuring accurate delivery of products to clients
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer that serves as the unique identifier
+        for each record in the 'master_data_leadcompanyshippingdetails' table. It
+        is used to distinguish individual entries and to establish relationships with
+        other tables.
+    shipper_name:
+      type: varchar(200)
+      description: "**Field: `shipper_name`**  \n**Type:** `varchar(200)`  \n**Description:**\
+        \ This field stores the name of the shipper associated with the shipping details\
+        \ for a lead company. It can contain up to 200 characters and"
+    addess_line_1:
+      type: varchar(300)
+      description: The field 'address_line_1' in the table 'master_data_leadcompanyshippingdetails'
+        is of type 'varchar(300)' and is used to store the primary street address
+        for the shipping details of a lead company. It can hold up
+    addess_line_2:
+      type: varchar(300)
+      description: The field 'address_line_2' is a varchar(300) type in the 'master_data_leadcompanyshippingdetails'
+        table. It is used to store additional address information for a shipping address,
+        such as apartment numbers, suite numbers, or
+    addess_line_3:
+      type: varchar(300)
+      description: "**Field Name:** address_line_3  \n**Type:** varchar(300)  \n**Description:**\
+        \ This field stores additional address information for the shipping details\
+        \ of a lead company. It can accommodate up to 300 characters and is typically\
+        \ used for supplemental address"
+    GST_No:
+      type: varchar(100)
+      description: '**Field: GST_No**
+
+
+        *Type:* `varchar(100)`
+
+
+        *Description:* A string field that stores the Goods and Services Tax (GST)
+        identification number assigned to the company. This number is utilized for
+        tax purposes and must comply with regulatory'
+    contact_person:
+      type: varchar(150)
+      description: The 'contact_person' field in the 'master_data_leadcompanyshippingdetails'
+        table stores the name of the individual responsible for communication or correspondence
+        related to the shipping details of the lead company. It allows for up to 150
+        characters.
+    phone:
+      type: varchar(20)
+      description: "**Field:** `phone`  \n**Type:** `varchar(20)`  \n**Description:**\
+        \ This field stores the contact phone number for the lead company associated\
+        \ with shipping details. It accommodates a variety of phone number formats,\
+        \ including international numbers, up to"
+    email:
+      type: varchar(150)
+      description: The 'email' field in the 'master_data_leadcompanyshippingdetails'
+        table is a VARCHAR data type with a maximum length of 150 characters. It is
+        used to store the email address associated with a lead's company shipping
+        details.
+    is_active:
+      type: int
+      description: The 'is_active' field in the 'master_data_leadcompanyshippingdetails'
+        table is an integer that indicates the active status of the shipping details.
+        A value of 1 typically represents that the shipping details are active, while
+        a value of
+    created_by_id:
+      type: int
+      description: The `created_by_id` field is an integer that stores the identifier
+        of the user who created the record in the `master_data_leadcompanyshippingdetails`
+        table. This field facilitates tracking of record ownership and accountability.
+    modified_by_id:
+      type: int
+      description: The `modified_by_id` field is an integer that stores the identifier
+        of the user who last modified the record in the `master_data_leadcompanyshippingdetails`
+        table. This field is used for tracking changes and maintaining an audit trail.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_leadcompanyshippingdetails'
+        table stores the date and time when the record was created. It is of type
+        'datetime(6)', which means it includes fractional seconds for greater precision.
+    modified_at:
+      type: datetime(6)
+      description: The 'modified_at' field in the 'master_data_leadcompanyshippingdetails'
+        table stores the timestamp of the most recent update to the shipping details.
+        It uses the 'datetime(6)' data type, allowing for high-resolution time tracking
+        with micro
+    company_id:
+      type: int
+      description: The `company_id` field is an integer that uniquely identifies the
+        associated company in the `master_data_leadcompanyshippingdetails` table.
+        This field serves as a foreign key, linking shipping details to the specific
+        company within the database.
+    old_company_id:
+      type: int
+      description: The 'old_company_id' field is an integer that stores the identifier
+        for the previous company associated with the lead's shipping details in the
+        'master_data_leadcompanyshippingdetails' table. This field helps track historical
+        associations with companies prior to any changes
+master_data_leadsourcemaster:
+  description: The `master_data_leadsourcemaster` table stores information about different
+    lead sources used in marketing and sales processes. Each entry in the table represents
+    a unique lead source, including details such as the source name, description,
+    and any associated metadata. This
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_leadsourcemaster' table is an
+        integer data type that serves as the unique identifier for each record in
+        the table. It ensures the distinct identification of leads source entries
+        and is typically used as a primary
+    source:
+      type: varchar(30)
+      description: The 'source' field in the 'master_data_leadsourcemaster' table
+        is a variable character string with a maximum length of 30 characters. It
+        stores the origin or channel through which a lead was generated, providing
+        essential information for tracking lead sources
+    is_active:
+      type: int
+      description: The 'is_active' field in the 'master_data_leadsourcemaster' table
+        is an integer that indicates the active status of a lead source. A value of
+        1 typically represents that the lead source is currently active, while a value
+        of
+master_data_organisation:
+  description: The `master_data_organisation` table stores essential information about
+    various organizations. It includes fields that capture the organization's name,
+    type, registration details, contact information, and operational status. This
+    table serves as a primary reference for managing and retrieving comprehensive
+    organizational data
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_organisation' table is an integer
+        that serves as the unique identifier for each organisation record. It is typically
+        used as a primary key to ensure the uniqueness of each entry and to facilitate
+        efficient data retrieval and
+    name:
+      type: varchar(100)
+      description: "**Field Name:** name  \n**Type:** varchar(100)  \n**Table:** master_data_organisation\
+        \  \n\n**Description:** This field stores the name of the organization, allowing\
+        \ for a maximum length of 100 characters. It is essential for identifying\
+        \ and"
+    address:
+      type: longtext
+      description: The 'address' field in the 'master_data_organisation' table is
+        of type 'longtext' and is used to store the full address of an organization.
+        This field can accommodate extensive textual entries, including street addresses,
+        city, state, postal
+    city_id:
+      type: int
+      description: The field 'city_id' in the 'master_data_organisation' table is
+        of type 'int' and serves as a unique identifier for the city associated with
+        each organization. This field links to a corresponding city record in a related
+        table, facilitating geographic
+    pincode:
+      type: varchar(15)
+      description: The 'pincode' field in the 'master_data_organisation' table is
+        a VARCHAR data type with a maximum length of 15 characters. It stores the
+        postal or ZIP code information associated with an organisation's location,
+        used for addressing and geographical identification
+    gst_no:
+      type: varchar(50)
+      description: "**Field:** gst_no  \n**Type:** varchar(50)  \n**Description:**\
+        \ This field stores the Goods and Services Tax (GST) identification number\
+        \ for the organization. It is a unique alphanumeric identifier assigned to\
+        \ businesses for tax purposes, with a"
+    color_code:
+      type: varchar(20)
+      description: The `color_code` field in the `master_data_organisation` table
+        is a string (VARCHAR) that allows up to 20 characters. It is used to store
+        the color representation associated with an organization, typically in the
+        format of a hexadecimal color
+master_data_paneldescription:
+  description: The `master_data_paneldescription` table stores detailed information
+    about various panels used in data analysis and reporting. Each entry includes
+    a unique identifier, the panel's name, description, creation date, and associated
+    metadata, allowing users to manage and reference different data
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_paneldescription' table is an
+        integer that serves as the primary key, uniquely identifying each record within
+        the table.
+    watt:
+      type: varchar(100)
+      description: The 'watt' field in the 'master_data_paneldescription' table is
+        a VARCHAR(100) data type that stores textual representations of wattage values,
+        allowing for the inclusion of units or additional descriptors alongside numerical
+        wattage measurements.
+    model:
+      type: varchar(100)
+      description: The 'model' field in the 'master_data_paneldescription' table stores
+        a string of up to 100 characters that represents the specific model associated
+        with the panel description. This may include model names, numbers, or identifiers
+        used for categorizing and detailing
+    type:
+      type: varchar(200)
+      description: The 'type' field in the 'master_data_paneldescription' table is
+        a VARCHAR(200) column that stores categorical information describing the type
+        or classification of a panel description. It allows for up to 200 characters
+        and is used to differentiate various panel
+    voltage:
+      type: varchar(200)
+      description: "**Field Name:** voltage  \n**Type:** varchar(200)  \n**Table:**\
+        \ master_data_paneldescription  \n**Description:** This field stores the voltage\
+        \ specifications associated with a particular panel description, allowing\
+        \ for alphanumeric entries up to 200 characters in length"
+    power_tolerance:
+      type: varchar(100)
+      description: The 'power_tolerance' field in the 'master_data_paneldescription'
+        table stores the power tolerance specifications of a panel as a string, allowing
+        for a maximum length of 100 characters. This field may include information
+        such as acceptable power deviation percentages or
+    certification:
+      type: varchar(200)
+      description: The field 'certification' in the 'master_data_paneldescription'
+        table is a variable character string that can hold up to 200 characters. It
+        is used to store information about any certifications related to the data
+        panel, indicating professional qualifications or standards met
+    cell:
+      type: varchar(100)
+      description: The field 'cell' in the table 'master_data_paneldescription' is
+        a varchar data type with a maximum length of 100 characters. It is typically
+        used to store information related to specific cell identifiers or attributes
+        within the panel description context, allowing for
+    frame:
+      type: varchar(200)
+      description: "**Field: frame**  \n**Table: master_data_paneldescription**  \n\
+        **Type: varchar(200)**  \n\nDescription: This field stores a textual description\
+        \ of the frame associated with a panel, allowing up to 200 characters. It\
+        \ is used to"
+    description:
+      type: varchar(300)
+      description: The 'description' field in the 'master_data_paneldescription' table
+        stores a textual representation or narrative detailing the specifics, features,
+        or purpose of a panel, with a maximum length of 300 characters.
+    product_id:
+      type: int
+      description: The 'product_id' field is an integer that uniquely identifies each
+        product in the 'master_data_paneldescription' table. This field serves as
+        a primary key or a foreign key reference, linking product-related data with
+        other tables in the database.
+master_data_port:
+  description: The `master_data_port` table stores essential information related to
+    port facilities, including attributes such as port name, location, capacity, and
+    operational status. This table serves as a central repository for managing and
+    retrieving data related to maritime ports, aiding in logistical
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_port' table is an integer that
+        uniquely identifies each record within the table. It serves as the primary
+        key, ensuring that each entry can be distinctly referenced and accessed.
+    name:
+      type: varchar(150)
+      description: The field 'name' in the table 'master_data_port' is a varchar data
+        type with a maximum length of 150 characters. It is used to store the name
+        of the port, allowing for descriptive and identifiable labels.
+    mobile:
+      type: varchar(32)
+      description: The 'mobile' field in the 'master_data_port' table is a VARCHAR
+        type with a maximum length of 32 characters. It is used to store the mobile
+        phone number associated with a record in the master data port, allowing for
+        the entry of
+    email:
+      type: varchar(150)
+      description: "**Field: email**  \n**Type:** varchar(150)  \n**Description:**\
+        \ This field stores the email address of the contact associated with the master\
+        \ data port. The maximum length of the email address is 150 characters. It\
+        \ is used for communication"
+    pincode:
+      type: varchar(32)
+      description: The 'pincode' field in the 'master_data_port' table is a variable
+        character string with a maximum length of 32 characters. It is used to store
+        postal codes or PIN codes associated with specific locations for data indexing
+        and retrieval purposes.
+    address:
+      type: varchar(500)
+      description: The 'address' field in the 'master_data_port' table is a variable
+        character string with a maximum length of 500 characters. It is used to store
+        the physical address associated with each entry in the master data port records.
+    is_active:
+      type: int
+      description: The 'is_active' field in the 'master_data_port' table is an integer
+        that indicates the active status of the port entry. A value of 1 signifies
+        that the port is active, while a value of 0 indicates that it is inactive
+    created_at:
+      type: datetime(6)
+      description: "**Field Name:** created_at  \n**Type:** datetime(6)  \n**Description:**\
+        \ This field records the date and time when a record in the 'master_data_port'\
+        \ table was created, with precision up to microseconds. It is used for"
+    city_id:
+      type: int
+      description: The field 'city_id' in the 'master_data_port' table is an integer
+        that uniquely identifies a city within the dataset. It serves as a reference
+        for associating specific ports with their respective cities.
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is an integer that stores the identifier
+        of the user or entity that created the record in the 'master_data_port' table.
+master_data_portpoc:
+  description: The `master_data_portpoc` table stores comprehensive information related
+    to the Port Point of Contact (PoC) details for various entities. It serves as
+    a central repository for attributes such as contact names, roles, communication
+    details, and associated organization data
+  fields:
+    id:
+      type: int
+      description: "**Field:** id  \n**Type:** int  \n**Description:** A unique identifier\
+        \ for each record in the `master_data_portpoc` table, used to differentiate\
+        \ between entries and maintain data integrity."
+    poc_name:
+      type: varchar(150)
+      description: The field 'poc_name' in the 'master_data_portpoc' table is of type
+        'varchar(150)' and is used to store the name of the Point of Contact (POC).
+        It can hold up to 150 characters and
+    poc_mobile:
+      type: varchar(32)
+      description: "**Field Name:** poc_mobile  \n**Type:** varchar(32)  \n**Table:**\
+        \ master_data_portpoc  \n**Description:** This field stores the mobile phone\
+        \ number of the point of contact (POC) in a string format, with a"
+    poc_alternate_mobile:
+      type: varchar(32)
+      description: The field 'poc_alternate_mobile' in the 'master_data_portpoc' table
+        stores an alternate mobile phone number for the point of contact (POC). It
+        is of type 'varchar(32)', allowing for a string of up to
+    poc_email:
+      type: varchar(150)
+      description: Field 'poc_email' in the 'master_data_portpoc' table stores the
+        email address of the Point of Contact (POC) associated with a particular record.
+        It can accommodate up to 150 characters.
+    is_primary:
+      type: int
+      description: Field 'is_primary' in the 'master_data_portpoc' table indicates
+        whether a particular record is the primary entry. It is represented as an
+        integer, where a value of 1 typically signifies that the record is primary,
+        and a value of
+    is_active:
+      type: int
+      description: The 'is_active' field in the 'master_data_portpoc' table is an
+        integer that indicates the active status of a record. A value of 1 typically
+        represents an active record, while a value of 0 indicates that the record
+        is
+    designation:
+      type: varchar(150)
+      description: The 'designation' field in the 'master_data_portpoc' table is a
+        varchar(150) type that stores the job title or role of an individual within
+        an organization. It allows for up to 150 characters and is used to identify
+        the
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_portpoc' table records
+        the exact date and time when the corresponding entry was created. It is stored
+        with a precision of up to six fractional seconds, allowing for high-resolution
+        timestamps.
+    created_by_id:
+      type: int
+      description: "**Field:** `created_by_id`  \n**Type:** `int`  \n**Description:**\
+        \ This field stores the identifier of the user or system that created the\
+        \ record in the `master_data_portpoc` table. It is used for tracking the"
+    port_id:
+      type: int
+      description: The field 'port_id' in the table 'master_data_portpoc' is an integer
+        that uniquely identifies each port entry in the master data set. This field
+        serves as a primary key to facilitate data integrity and relationship management
+        within the database.
+master_data_product:
+  description: The 'master_data_product' table stores essential information about
+    products, including their unique identifiers, descriptions, categories, pricing
+    details, and inventory status. This table serves as a central reference for product
+    attributes, enabling consistent data management and integration across various
+    systems and
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_product' table is an integer
+        that serves as a unique identifier for each product entry. It ensures the
+        distinctiveness of records within the table, allowing for efficient data retrieval
+        and management.
+    model_name:
+      type: varchar(100)
+      description: The 'model_name' field in the 'master_data_product' table stores
+        the name of the product model, with a maximum length of 100 characters. It
+        is used to uniquely identify and describe different variations of products
+        within the database.
+    is_active:
+      type: int
+      description: The 'is_active' field in the 'master_data_product' table is an
+        integer that indicates the status of a product. A value of 1 typically represents
+        that the product is active and available, while a value of 0 indicates that
+        the product
+    created_at:
+      type: datetime(6)
+      description: The `created_at` field in the `master_data_product` table stores
+        the timestamp indicating when the product record was created. It is of type
+        `datetime(6)`, allowing for precision up to microseconds.
+    company_id:
+      type: int
+      description: The 'company_id' field in the 'master_data_product' table is an
+        integer that uniquely identifies the company associated with each product
+        record. It serves as a foreign key, linking products to their respective companies
+        within the database.
+    created_by_id:
+      type: int
+      description: The 'created_by_id' field is an integer that stores the unique
+        identifier of the user or system account that created the record in the 'master_data_product'
+        table. This field helps track the origin of the data entry for auditing and
+        accountability purposes.
+    product_type_id:
+      type: int
+      description: The field 'product_type_id' is an integer that uniquely identifies
+        the category or type of a product within the 'master_data_product' table.
+        It serves as a foreign key that links to the corresponding product type definition
+        in another related table, facilitating organized
+    hsn_code:
+      type: varchar(15)
+      description: "Field Name: `hsn_code`  \nType: `varchar(15)`  \nDescription:\
+        \ This field stores the Harmonized System Nomenclature (HSN) code, a standardized\
+        \ numerical method of classifying goods for international trade. It allows\
+        \ for"
+    power_rating:
+      type: double
+      description: The 'power_rating' field in the 'master_data_product' table represents
+        the power consumption or output of a product, measured in watts (W). It is
+        stored as a double-precision floating-point number to allow for precise values,
+        accommodating both whole
+    price:
+      type: double
+      description: The 'price' field in the 'master_data_product' table represents
+        the monetary value of the product, stored as a double-precision floating-point
+        number to accommodate varying price formats and decimal precision.
+    description:
+      type: longtext
+      description: The 'description' field in the 'master_data_product' table is of
+        type 'longtext' and is used to store a detailed textual description of the
+        product. This field allows for extensive content, providing comprehensive
+        information about the product's features, specifications
+    is_primary:
+      type: tinyint(1)
+      description: "**Field: is_primary**  \n**Type: tinyint(1)**  \n**Description:**\
+        \ Indicates whether the product is the primary option among multiple entries.\
+        \ A value of 1 signifies that the product is primary, while a value of 0 indicates"
+    is_secondary:
+      type: tinyint(1)
+      description: The `is_secondary` field in the `master_data_product` table is
+        a tiny integer (1) that indicates whether a product is classified as a secondary
+        product. A value of 1 typically denotes that the product is secondary, while
+        a value of
+    specification:
+      type: varchar(150)
+      description: The 'specification' field in the 'master_data_product' table is
+        a variable character string with a maximum length of 150 characters. It is
+        used to store detailed specifications or technical descriptions of the product.
+    scannable:
+      type: tinyint(1)
+      description: The 'scannable' field in the 'master_data_product' table is a tiny
+        integer (1) that indicates whether a product can be scanned. A value of '1'
+        typically represents that the product is scannable, while a value
+    qr_scannable:
+      type: tinyint(1)
+      description: The field 'qr_scannable' in the 'master_data_product' table is
+        a tinyint (1) data type that indicates whether a product can be scanned using
+        a QR code. A value of '1' signifies that the product is QR
+    is_verifiable:
+      type: tinyint(1)
+      description: The field 'is_verifiable' in the 'master_data_product' table is
+        a boolean indicator represented as a tinyint (1). It signifies whether a product's
+        data can be verified (1 for true, 0 for false).
+    tally_product:
+      type: varchar(100)
+      description: The 'tally_product' field in the 'master_data_product' table is
+        a VARCHAR(100) data type that stores the name or identifier of a product as
+        used in the tally system. This field allows for alphanumeric entries up to
+        100
+    is_usefull:
+      type: tinyint(1)
+      description: The 'is_usefull' field in the 'master_data_product' table is a
+        boolean indicator, represented as a tiny integer (1 for true, 0 for false).
+        It signifies whether the product is considered useful or relevant for its
+        intended purpose.
+    quantity:
+      type: int
+      description: The 'quantity' field in the 'master_data_product' table represents
+        the integer value indicating the available stock quantity of the respective
+        product. It is used to track inventory levels and manage product availability.
+master_data_productcompany:
+  description: The `master_data_productcompany` table stores essential information
+    about various product companies. It includes details such as company name, address,
+    contact information, and product associations, enabling efficient management and
+    retrieval of product company data for reporting and analysis.
+  fields:
+    id:
+      type: int
+      description: The field **'id'** is an integer data type that serves as the primary
+        identifier for each record in the **'master_data_productcompany'** table.
+        This unique identifier ensures that each product company entry can be distinctly
+        referenced and retrieved within the
+    name:
+      type: varchar(150)
+      description: The 'name' field in the 'master_data_productcompany' table is a
+        variable character string with a maximum length of 150 characters. It is used
+        to store the name of the product company.
+    is_active:
+      type: int
+      description: "**Field: is_active**  \n**Type: int**  \n**Description:** This\
+        \ field indicates the active status of a product company. It typically stores\
+        \ binary values where '1' represents that the product company is active, and\
+        \ '0' indicates it"
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_productcompany' table
+        records the timestamp of when a new entry was created. It is of type 'datetime(6)',
+        which means it stores date and time values with precision up to microseconds.
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is an integer that stores the unique
+        identifier of the user or system account that created the record in the 'master_data_productcompany'
+        table. This field helps track the origin of the record for auditing and accountability
+        purposes.
+    address_line1:
+      type: longtext
+      description: Field 'address_line1' in the table 'master_data_productcompany'
+        is of type 'longtext' and is used to store the primary address line for a
+        product company, allowing for lengthy text entries to accommodate detailed
+        address information.
+    address_line2:
+      type: varchar(100)
+      description: The 'address_line2' field in the 'master_data_productcompany' table
+        is a VARCHAR data type with a maximum length of 100 characters. It stores
+        the second line of the address for a product company, providing additional
+        address details such as apartment
+    address_line3:
+      type: varchar(100)
+      description: "**Field Name:** address_line3  \n**Type:** varchar(100)  \n**Table:**\
+        \ master_data_productcompany  \n\n**Description:** This field stores the third\
+        \ line of the address for the product company, allowing for additional address\
+        \ details such as a suite"
+    company_name:
+      type: varchar(80)
+      description: The field 'company_name' in the table 'master_data_productcompany'
+        stores the name of the company associated with a product. It is of type 'varchar(80)',
+        allowing for a maximum length of 80 characters.
+    gstin:
+      type: varchar(30)
+      description: The 'gstin' field in the 'master_data_productcompany' table is
+        a VARCHAR(30) that stores the Goods and Services Tax Identification Number
+        (GSTIN) of the product company. It is used for tax-related identification
+        and compliance purposes within
+    is_primary:
+      type: tinyint(1)
+      description: The field 'is_primary' in the 'master_data_productcompany' table
+        is a tiny integer that indicates whether the associated product company is
+        the primary entity. A value of 1 signifies that it is the primary company,
+        while a value of 0
+    is_usefull:
+      type: tinyint(1)
+      description: The field 'is_usefull' in the 'master_data_productcompany' table
+        is a tiny integer column (1 byte) that indicates the usefulness status of
+        a product company. It typically represents a boolean value, where '1' signifies
+        that the product
+    is_report:
+      type: tinyint(1)
+      description: The 'is_report' field in the 'master_data_productcompany' table
+        is a tiny integer (1) that indicates whether a product company is designated
+        as a reportable entity. A value of 1 typically signifies that the company
+        is reportable,
+master_data_productcompanyplants:
+  description: The `master_data_productcompanyplants` table stores information about
+    the manufacturing plants associated with various product companies. It includes
+    details such as plant identifiers, company associations, location data, and operational
+    statuses. This table facilitates the management and tracking of production facilities
+    within
+  fields:
+    id:
+      type: int
+      description: "**Field: id**  \n**Type:** int  \n**Description:** A unique identifier\
+        \ for each record in the `master_data_productcompanyplants` table. This field\
+        \ serves as the primary key, ensuring that each entry can be distinctly referenced."
+    address:
+      type: varchar(500)
+      description: The 'address' field in the 'master_data_productcompanyplants' table
+        is of type 'varchar(500)' and is used to store the physical address of the
+        product company plant. This field can accommodate a text string up to 500
+        characters in
+    pincode:
+      type: varchar(20)
+      description: The field 'pincode' in the table 'master_data_productcompanyplants'
+        is a varchar(20) type that stores the postal code associated with the location
+        of the product company plant. It allows for alphanumeric entries to accommodate
+        various regional postal formats
+    created_at:
+      type: datetime(6)
+      description: The field 'created_at' in the 'master_data_productcompanyplants'
+        table is a datetime(6) type that records the precise date and time when each
+        entry was created, including up to six decimal places for fractional seconds.
+    city_id:
+      type: int
+      description: "**Field: city_id**  \n**Type: int**  \n**Description:** A unique\
+        \ identifier for the city associated with each product company plant in the\
+        \ 'master_data_productcompanyplants' table. This field links to a corresponding\
+        \ city record in the related"
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `master_data_productcompanyplants`
+        table is an integer that stores the unique identifier of the user or process
+        that created the record. This field is used for tracking and auditing purposes,
+        allowing for the identification of
+    product_Company_id_id:
+      type: int
+      description: The field 'product_Company_id_id' is an integer type that serves
+        as a foreign key in the 'master_data_productcompanyplants' table. It references
+        the unique identifier of a product company, linking each plant record to its
+        corresponding company within the
+master_data_productcompanypoc:
+  description: The `master_data_productcompanypoc` table contains key information
+    about products associated with various companies' points of contact (POC). It
+    typically includes fields for product identifiers, company names, point of contact
+    details, and other relevant attributes that link products
+  fields:
+    id:
+      type: int
+      description: The field 'id' in the table 'master_data_productcompanypoc' is
+        an integer that serves as the primary identifier for each record in the table.
+        It uniquely distinguishes each product company point of contact (POC) entry,
+        ensuring data integrity
+    contact_person_name:
+      type: varchar(120)
+      description: The field 'contact_person_name' in the 'master_data_productcompanypoc'
+        table stores the name of the primary contact person associated with a product
+        company point of contact, with a maximum length of 120 characters.
+    contact_person_phone:
+      type: varchar(20)
+      description: '`contact_person_phone`: A varchar field with a maximum length
+        of 20 characters that stores the phone number of the contact person for the
+        product company. This field is used to facilitate communication with the designated
+        contact.'
+    contact_person_email:
+      type: varchar(254)
+      description: 'Field **contact_person_email**: A varchar field with a maximum
+        length of 254 characters that stores the email address of the contact person
+        associated with a product company. This field is used for communication and
+        correspondence purposes.'
+    designation:
+      type: varchar(120)
+      description: The 'designation' field in the 'master_data_productcompanypoc'
+        table is a variable character string with a maximum length of 120 characters.
+        It is used to store the job title or role of an individual associated with
+        a product company point of
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_productcompanypoc' table
+        stores the date and time when a record was created. This field uses the 'datetime(6)'
+        data type, which allows for the precision of fractional seconds, enabling
+    created_by_id:
+      type: int
+      description: The `created_by_id` field in the `master_data_productcompanypoc`
+        table is an integer that stores the unique identifier of the user or system
+        account that created the record. This field is used for tracking the origin
+        of the data entry and
+    product_Company_id_id:
+      type: int
+      description: The field 'product_Company_id_id' is an integer type field in the
+        'master_data_productcompanypoc' table that serves as a unique identifier for
+        the product company associated with a specific point of contact (POC). It
+        links the product
+master_data_producttypes:
+  description: The `master_data_producttypes` table stores information about different
+    types of products available in the system. Each entry includes details such as
+    the product type ID, name, description, and any relevant attributes that categorize
+    or differentiate the products. This table serves as
+  fields:
+    id:
+      type: int
+      description: The 'id' field is an integer data type that serves as the unique
+        identifier for each record in the 'master_data_producttypes' table. It ensures
+        that each product type can be uniquely referenced and retrieved within the
+        database.
+    name:
+      type: varchar(300)
+      description: The 'name' field in the 'master_data_producttypes' table is a variable
+        character string with a maximum length of 300 characters. It is used to store
+        the descriptive names of different product types within the database.
+master_data_region:
+  description: The `master_data_region` table stores information about geographical
+    regions used for data categorization and analysis. It typically includes fields
+    such as region ID, region name, country, and any relevant metadata that helps
+    define the attributes and hierarchical relationships between different regions.
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_region' table is an integer
+        that serves as the primary key, uniquely identifying each record within the
+        table.
+    name:
+      type: varchar(30)
+      description: The 'name' field in the 'master_data_region' table is a VARCHAR
+        data type with a maximum length of 30 characters. It stores the name of the
+        region, representing its geographical or administrative designation.
+    is_usefull:
+      type: tinyint(1)
+      description: The 'is_usefull' field in the 'master_data_region' table is a tiny
+        integer (1) that indicates the usefulness of the region's data. It is typically
+        used as a boolean flag, where a value of 1 signifies that the
+master_data_renewsysftr:
+  description: The `master_data_renewsysftr` table stores core information related
+    to the renewable systems features and variables essential for system performance,
+    assessment, and analytics. It typically includes attributes such as feature identifiers,
+    descriptions, types, and associated metadata necessary for
+  fields:
+    id:
+      type: int
+      description: The field 'id' in the table 'master_data_renewsysftr' is of type
+        'int' and serves as the primary identifier for each record in the table. It
+        uniquely distinguishes each entry and is typically used for referencing and
+        linking the
+    module_no:
+      type: varchar(250)
+      description: The field 'module_no' in the 'master_data_renewsysftr' table is
+        a VARCHAR(250) datatype that stores the module number, which is likely used
+        to identify different modules within the system. The field can accommodate
+        alphanumeric characters
+    pallet_no:
+      type: varchar(250)
+      description: The field 'pallet_no' in the table 'master_data_renewsysftr' is
+        a VARCHAR data type with a maximum length of 250 characters. It is used to
+        store the unique identification number or code for each pallet in the system
+    pmax:
+      type: varchar(250)
+      description: The field 'pmax' in the table 'master_data_renewsysftr' is a varchar(250)
+        data type that stores a textual value with a maximum length of 250 characters.
+        This field is typically used to hold a parameter or
+    voc:
+      type: varchar(250)
+      description: Field 'voc' in the table 'master_data_renewsysftr' is a variable
+        character string with a maximum length of 250 characters. It is used to store
+        relevant information or text related to the voice of the customer (VOC) feedback
+    isc:
+      type: varchar(250)
+      description: The field 'isc' in the table 'master_data_renewsysftr' is a variable
+        character string that can store up to 250 characters. It is used to hold information
+        related to the 'isc' attribute, which may represent an identification
+    vmp:
+      type: varchar(250)
+      description: The field 'vmp' in the table 'master_data_renewsysftr' is a variable
+        character string with a maximum length of 250 characters. It is used to store
+        a specific value related to the renewal system functionality, although the
+        exact
+    imp:
+      type: varchar(250)
+      description: The field 'imp' in the 'master_data_renewsysftr' table is a VARCHAR
+        data type with a maximum length of 250 characters. It is used to store important
+        or impactful information related to the records in the table, potentially
+        holding
+    ff:
+      type: varchar(250)
+      description: Field 'ff' in the table 'master_data_renewsysftr' is a variable
+        character (varchar) type field that can store up to 250 characters. It is
+        typically used to hold textual data related to the master data for the renew
+    is_completed:
+      type: tinyint(1)
+      description: The field 'is_completed' in the 'master_data_renewsysftr' table
+        is a boolean indicator represented as a tiny integer (1 or 0). It specifies
+        whether a specific task or process has been completed (1 for completed,
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'master_data_renewsysftr' table is
+        a tiny integer (1) that indicates the active status of the record. A value
+        of 1 typically means the record is currently active, while a value
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_renewsysftr' table stores
+        the timestamp of when a record was created, including fractions of a second
+        (precision of 6 digits). This field helps track the creation time for data
+        entries
+    product_against_tally_id:
+      type: int
+      description: The field `product_against_tally_id` is an integer that serves
+        as a foreign key reference to a product associated with a specific tally in
+        the `master_data_renewsysftr` table. It is used to link product data with
+        tally
+    site_addr_id:
+      type: int
+      description: The field `site_addr_id` in the `master_data_renewsysftr` table
+        is an integer that uniquely identifies a specific site address. It serves
+        as a foreign key to link the associated site address records in related tables,
+        facilitating efficient data
+    stock_in_product_id:
+      type: int
+      description: The field 'stock_in_product_id' is an integer that uniquely identifies
+        the stock-in product within the 'master_data_renewsysftr' table. It serves
+        as a reference to associate specific products with their corresponding stock
+        management records.
+    amount_upto:
+      type: double
+      description: The field 'amount_upto' in the table 'master_data_renewsysftr'
+        represents a numeric value of type double that specifies the maximum amount
+        applicable for a certain condition or threshold within the renewal system
+        feature.
+master_data_rolemaster:
+  description: The `master_data_rolemaster` table stores information about various
+    roles within an organization or system. It includes details such as role identifiers,
+    descriptions, hierarchical relationships, and associated permissions. This table
+    serves as a reference for role management and access control across
+  fields:
+    id:
+      type: int
+      description: The field 'id' in the table 'master_data_rolemaster' is an integer
+        type that serves as the primary identifier for each role entry. It uniquely
+        distinguishes each record, ensuring efficient data retrieval and integrity
+        within the role management system.
+    name:
+      type: varchar(30)
+      description: The 'name' field in the 'master_data_rolemaster' table is a varchar
+        data type with a maximum length of 30 characters. It stores the names of roles
+        defined within the master role management system, allowing for a concise identification
+        of each
+master_data_seller:
+  description: The `master_data_seller` table stores comprehensive information about
+    sellers in the system. It includes details such as seller identification, contact
+    information, business status, and relevant metrics to track performance and compliance.
+    This table serves as a central repository for seller-related
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_seller' table is an integer
+        that serves as the unique identifier for each seller record. It is used to
+        distinguish individual sellers within the database.
+    seller:
+      type: varchar(255)
+      description: '**Field: seller**
+
+
+        **Type:** varchar(255)
+
+
+        **Description:** This field stores the name or identifier of the seller, allowing
+        for up to 255 characters. It is used to uniquely identify sellers in the `master_data_seller`
+        table'
+    seller_name:
+      type: varchar(255)
+      description: The 'seller_name' field in the 'master_data_seller' table stores
+        the name of the seller as a variable character string, with a maximum length
+        of 255 characters. This field is used to identify and display the seller's
+        name in various
+    addess_ine_1:
+      type: varchar(255)
+      description: "**Field:** `addess_ine_1`  \n**Type:** `varchar(255)`  \n**Table:**\
+        \ `master_data_seller`  \n**Description:** Stores the primary address line\
+        \ of the seller, allowing a maximum of 255 characters"
+    addess_ine_2:
+      type: varchar(255)
+      description: Field 'address_line_2' of type 'varchar(255)' in the table 'master_data_seller'
+        is used to store the second line of the seller's address. This field allows
+        for additional address information, such as an apartment number or
+    addess_line_3:
+      type: varchar(255)
+      description: '`address_line_3`: A variable character field with a maximum length
+        of 255 characters, used to store an optional third line of the seller''s address
+        in the `master_data_seller` table.'
+    GST_No:
+      type: varchar(255)
+      description: "**Field: GST_No**  \n**Type:** varchar(255)  \n**Description:**\
+        \ This field stores the Goods and Services Tax (GST) number assigned to the\
+        \ seller. It is a unique identifier required for tax purposes in transactions\
+        \ and must conform to"
+    seller_tally_name:
+      type: varchar(255)
+      description: '''seller_tally_name'' is a VARCHAR(255) field in the ''master_data_seller''
+        table that stores the name associated with the seller''s tally, representing
+        the seller''s identity or business name in a structured format.'
+    seller_tally_state:
+      type: varchar(255)
+      description: The field 'seller_tally_state' in the 'master_data_seller' table
+        is a variable character string (varchar) with a maximum length of 255 characters.
+        It is used to store the current tally state of a seller, indicating their
+        status
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'master_data_seller' table is a tinyint(1)
+        that indicates the active status of a seller. A value of 1 (or true) signifies
+        that the seller is currently active, while a
+    is_hub:
+      type: tinyint(1)
+      description: "**Field:** `is_hub`  \n**Type:** `tinyint(1)`  \n**Description:**\
+        \ Indicates whether the seller is a hub (1) or not (0). Used to identify central\
+        \ points of distribution in the seller network."
+    region_id:
+      type: int
+      description: "**Field:** `region_id`  \n**Type:** `int`  \n**Description:**\
+        \ A unique identifier for the geographic region associated with the seller.\
+        \ This integer value links the seller to a specific region in the master data\
+        \ for organizational and analytical purposes."
+    seller_code:
+      type: varchar(10)
+      description: The 'seller_code' field in the 'master_data_seller' table is a
+        VARCHAR(10) type that stores a unique identifier for each seller. This code
+        is used to differentiate sellers in the database and should be formatted as
+        a string of up
+master_data_sellerbank:
+  description: The `master_data_sellerbank` table stores essential information related
+    to sellers' banking details within the system. It contains records of sellers'
+    bank accounts, including their bank names, account numbers, routing details, and
+    relevant contact information. This table facilitates
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_sellerbank' table is an integer
+        that serves as the unique identifier for each record. It ensures the distinctness
+        of each seller bank entry within the table.
+    account_holder_name:
+      type: varchar(255)
+      description: "**Field:** `account_holder_name`  \n**Type:** `varchar(255)` \
+        \ \n**Description:** This field stores the name of the account holder associated\
+        \ with the seller's bank account, with a maximum length of 255 characters."
+    account_no:
+      type: varchar(255)
+      description: The field 'account_no' in the 'master_data_sellerbank' table is
+        a variable character string (varchar) with a maximum length of 255 characters.
+        It stores the account number associated with a seller's bank account for identification
+        and transactional purposes
+    bank_name:
+      type: varchar(255)
+      description: "**Field: bank_name**  \n**Type:** varchar(255)  \n**Description:**\
+        \ This field stores the name of the bank associated with a seller, allowing\
+        \ for up to 255 characters. It is used to identify the financial institution\
+        \ that handles transactions"
+    bank_branch:
+      type: varchar(255)
+      description: The 'bank_branch' field in the 'master_data_sellerbank' table stores
+        the name or identifier of the specific branch of a bank associated with a
+        seller. It is a variable character type with a maximum length of 255 characters,
+        allowing for
+    bank_ifsc:
+      type: varchar(255)
+      description: The field 'bank_ifsc' in the table 'master_data_sellerbank' stores
+        the Indian Financial System Code (IFSC) for a bank. This code, which is a
+        varchar(255), is used to uniquely identify a bank branch for
+    bank_address:
+      type: varchar(255)
+      description: "**Field Name:** bank_address  \n**Type:** varchar(255)  \n**Table:**\
+        \ master_data_sellerbank  \n\n**Description:** This field stores the address\
+        \ of the seller's bank, allowing for a detailed location description up to\
+        \ 255 characters in"
+    bank_pincode:
+      type: int
+      description: The field `bank_pincode` in the `master_data_sellerbank` table
+        represents the postal code associated with the seller's bank location. It
+        is an integer value used to identify the specific area for banking services.
+master_data_sellerpointofcontact:
+  description: The `master_data_sellerpointofcontact` table stores information about
+    the primary points of contact for sellers in an organization. This includes details
+    such as the seller's name, contact information, role, and any relevant identification
+    or reference numbers. The table
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_sellerpointofcontact' table
+        is an integer that uniquely identifies each record in the table. It serves
+        as the primary key, ensuring that each seller point of contact can be distinctly
+        referenced.
+    contact_person_name:
+      type: varchar(120)
+      description: The field 'contact_person_name' in the 'master_data_sellerpointofcontact'
+        table stores the name of the primary individual responsible for communication
+        at the seller point of contact. This field can hold up to 120 characters and
+        is typically used to
+    contact_person_phone:
+      type: varchar(100)
+      description: The 'contact_person_phone' field in the 'master_data_sellerpointofcontact'
+        table stores the phone number of the contact person for the seller point of
+        contact. It is a variable character field with a maximum length of 100 characters,
+        allowing
+    contact_person_email:
+      type: varchar(120)
+      description: The field 'contact_person_email' in the table 'master_data_sellerpointofcontact'
+        stores the email address of the primary contact person for the seller's point
+        of contact. It has a maximum length of 120 characters and is used for communication
+    designation:
+      type: varchar(120)
+      description: The 'designation' field in the 'master_data_sellerpointofcontact'
+        table stores the job title or role of the contact person at the seller's organization.
+        It is a variable character field with a maximum length of 120 characters.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_sellerpointofcontact'
+        table stores the timestamp of when the record was created. It is of type 'datetime(6)',
+        allowing for precision up to microseconds.
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is an integer that stores the unique
+        identifier of the user or system that created the record in the 'master_data_sellerpointofcontact'
+        table. This field facilitates tracking and auditing of record creation.
+    seller_id:
+      type: int
+      description: "**Field:** `seller_id`  \n**Type:** `int`  \n**Description:**\
+        \ A unique identifier assigned to each seller in the seller point of contact\
+        \ table, used to establish relationships with other related records in the\
+        \ database."
+    old_seller_id:
+      type: int
+      description: '`old_seller_id`: An integer field in the `master_data_sellerpointofcontact`
+        table that stores the identifier for the previous seller associated with the
+        contact point, allowing for tracking of historical seller data.'
+master_data_siteaddr:
+  description: The `master_data_siteaddr` table stores comprehensive address information
+    for various sites. It includes fields for site identifiers, street addresses,
+    cities, states, postal codes, and relevant geographic details. This table serves
+    as a central repository for managing and referencing site
+  fields:
+    id:
+      type: int
+      description: The field 'id' is an integer type that serves as the unique identifier
+        for records in the 'master_data_siteaddr' table. It is used to distinctly
+        identify each entry in the table, ensuring data integrity and facilitating
+        efficient retrieval and management of site
+    pincode:
+      type: varchar(15)
+      description: The 'pincode' field in the 'master_data_siteaddr' table is a varchar
+        type with a maximum length of 15 characters. It stores postal code information
+        used to identify specific geographic areas for mailing purposes.
+    address:
+      type: longtext
+      description: The 'address' field in the 'master_data_siteaddr' table is a longtext
+        data type that stores detailed address information for site locations. It
+        can accommodate extensive text entries, making it suitable for complex addresses
+        that may include street names, building numbers
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_siteaddr' table records
+        the precise date and time when a site address entry was created. It is stored
+        in a datetime format with microsecond precision (up to six decimal places).
+    city_id:
+      type: int
+      description: The field 'city_id' in the table 'master_data_siteaddr' is an integer
+        that uniquely identifies a city associated with a specific site address. It
+        serves as a foreign key that links to the primary key of the cities table,
+        facilitating the relationship
+    created_by_id:
+      type: int
+      description: "**Field Name:** created_by_id  \n**Type:** int  \n**Description:**\
+        \ This field stores the identifier of the user or system that created the\
+        \ record in the 'master_data_siteaddr' table. It references the unique ID\
+        \ of the creator, allowing"
+    product_against_tally_id:
+      type: int
+      description: The field 'product_against_tally_id' is an integer that uniquely
+        identifies the product associated with a tally in the 'master_data_siteaddr'
+        table. This field is used to link site address records to their corresponding
+        product entries for reference and reporting
+master_data_state:
+  description: The `master_data_state` table stores key information about states,
+    including their names, abbreviations, and associated country or region identifiers.
+    This table serves as a reference for state-level data used in various applications,
+    ensuring consistency and standardization across datasets.
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_state' table is an integer that
+        serves as the primary key, uniquely identifying each record within the table.
+        It is used for referencing and ensuring the integrity of data entries related
+        to different states in the master
+    name:
+      type: varchar(30)
+      description: The 'name' field in the 'master_data_state' table is of type 'varchar(30)',
+        designed to store the names of states. It can hold up to 30 characters, allowing
+        for flexibility in naming conventions.
+    region_id:
+      type: int
+      description: The 'region_id' field is an integer that uniquely identifies the
+        region to which a state belongs in the 'master_data_state' table. It serves
+        as a foreign key to relate states to their corresponding regions, enabling
+        efficient organization and retrieval of state-region
+    abbreviation:
+      type: varchar(11)
+      description: The 'abbreviation' field in the 'master_data_state' table stores
+        a short, standardized code (up to 11 characters) representing the name of
+        a state. This field is typically used for displaying or referencing the state
+        in a concise format,
+master_data_supplier:
+  description: The `master_data_supplier` table stores comprehensive information about
+    suppliers engaged with the organization. It includes essential details such as
+    supplier ID, name, contact information, address, payment terms, and any relevant
+    notes or classifications. This table serves as a central repository
+  fields:
+    id:
+      type: int
+      description: Field 'id' in the 'master_data_supplier' table is an integer (int)
+        that serves as the primary key, uniquely identifying each supplier record
+        in the database.
+    name:
+      type: varchar(255)
+      description: The 'name' field in the 'master_data_supplier' table is a variable
+        character (varchar) field with a maximum length of 255 characters. It stores
+        the name of the supplier, providing a reference for identifying and differentiating
+        suppliers within the database
+    abbr:
+      type: varchar(100)
+      description: The 'abbr' field in the 'master_data_supplier' table stores the
+        abbreviation for the supplier's name, allowing for a concise representation
+        of the supplier in reports and user interfaces. The field allows a maximum
+        length of 100 characters.
+    created_at:
+      type: datetime(6)
+      description: The 'created_at' field in the 'master_data_supplier' table stores
+        the date and time when a record was created, with precision up to six decimal
+        places for fractional seconds. This field helps track the creation timestamp
+        of each supplier record.
+    is_active:
+      type: tinyint(1)
+      description: The 'is_active' field in the 'master_data_supplier' table is a
+        tiny integer (1) that indicates whether a supplier is currently active. A
+        value of 1 signifies that the supplier is active, while a value of 0 indicates
+        that
+    created_by_id:
+      type: int
+      description: The field 'created_by_id' is of type 'int' and represents the unique
+        identifier of the user or system that created the supplier record in the 'master_data_supplier'
+        table. This field is used for tracking the origin of the data entry and
+    type_id:
+      type: int
+      description: The field 'type_id' in the 'master_data_supplier' table is an integer
+        that uniquely identifies the category or classification of the supplier. It
+        is used to differentiate between various types of suppliers within the database,
+        facilitating organization and retrieval of supplier-related data
+master_data_suppliertype:
+  description: The `master_data_suppliertype` table stores information related to
+    various types of suppliers in the system. It includes fields that define the characteristics,
+    categories, and classification of suppliers, enabling efficient management and
+    retrieval of supplier-related data. This table plays a
+  fields:
+    id:
+      type: int
+      description: The 'id' field in the 'master_data_suppliertype' table is an integer
+        that serves as the unique identifier for each supplier type record. It ensures
+        that each entry can be distinctly referenced and managed within the database.
+    title:
+      type: varchar(100)
+      description: The 'title' field in the 'master_data_suppliertype' table stores
+        a brief descriptive name for each supplier type, with a maximum length of
+        100 characters. This field is of type 'varchar', allowing for variable-length
+        strings.
